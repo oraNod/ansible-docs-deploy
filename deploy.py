@@ -98,7 +98,7 @@ def main(args: Args):
 
         if os.path.exists(args.output):
             shutil.rmtree(args.output)
-        os.mkdir(args.output)
+        os.makedirs(args.output)
 
         with tarfile.open(tarball, "r:gz") as tar_ref:
             tar_ref.extractall(args.output, filter="fully_trusted")
