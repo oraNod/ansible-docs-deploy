@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.10.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Index of all Collection Environment Variables &mdash; Ansible Core Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/environment_variables.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Core Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible Core
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="2.16"
+            
+        >
+            2.16
+        </option>
+        
+        <option
+            value="2.15"
+            
+        >
+            2.15
+        </option>
+        
+        <option
+            value="2.14"
+            
+        >
+            2.14
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/core_porting_guides.html">Ansible Core Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible Core</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible Core</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Collection Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible Core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Index of all Collection Environment Variables</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/2.16/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <section id="index-of-all-collection-environment-variables">
+<span id="list-of-collection-env-vars"></span><h1>Index of all Collection Environment Variables<a class="headerlink" href="#index-of-all-collection-environment-variables" title="Link to this heading"></a></h1>
+<p>The following index documents all environment variables declared by plugins in collections.
+Environment variables used by the ansible-core configuration are documented in <a class="reference internal" href="../reference_appendices/config.html#ansible-configuration-settings"><span class="std std-ref">Ansible Configuration Settings</span></a>.</p>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_ADMIN_USERS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_ADMIN_USERS</span></span><a class="headerlink" href="#envvar-ANSIBLE_ADMIN_USERS" title="Link to this definition"></a></dt>
+<dd><p>list of users to be expected to have admin privileges. This is used by the controller to determine how to share temporary files between the remote user and the become user.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sh_shell.html#ansible-collections-ansible-builtin-sh-shell"><span class="std std-ref">ansible.builtin.sh shell plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_ASYNC_DIR">
+<span class="sig-name descname"><span class="pre">ANSIBLE_ASYNC_DIR</span></span><a class="headerlink" href="#envvar-ANSIBLE_ASYNC_DIR" title="Link to this definition"></a></dt>
+<dd><p>Directory in which ansible will keep async job information</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sh_shell.html#ansible-collections-ansible-builtin-sh-shell"><span class="std std-ref">ansible.builtin.sh shell plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_BECOME_PASS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_BECOME_PASS</span></span><a class="headerlink" href="#envvar-ANSIBLE_BECOME_PASS" title="Link to this definition"></a></dt>
+<dd><p>See the documentations for the options where this environment variable is used.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/runas_become.html#ansible-collections-ansible-builtin-runas-become"><span class="std std-ref">ansible.builtin.runas become plugin</span></a>,
+<a class="reference internal" href="ansible/builtin/su_become.html#ansible-collections-ansible-builtin-su-become"><span class="std std-ref">ansible.builtin.su become plugin</span></a>,
+<a class="reference internal" href="ansible/builtin/sudo_become.html#ansible-collections-ansible-builtin-sudo-become"><span class="std std-ref">ansible.builtin.sudo become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_CALLBACK_FORMAT_PRETTY">
+<span class="sig-name descname"><span class="pre">ANSIBLE_CALLBACK_FORMAT_PRETTY</span></span><a class="headerlink" href="#envvar-ANSIBLE_CALLBACK_FORMAT_PRETTY" title="Link to this definition"></a></dt>
+<dd><p>Configure the result format to be more readable</p>
+<p>When <code class="ansible-option docutils literal notranslate"><strong><span><span class="pre">result_format</span></span></strong></code> is set to <code class="ansible-value docutils literal notranslate"><span class="pre">yaml</span></code> this option defaults to <code class="ansible-value docutils literal notranslate"><span class="pre">True</span></code>, and defaults to <code class="ansible-value docutils literal notranslate"><span class="pre">False</span></code> when configured to <code class="ansible-value docutils literal notranslate"><span class="pre">json</span></code>.</p>
+<p>Setting this option to <code class="ansible-value docutils literal notranslate"><span class="pre">True</span></code> will force <code class="ansible-value docutils literal notranslate"><span class="pre">json</span></code> and <code class="ansible-value docutils literal notranslate"><span class="pre">yaml</span></code> results to always be pretty printed regardless of verbosity.</p>
+<p>When set to <code class="ansible-value docutils literal notranslate"><span class="pre">True</span></code> and used with the <code class="ansible-value docutils literal notranslate"><span class="pre">yaml</span></code> result format, this option will modify module responses in an attempt to produce a more human friendly output at the expense of correctness, and should not be relied upon to aid in writing variable manipulations or conditionals. For correctness, set this option to <code class="ansible-value docutils literal notranslate"><span class="pre">False</span></code> or set <code class="ansible-option docutils literal notranslate"><strong><span><span class="pre">result_format</span></span></strong></code> to <code class="ansible-value docutils literal notranslate"><span class="pre">json</span></code>.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/default_callback.html#ansible-collections-ansible-builtin-default-callback"><span class="std std-ref">ansible.builtin.default callback plugin</span></a>,
+<a class="reference internal" href="ansible/builtin/minimal_callback.html#ansible-collections-ansible-builtin-minimal-callback"><span class="std std-ref">ansible.builtin.minimal callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_CALLBACK_RESULT_FORMAT">
+<span class="sig-name descname"><span class="pre">ANSIBLE_CALLBACK_RESULT_FORMAT</span></span><a class="headerlink" href="#envvar-ANSIBLE_CALLBACK_RESULT_FORMAT" title="Link to this definition"></a></dt>
+<dd><p>Define the task result format used in the callback output.</p>
+<p>These formats do not cause the callback to emit valid JSON or YAML formats.</p>
+<p>The output contains these formats interspersed with other non-machine parsable data.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/default_callback.html#ansible-collections-ansible-builtin-default-callback"><span class="std std-ref">ansible.builtin.default callback plugin</span></a>,
+<a class="reference internal" href="ansible/builtin/minimal_callback.html#ansible-collections-ansible-builtin-minimal-callback"><span class="std std-ref">ansible.builtin.minimal callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_CALLBACK_TREE_DIR">
+<span class="sig-name descname"><span class="pre">ANSIBLE_CALLBACK_TREE_DIR</span></span><a class="headerlink" href="#envvar-ANSIBLE_CALLBACK_TREE_DIR" title="Link to this definition"></a></dt>
+<dd><p>directory that will contain the per host JSON files. Also set by the <code class="docutils literal notranslate"><span class="pre">--tree</span></code> option when using adhoc.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/tree_callback.html#ansible-collections-ansible-builtin-tree-callback"><span class="std std-ref">ansible.builtin.tree callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_CHECK_MODE_MARKERS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_CHECK_MODE_MARKERS</span></span><a class="headerlink" href="#envvar-ANSIBLE_CHECK_MODE_MARKERS" title="Link to this definition"></a></dt>
+<dd><p>Toggle to control displaying markers when running in check mode.</p>
+<p>The markers are <code class="docutils literal notranslate"><span class="pre">DRY</span> <span class="pre">RUN</span></code> at the beginning and ending of playbook execution (when calling <code class="docutils literal notranslate"><span class="pre">ansible-playbook</span> <span class="pre">--check</span></code>) and <code class="docutils literal notranslate"><span class="pre">CHECK</span> <span class="pre">MODE</span></code> as a suffix at every play and task that is run in check mode.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/default_callback.html#ansible-collections-ansible-builtin-default-callback"><span class="std std-ref">ansible.builtin.default callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_COMMON_REMOTE_GROUP">
+<span class="sig-name descname"><span class="pre">ANSIBLE_COMMON_REMOTE_GROUP</span></span><a class="headerlink" href="#envvar-ANSIBLE_COMMON_REMOTE_GROUP" title="Link to this definition"></a></dt>
+<dd><p>Checked when Ansible needs to execute a module as a different user.</p>
+<p>If setfacl and chown both fail and do not let the different user access the module’s files, they will be chgrp’d to this group.</p>
+<p>In order for this to work, the remote_user and become_user must share a common group and this setting must be set to that group.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sh_shell.html#ansible-collections-ansible-builtin-sh-shell"><span class="std std-ref">ansible.builtin.sh shell plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_DISPLAY_FAILED_STDERR">
+<span class="sig-name descname"><span class="pre">ANSIBLE_DISPLAY_FAILED_STDERR</span></span><a class="headerlink" href="#envvar-ANSIBLE_DISPLAY_FAILED_STDERR" title="Link to this definition"></a></dt>
+<dd><p>Toggle to control whether failed and unreachable tasks are displayed to STDERR (vs. STDOUT)</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/default_callback.html#ansible-collections-ansible-builtin-default-callback"><span class="std std-ref">ansible.builtin.default callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_DISPLAY_OK_HOSTS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_DISPLAY_OK_HOSTS</span></span><a class="headerlink" href="#envvar-ANSIBLE_DISPLAY_OK_HOSTS" title="Link to this definition"></a></dt>
+<dd><p>Toggle to control displaying ‘ok’ task/host results in a task</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/default_callback.html#ansible-collections-ansible-builtin-default-callback"><span class="std std-ref">ansible.builtin.default callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_INVENTORY_PLUGIN_EXTS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_INVENTORY_PLUGIN_EXTS</span></span><a class="headerlink" href="#envvar-ANSIBLE_INVENTORY_PLUGIN_EXTS" title="Link to this definition"></a></dt>
+<dd><p>list of ‘valid’ extensions for files containing YAML</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/yaml_inventory.html#ansible-collections-ansible-builtin-yaml-inventory"><span class="std std-ref">ansible.builtin.yaml inventory plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_INVENTORY_PLUGIN_SCRIPT_STDERR">
+<span class="sig-name descname"><span class="pre">ANSIBLE_INVENTORY_PLUGIN_SCRIPT_STDERR</span></span><a class="headerlink" href="#envvar-ANSIBLE_INVENTORY_PLUGIN_SCRIPT_STDERR" title="Link to this definition"></a></dt>
+<dd><p>Toggle display of stderr even when script was successful</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/script_inventory.html#ansible-collections-ansible-builtin-script-inventory"><span class="std std-ref">ansible.builtin.script inventory plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_INVENTORY_USE_EXTRA_VARS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_INVENTORY_USE_EXTRA_VARS</span></span><a class="headerlink" href="#envvar-ANSIBLE_INVENTORY_USE_EXTRA_VARS" title="Link to this definition"></a></dt>
+<dd><p>Merge extra vars into the available variables for composition (highest precedence).</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/constructed_inventory.html#ansible-collections-ansible-builtin-constructed-inventory"><span class="std std-ref">ansible.builtin.constructed inventory plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_AGENT">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_AGENT</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_AGENT" title="Link to this definition"></a></dt>
+<dd><p>User-Agent to use in the request. The default was changed in 2.11 to <code class="ansible-value docutils literal notranslate"><span class="pre">ansible-httpget</span></code>.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_CA_PATH">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_CA_PATH</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_CA_PATH" title="Link to this definition"></a></dt>
+<dd><p>String of file system path to CA cert bundle to use</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_CIPHERS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_CIPHERS</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_CIPHERS" title="Link to this definition"></a></dt>
+<dd><p>SSL/TLS Ciphers to use for the request</p>
+<p>When a list is provided, all ciphers are joined in order with <code class="docutils literal notranslate"><span class="pre">:</span></code></p>
+<p>See the <a class="reference external" href="https://www.openssl.org/docs/manmaster/man1/openssl-ciphers.html#CIPHER-LIST-FORMAT">OpenSSL Cipher List Format</a> for more details.</p>
+<p>The available ciphers is dependent on the Python and OpenSSL/LibreSSL versions</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_FOLLOW_REDIRECTS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_FOLLOW_REDIRECTS</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_FOLLOW_REDIRECTS" title="Link to this definition"></a></dt>
+<dd><p>String of urllib2, all/yes, safe, none to determine how redirects are followed</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_FORCE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_FORCE</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_FORCE" title="Link to this definition"></a></dt>
+<dd><p>Whether or not to set “cache-control” header with value “no-cache”</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_FORCE_BASIC_AUTH">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_FORCE_BASIC_AUTH</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_FORCE_BASIC_AUTH" title="Link to this definition"></a></dt>
+<dd><p>Force basic authentication</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_TIMEOUT">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_TIMEOUT</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_TIMEOUT" title="Link to this definition"></a></dt>
+<dd><p>How long to wait for the server to send data before giving up</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_UNIX_SOCKET">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_UNIX_SOCKET</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_UNIX_SOCKET" title="Link to this definition"></a></dt>
+<dd><p>String of file system path to unix socket file to use when establishing connection to the provided url</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_UNREDIR_HEADERS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_UNREDIR_HEADERS</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_UNREDIR_HEADERS" title="Link to this definition"></a></dt>
+<dd><p>A list of headers to not attach on a redirected request</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_USE_GSSAPI">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_USE_GSSAPI</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_USE_GSSAPI" title="Link to this definition"></a></dt>
+<dd><p>Use GSSAPI handler of requests</p>
+<p>As of Ansible 2.11, GSSAPI credentials can be specified with <code class="ansible-option docutils literal notranslate"><strong><span><span class="pre">username</span></span></strong></code> and <code class="ansible-option docutils literal notranslate"><strong><span><span class="pre">password</span></span></strong></code>.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_LOOKUP_URL_USE_NETRC">
+<span class="sig-name descname"><span class="pre">ANSIBLE_LOOKUP_URL_USE_NETRC</span></span><a class="headerlink" href="#envvar-ANSIBLE_LOOKUP_URL_USE_NETRC" title="Link to this definition"></a></dt>
+<dd><p>Determining whether to use credentials from ``~/.netrc`` file</p>
+<p>By default .netrc is used with Basic authentication headers</p>
+<p>When set to False, .netrc credentials are ignored</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/url_lookup.html#ansible-collections-ansible-builtin-url-lookup"><span class="std std-ref">ansible.builtin.url lookup plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PARAMIKO_BANNER_TIMEOUT">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PARAMIKO_BANNER_TIMEOUT</span></span><a class="headerlink" href="#envvar-ANSIBLE_PARAMIKO_BANNER_TIMEOUT" title="Link to this definition"></a></dt>
+<dd><p>Configures, in seconds, the amount of time to wait for the SSH banner to be presented. This option is supported by paramiko version 1.15.0 or newer.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PARAMIKO_HOST_KEY_CHECKING">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PARAMIKO_HOST_KEY_CHECKING</span></span><a class="headerlink" href="#envvar-ANSIBLE_PARAMIKO_HOST_KEY_CHECKING" title="Link to this definition"></a></dt>
+<dd><p>Set this to “False” if you want to avoid host key checking by the underlying tools Ansible uses to connect to the host</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PARAMIKO_PRIVATE_KEY_FILE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PARAMIKO_PRIVATE_KEY_FILE</span></span><a class="headerlink" href="#envvar-ANSIBLE_PARAMIKO_PRIVATE_KEY_FILE" title="Link to this definition"></a></dt>
+<dd><p>Path to private key file to use for authentication.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PARAMIKO_PROXY_COMMAND">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PARAMIKO_PROXY_COMMAND</span></span><a class="headerlink" href="#envvar-ANSIBLE_PARAMIKO_PROXY_COMMAND" title="Link to this definition"></a></dt>
+<dd><p>Proxy information for running the connection via a jumphost.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PARAMIKO_PTY">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PARAMIKO_PTY</span></span><a class="headerlink" href="#envvar-ANSIBLE_PARAMIKO_PTY" title="Link to this definition"></a></dt>
+<dd><p>SUDO usually requires a PTY, True to give a PTY and False to not give a PTY.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PARAMIKO_RECORD_HOST_KEYS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PARAMIKO_RECORD_HOST_KEYS</span></span><a class="headerlink" href="#envvar-ANSIBLE_PARAMIKO_RECORD_HOST_KEYS" title="Link to this definition"></a></dt>
+<dd><p>Save the host keys to a file</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PARAMIKO_REMOTE_USER">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PARAMIKO_REMOTE_USER</span></span><a class="headerlink" href="#envvar-ANSIBLE_PARAMIKO_REMOTE_USER" title="Link to this definition"></a></dt>
+<dd><p>User to login/authenticate as</p>
+<p>Can be set from the CLI via the <code class="docutils literal notranslate"><span class="pre">--user</span></code> or <code class="docutils literal notranslate"><span class="pre">-u</span></code> options.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PARAMIKO_TIMEOUT">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PARAMIKO_TIMEOUT</span></span><a class="headerlink" href="#envvar-ANSIBLE_PARAMIKO_TIMEOUT" title="Link to this definition"></a></dt>
+<dd><p>Number of seconds until the plugin gives up on failing to establish a TCP connection.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PARAMIKO_USE_RSA_SHA2_ALGORITHMS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PARAMIKO_USE_RSA_SHA2_ALGORITHMS</span></span><a class="headerlink" href="#envvar-ANSIBLE_PARAMIKO_USE_RSA_SHA2_ALGORITHMS" title="Link to this definition"></a></dt>
+<dd><p>Whether or not to enable RSA SHA2 algorithms for pubkeys and hostkeys</p>
+<p>On paramiko versions older than 2.9, this only affects hostkeys</p>
+<p>For behavior matching paramiko&lt;2.9 set this to <code class="ansible-value docutils literal notranslate"><span class="pre">False</span></code></p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_PKCS11_PROVIDER">
+<span class="sig-name descname"><span class="pre">ANSIBLE_PKCS11_PROVIDER</span></span><a class="headerlink" href="#envvar-ANSIBLE_PKCS11_PROVIDER" title="Link to this definition"></a></dt>
+<dd><p>PKCS11 SmartCard provider such as opensc, example: /usr/local/lib/opensc-pkcs11.so</p>
+<p>Requires sshpass version 1.06+, sshpass must support the -P option.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_REMOTE_PARAMIKO_PORT">
+<span class="sig-name descname"><span class="pre">ANSIBLE_REMOTE_PARAMIKO_PORT</span></span><a class="headerlink" href="#envvar-ANSIBLE_REMOTE_PARAMIKO_PORT" title="Link to this definition"></a></dt>
+<dd><p>Remote port to connect to.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_REMOTE_TEMP">
+<span class="sig-name descname"><span class="pre">ANSIBLE_REMOTE_TEMP</span></span><a class="headerlink" href="#envvar-ANSIBLE_REMOTE_TEMP" title="Link to this definition"></a></dt>
+<dd><p>Temporary directory to use on targets when executing tasks.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sh_shell.html#ansible-collections-ansible-builtin-sh-shell"><span class="std std-ref">ansible.builtin.sh shell plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_REMOTE_TMP">
+<span class="sig-name descname"><span class="pre">ANSIBLE_REMOTE_TMP</span></span><a class="headerlink" href="#envvar-ANSIBLE_REMOTE_TMP" title="Link to this definition"></a></dt>
+<dd><p>Temporary directory to use on targets when executing tasks.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sh_shell.html#ansible-collections-ansible-builtin-sh-shell"><span class="std std-ref">ansible.builtin.sh shell plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_RUNAS_FLAGS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_RUNAS_FLAGS</span></span><a class="headerlink" href="#envvar-ANSIBLE_RUNAS_FLAGS" title="Link to this definition"></a></dt>
+<dd><p>Options to pass to runas, a space delimited list of k=v pairs</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/runas_become.html#ansible-collections-ansible-builtin-runas-become"><span class="std std-ref">ansible.builtin.runas become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_RUNAS_PASS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_RUNAS_PASS</span></span><a class="headerlink" href="#envvar-ANSIBLE_RUNAS_PASS" title="Link to this definition"></a></dt>
+<dd><p>password</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/runas_become.html#ansible-collections-ansible-builtin-runas-become"><span class="std std-ref">ansible.builtin.runas become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_RUNAS_USER">
+<span class="sig-name descname"><span class="pre">ANSIBLE_RUNAS_USER</span></span><a class="headerlink" href="#envvar-ANSIBLE_RUNAS_USER" title="Link to this definition"></a></dt>
+<dd><p>User you ‘become’ to execute the task</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/runas_become.html#ansible-collections-ansible-builtin-runas-become"><span class="std std-ref">ansible.builtin.runas become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SCP_EXECUTABLE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SCP_EXECUTABLE</span></span><a class="headerlink" href="#envvar-ANSIBLE_SCP_EXECUTABLE" title="Link to this definition"></a></dt>
+<dd><p>This defines the location of the scp binary. It defaults to <code class="ansible-value docutils literal notranslate"><span class="pre">scp</span></code> which will use the first binary available in $PATH.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SCP_EXTRA_ARGS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SCP_EXTRA_ARGS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SCP_EXTRA_ARGS" title="Link to this definition"></a></dt>
+<dd><p>Extra exclusive to the <code class="docutils literal notranslate"><span class="pre">scp</span></code> CLI</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SFTP_BATCH_MODE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SFTP_BATCH_MODE</span></span><a class="headerlink" href="#envvar-ANSIBLE_SFTP_BATCH_MODE" title="Link to this definition"></a></dt>
+<dd><p>TODO: write it</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SFTP_EXECUTABLE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SFTP_EXECUTABLE</span></span><a class="headerlink" href="#envvar-ANSIBLE_SFTP_EXECUTABLE" title="Link to this definition"></a></dt>
+<dd><p>This defines the location of the sftp binary. It defaults to <code class="ansible-value docutils literal notranslate"><span class="pre">sftp</span></code> which will use the first binary available in $PATH.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SFTP_EXTRA_ARGS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SFTP_EXTRA_ARGS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SFTP_EXTRA_ARGS" title="Link to this definition"></a></dt>
+<dd><p>Extra exclusive to the <code class="docutils literal notranslate"><span class="pre">sftp</span></code> CLI</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SHELL_ALLOW_WORLD_READABLE_TEMP">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SHELL_ALLOW_WORLD_READABLE_TEMP</span></span><a class="headerlink" href="#envvar-ANSIBLE_SHELL_ALLOW_WORLD_READABLE_TEMP" title="Link to this definition"></a></dt>
+<dd><p>This makes the temporary files created on the machine world-readable and will issue a warning instead of failing the task.</p>
+<p>It is useful when becoming an unprivileged user.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sh_shell.html#ansible-collections-ansible-builtin-sh-shell"><span class="std std-ref">ansible.builtin.sh shell plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SHOW_PER_HOST_START">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SHOW_PER_HOST_START</span></span><a class="headerlink" href="#envvar-ANSIBLE_SHOW_PER_HOST_START" title="Link to this definition"></a></dt>
+<dd><p>This adds output that shows when a task is started to execute for each host</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/default_callback.html#ansible-collections-ansible-builtin-default-callback"><span class="std std-ref">ansible.builtin.default callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SHOW_TASK_PATH_ON_FAILURE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SHOW_TASK_PATH_ON_FAILURE</span></span><a class="headerlink" href="#envvar-ANSIBLE_SHOW_TASK_PATH_ON_FAILURE" title="Link to this definition"></a></dt>
+<dd><p>When a task fails, display the path to the file containing the failed task and the line number. This information is displayed automatically for every task when running with <code class="docutils literal notranslate"><span class="pre">-vv</span></code> or greater verbosity.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/default_callback.html#ansible-collections-ansible-builtin-default-callback"><span class="std std-ref">ansible.builtin.default callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_ARGS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_ARGS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_ARGS" title="Link to this definition"></a></dt>
+<dd><p>Arguments to pass to all SSH CLI tools.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_COMMON_ARGS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_COMMON_ARGS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_COMMON_ARGS" title="Link to this definition"></a></dt>
+<dd><p>Common extra args for all SSH CLI tools.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_CONTROL_PATH">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_CONTROL_PATH</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_CONTROL_PATH" title="Link to this definition"></a></dt>
+<dd><p>This is the location to save SSH’s ControlPath sockets, it uses SSH’s variable substitution.</p>
+<p>Since 2.3, if null (default), ansible will generate a unique hash. Use ``%(directory)s`` to indicate where to use the control dir path setting.</p>
+<p>Before 2.3 it defaulted to ``control_path=%(directory)s/ansible-ssh-%%h-%%p-%%r``.</p>
+<p>Be aware that this setting is ignored if <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">ControlPath</span></code> is set in ssh args.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_CONTROL_PATH_DIR">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_CONTROL_PATH_DIR</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_CONTROL_PATH_DIR" title="Link to this definition"></a></dt>
+<dd><p>This sets the directory to use for ssh control path if the control path setting is null.</p>
+<p>Also, provides the ``%(directory)s`` variable for the control path setting.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_EXECUTABLE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_EXECUTABLE</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_EXECUTABLE" title="Link to this definition"></a></dt>
+<dd><p>This defines the location of the SSH binary. It defaults to <code class="ansible-value docutils literal notranslate"><span class="pre">ssh</span></code> which will use the first SSH binary available in $PATH.</p>
+<p>This option is usually not required, it might be useful when access to system SSH is restricted, or when using SSH wrappers to connect to remote hosts.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_EXTRA_ARGS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_EXTRA_ARGS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_EXTRA_ARGS" title="Link to this definition"></a></dt>
+<dd><p>Extra exclusive to the SSH CLI.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_HOST_KEY_CHECKING">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_HOST_KEY_CHECKING</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_HOST_KEY_CHECKING" title="Link to this definition"></a></dt>
+<dd><p>See the documentations for the options where this environment variable is used.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a>,
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_PIPELINING">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_PIPELINING</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_PIPELINING" title="Link to this definition"></a></dt>
+<dd><p>Pipelining reduces the number of connection operations required to execute a module on the remote server, by executing many Ansible modules without actual file transfers.</p>
+<p>This can result in a very significant performance improvement when enabled.</p>
+<p>However this can conflict with privilege escalation (become). For example, when using sudo operations you must first disable ‘requiretty’ in the sudoers file for the target hosts, which is why this feature is disabled by default.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_RETRIES">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_RETRIES</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_RETRIES" title="Link to this definition"></a></dt>
+<dd><p>Number of attempts to connect.</p>
+<p>Ansible retries connections only if it gets an SSH error with a return code of 255.</p>
+<p>Any errors with return codes other than 255 indicate an issue with program execution.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_TIMEOUT">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_TIMEOUT</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_TIMEOUT" title="Link to this definition"></a></dt>
+<dd><p>See the documentations for the options where this environment variable is used.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/paramiko_ssh_connection.html#ansible-collections-ansible-builtin-paramiko-ssh-connection"><span class="std std-ref">ansible.builtin.paramiko_ssh connection plugin</span></a>,
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_TRANSFER_METHOD">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_TRANSFER_METHOD</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_TRANSFER_METHOD" title="Link to this definition"></a></dt>
+<dd><p>Preferred method to use when transferring files over ssh</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSH_USETTY">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSH_USETTY</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSH_USETTY" title="Link to this definition"></a></dt>
+<dd><p>add -tt to ssh commands to force tty allocation.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SSHPASS_PROMPT">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SSHPASS_PROMPT</span></span><a class="headerlink" href="#envvar-ANSIBLE_SSHPASS_PROMPT" title="Link to this definition"></a></dt>
+<dd><p>Password prompt that sshpass should search for. Supported by sshpass 1.06 and up.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">Enter</span> <span class="pre">PIN</span> <span class="pre">for</span></code> when pkcs11_provider is set.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/ssh_connection.html#ansible-collections-ansible-builtin-ssh-connection"><span class="std std-ref">ansible.builtin.ssh connection plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SU_EXE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SU_EXE</span></span><a class="headerlink" href="#envvar-ANSIBLE_SU_EXE" title="Link to this definition"></a></dt>
+<dd><p>Su executable</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/su_become.html#ansible-collections-ansible-builtin-su-become"><span class="std std-ref">ansible.builtin.su become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SU_FLAGS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SU_FLAGS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SU_FLAGS" title="Link to this definition"></a></dt>
+<dd><p>Options to pass to su</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/su_become.html#ansible-collections-ansible-builtin-su-become"><span class="std std-ref">ansible.builtin.su become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SU_PASS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SU_PASS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SU_PASS" title="Link to this definition"></a></dt>
+<dd><p>Password to pass to su</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/su_become.html#ansible-collections-ansible-builtin-su-become"><span class="std std-ref">ansible.builtin.su become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SU_PROMPT_L10N">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SU_PROMPT_L10N</span></span><a class="headerlink" href="#envvar-ANSIBLE_SU_PROMPT_L10N" title="Link to this definition"></a></dt>
+<dd><p>List of localized strings to match for prompt detection</p>
+<p>If empty we’ll use the built in one</p>
+<p>Do NOT add a colon (:) to your custom entries. Ansible adds a colon at the end of each prompt; if you add another one in your string, your prompt will fail with a “Timeout” error.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/su_become.html#ansible-collections-ansible-builtin-su-become"><span class="std std-ref">ansible.builtin.su become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SU_USER">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SU_USER</span></span><a class="headerlink" href="#envvar-ANSIBLE_SU_USER" title="Link to this definition"></a></dt>
+<dd><p>User you ‘become’ to execute the task</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/su_become.html#ansible-collections-ansible-builtin-su-become"><span class="std std-ref">ansible.builtin.su become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SUDO_EXE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SUDO_EXE</span></span><a class="headerlink" href="#envvar-ANSIBLE_SUDO_EXE" title="Link to this definition"></a></dt>
+<dd><p>Sudo executable</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sudo_become.html#ansible-collections-ansible-builtin-sudo-become"><span class="std std-ref">ansible.builtin.sudo become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SUDO_FLAGS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SUDO_FLAGS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SUDO_FLAGS" title="Link to this definition"></a></dt>
+<dd><p>Options to pass to sudo</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sudo_become.html#ansible-collections-ansible-builtin-sudo-become"><span class="std std-ref">ansible.builtin.sudo become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SUDO_PASS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SUDO_PASS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SUDO_PASS" title="Link to this definition"></a></dt>
+<dd><p>Password to pass to sudo</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sudo_become.html#ansible-collections-ansible-builtin-sudo-become"><span class="std std-ref">ansible.builtin.sudo become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SUDO_USER">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SUDO_USER</span></span><a class="headerlink" href="#envvar-ANSIBLE_SUDO_USER" title="Link to this definition"></a></dt>
+<dd><p>User you ‘become’ to execute the task</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sudo_become.html#ansible-collections-ansible-builtin-sudo-become"><span class="std std-ref">ansible.builtin.sudo become plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_SYSTEM_TMPDIRS">
+<span class="sig-name descname"><span class="pre">ANSIBLE_SYSTEM_TMPDIRS</span></span><a class="headerlink" href="#envvar-ANSIBLE_SYSTEM_TMPDIRS" title="Link to this definition"></a></dt>
+<dd><p>List of valid system temporary directories on the managed machine for Ansible to validate <code class="ansible-option docutils literal notranslate"><strong><span><span class="pre">remote_tmp</span></span></strong></code> against, when specific permissions are needed.  These must be world readable, writable, and executable. This list should only contain directories which the system administrator has pre-created with the proper ownership and permissions otherwise security issues can arise.</p>
+<p>When <code class="ansible-option docutils literal notranslate"><strong><span><span class="pre">remote_tmp</span></span></strong></code> is required to be a system temp dir and it does not match any in the list, the first one from the list will be used instead.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/sh_shell.html#ansible-collections-ansible-builtin-sh-shell"><span class="std std-ref">ansible.builtin.sh shell plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ANSIBLE_VARS_PLUGIN_STAGE">
+<span class="sig-name descname"><span class="pre">ANSIBLE_VARS_PLUGIN_STAGE</span></span><a class="headerlink" href="#envvar-ANSIBLE_VARS_PLUGIN_STAGE" title="Link to this definition"></a></dt>
+<dd><p>Control when this vars plugin may be executed.</p>
+<p>Setting this option to <code class="ansible-value docutils literal notranslate"><span class="pre">all</span></code> will run the vars plugin after importing inventory and whenever it is demanded by a task.</p>
+<p>Setting this option to <code class="ansible-value docutils literal notranslate"><span class="pre">task</span></code> will only run the vars plugin whenever it is demanded by a task.</p>
+<p>Setting this option to <code class="ansible-value docutils literal notranslate"><span class="pre">inventory</span></code> will only run the vars plugin after parsing inventory.</p>
+<p>If this option is omitted, the global <code class="docutils literal notranslate"><span class="pre">RUN_VARS_PLUGINS</span></code> configuration is used to determine when to execute the vars plugin.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/host_group_vars_vars.html#ansible-collections-ansible-builtin-host-group-vars-vars"><span class="std std-ref">ansible.builtin.host_group_vars vars plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-JUNIT_FAIL_ON_CHANGE">
+<span class="sig-name descname"><span class="pre">JUNIT_FAIL_ON_CHANGE</span></span><a class="headerlink" href="#envvar-JUNIT_FAIL_ON_CHANGE" title="Link to this definition"></a></dt>
+<dd><p>Consider any tasks reporting “changed” as a junit test failure</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/junit_callback.html#ansible-collections-ansible-builtin-junit-callback"><span class="std std-ref">ansible.builtin.junit callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-JUNIT_FAIL_ON_IGNORE">
+<span class="sig-name descname"><span class="pre">JUNIT_FAIL_ON_IGNORE</span></span><a class="headerlink" href="#envvar-JUNIT_FAIL_ON_IGNORE" title="Link to this definition"></a></dt>
+<dd><p>Consider failed tasks as a junit test failure even if ignore_on_error is set</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/junit_callback.html#ansible-collections-ansible-builtin-junit-callback"><span class="std std-ref">ansible.builtin.junit callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-JUNIT_HIDE_TASK_ARGUMENTS">
+<span class="sig-name descname"><span class="pre">JUNIT_HIDE_TASK_ARGUMENTS</span></span><a class="headerlink" href="#envvar-JUNIT_HIDE_TASK_ARGUMENTS" title="Link to this definition"></a></dt>
+<dd><p>Hide the arguments for a task</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/junit_callback.html#ansible-collections-ansible-builtin-junit-callback"><span class="std std-ref">ansible.builtin.junit callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-JUNIT_INCLUDE_SETUP_TASKS_IN_REPORT">
+<span class="sig-name descname"><span class="pre">JUNIT_INCLUDE_SETUP_TASKS_IN_REPORT</span></span><a class="headerlink" href="#envvar-JUNIT_INCLUDE_SETUP_TASKS_IN_REPORT" title="Link to this definition"></a></dt>
+<dd><p>Should the setup tasks be included in the final report</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/junit_callback.html#ansible-collections-ansible-builtin-junit-callback"><span class="std std-ref">ansible.builtin.junit callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-JUNIT_OUTPUT_DIR">
+<span class="sig-name descname"><span class="pre">JUNIT_OUTPUT_DIR</span></span><a class="headerlink" href="#envvar-JUNIT_OUTPUT_DIR" title="Link to this definition"></a></dt>
+<dd><p>Directory to write XML files to.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/junit_callback.html#ansible-collections-ansible-builtin-junit-callback"><span class="std std-ref">ansible.builtin.junit callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-JUNIT_REPLACE_OUT_OF_TREE_PATH">
+<span class="sig-name descname"><span class="pre">JUNIT_REPLACE_OUT_OF_TREE_PATH</span></span><a class="headerlink" href="#envvar-JUNIT_REPLACE_OUT_OF_TREE_PATH" title="Link to this definition"></a></dt>
+<dd><p>Replace the directory portion of an out-of-tree relative task path with the given placeholder</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/junit_callback.html#ansible-collections-ansible-builtin-junit-callback"><span class="std std-ref">ansible.builtin.junit callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-JUNIT_TASK_CLASS">
+<span class="sig-name descname"><span class="pre">JUNIT_TASK_CLASS</span></span><a class="headerlink" href="#envvar-JUNIT_TASK_CLASS" title="Link to this definition"></a></dt>
+<dd><p>Configure the output to be one class per yaml file</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/junit_callback.html#ansible-collections-ansible-builtin-junit-callback"><span class="std std-ref">ansible.builtin.junit callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-JUNIT_TASK_RELATIVE_PATH">
+<span class="sig-name descname"><span class="pre">JUNIT_TASK_RELATIVE_PATH</span></span><a class="headerlink" href="#envvar-JUNIT_TASK_RELATIVE_PATH" title="Link to this definition"></a></dt>
+<dd><p>Configure the output to use relative paths to given directory</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/junit_callback.html#ansible-collections-ansible-builtin-junit-callback"><span class="std std-ref">ansible.builtin.junit callback plugin</span></a></p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-JUNIT_TEST_CASE_PREFIX">
+<span class="sig-name descname"><span class="pre">JUNIT_TEST_CASE_PREFIX</span></span><a class="headerlink" href="#envvar-JUNIT_TEST_CASE_PREFIX" title="Link to this definition"></a></dt>
+<dd><p>Consider a task only as test case if it has this value as prefix. Additionally failing tasks are recorded as failed test cases.</p>
+<p><em>Used by:</em>
+<a class="reference internal" href="ansible/builtin/junit_callback.html#ansible-collections-ansible-builtin-junit-callback"><span class="std std-ref">ansible.builtin.junit callback plugin</span></a></p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Apr 25, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>
