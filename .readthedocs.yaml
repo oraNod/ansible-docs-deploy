@@ -9,10 +9,9 @@ build:
   tools:
     python: >-
       3.11
-  # Build with make coredocs
   commands:
     - python -m venv "${READTHEDOCS_VIRTUALENV_PATH}"
+    #- >-
+      #"${READTHEDOCS_VIRTUALENV_PATH}"/bin/python -m pip install --exists-action=w -r requirements.in -c requirements.txt
     - >-
-      "${READTHEDOCS_VIRTUALENV_PATH}"/bin/python -m pip install --exists-action=w -r requirements.in -c requirements.txt
-    - >-
-      "${READTHEDOCS_VIRTUALENV_PATH}"/bin/python deploy.py --output="$READTHEDOCS_OUTPUT/html/"
+      "${READTHEDOCS_VIRTUALENV_PATH}"/bin/python deploy-html.py --output="$READTHEDOCS_OUTPUT/html/"
