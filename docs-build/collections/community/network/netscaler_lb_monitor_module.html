@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.10.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>community.network.netscaler_lb_monitor module – Manage load balancing monitors &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/community/network/netscaler_lb_monitor_module.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="community.network.netscaler_lb_vserver module – Manage load balancing vserver configuration" href="netscaler_lb_vserver_module.html" />
+    <link rel="prev" title="community.network.netscaler_gslb_vserver module – Configure gslb vserver entities in Netscaler." href="netscaler_gslb_vserver_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../amazon/index.html">Collections in the Amazon Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Community Namespace</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../aws/index.html">Community.Aws</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ciscosmb/index.html">Community.Ciscosmb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../crypto/index.html">Community.Crypto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../digitalocean/index.html">Community.Digitalocean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dns/index.html">Community.Dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../docker/index.html">Community.Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/index.html">Community.General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../grafana/index.html">Community.Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hashi_vault/index.html">Community.Hashi_Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hrobot/index.html">Community.Hrobot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library_inventory_filtering_v1/index.html">Community.Library_Inventory_Filtering_V1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libvirt/index.html">Community.Libvirt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mongodb/index.html">Community.Mongodb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mysql/index.html">Community.Mysql</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Community.Network</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../okd/index.html">Community.Okd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/index.html">Community.Postgresql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../proxysql/index.html">Community.Proxysql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rabbitmq/index.html">Community.Rabbitmq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../routeros/index.html">Community.Routeros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sap_libs/index.html">Community.Sap_Libs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sops/index.html">Community.Sops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vmware/index.html">Community.Vmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../windows/index.html">Community.Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zabbix/index.html">Community.Zabbix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dellemc/index.html">Collections in the Dellemc Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fortinet/index.html">Collections in the Fortinet Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp_eseries/index.html">Collections in the Netapp_eseries Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wti/index.html">Collections in the Wti Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Community Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Community.Network</a></li>
+      <li class="breadcrumb-item active">community.network.netscaler_lb_monitor module – Manage load balancing monitors</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/9/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-community-network-netscaler-lb-monitor-module"></span><section id="community-network-netscaler-lb-monitor-module-manage-load-balancing-monitors">
+<h1>community.network.netscaler_lb_monitor module – Manage load balancing monitors<a class="headerlink" href="#community-network-netscaler-lb-monitor-module-manage-load-balancing-monitors" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/network/">community.network collection</a> (version 5.0.2).</p>
+<p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
+It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">community.network</span></code>.
+You need further requirements to be able to use this module,
+see <a class="reference internal" href="#ansible-collections-community-network-netscaler-lb-monitor-module-requirements"><span class="std std-ref">Requirements</span></a> for details.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">community.network.netscaler_lb_monitor</span></code>.</p>
+</div>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#requirements" id="id2">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id3">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id4">Notes</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id5">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id6">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Manage load balancing monitors.</p></li>
+<li><p>This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.</p></li>
+</ul>
+<p>Aliases: network.netscaler.netscaler_lb_monitor</p>
+</section>
+<section id="requirements">
+<span id="ansible-collections-community-network-netscaler-lb-monitor-module-requirements"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">Requirements</a><a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>The below requirements are needed on the host that executes this module.</p>
+<ul class="simple">
+<li><p>nitro python sdk</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-acctapplicationid"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-acctapplicationid"><strong>acctapplicationid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-acctapplicationid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of Acct-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">4294967295</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-action"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-action"><strong>action</strong></p>
+<a class="ansibleOptionLink" href="#parameter-action" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Action to perform when the response to an inline monitor (a monitor of type <code class="docutils literal notranslate"><span class="pre">HTTP-INLINE</span></code>) indicates that the service is down. A service monitored by an inline monitor is considered <code class="docutils literal notranslate"><span class="pre">DOWN</span></code> if the response code is not one of the codes that have been specified for the Response Code parameter.</p>
+<p>Available settings function as follows:</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">NONE</span></code> - Do not take any action. However, the show service command and the show lb monitor command indicate the total number of responses that were checked and the number of consecutive error responses received after the last successful probe.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">LOG</span></code> - Log the event in NSLOG or SYSLOG.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">DOWN</span></code> - Mark the service as being down, and then do not direct any traffic to the service until the configured down time has expired. Persistent connections to the service are terminated as soon as the service is marked as <code class="docutils literal notranslate"><span class="pre">DOWN</span></code>. Also, log the event in NSLOG or SYSLOG.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NONE&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;LOG&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DOWN&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-alertretries"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-alertretries"><strong>alertretries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-alertretries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of consecutive probe failures after which the appliance generates an SNMP trap called monProbeFailed.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">32</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-application"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-application"><strong>application</strong></p>
+<a class="ansibleOptionLink" href="#parameter-application" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the application used to determine the state of the service. Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">CITRIX-XML-SERVICE</span></code>.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-attribute"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-attribute"><strong>attribute</strong></p>
+<a class="ansibleOptionLink" href="#parameter-attribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Attribute to evaluate when the LDAP server responds to the query. Success or failure of the monitoring probe depends on whether the attribute exists in the response. Optional.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-authapplicationid"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-authapplicationid"><strong>authapplicationid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-authapplicationid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of Auth-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring CER message.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">4294967295</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-basedn"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-basedn"><strong>basedn</strong></p>
+<a class="ansibleOptionLink" href="#parameter-basedn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The base distinguished name of the LDAP service, from where the LDAP server can begin the search for the attributes in the monitoring query. Required for <code class="docutils literal notranslate"><span class="pre">LDAP</span></code> service monitoring.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-binddn"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-binddn"><strong>binddn</strong></p>
+<a class="ansibleOptionLink" href="#parameter-binddn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The distinguished name with which an LDAP monitor can perform the Bind operation on the LDAP server. Optional. Applicable to <code class="docutils literal notranslate"><span class="pre">LDAP</span></code> monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-customheaders"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-customheaders"><strong>customheaders</strong></p>
+<a class="ansibleOptionLink" href="#parameter-customheaders" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Custom header string to include in the monitoring probes.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-database"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-database"><strong>database</strong></p>
+<a class="ansibleOptionLink" href="#parameter-database" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the database to connect to during authentication.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-destip"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-destip"><strong>destip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-destip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>IP address of the service to which to send probes. If the parameter is set to 0, the IP address of the server to which the monitor is bound is considered the destination IP address.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-destport"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-destport"><strong>destport</strong></p>
+<a class="ansibleOptionLink" href="#parameter-destport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>TCP or UDP port to which to send the probe. If the parameter is set to 0, the port number of the service to which the monitor is bound is considered the destination port. For a monitor of type <code class="docutils literal notranslate"><span class="pre">USER</span></code>, however, the destination port is the port number that is included in the HTTP request sent to the dispatcher. Does not apply to monitors of type <code class="docutils literal notranslate"><span class="pre">PING</span></code>.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-deviation"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-deviation"><strong>deviation</strong></p>
+<a class="ansibleOptionLink" href="#parameter-deviation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time value added to the learned average response time in dynamic response time monitoring (DRTM). When a deviation is specified, the appliance learns the average response time of bound services and adds the deviation to the average. The final value is then continually adjusted to accommodate response time variations over time. Specified in milliseconds, seconds, or minutes.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">20939</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dispatcherip"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-dispatcherip"><strong>dispatcherip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dispatcherip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>IP address of the dispatcher to which to send the probe.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dispatcherport"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-dispatcherport"><strong>dispatcherport</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dispatcherport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Port number on which the dispatcher listens for the monitoring probe.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-domain"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-domain"><strong>domain</strong></p>
+<a class="ansibleOptionLink" href="#parameter-domain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Domain in which the XenDesktop Desktop Delivery Controller (DDC) servers or Web Interface servers are present. Required by <code class="docutils literal notranslate"><span class="pre">CITRIX-XD-DDC</span></code> and <code class="docutils literal notranslate"><span class="pre">CITRIX-WI-EXTENDED</span></code> monitors for logging on to the DDC servers and Web Interface servers, respectively.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-downtime"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-downtime"><strong>downtime</strong></p>
+<a class="ansibleOptionLink" href="#parameter-downtime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time duration for which to wait before probing a service that has been marked as DOWN. Expressed in milliseconds, seconds, or minutes.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">20939</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-evalrule"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-evalrule"><strong>evalrule</strong></p>
+<a class="ansibleOptionLink" href="#parameter-evalrule" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Default syntax expression that evaluates the database server’s response to a MYSQL-ECV or MSSQL-ECV monitoring query. Must produce a Boolean result. The result determines the state of the server. If the expression returns TRUE, the probe succeeds.</p>
+<p>For example, if you want the appliance to evaluate the error message to determine the state of the server, use the rule <code class="docutils literal notranslate"><span class="pre">MYSQL.RES.ROW(10</span></code> .TEXT_ELEM(2).EQ(“MySQL”)).</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-failureretries"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-failureretries"><strong>failureretries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-failureretries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of retries that must fail, out of the number specified for the Retries parameter, for a service to be marked as DOWN. For example, if the Retries parameter is set to 10 and the Failure Retries parameter is set to 6, out of the ten probes sent, at least six probes must fail if the service is to be marked as DOWN. The default value of 0 means that all the retries must fail if the service is to be marked as DOWN.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">32</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-filename"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-filename"><strong>filename</strong></p>
+<a class="ansibleOptionLink" href="#parameter-filename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of a file on the FTP server. The appliance monitors the FTP service by periodically checking the existence of the file on the server. Applicable to <code class="docutils literal notranslate"><span class="pre">FTP-EXTENDED</span></code> monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-filter"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-filter"><strong>filter</strong></p>
+<a class="ansibleOptionLink" href="#parameter-filter" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Filter criteria for the LDAP query. Optional.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firmwarerevision"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-firmwarerevision"><strong>firmwarerevision</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firmwarerevision" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Firmware-Revision value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-group"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-group"><strong>group</strong></p>
+<a class="ansibleOptionLink" href="#parameter-group" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of a newsgroup available on the NNTP service that is to be monitored. The appliance periodically generates an NNTP query for the name of the newsgroup and evaluates the response. If the newsgroup is found on the server, the service is marked as UP. If the newsgroup does not exist or if the search fails, the service is marked as DOWN. Applicable to NNTP monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-hostipaddress"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-hostipaddress"><strong>hostipaddress</strong></p>
+<a class="ansibleOptionLink" href="#parameter-hostipaddress" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Host-IP-Address value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. If Host-IP-Address is not specified, the appliance inserts the mapped IP (MIP) address or subnet IP (SNIP) address from which the CER request (the monitoring probe) is sent.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-hostname"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-hostname"><strong>hostname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-hostname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Hostname in the FQDN format (Example: <code class="docutils literal notranslate"><span class="pre">porche.cars.org</span></code>). Applicable to <code class="docutils literal notranslate"><span class="pre">STOREFRONT</span></code> monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-httprequest"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-httprequest"><strong>httprequest</strong></p>
+<a class="ansibleOptionLink" href="#parameter-httprequest" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>HTTP request to send to the server (for example, <code class="docutils literal notranslate"><span class="pre">&quot;HEAD</span> <span class="pre">/file.html&quot;</span></code>).</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-inbandsecurityid"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-inbandsecurityid"><strong>inbandsecurityid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-inbandsecurityid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Inband-Security-Id for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NO_INBAND_SECURITY&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-interval"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-interval"><strong>interval</strong></p>
+<a class="ansibleOptionLink" href="#parameter-interval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time interval between two successive probes. Must be greater than the value of Response Time-out.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">20940</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ipaddress"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-ipaddress"><strong>ipaddress</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ipaddress" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set of IP addresses expected in the monitoring response from the DNS server, if the record type is A or AAAA. Applicable to <code class="docutils literal notranslate"><span class="pre">DNS</span></code> monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-iptunnel"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-iptunnel"><strong>iptunnel</strong></p>
+<a class="ansibleOptionLink" href="#parameter-iptunnel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Send the monitoring probe to the service through an IP tunnel. A destination IP address must be specified.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-kcdaccount"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-kcdaccount"><strong>kcdaccount</strong></p>
+<a class="ansibleOptionLink" href="#parameter-kcdaccount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>KCD Account used by <code class="docutils literal notranslate"><span class="pre">MSSQL</span></code> monitor.</p>
+<p>Minimum length = 1</p>
+<p>Maximum length = 32</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-lasversion"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-lasversion"><strong>lasversion</strong></p>
+<a class="ansibleOptionLink" href="#parameter-lasversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Version number of the Citrix Advanced Access Control Logon Agent. Required by the <code class="docutils literal notranslate"><span class="pre">CITRIX-AAC-LAS</span></code> monitor.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-logonpointname"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-logonpointname"><strong>logonpointname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-logonpointname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the logon point that is configured for the Citrix Access Gateway Advanced Access Control software. Required if you want to monitor the associated login page or Logon Agent. Applicable to <code class="docutils literal notranslate"><span class="pre">CITRIX-AAC-LAS</span></code> and <code class="docutils literal notranslate"><span class="pre">CITRIX-AAC-LOGINPAGE</span></code> monitors.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-lrtm"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-lrtm"><strong>lrtm</strong></p>
+<a class="ansibleOptionLink" href="#parameter-lrtm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Calculate the least response times for bound services. If this parameter is not enabled, the appliance does not learn the response times of the bound services. Also used for LRTM load balancing.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enabled&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disabled&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-maxforwards"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-maxforwards"><strong>maxforwards</strong></p>
+<a class="ansibleOptionLink" href="#parameter-maxforwards" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maximum number of hops that the SIP request used for monitoring can traverse to reach the server. Applicable only to monitors of type <code class="docutils literal notranslate"><span class="pre">SIP-UDP</span></code>.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">255</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-metrictable"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-metrictable"><strong>metrictable</strong></p>
+<a class="ansibleOptionLink" href="#parameter-metrictable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Metric table to which to bind metrics.</p>
+<p>Minimum length = 1</p>
+<p>Maximum length = 99</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-monitorname"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-monitorname"><strong>monitorname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-monitorname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name for the monitor. Must begin with an ASCII alphanumeric or underscore <code class="docutils literal notranslate"><span class="pre">_</span></code> character, and must contain only ASCII alphanumeric, underscore, hash <code class="docutils literal notranslate"><span class="pre">#</span></code>, period <code class="docutils literal notranslate"><span class="pre">.</span></code>, space <code class="docutils literal notranslate"> </code>, colon <code class="docutils literal notranslate"><span class="pre">:</span></code>, at <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, equals <code class="docutils literal notranslate"><span class="pre">=</span></code>, and hyphen <code class="docutils literal notranslate"><span class="pre">-</span></code> characters.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mssqlprotocolversion"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-mssqlprotocolversion"><strong>mssqlprotocolversion</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mssqlprotocolversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Version of MSSQL server that is to be monitored.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;70&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2000&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2000SP1&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2005&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2008&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2008R2&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2012&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2014&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-netprofile"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-netprofile"><strong>netprofile</strong></p>
+<a class="ansibleOptionLink" href="#parameter-netprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the network profile.</p>
+<p>Minimum length = 1</p>
+<p>Maximum length = 127</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_pass"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-nitro-pass"><strong>nitro_pass</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_pass" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The password with which to authenticate to the netscaler node.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_protocol"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-nitro-protocol"><strong>nitro_protocol</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_protocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Which protocol to use when accessing the nitro API objects.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;http&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;https&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_timeout"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-nitro-timeout"><strong>nitro_timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">310.0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_user"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-nitro-user"><strong>nitro_user</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_user" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The username with which to authenticate to the netscaler node.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nsip"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-nsip"><strong>nsip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nsip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The ip address of the netscaler appliance where the nitro API calls will be made.</p>
+<p>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-oraclesid"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-oraclesid"><strong>oraclesid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-oraclesid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the service identifier that is used to connect to the Oracle database during authentication.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-originhost"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-originhost"><strong>originhost</strong></p>
+<a class="ansibleOptionLink" href="#parameter-originhost" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Origin-Host value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-originrealm"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-originrealm"><strong>originrealm</strong></p>
+<a class="ansibleOptionLink" href="#parameter-originrealm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Origin-Realm value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-password"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Password that is required for logging on to the <code class="docutils literal notranslate"><span class="pre">RADIUS</span></code>, <code class="docutils literal notranslate"><span class="pre">NNTP</span></code>, <code class="docutils literal notranslate"><span class="pre">FTP</span></code>, <code class="docutils literal notranslate"><span class="pre">FTP-EXTENDED</span></code>, <code class="docutils literal notranslate"><span class="pre">MYSQL</span></code>, <code class="docutils literal notranslate"><span class="pre">MSSQL</span></code>, <code class="docutils literal notranslate"><span class="pre">POP3</span></code>, <code class="docutils literal notranslate"><span class="pre">CITRIX-AG</span></code>, <code class="docutils literal notranslate"><span class="pre">CITRIX-XD-DDC</span></code>, <code class="docutils literal notranslate"><span class="pre">CITRIX-WI-EXTENDED</span></code>, <code class="docutils literal notranslate"><span class="pre">CITRIX-XNC-ECV</span></code> or <code class="docutils literal notranslate"><span class="pre">CITRIX-XDM</span></code> server. Used in conjunction with the user name specified for the <code class="docutils literal notranslate"><span class="pre">username</span></code> parameter.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-productname"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-productname"><strong>productname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-productname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Product-Name value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-query"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-query"><strong>query</strong></p>
+<a class="ansibleOptionLink" href="#parameter-query" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Domain name to resolve as part of monitoring the DNS service (for example, <code class="docutils literal notranslate"><span class="pre">example.com</span></code>).</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-querytype"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-querytype"><strong>querytype</strong></p>
+<a class="ansibleOptionLink" href="#parameter-querytype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Type of DNS record for which to send monitoring queries. Set to <code class="docutils literal notranslate"><span class="pre">Address</span></code> for querying A records, <code class="docutils literal notranslate"><span class="pre">AAAA</span></code> for querying AAAA records, and <code class="docutils literal notranslate"><span class="pre">Zone</span></code> for querying the SOA record.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;Address&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;Zone&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;AAAA&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-radaccountsession"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-radaccountsession"><strong>radaccountsession</strong></p>
+<a class="ansibleOptionLink" href="#parameter-radaccountsession" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Account Session ID to be used in Account Request Packet. Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">RADIUS_ACCOUNTING</span></code>.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-radaccounttype"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-radaccounttype"><strong>radaccounttype</strong></p>
+<a class="ansibleOptionLink" href="#parameter-radaccounttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Account Type to be used in Account Request Packet. Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">RADIUS_ACCOUNTING</span></code>.</p>
+<p>Minimum value = 0</p>
+<p>Maximum value = 15</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-radapn"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-radapn"><strong>radapn</strong></p>
+<a class="ansibleOptionLink" href="#parameter-radapn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Called Station Id to be used in Account Request Packet. Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">RADIUS_ACCOUNTING</span></code>.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-radframedip"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-radframedip"><strong>radframedip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-radframedip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Source ip with which the packet will go out . Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">RADIUS_ACCOUNTING</span></code>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-radkey"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-radkey"><strong>radkey</strong></p>
+<a class="ansibleOptionLink" href="#parameter-radkey" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Authentication key (shared secret text string) for RADIUS clients and servers to exchange. Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">RADIUS</span></code> and <code class="docutils literal notranslate"><span class="pre">RADIUS_ACCOUNTING</span></code>.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-radmsisdn"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-radmsisdn"><strong>radmsisdn</strong></p>
+<a class="ansibleOptionLink" href="#parameter-radmsisdn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Calling Stations Id to be used in Account Request Packet. Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">RADIUS_ACCOUNTING</span></code>.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-radnasid"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-radnasid"><strong>radnasid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-radnasid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>NAS-Identifier to send in the Access-Request packet. Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">RADIUS</span></code>.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-radnasip"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-radnasip"><strong>radnasip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-radnasip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Network Access Server (NAS) IP address to use as the source IP address when monitoring a RADIUS server. Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">RADIUS</span></code> and <code class="docutils literal notranslate"><span class="pre">RADIUS_ACCOUNTING</span></code>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-recv"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-recv"><strong>recv</strong></p>
+<a class="ansibleOptionLink" href="#parameter-recv" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>String expected from the server for the service to be marked as UP. Applicable to <code class="docutils literal notranslate"><span class="pre">TCP-ECV</span></code>, <code class="docutils literal notranslate"><span class="pre">HTTP-ECV</span></code>, and <code class="docutils literal notranslate"><span class="pre">UDP-ECV</span></code> monitors.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-respcode"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-respcode"><strong>respcode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-respcode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Response codes for which to mark the service as UP. For any other response code, the action performed depends on the monitor type. <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> monitors and <code class="docutils literal notranslate"><span class="pre">RADIUS</span></code> monitors mark the service as <code class="docutils literal notranslate"><span class="pre">DOWN</span></code>, while <code class="docutils literal notranslate"><span class="pre">HTTP-INLINE</span></code> monitors perform the action indicated by the Action parameter.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-resptimeout"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-resptimeout"><strong>resptimeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-resptimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Amount of time for which the appliance must wait before it marks a probe as FAILED. Must be less than the value specified for the Interval parameter.</p>
+<p>Note: For <code class="docutils literal notranslate"><span class="pre">UDP-ECV</span></code> monitors for which a receive string is not configured, response timeout does not apply. For <code class="docutils literal notranslate"><span class="pre">UDP-ECV</span></code> monitors with no receive string, probe failure is indicated by an ICMP port unreachable error received from the service.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">20939</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-resptimeoutthresh"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-resptimeoutthresh"><strong>resptimeoutthresh</strong></p>
+<a class="ansibleOptionLink" href="#parameter-resptimeoutthresh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Response time threshold, specified as a percentage of the Response Time-out parameter. If the response to a monitor probe has not arrived when the threshold is reached, the appliance generates an SNMP trap called monRespTimeoutAboveThresh. After the response time returns to a value below the threshold, the appliance generates a monRespTimeoutBelowThresh SNMP trap. For the traps to be generated, the “MONITOR-RTO-THRESHOLD” alarm must also be enabled.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">100</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-retries"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-retries"><strong>retries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-retries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maximum number of probes to send to establish the state of a service for which a monitoring probe failed.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">127</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-reverse"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-reverse"><strong>reverse</strong></p>
+<a class="ansibleOptionLink" href="#parameter-reverse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Mark a service as DOWN, instead of UP, when probe criteria are satisfied, and as UP instead of DOWN when probe criteria are not satisfied.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rtsprequest"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-rtsprequest"><strong>rtsprequest</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rtsprequest" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>RTSP request to send to the server (for example, <code class="docutils literal notranslate"><span class="pre">&quot;OPTIONS</span> <span class="pre">*&quot;</span></code>).</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-save_config"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-save-config"><strong>save_config</strong></p>
+<a class="ansibleOptionLink" href="#parameter-save_config" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If <code class="docutils literal notranslate"><span class="pre">yes</span></code> the module will save the configuration on the netscaler node if it makes any changes.</p>
+<p>The module will not save the configuration on the netscaler node if it made no changes.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">true</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-scriptargs"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-scriptargs"><strong>scriptargs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-scriptargs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>String of arguments for the script. The string is copied verbatim into the request.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-scriptname"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-scriptname"><strong>scriptname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-scriptname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Path and name of the script to execute. The script must be available on the NetScaler appliance, in the /nsconfig/monitors/ directory.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-secondarypassword"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-secondarypassword"><strong>secondarypassword</strong></p>
+<a class="ansibleOptionLink" href="#parameter-secondarypassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Secondary password that users might have to provide to log on to the Access Gateway server. Applicable to <code class="docutils literal notranslate"><span class="pre">CITRIX-AG</span></code> monitors.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-secure"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-secure"><strong>secure</strong></p>
+<a class="ansibleOptionLink" href="#parameter-secure" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Use a secure SSL connection when monitoring a service. Applicable only to TCP based monitors. The secure option cannot be used with a <code class="docutils literal notranslate"><span class="pre">CITRIX-AG</span></code> monitor, because a CITRIX-AG monitor uses a secure connection by default.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-send"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-send"><strong>send</strong></p>
+<a class="ansibleOptionLink" href="#parameter-send" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>String to send to the service. Applicable to <code class="docutils literal notranslate"><span class="pre">TCP-ECV</span></code>, <code class="docutils literal notranslate"><span class="pre">HTTP-ECV</span></code>, and <code class="docutils literal notranslate"><span class="pre">UDP-ECV</span></code> monitors.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sipmethod"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-sipmethod"><strong>sipmethod</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sipmethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>SIP method to use for the query. Applicable only to monitors of type <code class="docutils literal notranslate"><span class="pre">SIP-UDP</span></code>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;OPTIONS&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;INVITE&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;REGISTER&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sipreguri"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-sipreguri"><strong>sipreguri</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sipreguri" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>SIP user to be registered. Applicable only if the monitor is of type <code class="docutils literal notranslate"><span class="pre">SIP-UDP</span></code> and the SIP Method parameter is set to <code class="docutils literal notranslate"><span class="pre">REGISTER</span></code>.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sipuri"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-sipuri"><strong>sipuri</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sipuri" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>SIP URI string to send to the service (for example, <code class="docutils literal notranslate"><span class="pre">sip:sip.test</span></code>). Applicable only to monitors of type <code class="docutils literal notranslate"><span class="pre">SIP-UDP</span></code>.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sitepath"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-sitepath"><strong>sitepath</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sitepath" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>URL of the logon page. For monitors of type <code class="docutils literal notranslate"><span class="pre">CITRIX-WEB-INTERFACE</span></code>, to monitor a dynamic page under the site path, terminate the site path with a slash <code class="docutils literal notranslate"><span class="pre">/</span></code>. Applicable to <code class="docutils literal notranslate"><span class="pre">CITRIX-WEB-INTERFACE</span></code>, <code class="docutils literal notranslate"><span class="pre">CITRIX-WI-EXTENDED</span></code> and <code class="docutils literal notranslate"><span class="pre">CITRIX-XDM</span></code> monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-snmpcommunity"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-snmpcommunity"><strong>snmpcommunity</strong></p>
+<a class="ansibleOptionLink" href="#parameter-snmpcommunity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Community name for <code class="docutils literal notranslate"><span class="pre">SNMP</span></code> monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-Snmpoid"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-snmpoid"><strong>Snmpoid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-Snmpoid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>SNMP OID for <code class="docutils literal notranslate"><span class="pre">SNMP</span></code> monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-snmpthreshold"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-snmpthreshold"><strong>snmpthreshold</strong></p>
+<a class="ansibleOptionLink" href="#parameter-snmpthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Threshold for <code class="docutils literal notranslate"><span class="pre">SNMP</span></code> monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-snmpversion"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-snmpversion"><strong>snmpversion</strong></p>
+<a class="ansibleOptionLink" href="#parameter-snmpversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>SNMP version to be used for <code class="docutils literal notranslate"><span class="pre">SNMP</span></code> monitors.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;V1&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;V2&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sqlquery"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-sqlquery"><strong>sqlquery</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sqlquery" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>SQL query for a <code class="docutils literal notranslate"><span class="pre">MYSQL-ECV</span></code> or <code class="docutils literal notranslate"><span class="pre">MSSQL-ECV</span></code> monitor. Sent to the database server after the server authenticates the connection.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-state"><strong>state</strong></p>
+<a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>State of the monitor. The <code class="docutils literal notranslate"><span class="pre">disabled</span></code> setting disables not only the monitor being configured, but all monitors of the same type, until the parameter is set to <code class="docutils literal notranslate"><span class="pre">enabled</span></code>. If the monitor is bound to a service, the state of the monitor is not taken into account when the state of the service is determined.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enabled&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disabled&quot;</span></code></p></li>
+</ul>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;present&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-storedb"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-storedb"><strong>storedb</strong></p>
+<a class="ansibleOptionLink" href="#parameter-storedb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Store the database list populated with the responses to monitor probes. Used in database specific load balancing if <code class="docutils literal notranslate"><span class="pre">MSSQL-ECV</span></code>/<code class="docutils literal notranslate"><span class="pre">MYSQL-ECV</span></code> monitor is configured.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enabled&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disabled&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-storefrontacctservice"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-storefrontacctservice"><strong>storefrontacctservice</strong></p>
+<a class="ansibleOptionLink" href="#parameter-storefrontacctservice" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable probing for Account Service. Applicable only to Store Front monitors. For multi-tenancy configuration users my skip account service.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-storefrontcheckbackendservices"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-storefrontcheckbackendservices"><strong>storefrontcheckbackendservices</strong></p>
+<a class="ansibleOptionLink" href="#parameter-storefrontcheckbackendservices" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>This option will enable monitoring of services running on storefront server. Storefront services are monitored by probing to a Windows service that runs on the Storefront server and exposes details of which storefront services are running.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-storename"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-storename"><strong>storename</strong></p>
+<a class="ansibleOptionLink" href="#parameter-storename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Store Name. For monitors of type <code class="docutils literal notranslate"><span class="pre">STOREFRONT</span></code>, <code class="docutils literal notranslate"><span class="pre">storename</span></code> is an optional argument defining storefront service store name. Applicable to <code class="docutils literal notranslate"><span class="pre">STOREFRONT</span></code> monitors.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-successretries"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-successretries"><strong>successretries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-successretries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of consecutive successful probes required to transition a service’s state from DOWN to UP.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">32</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-supportedvendorids"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-supportedvendorids"><strong>supportedvendorids</strong></p>
+<a class="ansibleOptionLink" href="#parameter-supportedvendorids" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of Supported-Vendor-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum eight of these AVPs are supported in a monitoring message.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">4294967295</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-tos"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-tos"><strong>tos</strong></p>
+<a class="ansibleOptionLink" href="#parameter-tos" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Probe the service by encoding the destination IP address in the IP TOS (6) bits.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-tosid"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-tosid"><strong>tosid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-tosid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The TOS ID of the specified destination IP. Applicable only when the TOS parameter is set.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">63</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-transparent"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-transparent"><strong>transparent</strong></p>
+<a class="ansibleOptionLink" href="#parameter-transparent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The monitor is bound to a transparent device such as a firewall or router. The state of a transparent device depends on the responsiveness of the services behind it. If a transparent device is being monitored, a destination IP address must be specified. The probe is sent to the specified IP address by using the MAC address of the transparent device.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-trofscode"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-trofscode"><strong>trofscode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-trofscode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Code expected when the server is under maintenance.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-trofsstring"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-trofsstring"><strong>trofsstring</strong></p>
+<a class="ansibleOptionLink" href="#parameter-trofsstring" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>String expected from the server for the service to be marked as trofs. Applicable to HTTP-ECV/TCP-ECV monitors.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-type"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-type"><strong>type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Type of monitor that you want to create.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;PING&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HTTP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TCP-ECV&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HTTP-ECV&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;UDP-ECV&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DNS&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FTP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;LDNS-PING&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;LDNS-TCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;LDNS-DNS&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;RADIUS&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;USER&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HTTP-INLINE&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SIP-UDP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SIP-TCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;LOAD&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FTP-EXTENDED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SMTP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SNMP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NNTP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MYSQL&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MYSQL-ECV&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MSSQL-ECV&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ORACLE-ECV&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;LDAP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;POP3&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-XML-SERVICE&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-WEB-INTERFACE&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DNS-TCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;RTSP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ARP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-AG&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-AAC-LOGINPAGE&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-AAC-LAS&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-XD-DDC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ND6&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-WI-EXTENDED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DIAMETER&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;RADIUS_ACCOUNTING&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;STOREFRONT&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;APPC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SMPP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-XNC-ECV&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-XDM&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-STA-SERVICE&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CITRIX-STA-SERVICE-NHOP&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-units1"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-units1"><strong>units1</strong></p>
+<a class="ansibleOptionLink" href="#parameter-units1" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Unit of measurement for the Deviation parameter. Cannot be changed after the monitor is created.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SEC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MSEC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MIN&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-units2"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-units2"><strong>units2</strong></p>
+<a class="ansibleOptionLink" href="#parameter-units2" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Unit of measurement for the Down Time parameter. Cannot be changed after the monitor is created.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SEC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MSEC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MIN&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-units3"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-units3"><strong>units3</strong></p>
+<a class="ansibleOptionLink" href="#parameter-units3" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>monitor interval units.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SEC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MSEC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MIN&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-units4"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-units4"><strong>units4</strong></p>
+<a class="ansibleOptionLink" href="#parameter-units4" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>monitor response timeout units.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SEC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MSEC&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MIN&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-username"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>User name with which to probe the <code class="docutils literal notranslate"><span class="pre">RADIUS</span></code>, <code class="docutils literal notranslate"><span class="pre">NNTP</span></code>, <code class="docutils literal notranslate"><span class="pre">FTP</span></code>, <code class="docutils literal notranslate"><span class="pre">FTP-EXTENDED</span></code>, <code class="docutils literal notranslate"><span class="pre">MYSQL</span></code>, <code class="docutils literal notranslate"><span class="pre">MSSQL</span></code>, <code class="docutils literal notranslate"><span class="pre">POP3</span></code>, <code class="docutils literal notranslate"><span class="pre">CITRIX-AG</span></code>, <code class="docutils literal notranslate"><span class="pre">CITRIX-XD-DDC</span></code>, <code class="docutils literal notranslate"><span class="pre">CITRIX-WI-EXTENDED</span></code>, <code class="docutils literal notranslate"><span class="pre">CITRIX-XNC</span></code> or <code class="docutils literal notranslate"><span class="pre">CITRIX-XDM</span></code> server.</p>
+<p>Minimum length = 1</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-validate_certs"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-validate-certs"><strong>validate_certs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If <code class="docutils literal notranslate"><span class="pre">no</span></code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">true</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-validatecred"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-validatecred"><strong>validatecred</strong></p>
+<a class="ansibleOptionLink" href="#parameter-validatecred" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Validate the credentials of the Xen Desktop DDC server user. Applicable to monitors of type <code class="docutils literal notranslate"><span class="pre">CITRIX-XD-DDC</span></code>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vendorid"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-vendorid"><strong>vendorid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vendorid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Vendor-Id value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vendorspecificacctapplicationids"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-vendorspecificacctapplicationids"><strong>vendorspecificacctapplicationids</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vendorspecificacctapplicationids" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of Vendor-Specific-Acct-Application-Id attribute value pairs (AVPs) to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message. The specified value is combined with the value of vendorSpecificVendorId to obtain the Vendor-Specific-Application-Id AVP in the CER monitoring message.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">4294967295</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vendorspecificauthapplicationids"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-vendorspecificauthapplicationids"><strong>vendorspecificauthapplicationids</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vendorspecificauthapplicationids" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of Vendor-Specific-Auth-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message. The specified value is combined with the value of vendorSpecificVendorId to obtain the Vendor-Specific-Application-Id AVP in the CER monitoring message.</p>
+<p>Minimum value = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Maximum value = <code class="docutils literal notranslate"><span class="pre">4294967295</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vendorspecificvendorid"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-parameter-vendorspecificvendorid"><strong>vendorspecificvendorid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vendorspecificvendorid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Vendor-Id to use in the Vendor-Specific-Application-Id grouped attribute-value pair (AVP) in the monitoring CER message. To specify Auth-Application-Id or Acct-Application-Id in Vendor-Specific-Application-Id, use vendorSpecificAuthApplicationIds or vendorSpecificAcctApplicationIds, respectively. Only one Vendor-Id is supported for all the Vendor-Specific-Application-Id AVPs in a CER monitoring message.</p>
+<p>Minimum value = 1</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Notes</a><a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>For more information on using Ansible to manage Citrix NetScaler Network devices see <a class="reference external" href="https://www.ansible.com/ansible-netscaler">https://www.ansible.com/ansible-netscaler</a>.</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set lb monitor</span>
+<span class="w">  </span><span class="nt">local_action</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">nsip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.18.0.2</span>
+<span class="w">    </span><span class="nt">nitro_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nsroot</span>
+<span class="w">    </span><span class="nt">nitro_pass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nsroot</span>
+<span class="w">    </span><span class="nt">validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+
+<span class="w">    </span><span class="nt">module</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netscaler_lb_monitor</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="w">    </span><span class="nt">monitorname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitor_1</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP-INLINE</span>
+<span class="w">    </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOWN</span>
+<span class="w">    </span><span class="nt">respcode</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;400&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<p>Common return values are documented <a class="reference internal" href="../../../reference_appendices/common_return_values.html#common-return-values"><span class="std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-diff"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-return-diff"><strong>diff</strong></p>
+<a class="ansibleOptionLink" href="#return-diff" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of differences between the actual configured object and the configuration specified in the module</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> failure</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">{&quot;targetlbvserver&quot;:</span> <span class="pre">&quot;difference.</span> <span class="pre">ours:</span> <span class="pre">(str)</span> <span class="pre">server1</span> <span class="pre">other:</span> <span class="pre">(str)</span> <span class="pre">server2&quot;}</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-loglines"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-return-loglines"><strong>loglines</strong></p>
+<a class="ansibleOptionLink" href="#return-loglines" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>list of logged messages by the module</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[&quot;message</span> <span class="pre">1&quot;,</span> <span class="pre">&quot;message</span> <span class="pre">2&quot;]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-msg"></div><p class="ansible-option-title" id="ansible-collections-community-network-netscaler-lb-monitor-module-return-msg"><strong>msg</strong></p>
+<a class="ansibleOptionLink" href="#return-msg" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Message detailing the failure reason</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> failure</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">&quot;Action</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">exist&quot;</span></code></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>George Nikolopoulos (&#64;giorgos-nikolopoulos)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h3>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/ansible-collections/community.network/issues" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/ansible-collections/community.network" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="netscaler_gslb_vserver_module.html" class="btn btn-neutral float-left" title="community.network.netscaler_gslb_vserver module – Configure gslb vserver entities in Netscaler." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="netscaler_lb_vserver_module.html" class="btn btn-neutral float-right" title="community.network.netscaler_lb_vserver module – Manage load balancing vserver configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Apr 25, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

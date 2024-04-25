@@ -5,7 +5,7 @@
 <meta content="2.10.0" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collection Index &mdash; Ansible Core Documentation</title>
+  <title>Collection Index &mdash; Ansible Community Documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
       <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
       <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
@@ -29,7 +29,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Collections in the Ansible Namespace" href="ansible/index.html" />
+    <link rel="next" title="Collections in the Amazon Namespace" href="amazon/index.html" />
     <link rel="prev" title="Galaxy Developer Guide" href="../galaxy/dev_guide.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
 <script src="https://www.redhat.com/dtm.js"></script>
 
@@ -75,7 +75,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
   <img class="DocSiteNav-logo"
     src="../_static/images/Ansible-Mark-RGB_White.png"
     alt="Ansible Logo">
-  <div class="DocSiteNav-title">Ansible Core Documentation</div>
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
 </a>
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -85,7 +85,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           
           
           <a href="../index.html" class="icon icon-home">
-            Ansible Core
+            Ansible
           </a>
               <div class="version">
                 devel
@@ -112,24 +112,17 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       >
         
         <option
-            value="2.16"
+            value="latest"
             
         >
-            2.16
+            latest
         </option>
         
         <option
-            value="2.15"
+            value="2.9"
             
         >
-            2.15
-        </option>
-        
-        <option
-            value="2.14"
-            
-        >
-            2.14
+            2.9
         </option>
         
         <option
@@ -156,13 +149,14 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
               <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../porting_guides/core_porting_guides.html">Ansible Core Porting Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Using Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
@@ -173,9 +167,10 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
@@ -183,6 +178,16 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
 <ul>
@@ -192,7 +197,51 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Collection Index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="amazon/index.html">Collections in the Amazon Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community/index.html">Collections in the Community Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dellemc/index.html">Collections in the Dellemc Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fortinet/index.html">Collections in the Fortinet Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netapp_eseries/index.html">Collections in the Netapp_eseries Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wti/index.html">Collections in the Wti Namespace</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="all_plugins.html">Indexes of all modules and plugins</a></li>
@@ -216,6 +265,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
 </ul>
 <!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
@@ -234,7 +284,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Ansible Core</a>
+          <a href="../index.html">Ansible</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -287,7 +337,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       var msg = '<p>';
       if (startsWith(current_url_path, "/ansible-core/")) {
         msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
-      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/2.16/"])) {
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/9/"])) {
         /* temp extra banner to advertise something */
         banner += extra_banner;
 
@@ -326,7 +376,101 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <span id="list-of-collections"></span><h1>Collection Index<a class="headerlink" href="#collection-index" title="Link to this heading"></a></h1>
 <p>These are the collections with docs hosted on <a class="reference external" href="https://docs.ansible.com/">docs.ansible.com</a>.</p>
 <ul class="simple">
+<li><p><a class="reference internal" href="amazon/aws/index.html#plugins-in-amazon-aws"><span class="std std-ref">amazon.aws</span></a></p></li>
 <li><p><a class="reference internal" href="ansible/builtin/index.html#plugins-in-ansible-builtin"><span class="std std-ref">ansible.builtin</span></a></p></li>
+<li><p><a class="reference internal" href="ansible/netcommon/index.html#plugins-in-ansible-netcommon"><span class="std std-ref">ansible.netcommon</span></a></p></li>
+<li><p><a class="reference internal" href="ansible/posix/index.html#plugins-in-ansible-posix"><span class="std std-ref">ansible.posix</span></a></p></li>
+<li><p><a class="reference internal" href="ansible/utils/index.html#plugins-in-ansible-utils"><span class="std std-ref">ansible.utils</span></a></p></li>
+<li><p><a class="reference internal" href="ansible/windows/index.html#plugins-in-ansible-windows"><span class="std std-ref">ansible.windows</span></a></p></li>
+<li><p><a class="reference internal" href="arista/eos/index.html#plugins-in-arista-eos"><span class="std std-ref">arista.eos</span></a></p></li>
+<li><p><a class="reference internal" href="awx/awx/index.html#plugins-in-awx-awx"><span class="std std-ref">awx.awx</span></a></p></li>
+<li><p><a class="reference internal" href="azure/azcollection/index.html#plugins-in-azure-azcollection"><span class="std std-ref">azure.azcollection</span></a></p></li>
+<li><p><a class="reference internal" href="check_point/mgmt/index.html#plugins-in-check-point-mgmt"><span class="std std-ref">check_point.mgmt</span></a></p></li>
+<li><p><a class="reference internal" href="chocolatey/chocolatey/index.html#plugins-in-chocolatey-chocolatey"><span class="std std-ref">chocolatey.chocolatey</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/aci/index.html#plugins-in-cisco-aci"><span class="std std-ref">cisco.aci</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/asa/index.html#plugins-in-cisco-asa"><span class="std std-ref">cisco.asa</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/dnac/index.html#plugins-in-cisco-dnac"><span class="std std-ref">cisco.dnac</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/intersight/index.html#plugins-in-cisco-intersight"><span class="std std-ref">cisco.intersight</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/ios/index.html#plugins-in-cisco-ios"><span class="std std-ref">cisco.ios</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/iosxr/index.html#plugins-in-cisco-iosxr"><span class="std std-ref">cisco.iosxr</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/ise/index.html#plugins-in-cisco-ise"><span class="std std-ref">cisco.ise</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/meraki/index.html#plugins-in-cisco-meraki"><span class="std std-ref">cisco.meraki</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/mso/index.html#plugins-in-cisco-mso"><span class="std std-ref">cisco.mso</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/nxos/index.html#plugins-in-cisco-nxos"><span class="std std-ref">cisco.nxos</span></a></p></li>
+<li><p><a class="reference internal" href="cisco/ucs/index.html#plugins-in-cisco-ucs"><span class="std std-ref">cisco.ucs</span></a></p></li>
+<li><p><a class="reference internal" href="cloud/common/index.html#plugins-in-cloud-common"><span class="std std-ref">cloud.common</span></a></p></li>
+<li><p><a class="reference internal" href="cloudscale_ch/cloud/index.html#plugins-in-cloudscale-ch-cloud"><span class="std std-ref">cloudscale_ch.cloud</span></a></p></li>
+<li><p><a class="reference internal" href="community/aws/index.html#plugins-in-community-aws"><span class="std std-ref">community.aws</span></a></p></li>
+<li><p><a class="reference internal" href="community/ciscosmb/index.html#plugins-in-community-ciscosmb"><span class="std std-ref">community.ciscosmb</span></a></p></li>
+<li><p><a class="reference internal" href="community/crypto/index.html#plugins-in-community-crypto"><span class="std std-ref">community.crypto</span></a></p></li>
+<li><p><a class="reference internal" href="community/digitalocean/index.html#plugins-in-community-digitalocean"><span class="std std-ref">community.digitalocean</span></a></p></li>
+<li><p><a class="reference internal" href="community/dns/index.html#plugins-in-community-dns"><span class="std std-ref">community.dns</span></a></p></li>
+<li><p><a class="reference internal" href="community/docker/index.html#plugins-in-community-docker"><span class="std std-ref">community.docker</span></a></p></li>
+<li><p><a class="reference internal" href="community/general/index.html#plugins-in-community-general"><span class="std std-ref">community.general</span></a></p></li>
+<li><p><a class="reference internal" href="community/grafana/index.html#plugins-in-community-grafana"><span class="std std-ref">community.grafana</span></a></p></li>
+<li><p><a class="reference internal" href="community/hashi_vault/index.html#plugins-in-community-hashi-vault"><span class="std std-ref">community.hashi_vault</span></a></p></li>
+<li><p><a class="reference internal" href="community/hrobot/index.html#plugins-in-community-hrobot"><span class="std std-ref">community.hrobot</span></a></p></li>
+<li><p><a class="reference internal" href="community/library_inventory_filtering_v1/index.html#plugins-in-community-library-inventory-filtering-v1"><span class="std std-ref">community.library_inventory_filtering_v1</span></a></p></li>
+<li><p><a class="reference internal" href="community/libvirt/index.html#plugins-in-community-libvirt"><span class="std std-ref">community.libvirt</span></a></p></li>
+<li><p><a class="reference internal" href="community/mongodb/index.html#plugins-in-community-mongodb"><span class="std std-ref">community.mongodb</span></a></p></li>
+<li><p><a class="reference internal" href="community/mysql/index.html#plugins-in-community-mysql"><span class="std std-ref">community.mysql</span></a></p></li>
+<li><p><a class="reference internal" href="community/network/index.html#plugins-in-community-network"><span class="std std-ref">community.network</span></a></p></li>
+<li><p><a class="reference internal" href="community/okd/index.html#plugins-in-community-okd"><span class="std std-ref">community.okd</span></a></p></li>
+<li><p><a class="reference internal" href="community/postgresql/index.html#plugins-in-community-postgresql"><span class="std std-ref">community.postgresql</span></a></p></li>
+<li><p><a class="reference internal" href="community/proxysql/index.html#plugins-in-community-proxysql"><span class="std std-ref">community.proxysql</span></a></p></li>
+<li><p><a class="reference internal" href="community/rabbitmq/index.html#plugins-in-community-rabbitmq"><span class="std std-ref">community.rabbitmq</span></a></p></li>
+<li><p><a class="reference internal" href="community/routeros/index.html#plugins-in-community-routeros"><span class="std std-ref">community.routeros</span></a></p></li>
+<li><p><a class="reference internal" href="community/sap_libs/index.html#plugins-in-community-sap-libs"><span class="std std-ref">community.sap_libs</span></a></p></li>
+<li><p><a class="reference internal" href="community/sops/index.html#plugins-in-community-sops"><span class="std std-ref">community.sops</span></a></p></li>
+<li><p><a class="reference internal" href="community/vmware/index.html#plugins-in-community-vmware"><span class="std std-ref">community.vmware</span></a></p></li>
+<li><p><a class="reference internal" href="community/windows/index.html#plugins-in-community-windows"><span class="std std-ref">community.windows</span></a></p></li>
+<li><p><a class="reference internal" href="community/zabbix/index.html#plugins-in-community-zabbix"><span class="std std-ref">community.zabbix</span></a></p></li>
+<li><p><a class="reference internal" href="containers/podman/index.html#plugins-in-containers-podman"><span class="std std-ref">containers.podman</span></a></p></li>
+<li><p><a class="reference internal" href="cyberark/conjur/index.html#plugins-in-cyberark-conjur"><span class="std std-ref">cyberark.conjur</span></a></p></li>
+<li><p><a class="reference internal" href="cyberark/pas/index.html#plugins-in-cyberark-pas"><span class="std std-ref">cyberark.pas</span></a></p></li>
+<li><p><a class="reference internal" href="dellemc/enterprise_sonic/index.html#plugins-in-dellemc-enterprise-sonic"><span class="std std-ref">dellemc.enterprise_sonic</span></a></p></li>
+<li><p><a class="reference internal" href="dellemc/openmanage/index.html#plugins-in-dellemc-openmanage"><span class="std std-ref">dellemc.openmanage</span></a></p></li>
+<li><p><a class="reference internal" href="dellemc/powerflex/index.html#plugins-in-dellemc-powerflex"><span class="std std-ref">dellemc.powerflex</span></a></p></li>
+<li><p><a class="reference internal" href="dellemc/unity/index.html#plugins-in-dellemc-unity"><span class="std std-ref">dellemc.unity</span></a></p></li>
+<li><p><a class="reference internal" href="f5networks/f5_modules/index.html#plugins-in-f5networks-f5-modules"><span class="std std-ref">f5networks.f5_modules</span></a></p></li>
+<li><p><a class="reference internal" href="fortinet/fortimanager/index.html#plugins-in-fortinet-fortimanager"><span class="std std-ref">fortinet.fortimanager</span></a></p></li>
+<li><p><a class="reference internal" href="fortinet/fortios/index.html#plugins-in-fortinet-fortios"><span class="std std-ref">fortinet.fortios</span></a></p></li>
+<li><p><a class="reference internal" href="frr/frr/index.html#plugins-in-frr-frr"><span class="std std-ref">frr.frr</span></a></p></li>
+<li><p><a class="reference internal" href="google/cloud/index.html#plugins-in-google-cloud"><span class="std std-ref">google.cloud</span></a></p></li>
+<li><p><a class="reference internal" href="grafana/grafana/index.html#plugins-in-grafana-grafana"><span class="std std-ref">grafana.grafana</span></a></p></li>
+<li><p><a class="reference internal" href="hetzner/hcloud/index.html#plugins-in-hetzner-hcloud"><span class="std std-ref">hetzner.hcloud</span></a></p></li>
+<li><p><a class="reference internal" href="ibm/qradar/index.html#plugins-in-ibm-qradar"><span class="std std-ref">ibm.qradar</span></a></p></li>
+<li><p><a class="reference internal" href="ibm/spectrum_virtualize/index.html#plugins-in-ibm-spectrum-virtualize"><span class="std std-ref">ibm.spectrum_virtualize</span></a></p></li>
+<li><p><a class="reference internal" href="ibm/storage_virtualize/index.html#plugins-in-ibm-storage-virtualize"><span class="std std-ref">ibm.storage_virtualize</span></a></p></li>
+<li><p><a class="reference internal" href="infinidat/infinibox/index.html#plugins-in-infinidat-infinibox"><span class="std std-ref">infinidat.infinibox</span></a></p></li>
+<li><p><a class="reference internal" href="infoblox/nios_modules/index.html#plugins-in-infoblox-nios-modules"><span class="std std-ref">infoblox.nios_modules</span></a></p></li>
+<li><p><a class="reference internal" href="inspur/ispim/index.html#plugins-in-inspur-ispim"><span class="std std-ref">inspur.ispim</span></a></p></li>
+<li><p><a class="reference internal" href="inspur/sm/index.html#plugins-in-inspur-sm"><span class="std std-ref">inspur.sm</span></a></p></li>
+<li><p><a class="reference internal" href="junipernetworks/junos/index.html#plugins-in-junipernetworks-junos"><span class="std std-ref">junipernetworks.junos</span></a></p></li>
+<li><p><a class="reference internal" href="kubernetes/core/index.html#plugins-in-kubernetes-core"><span class="std std-ref">kubernetes.core</span></a></p></li>
+<li><p><a class="reference internal" href="lowlydba/sqlserver/index.html#plugins-in-lowlydba-sqlserver"><span class="std std-ref">lowlydba.sqlserver</span></a></p></li>
+<li><p><a class="reference internal" href="microsoft/ad/index.html#plugins-in-microsoft-ad"><span class="std std-ref">microsoft.ad</span></a></p></li>
+<li><p><a class="reference internal" href="netapp/cloudmanager/index.html#plugins-in-netapp-cloudmanager"><span class="std std-ref">netapp.cloudmanager</span></a></p></li>
+<li><p><a class="reference internal" href="netapp/ontap/index.html#plugins-in-netapp-ontap"><span class="std std-ref">netapp.ontap</span></a></p></li>
+<li><p><a class="reference internal" href="netapp/storagegrid/index.html#plugins-in-netapp-storagegrid"><span class="std std-ref">netapp.storagegrid</span></a></p></li>
+<li><p><a class="reference internal" href="netapp_eseries/santricity/index.html#plugins-in-netapp-eseries-santricity"><span class="std std-ref">netapp_eseries.santricity</span></a></p></li>
+<li><p><a class="reference internal" href="netbox/netbox/index.html#plugins-in-netbox-netbox"><span class="std std-ref">netbox.netbox</span></a></p></li>
+<li><p><a class="reference internal" href="ngine_io/cloudstack/index.html#plugins-in-ngine-io-cloudstack"><span class="std std-ref">ngine_io.cloudstack</span></a></p></li>
+<li><p><a class="reference internal" href="ngine_io/exoscale/index.html#plugins-in-ngine-io-exoscale"><span class="std std-ref">ngine_io.exoscale</span></a></p></li>
+<li><p><a class="reference internal" href="openstack/cloud/index.html#plugins-in-openstack-cloud"><span class="std std-ref">openstack.cloud</span></a></p></li>
+<li><p><a class="reference internal" href="openvswitch/openvswitch/index.html#plugins-in-openvswitch-openvswitch"><span class="std std-ref">openvswitch.openvswitch</span></a></p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/index.html#plugins-in-ovirt-ovirt"><span class="std std-ref">ovirt.ovirt</span></a></p></li>
+<li><p><a class="reference internal" href="purestorage/flasharray/index.html#plugins-in-purestorage-flasharray"><span class="std std-ref">purestorage.flasharray</span></a></p></li>
+<li><p><a class="reference internal" href="purestorage/flashblade/index.html#plugins-in-purestorage-flashblade"><span class="std std-ref">purestorage.flashblade</span></a></p></li>
+<li><p><a class="reference internal" href="sensu/sensu_go/index.html#plugins-in-sensu-sensu-go"><span class="std std-ref">sensu.sensu_go</span></a></p></li>
+<li><p><a class="reference internal" href="splunk/es/index.html#plugins-in-splunk-es"><span class="std std-ref">splunk.es</span></a></p></li>
+<li><p><a class="reference internal" href="t_systems_mms/icinga_director/index.html#plugins-in-t-systems-mms-icinga-director"><span class="std std-ref">t_systems_mms.icinga_director</span></a></p></li>
+<li><p><a class="reference internal" href="telekom_mms/icinga_director/index.html#plugins-in-telekom-mms-icinga-director"><span class="std std-ref">telekom_mms.icinga_director</span></a></p></li>
+<li><p><a class="reference internal" href="theforeman/foreman/index.html#plugins-in-theforeman-foreman"><span class="std std-ref">theforeman.foreman</span></a></p></li>
+<li><p><a class="reference internal" href="vmware/vmware_rest/index.html#plugins-in-vmware-vmware-rest"><span class="std std-ref">vmware.vmware_rest</span></a></p></li>
+<li><p><a class="reference internal" href="vultr/cloud/index.html#plugins-in-vultr-cloud"><span class="std std-ref">vultr.cloud</span></a></p></li>
+<li><p><a class="reference internal" href="vyos/vyos/index.html#plugins-in-vyos-vyos"><span class="std std-ref">vyos.vyos</span></a></p></li>
+<li><p><a class="reference internal" href="wti/remote/index.html#plugins-in-wti-remote"><span class="std std-ref">wti.remote</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -339,7 +483,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 
 <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../galaxy/dev_guide.html" class="btn btn-neutral float-left" title="Galaxy Developer Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ansible/index.html" class="btn btn-neutral float-right" title="Collections in the Ansible Namespace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="amazon/index.html" class="btn btn-neutral float-right" title="Collections in the Amazon Namespace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

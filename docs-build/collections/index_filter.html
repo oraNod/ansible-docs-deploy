@@ -5,7 +5,7 @@
 <meta content="2.10.0" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index of all Filter Plugins &mdash; Ansible Core Documentation</title>
+  <title>Index of all Filter Plugins &mdash; Ansible Community Documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
       <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
       <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
@@ -29,7 +29,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Index of all Inventory Plugins" href="index_inventory.html" />
+    <link rel="next" title="Index of all Httpapi Plugins" href="index_httpapi.html" />
     <link rel="prev" title="Index of all Connection Plugins" href="index_connection.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
 <script src="https://www.redhat.com/dtm.js"></script>
 
@@ -75,7 +75,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
   <img class="DocSiteNav-logo"
     src="../_static/images/Ansible-Mark-RGB_White.png"
     alt="Ansible Logo">
-  <div class="DocSiteNav-title">Ansible Core Documentation</div>
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
 </a>
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -85,7 +85,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           
           
           <a href="../index.html" class="icon icon-home">
-            Ansible Core
+            Ansible
           </a>
               <div class="version">
                 devel
@@ -112,24 +112,17 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       >
         
         <option
-            value="2.16"
+            value="latest"
             
         >
-            2.16
+            latest
         </option>
         
         <option
-            value="2.15"
+            value="2.9"
             
         >
-            2.15
-        </option>
-        
-        <option
-            value="2.14"
-            
-        >
-            2.14
+            2.9
         </option>
         
         <option
@@ -156,13 +149,14 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
               <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../porting_guides/core_porting_guides.html">Ansible Core Porting Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Using Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
@@ -173,9 +167,10 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
@@ -183,6 +178,16 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
 <ul>
@@ -196,14 +201,37 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="index_become.html">Index of all Become Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_cache.html">Index of all Cache Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_callback.html">Index of all Callback Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_cliconf.html">Index of all Cliconf Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_connection.html">Index of all Connection Plugins</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Index of all Filter Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ansible-builtin">ansible.builtin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ansible-netcommon">ansible.netcommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ansible-utils">ansible.utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ansible-windows">ansible.windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cisco-aci">cisco.aci</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-crypto">community.crypto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-dns">community.dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-general">community.general</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-hashi-vault">community.hashi_vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-routeros">community.routeros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-sops">community.sops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f5networks-f5-modules">f5networks.f5_modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#google-cloud">google.cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#infinidat-infinibox">infinidat.infinibox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kubernetes-core">kubernetes.core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microsoft-ad">microsoft.ad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#netapp-ontap">netapp.ontap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ovirt-ovirt">ovirt.ovirt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sensu-sensu-go">sensu.sensu_go</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theforeman-foreman">theforeman.foreman</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="index_httpapi.html">Index of all Httpapi Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_inventory.html">Index of all Inventory Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_lookup.html">Index of all Lookup Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_module.html">Index of all Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_netconf.html">Index of all Netconf Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_role.html">Index of all Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_shell.html">Index of all Shell Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_strategy.html">Index of all Strategy Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_test.html">Index of all Test Plugins</a></li>
@@ -230,6 +258,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
 </ul>
 <!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
@@ -248,7 +277,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Ansible Core</a>
+          <a href="../index.html">Ansible</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -302,7 +331,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       var msg = '<p>';
       if (startsWith(current_url_path, "/ansible-core/")) {
         msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
-      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/2.16/"])) {
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/9/"])) {
         /* temp extra banner to advertise something */
         banner += extra_banner;
 
@@ -414,6 +443,225 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li><p><a class="reference internal" href="ansible/builtin/zip_longest_filter.html#ansible-collections-ansible-builtin-zip-longest-filter"><span class="std std-ref">ansible.builtin.zip_longest</span></a> – combine list elements, with filler</p></li>
 </ul>
 </section>
+<section id="ansible-netcommon">
+<h2>ansible.netcommon<a class="headerlink" href="#ansible-netcommon" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="ansible/netcommon/comp_type5_filter.html#ansible-collections-ansible-netcommon-comp-type5-filter"><span class="std std-ref">ansible.netcommon.comp_type5</span></a> – The comp_type5 filter plugin.</p></li>
+<li><p><a class="reference internal" href="ansible/netcommon/hash_salt_filter.html#ansible-collections-ansible-netcommon-hash-salt-filter"><span class="std std-ref">ansible.netcommon.hash_salt</span></a> – The hash_salt filter plugin.</p></li>
+<li><p><a class="reference internal" href="ansible/netcommon/parse_cli_filter.html#ansible-collections-ansible-netcommon-parse-cli-filter"><span class="std std-ref">ansible.netcommon.parse_cli</span></a> – parse_cli filter plugin.</p></li>
+<li><p><a class="reference internal" href="ansible/netcommon/parse_cli_textfsm_filter.html#ansible-collections-ansible-netcommon-parse-cli-textfsm-filter"><span class="std std-ref">ansible.netcommon.parse_cli_textfsm</span></a> – parse_cli_textfsm filter plugin.</p></li>
+<li><p><a class="reference internal" href="ansible/netcommon/parse_xml_filter.html#ansible-collections-ansible-netcommon-parse-xml-filter"><span class="std std-ref">ansible.netcommon.parse_xml</span></a> – The parse_xml filter plugin.</p></li>
+<li><p><a class="reference internal" href="ansible/netcommon/pop_ace_filter.html#ansible-collections-ansible-netcommon-pop-ace-filter"><span class="std std-ref">ansible.netcommon.pop_ace</span></a> – Remove ace entries from a acl source of truth.</p></li>
+<li><p><a class="reference internal" href="ansible/netcommon/type5_pw_filter.html#ansible-collections-ansible-netcommon-type5-pw-filter"><span class="std std-ref">ansible.netcommon.type5_pw</span></a> – The type5_pw filter plugin.</p></li>
+<li><p><a class="reference internal" href="ansible/netcommon/vlan_expander_filter.html#ansible-collections-ansible-netcommon-vlan-expander-filter"><span class="std std-ref">ansible.netcommon.vlan_expander</span></a> – The vlan_expander filter plugin.</p></li>
+<li><p><a class="reference internal" href="ansible/netcommon/vlan_parser_filter.html#ansible-collections-ansible-netcommon-vlan-parser-filter"><span class="std std-ref">ansible.netcommon.vlan_parser</span></a> – The vlan_parser filter plugin.</p></li>
+</ul>
+</section>
+<section id="ansible-utils">
+<h2>ansible.utils<a class="headerlink" href="#ansible-utils" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="ansible/utils/cidr_merge_filter.html#ansible-collections-ansible-utils-cidr-merge-filter"><span class="std std-ref">ansible.utils.cidr_merge</span></a> – This filter can be used to merge subnets or individual addresses.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/consolidate_filter.html#ansible-collections-ansible-utils-consolidate-filter"><span class="std std-ref">ansible.utils.consolidate</span></a> – Consolidate facts together on common attributes.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/fact_diff_filter.html#ansible-collections-ansible-utils-fact-diff-filter"><span class="std std-ref">ansible.utils.fact_diff</span></a> – Find the difference between currently set facts</p></li>
+<li><p><a class="reference internal" href="ansible/utils/from_xml_filter.html#ansible-collections-ansible-utils-from-xml-filter"><span class="std std-ref">ansible.utils.from_xml</span></a> – Convert given XML string to native python dictionary.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/get_path_filter.html#ansible-collections-ansible-utils-get-path-filter"><span class="std std-ref">ansible.utils.get_path</span></a> – Retrieve the value in a variable using a path</p></li>
+<li><p><a class="reference internal" href="ansible/utils/hwaddr_filter.html#ansible-collections-ansible-utils-hwaddr-filter"><span class="std std-ref">ansible.utils.hwaddr</span></a> – HWaddr / MAC address filters</p></li>
+<li><p><a class="reference internal" href="ansible/utils/index_of_filter.html#ansible-collections-ansible-utils-index-of-filter"><span class="std std-ref">ansible.utils.index_of</span></a> – Find the indices of items in a list matching some criteria</p></li>
+<li><p><a class="reference internal" href="ansible/utils/ip4_hex_filter.html#ansible-collections-ansible-utils-ip4-hex-filter"><span class="std std-ref">ansible.utils.ip4_hex</span></a> – This filter is designed to convert IPv4 address to Hexadecimal notation with optional delimiter.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/ipaddr_filter.html#ansible-collections-ansible-utils-ipaddr-filter"><span class="std std-ref">ansible.utils.ipaddr</span></a> – This filter is designed to return the input value if a query is True, else False.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/ipcut_filter.html#ansible-collections-ansible-utils-ipcut-filter"><span class="std std-ref">ansible.utils.ipcut</span></a> – This filter is designed to get 1st or last few bits of IP address.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/ipmath_filter.html#ansible-collections-ansible-utils-ipmath-filter"><span class="std std-ref">ansible.utils.ipmath</span></a> – This filter is designed to do simple IP math/arithmetic.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/ipsubnet_filter.html#ansible-collections-ansible-utils-ipsubnet-filter"><span class="std std-ref">ansible.utils.ipsubnet</span></a> – This filter can be used to manipulate network subnets in several ways.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/ipv4_filter.html#ansible-collections-ansible-utils-ipv4-filter"><span class="std std-ref">ansible.utils.ipv4</span></a> – To filter only Ipv4 addresses Ipv4 filter is used.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/ipv6_filter.html#ansible-collections-ansible-utils-ipv6-filter"><span class="std std-ref">ansible.utils.ipv6</span></a> – To filter only Ipv6 addresses Ipv6 filter is used.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/ipv6form_filter.html#ansible-collections-ansible-utils-ipv6form-filter"><span class="std std-ref">ansible.utils.ipv6form</span></a> – This filter is designed to convert ipv6 address in different formats. For example expand, compressetc.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/ipwrap_filter.html#ansible-collections-ansible-utils-ipwrap-filter"><span class="std std-ref">ansible.utils.ipwrap</span></a> – This filter is designed to Wrap IPv6 addresses in [ ] brackets.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/keep_keys_filter.html#ansible-collections-ansible-utils-keep-keys-filter"><span class="std std-ref">ansible.utils.keep_keys</span></a> – Keep specific keys from a data recursively.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/macaddr_filter.html#ansible-collections-ansible-utils-macaddr-filter"><span class="std std-ref">ansible.utils.macaddr</span></a> – macaddr / MAC address filters</p></li>
+<li><p><a class="reference internal" href="ansible/utils/network_in_network_filter.html#ansible-collections-ansible-utils-network-in-network-filter"><span class="std std-ref">ansible.utils.network_in_network</span></a> – This filter returns whether an address or a network passed as argument is in a network.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/network_in_usable_filter.html#ansible-collections-ansible-utils-network-in-usable-filter"><span class="std std-ref">ansible.utils.network_in_usable</span></a> – The network_in_usable filter returns whether an address passed as an argument is usable in a network.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/next_nth_usable_filter.html#ansible-collections-ansible-utils-next-nth-usable-filter"><span class="std std-ref">ansible.utils.next_nth_usable</span></a> – This filter returns the next nth usable ip within a network described by value.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/nthhost_filter.html#ansible-collections-ansible-utils-nthhost-filter"><span class="std std-ref">ansible.utils.nthhost</span></a> – This filter returns the nth host within a network described by value.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/param_list_compare_filter.html#ansible-collections-ansible-utils-param-list-compare-filter"><span class="std std-ref">ansible.utils.param_list_compare</span></a> – Generate the final param list combining/comparing base and provided parameters.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/previous_nth_usable_filter.html#ansible-collections-ansible-utils-previous-nth-usable-filter"><span class="std std-ref">ansible.utils.previous_nth_usable</span></a> – This filter returns the previous nth usable ip within a network described by value.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/reduce_on_network_filter.html#ansible-collections-ansible-utils-reduce-on-network-filter"><span class="std std-ref">ansible.utils.reduce_on_network</span></a> – This filter reduces a list of addresses to only the addresses that match a given network.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/remove_keys_filter.html#ansible-collections-ansible-utils-remove-keys-filter"><span class="std std-ref">ansible.utils.remove_keys</span></a> – Remove specific keys from a data recursively.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/replace_keys_filter.html#ansible-collections-ansible-utils-replace-keys-filter"><span class="std std-ref">ansible.utils.replace_keys</span></a> – Replaces specific keys with their after value from a data recursively.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/slaac_filter.html#ansible-collections-ansible-utils-slaac-filter"><span class="std std-ref">ansible.utils.slaac</span></a> – This filter returns the SLAAC address within a network for a given HW/MAC address.</p></li>
+<li><p><a class="reference internal" href="ansible/utils/to_paths_filter.html#ansible-collections-ansible-utils-to-paths-filter"><span class="std std-ref">ansible.utils.to_paths</span></a> – Flatten a complex object into a dictionary of paths and values</p></li>
+<li><p><a class="reference internal" href="ansible/utils/to_xml_filter.html#ansible-collections-ansible-utils-to-xml-filter"><span class="std std-ref">ansible.utils.to_xml</span></a> – Convert given JSON string to XML</p></li>
+<li><p><a class="reference internal" href="ansible/utils/usable_range_filter.html#ansible-collections-ansible-utils-usable-range-filter"><span class="std std-ref">ansible.utils.usable_range</span></a> – Expand the usable IP addresses</p></li>
+<li><p><a class="reference internal" href="ansible/utils/validate_filter.html#ansible-collections-ansible-utils-validate-filter"><span class="std std-ref">ansible.utils.validate</span></a> – Validate data with provided criteria</p></li>
+</ul>
+</section>
+<section id="ansible-windows">
+<h2>ansible.windows<a class="headerlink" href="#ansible-windows" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="ansible/windows/quote_filter.html#ansible-collections-ansible-windows-quote-filter"><span class="std std-ref">ansible.windows.quote</span></a> – Quotes argument(s) for various Windows shells</p></li>
+</ul>
+</section>
+<section id="cisco-aci">
+<h2>cisco.aci<a class="headerlink" href="#cisco-aci" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="cisco/aci/aci_listify_filter.html#ansible-collections-cisco-aci-aci-listify-filter"><span class="std std-ref">cisco.aci.aci_listify</span></a> – Flattens the nested dictionaries representing the ACI model data.</p></li>
+</ul>
+</section>
+<section id="community-crypto">
+<h2>community.crypto<a class="headerlink" href="#community-crypto" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/crypto/gpg_fingerprint_filter.html#ansible-collections-community-crypto-gpg-fingerprint-filter"><span class="std std-ref">community.crypto.gpg_fingerprint</span></a> – Retrieve a GPG fingerprint from a GPG public or private key</p></li>
+<li><p><a class="reference internal" href="community/crypto/openssl_csr_info_filter.html#ansible-collections-community-crypto-openssl-csr-info-filter"><span class="std std-ref">community.crypto.openssl_csr_info</span></a> – Retrieve information from OpenSSL Certificate Signing Requests (CSR)</p></li>
+<li><p><a class="reference internal" href="community/crypto/openssl_privatekey_info_filter.html#ansible-collections-community-crypto-openssl-privatekey-info-filter"><span class="std std-ref">community.crypto.openssl_privatekey_info</span></a> – Retrieve information from OpenSSL private keys</p></li>
+<li><p><a class="reference internal" href="community/crypto/openssl_publickey_info_filter.html#ansible-collections-community-crypto-openssl-publickey-info-filter"><span class="std std-ref">community.crypto.openssl_publickey_info</span></a> – Retrieve information from OpenSSL public keys in PEM format</p></li>
+<li><p><a class="reference internal" href="community/crypto/parse_serial_filter.html#ansible-collections-community-crypto-parse-serial-filter"><span class="std std-ref">community.crypto.parse_serial</span></a> – Convert a serial number as a colon-separated list of hex numbers to an integer</p></li>
+<li><p><a class="reference internal" href="community/crypto/split_pem_filter.html#ansible-collections-community-crypto-split-pem-filter"><span class="std std-ref">community.crypto.split_pem</span></a> – Split PEM file contents into multiple objects</p></li>
+<li><p><a class="reference internal" href="community/crypto/to_serial_filter.html#ansible-collections-community-crypto-to-serial-filter"><span class="std std-ref">community.crypto.to_serial</span></a> – Convert an integer to a colon-separated list of hex numbers</p></li>
+<li><p><a class="reference internal" href="community/crypto/x509_certificate_info_filter.html#ansible-collections-community-crypto-x509-certificate-info-filter"><span class="std std-ref">community.crypto.x509_certificate_info</span></a> – Retrieve information from X.509 certificates in PEM format</p></li>
+<li><p><a class="reference internal" href="community/crypto/x509_crl_info_filter.html#ansible-collections-community-crypto-x509-crl-info-filter"><span class="std std-ref">community.crypto.x509_crl_info</span></a> – Retrieve information from X.509 CRLs in PEM format</p></li>
+</ul>
+</section>
+<section id="community-dns">
+<h2>community.dns<a class="headerlink" href="#community-dns" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/dns/get_public_suffix_filter.html#ansible-collections-community-dns-get-public-suffix-filter"><span class="std std-ref">community.dns.get_public_suffix</span></a> – Returns the public suffix of a DNS name</p></li>
+<li><p><a class="reference internal" href="community/dns/get_registrable_domain_filter.html#ansible-collections-community-dns-get-registrable-domain-filter"><span class="std std-ref">community.dns.get_registrable_domain</span></a> – Returns the registrable domain name of a DNS name</p></li>
+<li><p><a class="reference internal" href="community/dns/quote_txt_filter.html#ansible-collections-community-dns-quote-txt-filter"><span class="std std-ref">community.dns.quote_txt</span></a> – Quotes a string to use as a TXT record entry</p></li>
+<li><p><a class="reference internal" href="community/dns/remove_public_suffix_filter.html#ansible-collections-community-dns-remove-public-suffix-filter"><span class="std std-ref">community.dns.remove_public_suffix</span></a> – Removes the public suffix from a DNS name</p></li>
+<li><p><a class="reference internal" href="community/dns/remove_registrable_domain_filter.html#ansible-collections-community-dns-remove-registrable-domain-filter"><span class="std std-ref">community.dns.remove_registrable_domain</span></a> – Removes the registrable domain name from a DNS name</p></li>
+<li><p><a class="reference internal" href="community/dns/unquote_txt_filter.html#ansible-collections-community-dns-unquote-txt-filter"><span class="std std-ref">community.dns.unquote_txt</span></a> – Unquotes a TXT record entry to a string</p></li>
+</ul>
+</section>
+<section id="community-general">
+<h2>community.general<a class="headerlink" href="#community-general" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/general/counter_filter.html#ansible-collections-community-general-counter-filter"><span class="std std-ref">community.general.counter</span></a> – Counts hashable elements in a sequence</p></li>
+<li><p><a class="reference internal" href="community/general/crc32_filter.html#ansible-collections-community-general-crc32-filter"><span class="std std-ref">community.general.crc32</span></a> – Generate a CRC32 checksum</p></li>
+<li><p><a class="reference internal" href="community/general/dict_filter.html#ansible-collections-community-general-dict-filter"><span class="std std-ref">community.general.dict</span></a> – Convert a list of tuples into a dictionary</p></li>
+<li><p><a class="reference internal" href="community/general/dict_kv_filter.html#ansible-collections-community-general-dict-kv-filter"><span class="std std-ref">community.general.dict_kv</span></a> – Convert a value to a dictionary with a single key-value pair</p></li>
+<li><p><a class="reference internal" href="community/general/from_csv_filter.html#ansible-collections-community-general-from-csv-filter"><span class="std std-ref">community.general.from_csv</span></a> – Converts CSV text input into list of dicts</p></li>
+<li><p><a class="reference internal" href="community/general/from_ini_filter.html#ansible-collections-community-general-from-ini-filter"><span class="std std-ref">community.general.from_ini</span></a> – Converts INI text input into a dictionary</p></li>
+<li><p><a class="reference internal" href="community/general/groupby_as_dict_filter.html#ansible-collections-community-general-groupby-as-dict-filter"><span class="std std-ref">community.general.groupby_as_dict</span></a> – Transform a sequence of dictionaries to a dictionary where the dictionaries are indexed by an attribute</p></li>
+<li><p><a class="reference internal" href="community/general/hashids_decode_filter.html#ansible-collections-community-general-hashids-decode-filter"><span class="std std-ref">community.general.hashids_decode</span></a> – Decodes a sequence of numbers from a YouTube-like hash</p></li>
+<li><p><a class="reference internal" href="community/general/hashids_encode_filter.html#ansible-collections-community-general-hashids-encode-filter"><span class="std std-ref">community.general.hashids_encode</span></a> – Encodes YouTube-like hashes from a sequence of integers</p></li>
+<li><p><a class="reference internal" href="community/general/jc_filter.html#ansible-collections-community-general-jc-filter"><span class="std std-ref">community.general.jc</span></a> – Convert output of many shell commands and file-types to JSON</p></li>
+<li><p><a class="reference internal" href="community/general/json_query_filter.html#ansible-collections-community-general-json-query-filter"><span class="std std-ref">community.general.json_query</span></a> – Select a single element or a data subset from a complex data structure</p></li>
+<li><p><a class="reference internal" href="community/general/lists_difference_filter.html#ansible-collections-community-general-lists-difference-filter"><span class="std std-ref">community.general.lists_difference</span></a> – Difference of lists with a predictive order</p></li>
+<li><p><a class="reference internal" href="community/general/lists_intersect_filter.html#ansible-collections-community-general-lists-intersect-filter"><span class="std std-ref">community.general.lists_intersect</span></a> – Intersection of lists with a predictive order</p></li>
+<li><p><a class="reference internal" href="community/general/lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter"><span class="std std-ref">community.general.lists_mergeby</span></a> – Merge two or more lists of dictionaries by a given attribute</p></li>
+<li><p><a class="reference internal" href="community/general/lists_symmetric_difference_filter.html#ansible-collections-community-general-lists-symmetric-difference-filter"><span class="std std-ref">community.general.lists_symmetric_difference</span></a> – Symmetric Difference of lists with a predictive order</p></li>
+<li><p><a class="reference internal" href="community/general/lists_union_filter.html#ansible-collections-community-general-lists-union-filter"><span class="std std-ref">community.general.lists_union</span></a> – Union of lists with a predictive order</p></li>
+<li><p><a class="reference internal" href="community/general/random_mac_filter.html#ansible-collections-community-general-random-mac-filter"><span class="std std-ref">community.general.random_mac</span></a> – Generate a random MAC address</p></li>
+<li><p><a class="reference internal" href="community/general/to_days_filter.html#ansible-collections-community-general-to-days-filter"><span class="std std-ref">community.general.to_days</span></a> – Converte a duration string to days</p></li>
+<li><p><a class="reference internal" href="community/general/to_hours_filter.html#ansible-collections-community-general-to-hours-filter"><span class="std std-ref">community.general.to_hours</span></a> – Converte a duration string to hours</p></li>
+<li><p><a class="reference internal" href="community/general/to_ini_filter.html#ansible-collections-community-general-to-ini-filter"><span class="std std-ref">community.general.to_ini</span></a> – Converts a dictionary to the INI file format</p></li>
+<li><p><a class="reference internal" href="community/general/to_milliseconds_filter.html#ansible-collections-community-general-to-milliseconds-filter"><span class="std std-ref">community.general.to_milliseconds</span></a> – Converte a duration string to milliseconds</p></li>
+<li><p><a class="reference internal" href="community/general/to_minutes_filter.html#ansible-collections-community-general-to-minutes-filter"><span class="std std-ref">community.general.to_minutes</span></a> – Converte a duration string to minutes</p></li>
+<li><p><a class="reference internal" href="community/general/to_months_filter.html#ansible-collections-community-general-to-months-filter"><span class="std std-ref">community.general.to_months</span></a> – Converte a duration string to months</p></li>
+<li><p><a class="reference internal" href="community/general/to_seconds_filter.html#ansible-collections-community-general-to-seconds-filter"><span class="std std-ref">community.general.to_seconds</span></a> – Converte a duration string to seconds</p></li>
+<li><p><a class="reference internal" href="community/general/to_time_unit_filter.html#ansible-collections-community-general-to-time-unit-filter"><span class="std std-ref">community.general.to_time_unit</span></a> – Converte a duration string to the given time unit</p></li>
+<li><p><a class="reference internal" href="community/general/to_weeks_filter.html#ansible-collections-community-general-to-weeks-filter"><span class="std std-ref">community.general.to_weeks</span></a> – Converte a duration string to weeks</p></li>
+<li><p><a class="reference internal" href="community/general/to_years_filter.html#ansible-collections-community-general-to-years-filter"><span class="std std-ref">community.general.to_years</span></a> – Converte a duration string to years</p></li>
+<li><p><a class="reference internal" href="community/general/unicode_normalize_filter.html#ansible-collections-community-general-unicode-normalize-filter"><span class="std std-ref">community.general.unicode_normalize</span></a> – Normalizes unicode strings to facilitate comparison of characters with normalized forms</p></li>
+<li><p><a class="reference internal" href="community/general/version_sort_filter.html#ansible-collections-community-general-version-sort-filter"><span class="std std-ref">community.general.version_sort</span></a> – Sort a list according to version order instead of pure alphabetical one</p></li>
+</ul>
+</section>
+<section id="community-hashi-vault">
+<h2>community.hashi_vault<a class="headerlink" href="#community-hashi-vault" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/hashi_vault/vault_login_token_filter.html#ansible-collections-community-hashi-vault-vault-login-token-filter"><span class="std std-ref">community.hashi_vault.vault_login_token</span></a> – Extracts the Vault token from a login or token creation</p></li>
+</ul>
+</section>
+<section id="community-routeros">
+<h2>community.routeros<a class="headerlink" href="#community-routeros" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/routeros/join_filter.html#ansible-collections-community-routeros-join-filter"><span class="std std-ref">community.routeros.join</span></a> – Join a list of arguments to a command</p></li>
+<li><p><a class="reference internal" href="community/routeros/list_to_dict_filter.html#ansible-collections-community-routeros-list-to-dict-filter"><span class="std std-ref">community.routeros.list_to_dict</span></a> – Convert a list of arguments to a dictionary</p></li>
+<li><p><a class="reference internal" href="community/routeros/quote_argument_filter.html#ansible-collections-community-routeros-quote-argument-filter"><span class="std std-ref">community.routeros.quote_argument</span></a> – Quote an argument</p></li>
+<li><p><a class="reference internal" href="community/routeros/quote_argument_value_filter.html#ansible-collections-community-routeros-quote-argument-value-filter"><span class="std std-ref">community.routeros.quote_argument_value</span></a> – Quote an argument value</p></li>
+<li><p><a class="reference internal" href="community/routeros/split_filter.html#ansible-collections-community-routeros-split-filter"><span class="std std-ref">community.routeros.split</span></a> – Split a command into arguments</p></li>
+</ul>
+</section>
+<section id="community-sops">
+<h2>community.sops<a class="headerlink" href="#community-sops" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/sops/_latest_version_filter.html#ansible-collections-community-sops-latest-version-filter"><span class="std std-ref">community.sops._latest_version</span></a> – [INTERNAL] Get latest version from a list of versions</p></li>
+<li><p><a class="reference internal" href="community/sops/decrypt_filter.html#ansible-collections-community-sops-decrypt-filter"><span class="std std-ref">community.sops.decrypt</span></a> – Decrypt sops encrypted data</p></li>
+</ul>
+</section>
+<section id="f5networks-f5-modules">
+<h2>f5networks.f5_modules<a class="headerlink" href="#f5networks-f5-modules" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="f5networks/f5_modules/abspath_filter.html#ansible-collections-f5networks-f5-modules-abspath-filter"><span class="std std-ref">f5networks.f5_modules.abspath</span></a> – return absolute path of a file</p></li>
+<li><p><a class="reference internal" href="f5networks/f5_modules/verchg_filter.html#ansible-collections-f5networks-f5-modules-verchg-filter"><span class="std std-ref">f5networks.f5_modules.verchg</span></a> –</p></li>
+</ul>
+</section>
+<section id="google-cloud">
+<h2>google.cloud<a class="headerlink" href="#google-cloud" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="google/cloud/gcp_kms_decrypt_filter.html#ansible-collections-google-cloud-gcp-kms-decrypt-filter"><span class="std std-ref">google.cloud.gcp_kms_decrypt</span></a> –</p></li>
+<li><p><a class="reference internal" href="google/cloud/gcp_kms_encrypt_filter.html#ansible-collections-google-cloud-gcp-kms-encrypt-filter"><span class="std std-ref">google.cloud.gcp_kms_encrypt</span></a> –</p></li>
+</ul>
+</section>
+<section id="infinidat-infinibox">
+<h2>infinidat.infinibox<a class="headerlink" href="#infinidat-infinibox" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="infinidat/infinibox/delta_time_filter.html#ansible-collections-infinidat-infinibox-delta-time-filter"><span class="std std-ref">infinidat.infinibox.delta_time</span></a> –</p></li>
+</ul>
+</section>
+<section id="kubernetes-core">
+<h2>kubernetes.core<a class="headerlink" href="#kubernetes-core" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="kubernetes/core/k8s_config_resource_name_filter.html#ansible-collections-kubernetes-core-k8s-config-resource-name-filter"><span class="std std-ref">kubernetes.core.k8s_config_resource_name</span></a> – Generate resource name for the given resource of type ConfigMap, Secret</p></li>
+</ul>
+</section>
+<section id="microsoft-ad">
+<h2>microsoft.ad<a class="headerlink" href="#microsoft-ad" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="microsoft/ad/as_datetime_filter.html#ansible-collections-microsoft-ad-as-datetime-filter"><span class="std std-ref">microsoft.ad.as_datetime</span></a> – Converts an LDAP value to a datetime string</p></li>
+<li><p><a class="reference internal" href="microsoft/ad/as_guid_filter.html#ansible-collections-microsoft-ad-as-guid-filter"><span class="std std-ref">microsoft.ad.as_guid</span></a> – Converts an LDAP value to a GUID string</p></li>
+<li><p><a class="reference internal" href="microsoft/ad/as_sid_filter.html#ansible-collections-microsoft-ad-as-sid-filter"><span class="std std-ref">microsoft.ad.as_sid</span></a> – Converts an LDAP value to a Security Identifier string</p></li>
+<li><p><a class="reference internal" href="microsoft/ad/dn_escape_filter.html#ansible-collections-microsoft-ad-dn-escape-filter"><span class="std std-ref">microsoft.ad.dn_escape</span></a> – Escape an LDAP DistinguishedName value string.</p></li>
+<li><p><a class="reference internal" href="microsoft/ad/parse_dn_filter.html#ansible-collections-microsoft-ad-parse-dn-filter"><span class="std std-ref">microsoft.ad.parse_dn</span></a> – Parses an LDAP DistinguishedName string into an object.</p></li>
+</ul>
+</section>
+<section id="netapp-ontap">
+<h2>netapp.ontap<a class="headerlink" href="#netapp-ontap" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="netapp/ontap/iso8601_duration_from_seconds_filter.html#ansible-collections-netapp-ontap-iso8601-duration-from-seconds-filter"><span class="std std-ref">netapp.ontap.iso8601_duration_from_seconds</span></a> – Encode seconds as a ISO 8601 duration string</p></li>
+<li><p><a class="reference internal" href="netapp/ontap/iso8601_duration_to_seconds_filter.html#ansible-collections-netapp-ontap-iso8601-duration-to-seconds-filter"><span class="std std-ref">netapp.ontap.iso8601_duration_to_seconds</span></a> – Decode a ISO 8601 duration string as seconds</p></li>
+</ul>
+</section>
+<section id="ovirt-ovirt">
+<h2>ovirt.ovirt<a class="headerlink" href="#ovirt-ovirt" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="ovirt/ovirt/convert_to_bytes_filter.html#ansible-collections-ovirt-ovirt-convert-to-bytes-filter"><span class="std std-ref">ovirt.ovirt.convert_to_bytes</span></a> – Convert units to bytes</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/filtervalue_filter.html#ansible-collections-ovirt-ovirt-filtervalue-filter"><span class="std std-ref">ovirt.ovirt.filtervalue</span></a> – Filter to findall occurance of some value in dict</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/get_network_xml_to_dict_filter.html#ansible-collections-ovirt-ovirt-get-network-xml-to-dict-filter"><span class="std std-ref">ovirt.ovirt.get_network_xml_to_dict</span></a> – Get network bridge and uuid to dict</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/get_ovf_disk_size_filter.html#ansible-collections-ovirt-ovirt-get-ovf-disk-size-filter"><span class="std std-ref">ovirt.ovirt.get_ovf_disk_size</span></a> – Get OVF disk size</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/json_query_filter.html#ansible-collections-ovirt-ovirt-json-query-filter"><span class="std std-ref">ovirt.ovirt.json_query</span></a> – Copy of community.general.json_query</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/ovirtdiff_filter.html#ansible-collections-ovirt-ovirt-ovirtdiff-filter"><span class="std std-ref">ovirt.ovirt.ovirtdiff</span></a> – Show what will be changed in next run of the VM</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/ovirtvmip_filter.html#ansible-collections-ovirt-ovirt-ovirtvmip-filter"><span class="std std-ref">ovirt.ovirt.ovirtvmip</span></a> – Return first IP</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/ovirtvmips_filter.html#ansible-collections-ovirt-ovirt-ovirtvmips-filter"><span class="std std-ref">ovirt.ovirt.ovirtvmips</span></a> – VM all IPs</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/ovirtvmipsv4_filter.html#ansible-collections-ovirt-ovirt-ovirtvmipsv4-filter"><span class="std std-ref">ovirt.ovirt.ovirtvmipsv4</span></a> – VM IPv4</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/ovirtvmipsv6_filter.html#ansible-collections-ovirt-ovirt-ovirtvmipsv6-filter"><span class="std std-ref">ovirt.ovirt.ovirtvmipsv6</span></a> – VM IPv4</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/ovirtvmipv4_filter.html#ansible-collections-ovirt-ovirt-ovirtvmipv4-filter"><span class="std std-ref">ovirt.ovirt.ovirtvmipv4</span></a> – VM IPv4</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/ovirtvmipv6_filter.html#ansible-collections-ovirt-ovirt-ovirtvmipv6-filter"><span class="std std-ref">ovirt.ovirt.ovirtvmipv6</span></a> – VM IPv4</p></li>
+<li><p><a class="reference internal" href="ovirt/ovirt/removesensitivevmdata_filter.html#ansible-collections-ovirt-ovirt-removesensitivevmdata-filter"><span class="std std-ref">ovirt.ovirt.removesensitivevmdata</span></a> – removesensitivevmdata internal filter</p></li>
+</ul>
+</section>
+<section id="sensu-sensu-go">
+<h2>sensu.sensu_go<a class="headerlink" href="#sensu-sensu-go" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="sensu/sensu_go/backends_filter.html#ansible-collections-sensu-sensu-go-backends-filter"><span class="std std-ref">sensu.sensu_go.backends</span></a> – Format websocket connection for backends hosts from inventory.</p></li>
+<li><p><a class="reference internal" href="sensu/sensu_go/package_name_filter.html#ansible-collections-sensu-sensu-go-package-name-filter"><span class="std std-ref">sensu.sensu_go.package_name</span></a> – Format package name</p></li>
+</ul>
+</section>
+<section id="theforeman-foreman">
+<h2>theforeman.foreman<a class="headerlink" href="#theforeman-foreman" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="theforeman/foreman/cp_label_filter.html#ansible-collections-theforeman-foreman-cp-label-filter"><span class="std std-ref">theforeman.foreman.cp_label</span></a> – Convert strings to Candlepin labels</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -423,7 +671,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 
 <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index_connection.html" class="btn btn-neutral float-left" title="Index of all Connection Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="index_inventory.html" class="btn btn-neutral float-right" title="Index of all Inventory Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index_httpapi.html" class="btn btn-neutral float-right" title="Index of all Httpapi Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

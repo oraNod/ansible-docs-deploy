@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Other Tools and Programs &mdash; Ansible Core Documentation</title>
+  <title>Other Tools and Programs &mdash; Ansible Community Documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
       <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
       <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
@@ -28,8 +28,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Advanced Contributor Guide" href="advanced_index.html" />
-    <link rel="prev" title="The Ansible Development Cycle" href="development_process.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+    <link rel="next" title="ansible-core Contributors Guide" href="contributions.html" />
+    <link rel="prev" title="Contributing to the Ansible Documentation" href="documentation_contributions.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
 <script src="https://www.redhat.com/dtm.js"></script>
 
 
@@ -74,7 +74,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
   <img class="DocSiteNav-logo"
     src="../_static/images/Ansible-Mark-RGB_White.png"
     alt="Ansible Logo">
-  <div class="DocSiteNav-title">Ansible Core Documentation</div>
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
 </a>
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -84,7 +84,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           
           
           <a href="../index.html" class="icon icon-home">
-            Ansible Core
+            Ansible
           </a>
               <div class="version">
                 devel
@@ -111,24 +111,17 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       >
         
         <option
-            value="2.16"
+            value="latest"
             
         >
-            2.16
+            latest
         </option>
         
         <option
-            value="2.15"
+            value="2.9"
             
         >
-            2.15
-        </option>
-        
-        <option
-            value="2.14"
-            
-        >
-            2.14
+            2.9
         </option>
         
         <option
@@ -155,13 +148,14 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
               <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../porting_guides/core_porting_guides.html">Ansible Core Porting Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Using Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
@@ -172,9 +166,10 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributions_collections.html">Ansible Collections Contributor Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="contributions.html">ansible-core Contributors Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="reporting_bugs_and_features.html">Reporting bugs and requesting features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_contributions.html">Contributing to the Ansible Documentation</a></li>
@@ -206,6 +201,16 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../galaxy/user_guide.html">Galaxy User Guide</a></li>
@@ -235,6 +240,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
 </ul>
 <!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
@@ -253,7 +259,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Ansible Core</a>
+          <a href="../index.html">Ansible</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -261,7 +267,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="contributions.html">ansible-core Contributors Guide</a></li>
+          <li class="breadcrumb-item"><a href="contributions_collections.html">Ansible Collections Contributor Guide</a></li>
       <li class="breadcrumb-item active">Other Tools and Programs</li>
   <li class="wy-breadcrumbs-aside">
             <!-- Remove main index page as it is no longer editable -->
@@ -306,7 +312,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       var msg = '<p>';
       if (startsWith(current_url_path, "/ansible-core/")) {
         msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
-      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/2.16/"])) {
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/9/"])) {
         /* temp extra banner to advertise something */
         banner += extra_banner;
 
@@ -460,8 +466,8 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           
 
 <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="development_process.html" class="btn btn-neutral float-left" title="The Ansible Development Cycle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="advanced_index.html" class="btn btn-neutral float-right" title="Advanced Contributor Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="documentation_contributions.html" class="btn btn-neutral float-left" title="Contributing to the Ansible Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributions.html" class="btn btn-neutral float-right" title="ansible-core Contributors Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

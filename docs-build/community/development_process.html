@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Ansible Development Cycle &mdash; Ansible Core Documentation</title>
+  <title>The Ansible Development Cycle &mdash; Ansible Community Documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
       <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
       <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
@@ -28,8 +28,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Other Tools and Programs" href="other_tools_and_programs.html" />
-    <link rel="prev" title="Contributing to the Ansible Documentation" href="documentation_contributions.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+    <link rel="next" title="Advanced Contributor Guide" href="advanced_index.html" />
+    <link rel="prev" title="Reporting bugs and requesting features" href="reporting_bugs_and_features.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
 <script src="https://www.redhat.com/dtm.js"></script>
 
 
@@ -74,7 +74,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
   <img class="DocSiteNav-logo"
     src="../_static/images/Ansible-Mark-RGB_White.png"
     alt="Ansible Logo">
-  <div class="DocSiteNav-title">Ansible Core Documentation</div>
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
 </a>
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -84,7 +84,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           
           
           <a href="../index.html" class="icon icon-home">
-            Ansible Core
+            Ansible
           </a>
               <div class="version">
                 devel
@@ -111,24 +111,17 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       >
         
         <option
-            value="2.16"
+            value="latest"
             
         >
-            2.16
+            latest
         </option>
         
         <option
-            value="2.15"
+            value="2.9"
             
         >
-            2.15
-        </option>
-        
-        <option
-            value="2.14"
-            
-        >
-            2.14
+            2.9
         </option>
         
         <option
@@ -155,13 +148,14 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
               <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../porting_guides/core_porting_guides.html">Ansible Core Porting Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Using Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
@@ -172,9 +166,10 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributions_collections.html">Ansible Collections Contributor Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="contributions.html">ansible-core Contributors Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="reporting_bugs_and_features.html">Reporting bugs and requesting features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_contributions.html">Contributing to the Ansible Documentation</a></li>
@@ -198,6 +193,16 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
 <ul>
@@ -228,6 +233,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
 </ul>
 <!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
@@ -246,7 +252,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Ansible Core</a>
+          <a href="../index.html">Ansible</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -299,7 +305,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       var msg = '<p>';
       if (startsWith(current_url_path, "/ansible-core/")) {
         msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
-      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/2.16/"])) {
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/9/"])) {
         /* temp extra banner to advertise something */
         banner += extra_banner;
 
@@ -338,7 +344,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <span id="community-development-process"></span><h1>The Ansible Development Cycle<a class="headerlink" href="#the-ansible-development-cycle" title="Link to this heading"></a></h1>
 <p>Ansible developers (including community contributors) add new features, fix bugs, and update code in many different repositories. The <a class="reference external" href="https://github.com/ansible/ansible">ansible/ansible repository</a> contains the code for basic features and functions, such as copying module code to managed nodes. This code is also known as <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>. Other repositories contain plugins and modules that enable Ansible to execute specific tasks, like adding a user to a particular database or configuring a particular network device. These repositories contain the source code for collections.</p>
 <p>Development on <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> occurs on two levels. At the macro level, the <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> developers and maintainers plan releases and track progress with roadmaps and projects. At the micro level, each PR has its own lifecycle.</p>
-<p>Development on collections also occurs at the macro and micro levels. Each collection has its own macro development cycle. For more information on the collections development cycle, see <a class="reference external" href="https://docs.ansible.com/ansible/9/community/contributing_maintained_collections.html#contributing-maintained-collections" title="(in Ansible v9)"><span>Contributing to Ansible-maintained Collections</span></a>. The micro-level lifecycle of a PR is similar in collections and in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.</p>
+<p>Development on collections also occurs at the macro and micro levels. Each collection has its own macro development cycle. For more information on the collections development cycle, see <a class="reference internal" href="contributing_maintained_collections.html#contributing-maintained-collections"><span class="std std-ref">Contributing to Ansible-maintained Collections</span></a>. The micro-level lifecycle of a PR is similar in collections and in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.</p>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#macro-development-ansible-core-roadmaps-releases-and-projects" id="id1">Macro development: <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> roadmaps, releases, and projects</a></p></li>
@@ -361,7 +367,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">Macro development: <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> roadmaps, releases, and projects</a><a class="headerlink" href="#macro-development-ansible-core-roadmaps-releases-and-projects" title="Link to this heading"></a></h2>
 <p>If you want to follow the conversation about what features will be added to <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> for upcoming releases and what bugs are being fixed, you can watch these resources:</p>
 <ul>
-<li><p>the <a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html#roadmaps"><span class="std std-ref">ansible-core Roadmaps</span></a></p></li>
+<li><p>the <a class="reference internal" href="../roadmap/index.html#roadmaps"><span class="std std-ref">Roadmaps</span></a></p></li>
 <li><p>the <a class="reference internal" href="../reference_appendices/release_and_maintenance.html#release-and-maintenance"><span class="std std-ref">Ansible Release Schedule</span></a></p></li>
 <li><p>the <a class="reference internal" href="../dev_guide/core_branches_and_tags.html#core-branches-and-tags"><span class="std std-ref">ansible-core project branches and tags</span></a></p></li>
 <li><p>various GitHub <a class="reference external" href="https://github.com/ansible/ansible/projects">projects</a> - for example:</p>
@@ -419,13 +425,13 @@ Some collection repositories use <a class="reference external" href="https://git
 <p>To create a changelog entry, create a new file with a unique name in the <code class="docutils literal notranslate"><span class="pre">changelogs/fragments/</span></code> directory of the corresponding repository. The file name should include the PR number and a description of the change. It must end with the file extension <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> or <code class="docutils literal notranslate"><span class="pre">.yml</span></code>. For example: <code class="docutils literal notranslate"><span class="pre">40696-user-backup-shadow-file.yaml</span></code></p>
 <p>A single changelog fragment may contain multiple sections but most will only contain one section. The toplevel keys (bugfixes, major_changes, and so on) are defined in the <a class="reference external" href="https://github.com/ansible/ansible/blob/devel/changelogs/config.yaml">config file</a> for our <a class="reference external" href="https://github.com/ansible-community/antsibull-changelog/blob/main/docs/changelogs.rst">release note tool</a>. Here are the valid sections and a description of each:</p>
 <dl>
-<dt><strong>breaking_changes</strong></dt><dd><p>MUST include changes that break existing playbooks or roles. This includes any change to existing behavior that forces users to update tasks. Breaking changes means the user MUST make a change when they update. Breaking changes MUST only happen in a major release of the collection. Write in present tense and clearly describe the new behavior that the end user must now follow. Displayed in both the changelogs and the <a class="reference external" href="https://docs.ansible.com/ansible/9/porting_guides/porting_guides.html#porting-guides" title="(in Ansible v9)"><span class="xref std std-ref">Porting Guides</span></a>.</p>
+<dt><strong>breaking_changes</strong></dt><dd><p>MUST include changes that break existing playbooks or roles. This includes any change to existing behavior that forces users to update tasks. Breaking changes means the user MUST make a change when they update. Breaking changes MUST only happen in a major release of the collection. Write in present tense and clearly describe the new behavior that the end user must now follow. Displayed in both the changelogs and the <a class="reference internal" href="../porting_guides/porting_guides.html#porting-guides"><span class="std std-ref">Porting Guides</span></a>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">breaking_changes</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-test - automatic installation of requirements for cloud test plugins no longer occurs. The affected test plugins are ``aws``, ``azure``, ``cs``, ``hcloud``, ``nios``, ``opennebula``, ``openshift`` and ``vcenter``. Collections should instead use one of the supported integration test requirements files, such as the ``tests/integration/requirements.txt`` file (https://github.com/ansible/ansible/pull/75605).</span>
 </pre></div>
 </div>
 </dd>
-<dt><strong>major_changes</strong></dt><dd><p>Major changes to ansible-core or a collection. SHOULD NOT include individual module or plugin changes. MUST include non-breaking changes that impact all or most of a collection (for example, updates to support a new SDK version across the collection). Major changes mean the user can CHOOSE to make a change when they update but do not have to. Could be used to announce an important upcoming EOL or breaking change in a future release. (ideally 6 months in advance, if known. See <a class="reference external" href="https://github.com/ansible-collections/community.general/blob/stable-1/CHANGELOG.rst#v1313">this example</a>). Write in present tense and describe what is new. Optionally, include a ‘Previously…” sentence to help the user identify where old behavior should now change. Displayed in both the changelogs and the <a class="reference external" href="https://docs.ansible.com/ansible/9/porting_guides/porting_guides.html#porting-guides" title="(in Ansible v9)"><span class="xref std std-ref">Porting Guides</span></a>.</p>
+<dt><strong>major_changes</strong></dt><dd><p>Major changes to ansible-core or a collection. SHOULD NOT include individual module or plugin changes. MUST include non-breaking changes that impact all or most of a collection (for example, updates to support a new SDK version across the collection). Major changes mean the user can CHOOSE to make a change when they update but do not have to. Could be used to announce an important upcoming EOL or breaking change in a future release. (ideally 6 months in advance, if known. See <a class="reference external" href="https://github.com/ansible-collections/community.general/blob/stable-1/CHANGELOG.rst#v1313">this example</a>). Write in present tense and describe what is new. Optionally, include a ‘Previously…” sentence to help the user identify where old behavior should now change. Displayed in both the changelogs and the <a class="reference internal" href="../porting_guides/porting_guides.html#porting-guides"><span class="std std-ref">Porting Guides</span></a>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">major_changes</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-test - all cloud plugins which use containers can now be used with all POSIX and Windows hosts. Previously the plugins did not work with Windows at all, and support for hosts created with the ``--remote`` option was inconsistent (https://github.com/ansible/ansible/pull/74216).</span>
 </pre></div>
@@ -437,13 +443,13 @@ Some collection repositories use <a class="reference external" href="https://git
 </pre></div>
 </div>
 </dd>
-<dt><strong>deprecated_features</strong></dt><dd><p>Features that have been deprecated and are scheduled for removal in a future release. Use past tense and include an alternative, where available for what is being deprecated.. Displayed in both the changelogs and the <a class="reference external" href="https://docs.ansible.com/ansible/9/porting_guides/porting_guides.html#porting-guides" title="(in Ansible v9)"><span class="xref std std-ref">Porting Guides</span></a>.</p>
+<dt><strong>deprecated_features</strong></dt><dd><p>Features that have been deprecated and are scheduled for removal in a future release. Use past tense and include an alternative, where available for what is being deprecated.. Displayed in both the changelogs and the <a class="reference internal" href="../porting_guides/porting_guides.html#porting-guides"><span class="std std-ref">Porting Guides</span></a>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">deprecated_features</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">include action - is deprecated in favor of ``include_tasks``, ``import_tasks`` and ``import_playbook`` (https://github.com/ansible/ansible/pull/71262).</span>
 </pre></div>
 </div>
 </dd>
-<dt><strong>removed_features</strong></dt><dd><p>Features that were previously deprecated and are now removed. Use past tense and include an alternative, where available for what is being deprecated. Displayed in both the changelogs and the <a class="reference external" href="https://docs.ansible.com/ansible/9/porting_guides/porting_guides.html#porting-guides" title="(in Ansible v9)"><span class="xref std std-ref">Porting Guides</span></a>.</p>
+<dt><strong>removed_features</strong></dt><dd><p>Features that were previously deprecated and are now removed. Use past tense and include an alternative, where available for what is being deprecated. Displayed in both the changelogs and the <a class="reference internal" href="../porting_guides/porting_guides.html#porting-guides"><span class="std std-ref">Porting Guides</span></a>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">removed_features</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_get_item() alias - removed from callback plugin base class which had been deprecated in favor of ``_get_item_label()`` (https://github.com/ansible/ansible/pull/70233).</span>
 </pre></div>
@@ -573,8 +579,8 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
           
 
 <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="documentation_contributions.html" class="btn btn-neutral float-left" title="Contributing to the Ansible Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="other_tools_and_programs.html" class="btn btn-neutral float-right" title="Other Tools and Programs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="reporting_bugs_and_features.html" class="btn btn-neutral float-left" title="Reporting bugs and requesting features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="advanced_index.html" class="btn btn-neutral float-right" title="Advanced Contributor Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

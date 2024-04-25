@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.10.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fortinet.fortimanager.fmgr_firewall_accessproxy6_apigateway module – Set IPv4 API Gateway. &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/fortinet/fortimanager/fmgr_firewall_accessproxy6_apigateway_module.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="fortinet.fortimanager.fmgr_firewall_accessproxy6_apigateway6 module – Set IPv6 API Gateway." href="fmgr_firewall_accessproxy6_apigateway6_module.html" />
+    <link rel="prev" title="fortinet.fortimanager.fmgr_firewall_accessproxy6 module – Configure IPv6 access proxy." href="fmgr_firewall_accessproxy6_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../amazon/index.html">Collections in the Amazon Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/index.html">Collections in the Community Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dellemc/index.html">Collections in the Dellemc Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Fortinet Namespace</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Fortinet.Fortimanager</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../fortios/index.html">Fortinet.Fortios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp_eseries/index.html">Collections in the Netapp_eseries Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wti/index.html">Collections in the Wti Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Fortinet Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Fortinet.Fortimanager</a></li>
+      <li class="breadcrumb-item active">fortinet.fortimanager.fmgr_firewall_accessproxy6_apigateway module – Set IPv4 API Gateway.</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/9/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module"></span><section id="fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-set-ipv4-api-gateway">
+<h1>fortinet.fortimanager.fmgr_firewall_accessproxy6_apigateway module – Set IPv4 API Gateway.<a class="headerlink" href="#fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-set-ipv4-api-gateway" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/fortinet/fortimanager/">fortinet.fortimanager collection</a> (version 2.4.0).</p>
+<p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
+It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">fortinet.fortimanager</span></code>.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">fortinet.fortimanager.fmgr_firewall_accessproxy6_apigateway</span></code>.</p>
+</div>
+<p class="ansible-version-added">New in fortinet.fortimanager 2.2.0</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id2">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id3">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id4">Notes</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id5">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id6">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This module is able to configure a FortiManager device.</p></li>
+<li><p>Examples include all parameters and values which need to be adjusted to data sources before usage.</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-access-proxy6"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-access-proxy6"><strong>access-proxy6</strong></p>
+<a class="ansibleOptionLink" href="#parameter-access-proxy6" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Deprecated, please use “access_proxy6”</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-access_proxy6"></div><p class="ansible-option-title" id="id1"><strong>access_proxy6</strong></p>
+<a class="ansibleOptionLink" href="#parameter-access_proxy6" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The parameter (access-proxy6) in requested url.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-access_token"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-access-token"><strong>access_token</strong></p>
+<a class="ansibleOptionLink" href="#parameter-access_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The token to access FortiManager without using username and password.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-adom"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-adom"><strong>adom</strong></p>
+<a class="ansibleOptionLink" href="#parameter-adom" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The parameter (adom) in requested url.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-bypass_validation"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-bypass-validation"><strong>bypass_validation</strong></p>
+<a class="ansibleOptionLink" href="#parameter-bypass_validation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_log"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-enable-log"><strong>enable_log</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_log" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable logging for task.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway"><strong>firewall_accessproxy6_apigateway</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The top level parameters set.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/application"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-application"><strong>application</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/application" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>(list) No description.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/h2-support"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-h2-support"><strong>h2-support</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/h2-support" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to h2_support. HTTP2 support, default=Enable.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/h3-support"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-h3-support"><strong>h3-support</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/h3-support" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to h3_support. HTTP3/QUIC support, default=Disable.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/http-cookie-age"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-http-cookie-age"><strong>http-cookie-age</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/http-cookie-age" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to http_cookie_age. Time in minutes that client web browsers should keep a cookie.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/http-cookie-domain"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-http-cookie-domain"><strong>http-cookie-domain</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/http-cookie-domain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to http_cookie_domain. Domain that HTTP cookie persistence should apply to.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/http-cookie-domain-from-host"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-http-cookie-domain-from-host"><strong>http-cookie-domain-from-host</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/http-cookie-domain-from-host" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to http_cookie_domain_from_host. Enable/disable use of HTTP cookie domain from host field in …</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/http-cookie-generation"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-http-cookie-generation"><strong>http-cookie-generation</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/http-cookie-generation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to http_cookie_generation. Generation of HTTP cookie to be accepted.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/http-cookie-path"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-http-cookie-path"><strong>http-cookie-path</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/http-cookie-path" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to http_cookie_path. Limit HTTP cookie persistence to the specified path.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/http-cookie-share"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-http-cookie-share"><strong>http-cookie-share</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/http-cookie-share" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to http_cookie_share. Control sharing of cookies across API Gateway.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;same-ip&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/https-cookie-secure"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-https-cookie-secure"><strong>https-cookie-secure</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/https-cookie-secure" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to https_cookie_secure. Enable/disable verification that inserted HTTPS cookies are secure.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/id"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-id"><strong>id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>API Gateway ID.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ldb-method"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ldb-method"><strong>ldb-method</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ldb-method" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ldb_method. Method used to distribute sessions to real servers.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;static&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;round-robin&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;weighted&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;first-alive&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;http-host&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/persistence"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-persistence"><strong>persistence</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/persistence" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Configure how to make sure that clients connect to the same server every time they make a request that is part of the same…</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;http-cookie&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/quic"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-quic"><strong>quic</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/quic" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>No description.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/quic/ack-delay-exponent"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-quic-ack-delay-exponent"><strong>ack-delay-exponent</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/quic/ack-delay-exponent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ack_delay_exponent. ACK delay exponent</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/quic/active-connection-id-limit"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-quic-active-connection-id-limit"><strong>active-connection-id-limit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/quic/active-connection-id-limit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to active_connection_id_limit. Active connection ID limit</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/quic/active-migration"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-quic-active-migration"><strong>active-migration</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/quic/active-migration" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to active_migration. Enable/disable active migration</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/quic/grease-quic-bit"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-quic-grease-quic-bit"><strong>grease-quic-bit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/quic/grease-quic-bit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to grease_quic_bit. Enable/disable grease QUIC bit</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/quic/max-ack-delay"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-quic-max-ack-delay"><strong>max-ack-delay</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/quic/max-ack-delay" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to max_ack_delay. Maximum ACK delay in milliseconds</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/quic/max-datagram-frame-size"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-quic-max-datagram-frame-size"><strong>max-datagram-frame-size</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/quic/max-datagram-frame-size" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to max_datagram_frame_size. Maximum datagram frame size in bytes</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/quic/max-idle-timeout"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-quic-max-idle-timeout"><strong>max-idle-timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/quic/max-idle-timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to max_idle_timeout. Maximum idle timeout milliseconds</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/quic/max-udp-payload-size"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-quic-max-udp-payload-size"><strong>max-udp-payload-size</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/quic/max-udp-payload-size" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to max_udp_payload_size. Maximum UDP payload size in bytes</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers"><strong>realservers</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>No description.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/addr-type"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-addr-type"><strong>addr-type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/addr-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to addr_type. Type of address.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;fqdn&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ip&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/address"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-address"><strong>address</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/address" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Address or address group of the real server.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/domain"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-domain"><strong>domain</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/domain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Wildcard domain name of the real server.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/external-auth"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-external-auth"><strong>external-auth</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/external-auth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to external_auth. Enable/disable use of external browser as user-agent for SAML user …</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/health-check"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-health-check"><strong>health-check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/health-check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to health_check. Enable to check the responsiveness of the real server before forward…</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/health-check-proto"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-health-check-proto"><strong>health-check-proto</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/health-check-proto" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to health_check_proto. Protocol of the health check monitor to use when polling to de…</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ping&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;http&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tcp-connect&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/holddown-interval"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-holddown-interval"><strong>holddown-interval</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/holddown-interval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to holddown_interval. Enable/disable holddown timer.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/http-host"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-http-host"><strong>http-host</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/http-host" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to http_host. HTTP server domain name in HTTP header.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/id"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-id"><strong>id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Real server ID.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/ip"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-ip"><strong>ip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>IP address of the real server.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/mappedport"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-mappedport"><strong>mappedport</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/mappedport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>(list or str) Port for communicating with the real server.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/port"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Port for communicating with the real server.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/ssh-client-cert"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-ssh-client-cert"><strong>ssh-client-cert</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/ssh-client-cert" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ssh_client_cert. Set access-proxy SSH client certificate profile.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/ssh-host-key"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-ssh-host-key"><strong>ssh-host-key</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/ssh-host-key" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>(list) Deprecated, please rename it to ssh_host_key.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/ssh-host-key-validation"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-ssh-host-key-validation"><strong>ssh-host-key-validation</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/ssh-host-key-validation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ssh_host_key_validation. Enable/disable SSH real server host key validation.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/status"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-status"><strong>status</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/status" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Set the status of the real server to active so that it can accept traffic, or on standby or disabled so no traffic…</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;active&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;standby&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/translate-host"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-translate-host"><strong>translate-host</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/translate-host" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to translate_host. Enable/disable translation of hostname/IP from virtual server to r…</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/tunnel-encryption"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-tunnel-encryption"><strong>tunnel-encryption</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/tunnel-encryption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to tunnel_encryption. Tunnel encryption.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/type"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-type"><strong>type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>TCP forwarding server type.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tcp-forwarding&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ssh&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/realservers/weight"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-realservers-weight"><strong>weight</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/realservers/weight" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Weight of the real server.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/saml-redirect"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-saml-redirect"><strong>saml-redirect</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/saml-redirect" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to saml_redirect. Enable/disable SAML redirection after successful authentication.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/saml-server"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-saml-server"><strong>saml-server</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/saml-server" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to saml_server. SAML service provider configuration for VIP authentication.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/service"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-service"><strong>service</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/service" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Service.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;http&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;https&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tcp-forwarding&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;samlsp&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;web-portal&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;saas&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-algorithm"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-algorithm"><strong>ssl-algorithm</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-algorithm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ssl_algorithm. Permitted encryption algorithms for the server side of SSL full mode sessio…</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;high&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;medium&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;low&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-cipher-suites"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-cipher-suites"><strong>ssl-cipher-suites</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-cipher-suites" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ssl_cipher_suites.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-cipher-suites/cipher"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-cipher-suites-cipher"><strong>cipher</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-cipher-suites/cipher" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Cipher suite name.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-RC4-128-MD5&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-RC4-128-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-DES-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-3DES-EDE-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-AES-128-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-AES-256-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-AES-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-AES-256-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-CAMELLIA-128-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-CAMELLIA-256-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-CAMELLIA-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-CAMELLIA-256-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-SEED-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-ARIA-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-ARIA-256-CBC-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-DES-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-3DES-EDE-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-AES-128-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-AES-256-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-AES-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-AES-256-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-SEED-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-ARIA-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-ARIA-256-CBC-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-RC4-128-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-3DES-EDE-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-CHACHA20-POLY1305-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-ECDSA-WITH-CHACHA20-POLY1305-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-CHACHA20-POLY1305-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-AES-128-GCM-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-RSA-WITH-AES-256-GCM-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-AES-128-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-AES-256-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-AES-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-AES-128-GCM-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-AES-256-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-AES-256-GCM-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-ECDSA-WITH-AES-256-GCM-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-AES-128-GCM-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-RSA-WITH-AES-256-GCM-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-CAMELLIA-128-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-CAMELLIA-256-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-CAMELLIA-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-CAMELLIA-256-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-SEED-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-ARIA-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-ARIA-256-CBC-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-ARIA-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-RSA-WITH-ARIA-256-CBC-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-ECDSA-WITH-ARIA-128-CBC-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-ECDSA-WITH-ARIA-256-CBC-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-3DES-EDE-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-DHE-DSS-WITH-DES-CBC-SHA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-AES-128-GCM-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-AES-256-GCM-SHA384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-CHACHA20-POLY1305-SHA256&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-cipher-suites/priority"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-cipher-suites-priority"><strong>priority</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-cipher-suites/priority" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>SSL/TLS cipher suites priority.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-cipher-suites/versions"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-cipher-suites-versions"><strong>versions</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-cipher-suites/versions" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>No description.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.0&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.1&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.2&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.3&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-dh-bits"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-dh-bits"><strong>ssl-dh-bits</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-dh-bits" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ssl_dh_bits. Number of bits to use in the Diffie-Hellman exchange for RSA encryption of SS…</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;768&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;1024&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;1536&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2048&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;3072&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;4096&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-max-version"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-max-version"><strong>ssl-max-version</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-max-version" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ssl_max_version. Highest SSL/TLS version acceptable from a server.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.0&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.1&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.2&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.3&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-min-version"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-min-version"><strong>ssl-min-version</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-min-version" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ssl_min_version. Lowest SSL/TLS version acceptable from a server.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.0&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.1&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.2&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls-1.3&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-renegotiation"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-renegotiation"><strong>ssl-renegotiation</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-renegotiation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ssl_renegotiation. Enable/disable secure renegotiation to comply with RFC 5746.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/ssl-vpn-web-portal"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-ssl-vpn-web-portal"><strong>ssl-vpn-web-portal</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/ssl-vpn-web-portal" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ssl_vpn_web_portal. SSL-VPN web portal.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/url-map"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-url-map"><strong>url-map</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/url-map" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to url_map. URL pattern to match.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/url-map-type"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-url-map-type"><strong>url-map-type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/url-map-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to url_map_type. Type of url-map.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;sub-string&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;wildcard&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;regex&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-firewall_accessproxy6_apigateway/virtual-host"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-firewall-accessproxy6-apigateway-virtual-host"><strong>virtual-host</strong></p>
+<a class="ansibleOptionLink" href="#parameter-firewall_accessproxy6_apigateway/virtual-host" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to virtual_host. Virtual host.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-forticloud_access_token"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-forticloud-access-token"><strong>forticloud_access_token</strong></p>
+<a class="ansibleOptionLink" href="#parameter-forticloud_access_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Authenticate Ansible client with forticloud API access token.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-proposed_method"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-proposed-method"><strong>proposed_method</strong></p>
+<a class="ansibleOptionLink" href="#parameter-proposed_method" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The overridden method for the underlying Json RPC request.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;update&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;set&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;add&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rc_failed"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-rc-failed"><strong>rc_failed</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rc_failed" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The rc codes list with which the conditions to fail will be overriden.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rc_succeeded"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-rc-succeeded"><strong>rc_succeeded</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rc_succeeded" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The rc codes list with which the conditions to succeed will be overriden.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-state"><strong>state</strong></p>
+<a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The directive to create, update or delete an object.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;present&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;absent&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-workspace_locking_adom"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-workspace-locking-adom"><strong>workspace_locking_adom</strong></p>
+<a class="ansibleOptionLink" href="#parameter-workspace_locking_adom" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-workspace_locking_timeout"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-parameter-workspace-locking-timeout"><strong>workspace_locking_timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-workspace_locking_timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The maximum time in seconds to wait for other user to release the workspace lock.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">300</span></code></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Notes</a><a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Starting in version 2.4.0, all input arguments are named using the underscore naming convention (snake_case). Please change the arguments such as “var-name” to “var_name”. Old argument names are still available yet you will receive deprecation warnings. You can ignore this warning by setting deprecation_warnings=False in ansible.cfg.</p></li>
+<li><p>Running in workspace locking mode is supported in this FortiManager module, the top level parameters workspace_locking_adom and workspace_locking_timeout help do the work.</p></li>
+<li><p>To create or update an object, use state present directive.</p></li>
+<li><p>To delete an object, use state absent directive.</p></li>
+<li><p>Normally, running one module can fail when a non-zero rc is returned. you can also override the conditions to fail or succeed with parameters rc_failed and rc_succeeded</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example playbook (generated based on argument schema)</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fortimanagers</span>
+<span class="w">  </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set IPv4 API Gateway.</span>
+<span class="w">      </span><span class="nt">fortinet.fortimanager.fmgr_firewall_accessproxy6_apigateway</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># bypass_validation: false</span>
+<span class="w">        </span><span class="nt">workspace_locking_adom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [global, custom adom including root]&gt;</span>
+<span class="w">        </span><span class="nt">workspace_locking_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">        </span><span class="c1"># rc_succeeded: [0, -2, -3, ...]</span>
+<span class="w">        </span><span class="c1"># rc_failed: [-2, -3, ...]</span>
+<span class="w">        </span><span class="nt">adom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your own value&gt;</span>
+<span class="w">        </span><span class="nt">access_proxy6</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your own value&gt;</span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span><span class="w"> </span><span class="c1"># &lt;value in [present, absent]&gt;</span>
+<span class="w">        </span><span class="nt">firewall_accessproxy6_apigateway</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">application</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;list or string&gt;</span>
+<span class="w">          </span><span class="nt">http_cookie_age</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">http_cookie_domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">http_cookie_domain_from_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">http_cookie_generation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">http_cookie_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">http_cookie_share</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, same-ip]&gt;</span>
+<span class="w">          </span><span class="nt">https_cookie_secure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">ldb_method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [static, round-robin, weighted, ...]&gt;</span>
+<span class="w">          </span><span class="nt">persistence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [none, http-cookie]&gt;</span>
+<span class="w">          </span><span class="nt">realservers</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span>
+<span class="w">              </span><span class="nt">addr_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [fqdn, ip]&gt;</span>
+<span class="w">              </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">              </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">              </span><span class="nt">health_check</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">              </span><span class="nt">health_check_proto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [ping, http, tcp-connect]&gt;</span>
+<span class="w">              </span><span class="nt">holddown_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">              </span><span class="nt">http_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">              </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">              </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">              </span><span class="nt">mappedport</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;list or string&gt;</span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">              </span><span class="nt">ssh_client_cert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">              </span><span class="nt">ssh_host_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;list or string&gt;</span>
+<span class="w">              </span><span class="nt">ssh_host_key_validation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">              </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [active, standby, disable]&gt;</span>
+<span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [tcp-forwarding, ssh]&gt;</span>
+<span class="w">              </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">              </span><span class="nt">translate_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">              </span><span class="nt">external_auth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">              </span><span class="nt">tunnel_encryption</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">saml_redirect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">saml_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [http, https, tcp-forwarding, ...]&gt;</span>
+<span class="w">          </span><span class="nt">ssl_algorithm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [high, medium, low]&gt;</span>
+<span class="w">          </span><span class="nt">ssl_cipher_suites</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span>
+<span class="w">              </span><span class="nt">cipher</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [TLS-RSA-WITH-RC4-128-MD5, TLS-RSA-WITH-RC4-128-SHA, TLS-RSA-WITH-DES-CBC-SHA, ...]&gt;</span>
+<span class="w">              </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">              </span><span class="nt">versions</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls-1.0</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls-1.1</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls-1.2</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls-1.3</span>
+<span class="w">          </span><span class="nt">ssl_dh_bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [768, 1024, 1536, ...]&gt;</span>
+<span class="w">          </span><span class="nt">ssl_max_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [tls-1.0, tls-1.1, tls-1.2, ...]&gt;</span>
+<span class="w">          </span><span class="nt">ssl_min_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [tls-1.0, tls-1.1, tls-1.2, ...]&gt;</span>
+<span class="w">          </span><span class="nt">ssl_vpn_web_portal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">url_map</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">url_map_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [sub-string, wildcard, regex]&gt;</span>
+<span class="w">          </span><span class="nt">virtual_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">ssl_renegotiation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">h2_support</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">h3_support</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">quic</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">ack_delay_exponent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">            </span><span class="nt">active_connection_id_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">            </span><span class="nt">active_migration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">            </span><span class="nt">grease_quic_bit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">            </span><span class="nt">max_ack_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">            </span><span class="nt">max_datagram_frame_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">            </span><span class="nt">max_idle_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">            </span><span class="nt">max_udp_payload_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<p>Common return values are documented <a class="reference internal" href="../../../reference_appendices/common_return_values.html#common-return-values"><span class="std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-return-meta"><strong>meta</strong></p>
+<a class="ansibleOptionLink" href="#return-meta" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The result of the request.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/request_url"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-return-meta-request-url"><strong>request_url</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/request_url" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The full url requested.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">&quot;/sys/login/user&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/response_code"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-return-meta-response-code"><strong>response_code</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/response_code" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The status of api request.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/response_data"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-return-meta-response-data"><strong>response_data</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/response_data" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The api response.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/response_message"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-return-meta-response-message"><strong>response_message</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/response_message" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The descriptive message of the api response.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">&quot;OK.&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/system_information"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-return-meta-system-information"><strong>system_information</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/system_information" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The information of the target system.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-rc"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-return-rc"><strong>rc</strong></p>
+<a class="ansibleOptionLink" href="#return-rc" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The status the request.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-version_check_warning"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-firewall-accessproxy6-apigateway-module-return-version-check-warning"><strong>version_check_warning</strong></p>
+<a class="ansibleOptionLink" href="#return-version_check_warning" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Warning if the parameters used in the playbook are not supported by the current FortiManager version.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> complex</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Xinwei Du (&#64;dux-fortinet)</p></li>
+<li><p>Xing Li (&#64;lix-fortinet)</p></li>
+<li><p>Jie Xue (&#64;JieX19)</p></li>
+<li><p>Link Zheng (&#64;chillancezen)</p></li>
+<li><p>Frank Shen (&#64;fshen01)</p></li>
+<li><p>Hongbin Lu (&#64;fgtdev-hblu)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h3>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/fortinet-ansible-dev/ansible-galaxy-fortimanager-collection/issues" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://fortinet.com" rel="noopener external" target="_blank">Homepage</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/fortinet-ansible-dev/ansible-galaxy-fortimanager-collection" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fmgr_firewall_accessproxy6_module.html" class="btn btn-neutral float-left" title="fortinet.fortimanager.fmgr_firewall_accessproxy6 module – Configure IPv6 access proxy." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fmgr_firewall_accessproxy6_apigateway6_module.html" class="btn btn-neutral float-right" title="fortinet.fortimanager.fmgr_firewall_accessproxy6_apigateway6 module – Set IPv6 API Gateway." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Apr 25, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

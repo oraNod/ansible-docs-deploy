@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.10.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dellemc.openmanage.ome_discovery module – Create, modify, or delete a discovery job on OpenManage Enterprise &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/dellemc/openmanage/ome_discovery_module.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="dellemc.openmanage.ome_domain_user_groups module – Create, modify, or delete an Active Directory/LDAP user group on OpenManage Enterprise and OpenManage Enterprise Modular" href="ome_domain_user_groups_module.html" />
+    <link rel="prev" title="dellemc.openmanage.ome_diagnostics module – Export technical support logs(TSR) to network share location" href="ome_diagnostics_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../amazon/index.html">Collections in the Amazon Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/index.html">Collections in the Community Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Dellemc Namespace</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../enterprise_sonic/index.html">Dellemc.Enterprise_Sonic</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Dellemc.Openmanage</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#role-index">Role Index</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../powerflex/index.html">Dellemc.Powerflex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unity/index.html">Dellemc.Unity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fortinet/index.html">Collections in the Fortinet Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp_eseries/index.html">Collections in the Netapp_eseries Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wti/index.html">Collections in the Wti Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Dellemc Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dellemc.Openmanage</a></li>
+      <li class="breadcrumb-item active">dellemc.openmanage.ome_discovery module – Create, modify, or delete a discovery job on OpenManage Enterprise</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/9/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-dellemc-openmanage-ome-discovery-module"></span><section id="dellemc-openmanage-ome-discovery-module-create-modify-or-delete-a-discovery-job-on-openmanage-enterprise">
+<h1>dellemc.openmanage.ome_discovery module – Create, modify, or delete a discovery job on OpenManage Enterprise<a class="headerlink" href="#dellemc-openmanage-ome-discovery-module-create-modify-or-delete-a-discovery-job-on-openmanage-enterprise" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/dellemc/openmanage/">dellemc.openmanage collection</a> (version 9.1.0).</p>
+<p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
+It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">dellemc.openmanage</span></code>.
+You need further requirements to be able to use this module,
+see <a class="reference internal" href="#ansible-collections-dellemc-openmanage-ome-discovery-module-requirements"><span class="std std-ref">Requirements</span></a> for details.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">dellemc.openmanage.ome_discovery</span></code>.</p>
+</div>
+<p class="ansible-version-added">New in dellemc.openmanage 3.3.0</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#requirements" id="id2">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id3">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id4">Notes</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id5">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id6">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This module allows to create, modify, or delete a discovery job.</p></li>
+</ul>
+</section>
+<section id="requirements">
+<span id="ansible-collections-dellemc-openmanage-ome-discovery-module-requirements"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">Requirements</a><a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>The below requirements are needed on the host that executes this module.</p>
+<ul class="simple">
+<li><p>python &gt;= 3.8.6</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ca_path"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-ca-path"><strong>ca_path</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ca_path" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">path</span></p>
+<p><em class="ansible-option-versionadded">added in dellemc.openmanage 5.0.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The Privacy Enhanced Mail (PEM) file that contains a CA certificate to be used for the validation.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-community_string"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-community-string"><strong>community_string</strong></p>
+<a class="ansibleOptionLink" href="#parameter-community_string" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable the use of SNMP community strings to receive SNMP traps using Application Settings in OpenManage Enterprise. This option is available only for the discovered iDRAC servers and MX7000 chassis.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cron"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-cron"><strong>cron</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cron" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Provide a cron expression based on Quartz cron format.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets"><strong>discovery_config_targets</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Provide the list of discovery targets.</p>
+<p>Each discovery target is a set of <em>network_address_detail</em>, <em>device_types</em>, and one or more protocol credentials.</p>
+<p>This is mandatory when <em>state</em> is <code class="docutils literal notranslate"><span class="pre">present</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">WARNING</span></code> Modification of this field is not supported, this field is overwritten every time. Ensure to provide all the required details for this field.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/device_types"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-device-types"><strong>device_types</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/device_types" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide the type of devices to be discovered.</p>
+<p>The accepted types are SERVER, CHASSIS, NETWORK SWITCH, and STORAGE.</p>
+<p>A combination or all of the above can be provided.</p>
+<p>Supported protocols for each device type are:</p>
+<p>SERVER - <em>wsman</em>, <em>redfish</em>, <em>snmp</em>, <em>ipmi</em>, <em>ssh</em>, and <em>vmware</em>.</p>
+<p>CHASSIS - <em>wsman</em>, and <em>redfish</em>.</p>
+<p>NETWORK SWITCH - <em>snmp</em>.</p>
+<p>STORAGE - <em>storage</em>, and <em>snmp</em>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ipmi"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ipmi"><strong>ipmi</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ipmi" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Intelligent Platform Management Interface (IPMI)</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ipmi/kgkey"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ipmi-kgkey"><strong>kgkey</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ipmi/kgkey" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>KgKey for the IPMI protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ipmi/password"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ipmi-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ipmi/password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a password for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ipmi/retries"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ipmi-retries"><strong>retries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ipmi/retries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the number of repeated attempts required to discover a device.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ipmi/timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ipmi-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ipmi/timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the time in seconds after which a job must stop running.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">60</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ipmi/username"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ipmi-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ipmi/username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a username for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/network_address_detail"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-network-address-detail"><strong>network_address_detail</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/network_address_detail" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide the list of IP addresses, host names, or the range of IP addresses of the devices to be discovered or included.</p>
+<p>Sample Valid IP Range Formats</p>
+<blockquote>
+<div><p>192.35.0.0</p>
+<p>192.36.0.0-10.36.0.255</p>
+<p>192.37.0.0/24</p>
+<p>2345:f2b1:f083:135::5500/118</p>
+<p>2345:f2b1:f083:135::a500-2607:f2b1:f083:135::a600</p>
+<p>hostname.domain.tld</p>
+<p>hostname</p>
+<p>2345:f2b1:f083:139::22a</p>
+</div></blockquote>
+<p>Sample Invalid IP Range Formats</p>
+<blockquote>
+<div><p>192.35.0.*</p>
+<p>192.36.0.0-255</p>
+<p>192.35.0.0/255.255.255.0</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NOTE</span></code> The range size for the number of IP addresses is limited to 16,385 (0x4001).</p>
+<p><code class="docutils literal notranslate"><span class="pre">NOTE</span></code> Both IPv6 and IPv6 CIDR formats are supported.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish"><strong>redfish</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>REDFISH protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish/ca_check"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish-ca-check"><strong>ca_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish/ca_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable the Certificate Authority (CA) check.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish/certificate_data"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish-certificate-data"><strong>certificate_data</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish/certificate_data" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide certificate data for the CA check.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish/cn_check"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish-cn-check"><strong>cn_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish/cn_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable the Common Name (CN) check.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish/domain"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish-domain"><strong>domain</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish/domain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a domain for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish/password"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish/password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a password for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish/port"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish/port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the port number that the job must use to discover the devices.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">443</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish/retries"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish-retries"><strong>retries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish/retries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the number of repeated attempts required to discover a device.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish/timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish/timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the time in seconds after which a job must stop running.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">60</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/redfish/username"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-redfish-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/redfish/username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a username for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/snmp"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-snmp"><strong>snmp</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/snmp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Simple Network Management Protocol (SNMP).</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/snmp/community"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-snmp-community"><strong>community</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/snmp/community" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Community string for the SNMP protocol.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/snmp/port"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-snmp-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/snmp/port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the port number that the job must use to discover the devices.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">161</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/snmp/retries"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-snmp-retries"><strong>retries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/snmp/retries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the number of repeated attempts required to discover a device.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/snmp/timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-snmp-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/snmp/timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the time in seconds after which a job must stop running.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ssh"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ssh"><strong>ssh</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ssh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Secure Shell (SSH).</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ssh/check_known_hosts"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ssh-check-known-hosts"><strong>check_known_hosts</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ssh/check_known_hosts" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Verify the known host key.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ssh/is_sudo_user"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ssh-is-sudo-user"><strong>is_sudo_user</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ssh/is_sudo_user" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Use the SUDO option.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ssh/password"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ssh-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ssh/password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a password for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ssh/port"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ssh-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ssh/port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the port number that the job must use to discover the devices.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">22</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ssh/retries"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ssh-retries"><strong>retries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ssh/retries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the number of repeated attempts required to discover a device.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ssh/timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ssh-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ssh/timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the time in seconds after which a job must stop running.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">60</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/ssh/username"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-ssh-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/ssh/username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a username for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage"><strong>storage</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>HTTPS Storage protocol.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage/ca_check"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage-ca-check"><strong>ca_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage/ca_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable the Certificate Authority (CA) check.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage/certificate_data"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage-certificate-data"><strong>certificate_data</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage/certificate_data" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide certificate data for the CA check.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage/cn_check"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage-cn-check"><strong>cn_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage/cn_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable the Common Name (CN) check.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage/domain"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage-domain"><strong>domain</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage/domain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a domain for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage/password"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage/password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a password for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage/port"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage/port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the port number that the job must use to discover the devices.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">443</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage/retries"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage-retries"><strong>retries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage/retries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the number of repeated attempts required to discover a device.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage/timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage/timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the time in seconds after which a job must stop running.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">60</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/storage/username"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-storage-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/storage/username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a username for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware"><strong>vmware</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>VMWARE protocol.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware/ca_check"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware-ca-check"><strong>ca_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware/ca_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable the Certificate Authority (CA) check.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware/certificate_data"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware-certificate-data"><strong>certificate_data</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware/certificate_data" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide certificate data for the CA check.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware/cn_check"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware-cn-check"><strong>cn_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware/cn_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable the Common Name (CN) check.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware/domain"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware-domain"><strong>domain</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware/domain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a domain for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware/password"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware/password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a password for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware/port"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware/port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the port number that the job must use to discover the devices.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">443</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware/retries"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware-retries"><strong>retries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware/retries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the number of repeated attempts required to discover a device.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware/timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware/timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the time in seconds after which a job must stop running.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">60</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/vmware/username"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-vmware-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/vmware/username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a username for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman"><strong>wsman</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Web Services-Management (WS-Man).</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman/ca_check"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman-ca-check"><strong>ca_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman/ca_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable the Certificate Authority (CA) check.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman/certificate_data"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman-certificate-data"><strong>certificate_data</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman/certificate_data" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide certificate data for the CA check.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman/cn_check"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman-cn-check"><strong>cn_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman/cn_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable the Common Name (CN) check.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman/domain"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman-domain"><strong>domain</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman/domain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a domain for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman/password"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman/password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a password for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman/port"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman/port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the port number that the job must use to discover the devices.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">443</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman/retries"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman-retries"><strong>retries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman/retries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the number of repeated attempts required to discover a device.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman/timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman/timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enter the time in seconds after which a job must stop running.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">60</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_config_targets/wsman/username"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-config-targets-wsman-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_config_targets/wsman/username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Provide a username for the protocol.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_id"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-id"><strong>discovery_id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>ID of the discovery configuration group.</p>
+<p>This value is DiscoveryConfigGroupId in the return values under discovery_status.</p>
+<p>It is mutually exclusive with <em>discovery_job_name</em>.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-discovery_job_name"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-discovery-job-name"><strong>discovery_job_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-discovery_job_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the discovery configuration job.</p>
+<p>It is mutually exclusive with <em>discovery_id</em>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-email_recipient"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-email-recipient"><strong>email_recipient</strong></p>
+<a class="ansibleOptionLink" href="#parameter-email_recipient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enter the email address to which notifications are to be sent about the discovery job status. Configure the SMTP settings to allow sending notifications to an email address.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-hostname"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-hostname"><strong>hostname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-hostname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>OpenManage Enterprise IP address or hostname.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ignore_partial_failure"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-ignore-partial-failure"><strong>ignore_partial_failure</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ignore_partial_failure" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Provides the option to ignore partial failures. Partial failures occur when there is a combination of both discovered and undiscovered IPs.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, then the partial failure is not ignored, and the module will error out.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, then the partial failure is ignored.</p>
+<p>This option is only applicable if <em>job_wait</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-job_wait"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-job-wait"><strong>job_wait</strong></p>
+<a class="ansibleOptionLink" href="#parameter-job_wait" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Provides the option to wait for job completion.</p>
+<p>This option is applicable when <em>state</em> is <code class="docutils literal notranslate"><span class="pre">present</span></code>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">true</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-job_wait_timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-job-wait-timeout"><strong>job_wait_timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-job_wait_timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The maximum wait time of <em>job_wait</em> in seconds. The job is tracked only for this duration.</p>
+<p>This option is applicable when <em>job_wait</em> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">10800</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-new_name"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-new-name"><strong>new_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-new_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>New name of the discovery configuration job.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-password"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>OpenManage Enterprise password.</p>
+<p>If the password is not provided, then the environment variable <code class="docutils literal notranslate"><span class="pre">OME_PASSWORD</span></code> is used.</p>
+<p>Example: export OME_PASSWORD=password</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-port"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>OpenManage Enterprise HTTPS port.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">443</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-schedule"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-schedule"><strong>schedule</strong></p>
+<a class="ansibleOptionLink" href="#parameter-schedule" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Provides the option to schedule the discovery job.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">RunLater</span></code> is selected, then <em>cron</em> must be specified.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;RunNow&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;RunLater&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-state"><strong>state</strong></p>
+<a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p><code class="docutils literal notranslate"><span class="pre">present</span></code> creates a discovery job or modifies an existing discovery job.</p>
+<p><em>discovery_job_name</em> is mandatory for the creation of a new discovery job.</p>
+<p>If multiple discoveries of the same <em>discovery_job_name</em> exist, then the new discovery job will not be created.</p>
+<p><code class="docutils literal notranslate"><span class="pre">absent</span></code> deletes an existing discovery job(s) with the specified <em>discovery_job_name</em>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;present&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;absent&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<p><em class="ansible-option-versionadded">added in dellemc.openmanage 5.0.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The socket level timeout in seconds.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">30</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-trap_destination"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-trap-destination"><strong>trap_destination</strong></p>
+<a class="ansibleOptionLink" href="#parameter-trap_destination" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable OpenManage Enterprise to receive the incoming SNMP traps from the discovered devices.</p>
+<p>This is effective only for servers discovered by using their iDRAC interface.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-username"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>OpenManage Enterprise username.</p>
+<p>If the username is not provided, then the environment variable <code class="docutils literal notranslate"><span class="pre">OME_USERNAME</span></code> is used.</p>
+<p>Example: export OME_USERNAME=username</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-validate_certs"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-parameter-validate-certs"><strong>validate_certs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+<p><em class="ansible-option-versionadded">added in dellemc.openmanage 5.0.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the SSL certificates will not be validated.</p>
+<p>Configure <code class="docutils literal notranslate"><span class="pre">false</span></code> only on personally controlled sites where self-signed certificates are used.</p>
+<p>Prior to collection version <code class="docutils literal notranslate"><span class="pre">5.0.0</span></code>, the <em>validate_certs</em> is <code class="docutils literal notranslate"><span class="pre">false</span></code> by default.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">true</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Notes</a><a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Run this module from a system that has direct access to Dell OpenManage Enterprise.</p></li>
+<li><p>This module does not support <code class="docutils literal notranslate"><span class="pre">check_mode</span></code>.</p></li>
+<li><p>If <em>state</em> is <code class="docutils literal notranslate"><span class="pre">present</span></code>, then Idempotency is not supported.</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Discover servers in a range</span>
+<span class="w">  </span><span class="nt">dellemc.openmanage.ome_discovery</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+<span class="w">    </span><span class="nt">ca_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/ca_cert.pem&quot;</span>
+<span class="w">    </span><span class="nt">discovery_job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Discovery_server_1&quot;</span>
+<span class="w">    </span><span class="nt">discovery_config_targets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">network_address_detail</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.24.1-192.96.24.255</span>
+<span class="w">        </span><span class="nt">device_types</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SERVER</span>
+<span class="w">        </span><span class="nt">wsman</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Discover chassis in a range</span>
+<span class="w">  </span><span class="nt">dellemc.openmanage.ome_discovery</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+<span class="w">    </span><span class="nt">ca_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/ca_cert.pem&quot;</span>
+<span class="w">    </span><span class="nt">discovery_job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Discovery_chassis_1&quot;</span>
+<span class="w">    </span><span class="nt">discovery_config_targets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">network_address_detail</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.24.1-192.96.24.255</span>
+<span class="w">        </span><span class="nt">device_types</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHASSIS</span>
+<span class="w">        </span><span class="nt">wsman</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Discover switches in a range</span>
+<span class="w">  </span><span class="nt">dellemc.openmanage.ome_discovery</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+<span class="w">    </span><span class="nt">ca_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/ca_cert.pem&quot;</span>
+<span class="w">    </span><span class="nt">discovery_job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Discover_switch_1&quot;</span>
+<span class="w">    </span><span class="nt">discovery_config_targets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">network_address_detail</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.24.1-192.96.24.255</span>
+<span class="w">        </span><span class="nt">device_types</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK SWITCH</span>
+<span class="w">        </span><span class="nt">snmp</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">snmp_creds</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Discover storage in a range</span>
+<span class="w">  </span><span class="nt">dellemc.openmanage.ome_discovery</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+<span class="w">    </span><span class="nt">ca_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/ca_cert.pem&quot;</span>
+<span class="w">    </span><span class="nt">discovery_job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Discover_storage_1&quot;</span>
+<span class="w">    </span><span class="nt">discovery_config_targets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">network_address_detail</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.24.1-192.96.24.255</span>
+<span class="w">        </span><span class="nt">device_types</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STORAGE</span>
+<span class="w">        </span><span class="nt">storage</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+<span class="w">        </span><span class="nt">snmp</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">snmp_creds</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete a discovery job</span>
+<span class="w">  </span><span class="nt">dellemc.openmanage.ome_discovery</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+<span class="w">    </span><span class="nt">ca_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/ca_cert.pem&quot;</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;absent&quot;</span>
+<span class="w">    </span><span class="nt">discovery_job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Discovery-123&quot;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Schedule the discovery of multiple devices ignoring partial failure and enable trap to receive alerts</span>
+<span class="w">  </span><span class="nt">dellemc.openmanage.ome_discovery</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+<span class="w">    </span><span class="nt">ca_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/ca_cert.pem&quot;</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;present&quot;</span>
+<span class="w">    </span><span class="nt">discovery_job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Discovery-123&quot;</span>
+<span class="w">    </span><span class="nt">discovery_config_targets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">network_address_detail</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.24.1-192.96.24.255</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.0.0/24</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.26.108</span>
+<span class="w">        </span><span class="nt">device_types</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SERVER</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHASSIS</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STORAGE</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK SWITCH</span>
+<span class="w">        </span><span class="nt">wsman</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wsman_user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wsman_pwd</span>
+<span class="w">        </span><span class="nt">redfish</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redfish_user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redfish_pwd</span>
+<span class="w">        </span><span class="nt">snmp</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">snmp_community</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">network_address_detail</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.25.1-192.96.25.255</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipmihost</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">esxiserver</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sshserver</span>
+<span class="w">        </span><span class="nt">device_types</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SERVER</span>
+<span class="w">        </span><span class="nt">ssh</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh_user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh_pwd</span>
+<span class="w">        </span><span class="nt">vmware</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vm_user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmware_pwd</span>
+<span class="w">        </span><span class="nt">ipmi</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipmi_user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipmi_pwd</span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RunLater</span>
+<span class="w">    </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">9</span><span class="nv"> </span><span class="s">?</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">MON,WED,FRI</span><span class="nv"> </span><span class="s">*&quot;</span>
+<span class="w">    </span><span class="nt">ignore_partial_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">trap_destination</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">community_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">email_recipient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test_email@company.com</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Discover servers with ca check enabled</span>
+<span class="w">  </span><span class="nt">dellemc.openmanage.ome_discovery</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+<span class="w">    </span><span class="nt">ca_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/ca_cert.pem&quot;</span>
+<span class="w">    </span><span class="nt">discovery_job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Discovery_server_ca1&quot;</span>
+<span class="w">    </span><span class="nt">discovery_config_targets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">network_address_detail</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.24.108</span>
+<span class="w">        </span><span class="nt">device_types</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SERVER</span>
+<span class="w">        </span><span class="nt">wsman</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+<span class="w">          </span><span class="nt">ca_check</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">certificate_data</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">lookup</span><span class="o">(</span><span class="s1">&#39;ansible.builtin.file&#39;</span><span class="o">,</span> <span class="s1">&#39;/path/to/certificate_data_file&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Discover chassis with ca check enabled data</span>
+<span class="w">  </span><span class="nt">dellemc.openmanage.ome_discovery</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+<span class="w">    </span><span class="nt">ca_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/ca_cert.pem&quot;</span>
+<span class="w">    </span><span class="nt">discovery_job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Discovery_chassis_ca1&quot;</span>
+<span class="w">    </span><span class="nt">discovery_config_targets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">network_address_detail</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.96.24.108</span>
+<span class="w">        </span><span class="nt">device_types</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHASSIS</span>
+<span class="w">        </span><span class="nt">redfish</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+<span class="w">          </span><span class="nt">ca_check</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">certificate_data</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-----BEGIN</span><span class="nv"> </span><span class="s">CERTIFICATE-----\r\n</span>
+<span class="w">          </span><span class="s">ABCDEFGHIJKLMNOPQRSTUVWXYZaqwertyuiopasdfghjklzxcvbnmasdasagasvv\r\n</span>
+<span class="w">          </span><span class="s">ABCDEFGHIJKLMNOPQRSTUVWXYZaqwertyuiopasdfghjklzxcvbnmasdasagasvv\r\n</span>
+<span class="w">          </span><span class="s">ABCDEFGHIJKLMNOPQRSTUVWXYZaqwertyuiopasdfghjklzxcvbnmasdasagasvv\r\n</span>
+<span class="w">          </span><span class="s">aqwertyuiopasdfghjklzxcvbnmasdasagasvv=\r\n</span>
+<span class="w">          </span><span class="s">-----END</span><span class="nv"> </span><span class="s">CERTIFICATE-----&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<p>Common return values are documented <a class="reference internal" href="../../../reference_appendices/common_return_values.html#common-return-values"><span class="std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-discovery_ids"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-return-discovery-ids"><strong>discovery_ids</strong></p>
+<a class="ansibleOptionLink" href="#return-discovery_ids" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>IDs of the discoveries with duplicate names.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> when discoveries with duplicate name exist for <em>state</em> is <code class="docutils literal notranslate"><span class="pre">present</span></code></p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[1234,</span> <span class="pre">5678]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-discovery_status"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-return-discovery-status"><strong>discovery_status</strong></p>
+<a class="ansibleOptionLink" href="#return-discovery_status" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Details of the discovery job created or modified.</p>
+<p>If <em>job_wait</em> is true, Completed and Failed IPs are also listed.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> when <em>state</em> is <code class="docutils literal notranslate"><span class="pre">present</span></code></p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">{&quot;Completed&quot;:</span> <span class="pre">[&quot;192.168.24.17&quot;,</span> <span class="pre">&quot;192.168.24.20&quot;,</span> <span class="pre">&quot;192.168.24.22&quot;],</span> <span class="pre">&quot;DiscoveredDevicesByType&quot;:</span> <span class="pre">[{&quot;Count&quot;:</span> <span class="pre">3,</span> <span class="pre">&quot;DeviceType&quot;:</span> <span class="pre">&quot;SERVER&quot;}],</span> <span class="pre">&quot;DiscoveryConfigDiscoveredDeviceCount&quot;:</span> <span class="pre">3,</span> <span class="pre">&quot;DiscoveryConfigEmailRecipient&quot;:</span> <span class="pre">&quot;myemail&#64;dell.com&quot;,</span> <span class="pre">&quot;DiscoveryConfigExpectedDeviceCount&quot;:</span> <span class="pre">9,</span> <span class="pre">&quot;DiscoveryConfigGroupId&quot;:</span> <span class="pre">125,</span> <span class="pre">&quot;Failed&quot;:</span> <span class="pre">[&quot;192.168.24.15&quot;,</span> <span class="pre">&quot;192.168.24.16&quot;,</span> <span class="pre">&quot;192.168.24.18&quot;,</span> <span class="pre">&quot;192.168.24.19&quot;,</span> <span class="pre">&quot;192.168.24.21&quot;,</span> <span class="pre">&quot;host123&quot;],</span> <span class="pre">&quot;JobDescription&quot;:</span> <span class="pre">&quot;D1&quot;,</span> <span class="pre">&quot;JobEnabled&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;JobEndTime&quot;:</span> <span class="pre">&quot;2021-01-01</span> <span class="pre">06:27:29.99&quot;,</span> <span class="pre">&quot;JobId&quot;:</span> <span class="pre">12666,</span> <span class="pre">&quot;JobName&quot;:</span> <span class="pre">&quot;D1&quot;,</span> <span class="pre">&quot;JobNextRun&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;JobProgress&quot;:</span> <span class="pre">&quot;100&quot;,</span> <span class="pre">&quot;JobSchedule&quot;:</span> <span class="pre">&quot;startnow&quot;,</span> <span class="pre">&quot;JobStartTime&quot;:</span> <span class="pre">&quot;2021-01-01</span> <span class="pre">06:24:10.071&quot;,</span> <span class="pre">&quot;JobStatusId&quot;:</span> <span class="pre">2090,</span> <span class="pre">&quot;LastUpdateTime&quot;:</span> <span class="pre">&quot;2021-01-01</span> <span class="pre">06:27:30.001&quot;,</span> <span class="pre">&quot;UpdatedBy&quot;:</span> <span class="pre">&quot;admin&quot;}</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-error_info"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-return-error-info"><strong>error_info</strong></p>
+<a class="ansibleOptionLink" href="#return-error_info" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Details of the HTTP Error.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> on HTTP error</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">{&quot;error&quot;:</span> <span class="pre">{&quot;&#64;Message.ExtendedInfo&quot;:</span> <span class="pre">[{&quot;Message&quot;:</span> <span class="pre">&quot;Unable</span> <span class="pre">to</span> <span class="pre">process</span> <span class="pre">the</span> <span class="pre">request</span> <span class="pre">because</span> <span class="pre">an</span> <span class="pre">error</span> <span class="pre">occurred.&quot;,</span> <span class="pre">&quot;MessageArgs&quot;:</span> <span class="pre">[],</span> <span class="pre">&quot;MessageId&quot;:</span> <span class="pre">&quot;GEN1234&quot;,</span> <span class="pre">&quot;RelatedProperties&quot;:</span> <span class="pre">[],</span> <span class="pre">&quot;Resolution&quot;:</span> <span class="pre">&quot;Retry</span> <span class="pre">the</span> <span class="pre">operation.</span> <span class="pre">If</span> <span class="pre">the</span> <span class="pre">issue</span> <span class="pre">persists,</span> <span class="pre">contact</span> <span class="pre">your</span> <span class="pre">system</span> <span class="pre">administrator.&quot;,</span> <span class="pre">&quot;Severity&quot;:</span> <span class="pre">&quot;Critical&quot;}],</span> <span class="pre">&quot;code&quot;:</span> <span class="pre">&quot;Base.1.0.GeneralError&quot;,</span> <span class="pre">&quot;message&quot;:</span> <span class="pre">&quot;A</span> <span class="pre">general</span> <span class="pre">error</span> <span class="pre">has</span> <span class="pre">occurred.</span> <span class="pre">See</span> <span class="pre">ExtendedInfo</span> <span class="pre">for</span> <span class="pre">more</span> <span class="pre">information.&quot;}}</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-job_detailed_status"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-return-job-detailed-status"><strong>job_detailed_status</strong></p>
+<a class="ansibleOptionLink" href="#return-job_detailed_status" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Detailed last execution history of a job.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> All time.</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[{&quot;ElapsedTime&quot;:</span> <span class="pre">&quot;00:00:00&quot;,</span> <span class="pre">&quot;EndTime&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;ExecutionHistoryId&quot;:</span> <span class="pre">564873,</span> <span class="pre">&quot;Id&quot;:</span> <span class="pre">656893,</span> <span class="pre">&quot;IdBaseEntity&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;JobStatus&quot;:</span> <span class="pre">{&quot;Id&quot;:</span> <span class="pre">2050,</span> <span class="pre">&quot;Name&quot;:</span> <span class="pre">&quot;Running&quot;},</span> <span class="pre">&quot;Key&quot;:</span> <span class="pre">&quot;192.96.24.1&quot;,</span> <span class="pre">&quot;Progress&quot;:</span> <span class="pre">&quot;0&quot;,</span> <span class="pre">&quot;StartTime&quot;:</span> <span class="pre">&quot;2023-07-04</span> <span class="pre">06:23:54.008&quot;,</span> <span class="pre">&quot;Value&quot;:</span> <span class="pre">&quot;Running\nDiscovery</span> <span class="pre">of</span> <span class="pre">target</span> <span class="pre">192.96.24.1</span> <span class="pre">started.\nDiscovery</span> <span class="pre">target</span> <span class="pre">resolved</span> <span class="pre">to</span> <span class="pre">IP</span>&#160; <span class="pre">192.96.24.1</span> <span class="pre">.&quot;}]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-msg"></div><p class="ansible-option-title" id="ansible-collections-dellemc-openmanage-ome-discovery-module-return-msg"><strong>msg</strong></p>
+<a class="ansibleOptionLink" href="#return-msg" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Overall status of the discovery operation.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">&quot;Successfully</span> <span class="pre">deleted</span> <span class="pre">1</span> <span class="pre">discovery</span> <span class="pre">job(s).&quot;</span></code></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Jagadeesh N V (&#64;jagadeeshnv)</p></li>
+<li><p>Sajna Shetty (&#64;Sajna-Shetty)</p></li>
+<li><p>Abhishek Sinha (&#64;Abhishek-Dell)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h3>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/dell/dellemc-openmanage-ansible-modules/issues" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/dell/dellemc-openmanage-ansible-modules" rel="noopener external" target="_blank">Homepage</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/dell/dellemc-openmanage-ansible-modules/tree/collections" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ome_diagnostics_module.html" class="btn btn-neutral float-left" title="dellemc.openmanage.ome_diagnostics module – Export technical support logs(TSR) to network share location" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ome_domain_user_groups_module.html" class="btn btn-neutral float-right" title="dellemc.openmanage.ome_domain_user_groups module – Create, modify, or delete an Active Directory/LDAP user group on OpenManage Enterprise and OpenManage Enterprise Modular" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Apr 25, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

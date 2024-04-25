@@ -5,7 +5,7 @@
 <meta content="2.10.0" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index of all Inventory Plugins &mdash; Ansible Core Documentation</title>
+  <title>Index of all Inventory Plugins &mdash; Ansible Community Documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
       <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
       <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
@@ -30,7 +30,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Index of all Lookup Plugins" href="index_lookup.html" />
-    <link rel="prev" title="Index of all Filter Plugins" href="index_filter.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+    <link rel="prev" title="Index of all Httpapi Plugins" href="index_httpapi.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
 <script src="https://www.redhat.com/dtm.js"></script>
 
 
@@ -75,7 +75,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
   <img class="DocSiteNav-logo"
     src="../_static/images/Ansible-Mark-RGB_White.png"
     alt="Ansible Logo">
-  <div class="DocSiteNav-title">Ansible Core Documentation</div>
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
 </a>
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -85,7 +85,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           
           
           <a href="../index.html" class="icon icon-home">
-            Ansible Core
+            Ansible
           </a>
               <div class="version">
                 devel
@@ -112,24 +112,17 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       >
         
         <option
-            value="2.16"
+            value="latest"
             
         >
-            2.16
+            latest
         </option>
         
         <option
-            value="2.15"
+            value="2.9"
             
         >
-            2.15
-        </option>
-        
-        <option
-            value="2.14"
-            
-        >
-            2.14
+            2.9
         </option>
         
         <option
@@ -156,13 +149,14 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
               <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../porting_guides/core_porting_guides.html">Ansible Core Porting Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Using Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
@@ -173,9 +167,10 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible Core</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
@@ -183,6 +178,16 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
 <ul>
@@ -196,14 +201,45 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="index_become.html">Index of all Become Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_cache.html">Index of all Cache Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_callback.html">Index of all Callback Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_cliconf.html">Index of all Cliconf Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_connection.html">Index of all Connection Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_filter.html">Index of all Filter Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_httpapi.html">Index of all Httpapi Plugins</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Index of all Inventory Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#amazon-aws">amazon.aws</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ansible-builtin">ansible.builtin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#awx-awx">awx.awx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#azure-azcollection">azure.azcollection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cloudscale-ch-cloud">cloudscale_ch.cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-aws">community.aws</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-digitalocean">community.digitalocean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-dns">community.dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-docker">community.docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-general">community.general</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-hrobot">community.hrobot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-libvirt">community.libvirt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-okd">community.okd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-vmware">community.vmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-zabbix">community.zabbix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dellemc-openmanage">dellemc.openmanage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#google-cloud">google.cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hetzner-hcloud">hetzner.hcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#infoblox-nios-modules">infoblox.nios_modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kubernetes-core">kubernetes.core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microsoft-ad">microsoft.ad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#netbox-netbox">netbox.netbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ngine-io-cloudstack">ngine_io.cloudstack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openstack-cloud">openstack.cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ovirt-ovirt">ovirt.ovirt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#telekom-mms-icinga-director">telekom_mms.icinga_director</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theforeman-foreman">theforeman.foreman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vultr-cloud">vultr.cloud</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index_lookup.html">Index of all Lookup Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_module.html">Index of all Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_netconf.html">Index of all Netconf Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_role.html">Index of all Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_shell.html">Index of all Shell Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_strategy.html">Index of all Strategy Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_test.html">Index of all Test Plugins</a></li>
@@ -230,6 +266,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
 </ul>
 <!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
@@ -248,7 +285,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Ansible Core</a>
+          <a href="../index.html">Ansible</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -302,7 +339,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
       var msg = '<p>';
       if (startsWith(current_url_path, "/ansible-core/")) {
         msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
-      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/2.16/"])) {
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/9/"])) {
         /* temp extra banner to advertise something */
         banner += extra_banner;
 
@@ -339,6 +376,13 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
              
   <section id="index-of-all-inventory-plugins">
 <span id="list-of-inventory-plugins"></span><h1>Index of all Inventory Plugins<a class="headerlink" href="#index-of-all-inventory-plugins" title="Link to this heading"></a></h1>
+<section id="amazon-aws">
+<h2>amazon.aws<a class="headerlink" href="#amazon-aws" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="amazon/aws/aws_ec2_inventory.html#ansible-collections-amazon-aws-aws-ec2-inventory"><span class="std std-ref">amazon.aws.aws_ec2</span></a> – EC2 inventory source</p></li>
+<li><p><a class="reference internal" href="amazon/aws/aws_rds_inventory.html#ansible-collections-amazon-aws-aws-rds-inventory"><span class="std std-ref">amazon.aws.aws_rds</span></a> – RDS instance inventory source</p></li>
+</ul>
+</section>
 <section id="ansible-builtin">
 <h2>ansible.builtin<a class="headerlink" href="#ansible-builtin" title="Link to this heading"></a></h2>
 <ul class="simple">
@@ -353,6 +397,178 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li><p><a class="reference internal" href="ansible/builtin/yaml_inventory.html#ansible-collections-ansible-builtin-yaml-inventory"><span class="std std-ref">ansible.builtin.yaml</span></a> – Uses a specific YAML file as an inventory source.</p></li>
 </ul>
 </section>
+<section id="awx-awx">
+<h2>awx.awx<a class="headerlink" href="#awx-awx" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="awx/awx/controller_inventory.html#ansible-collections-awx-awx-controller-inventory"><span class="std std-ref">awx.awx.controller</span></a> – Ansible dynamic inventory plugin for the Automation Platform Controller.</p></li>
+</ul>
+</section>
+<section id="azure-azcollection">
+<h2>azure.azcollection<a class="headerlink" href="#azure-azcollection" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="azure/azcollection/azure_rm_inventory.html#ansible-collections-azure-azcollection-azure-rm-inventory"><span class="std std-ref">azure.azcollection.azure_rm</span></a> – Azure Resource Manager inventory plugin</p></li>
+</ul>
+</section>
+<section id="cloudscale-ch-cloud">
+<h2>cloudscale_ch.cloud<a class="headerlink" href="#cloudscale-ch-cloud" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="cloudscale_ch/cloud/inventory_inventory.html#ansible-collections-cloudscale-ch-cloud-inventory-inventory"><span class="std std-ref">cloudscale_ch.cloud.inventory</span></a> – cloudscale.ch inventory source</p></li>
+</ul>
+</section>
+<section id="community-aws">
+<h2>community.aws<a class="headerlink" href="#community-aws" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/aws/aws_mq_inventory.html#ansible-collections-community-aws-aws-mq-inventory"><span class="std std-ref">community.aws.aws_mq</span></a> – MQ broker inventory source</p></li>
+</ul>
+</section>
+<section id="community-digitalocean">
+<h2>community.digitalocean<a class="headerlink" href="#community-digitalocean" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/digitalocean/digitalocean_inventory.html#ansible-collections-community-digitalocean-digitalocean-inventory"><span class="std std-ref">community.digitalocean.digitalocean</span></a> – DigitalOcean Inventory Plugin</p></li>
+</ul>
+</section>
+<section id="community-dns">
+<h2>community.dns<a class="headerlink" href="#community-dns" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/dns/hetzner_dns_records_inventory.html#ansible-collections-community-dns-hetzner-dns-records-inventory"><span class="std std-ref">community.dns.hetzner_dns_records</span></a> – Create inventory from Hetzner DNS records</p></li>
+<li><p><a class="reference internal" href="community/dns/hosttech_dns_records_inventory.html#ansible-collections-community-dns-hosttech-dns-records-inventory"><span class="std std-ref">community.dns.hosttech_dns_records</span></a> – Create inventory from Hosttech DNS records</p></li>
+</ul>
+</section>
+<section id="community-docker">
+<h2>community.docker<a class="headerlink" href="#community-docker" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/docker/docker_containers_inventory.html#ansible-collections-community-docker-docker-containers-inventory"><span class="std std-ref">community.docker.docker_containers</span></a> – Ansible dynamic inventory plugin for Docker containers</p></li>
+<li><p><a class="reference internal" href="community/docker/docker_machine_inventory.html#ansible-collections-community-docker-docker-machine-inventory"><span class="std std-ref">community.docker.docker_machine</span></a> – Docker Machine inventory source</p></li>
+<li><p><a class="reference internal" href="community/docker/docker_swarm_inventory.html#ansible-collections-community-docker-docker-swarm-inventory"><span class="std std-ref">community.docker.docker_swarm</span></a> – Ansible dynamic inventory plugin for Docker swarm nodes.</p></li>
+</ul>
+</section>
+<section id="community-general">
+<h2>community.general<a class="headerlink" href="#community-general" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/general/cobbler_inventory.html#ansible-collections-community-general-cobbler-inventory"><span class="std std-ref">community.general.cobbler</span></a> – Cobbler inventory source</p></li>
+<li><p><a class="reference internal" href="community/general/gitlab_runners_inventory.html#ansible-collections-community-general-gitlab-runners-inventory"><span class="std std-ref">community.general.gitlab_runners</span></a> – Ansible dynamic inventory plugin for GitLab runners.</p></li>
+<li><p><a class="reference internal" href="community/general/icinga2_inventory.html#ansible-collections-community-general-icinga2-inventory"><span class="std std-ref">community.general.icinga2</span></a> – Icinga2 inventory source</p></li>
+<li><p><a class="reference internal" href="community/general/linode_inventory.html#ansible-collections-community-general-linode-inventory"><span class="std std-ref">community.general.linode</span></a> – Ansible dynamic inventory plugin for Linode.</p></li>
+<li><p><a class="reference internal" href="community/general/lxd_inventory.html#ansible-collections-community-general-lxd-inventory"><span class="std std-ref">community.general.lxd</span></a> – Returns Ansible inventory from lxd host</p></li>
+<li><p><a class="reference internal" href="community/general/nmap_inventory.html#ansible-collections-community-general-nmap-inventory"><span class="std std-ref">community.general.nmap</span></a> – Uses nmap to find hosts to target</p></li>
+<li><p><a class="reference internal" href="community/general/online_inventory.html#ansible-collections-community-general-online-inventory"><span class="std std-ref">community.general.online</span></a> – Scaleway (previously Online SAS or Online.net) inventory source</p></li>
+<li><p><a class="reference internal" href="community/general/opennebula_inventory.html#ansible-collections-community-general-opennebula-inventory"><span class="std std-ref">community.general.opennebula</span></a> – OpenNebula inventory source</p></li>
+<li><p><a class="reference internal" href="community/general/proxmox_inventory.html#ansible-collections-community-general-proxmox-inventory"><span class="std std-ref">community.general.proxmox</span></a> – Proxmox inventory source</p></li>
+<li><p><a class="reference internal" href="community/general/scaleway_inventory.html#ansible-collections-community-general-scaleway-inventory"><span class="std std-ref">community.general.scaleway</span></a> – Scaleway inventory source</p></li>
+<li><p><a class="reference internal" href="community/general/stackpath_compute_inventory.html#ansible-collections-community-general-stackpath-compute-inventory"><span class="std std-ref">community.general.stackpath_compute</span></a> – StackPath Edge Computing inventory source</p></li>
+<li><p><a class="reference internal" href="community/general/virtualbox_inventory.html#ansible-collections-community-general-virtualbox-inventory"><span class="std std-ref">community.general.virtualbox</span></a> – virtualbox inventory source</p></li>
+<li><p><a class="reference internal" href="community/general/xen_orchestra_inventory.html#ansible-collections-community-general-xen-orchestra-inventory"><span class="std std-ref">community.general.xen_orchestra</span></a> – Xen Orchestra inventory source</p></li>
+</ul>
+</section>
+<section id="community-hrobot">
+<h2>community.hrobot<a class="headerlink" href="#community-hrobot" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/hrobot/robot_inventory.html#ansible-collections-community-hrobot-robot-inventory"><span class="std std-ref">community.hrobot.robot</span></a> – Hetzner Robot inventory source</p></li>
+</ul>
+</section>
+<section id="community-libvirt">
+<h2>community.libvirt<a class="headerlink" href="#community-libvirt" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/libvirt/libvirt_inventory.html#ansible-collections-community-libvirt-libvirt-inventory"><span class="std std-ref">community.libvirt.libvirt</span></a> – Libvirt inventory source</p></li>
+</ul>
+</section>
+<section id="community-okd">
+<h2>community.okd<a class="headerlink" href="#community-okd" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/okd/openshift_inventory.html#ansible-collections-community-okd-openshift-inventory"><span class="std std-ref">community.okd.openshift</span></a> – OpenShift inventory source</p></li>
+</ul>
+</section>
+<section id="community-vmware">
+<h2>community.vmware<a class="headerlink" href="#community-vmware" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/vmware/vmware_host_inventory_inventory.html#ansible-collections-community-vmware-vmware-host-inventory-inventory"><span class="std std-ref">community.vmware.vmware_host_inventory</span></a> – VMware ESXi hostsystem inventory source</p></li>
+<li><p><a class="reference internal" href="community/vmware/vmware_vm_inventory_inventory.html#ansible-collections-community-vmware-vmware-vm-inventory-inventory"><span class="std std-ref">community.vmware.vmware_vm_inventory</span></a> – VMware Guest inventory source</p></li>
+</ul>
+</section>
+<section id="community-zabbix">
+<h2>community.zabbix<a class="headerlink" href="#community-zabbix" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="community/zabbix/zabbix_inventory_inventory.html#ansible-collections-community-zabbix-zabbix-inventory-inventory"><span class="std std-ref">community.zabbix.zabbix_inventory</span></a> – Zabbix Inventory Plugin</p></li>
+</ul>
+</section>
+<section id="dellemc-openmanage">
+<h2>dellemc.openmanage<a class="headerlink" href="#dellemc-openmanage" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="dellemc/openmanage/ome_inventory_inventory.html#ansible-collections-dellemc-openmanage-ome-inventory-inventory"><span class="std std-ref">dellemc.openmanage.ome_inventory</span></a> – Group inventory plugin on OpenManage Enterprise.</p></li>
+</ul>
+</section>
+<section id="google-cloud">
+<h2>google.cloud<a class="headerlink" href="#google-cloud" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="google/cloud/gcp_compute_inventory.html#ansible-collections-google-cloud-gcp-compute-inventory"><span class="std std-ref">google.cloud.gcp_compute</span></a> – Google Cloud Compute Engine inventory source</p></li>
+</ul>
+</section>
+<section id="hetzner-hcloud">
+<h2>hetzner.hcloud<a class="headerlink" href="#hetzner-hcloud" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="hetzner/hcloud/hcloud_inventory.html#ansible-collections-hetzner-hcloud-hcloud-inventory"><span class="std std-ref">hetzner.hcloud.hcloud</span></a> – Ansible dynamic inventory plugin for the Hetzner Cloud.</p></li>
+</ul>
+</section>
+<section id="infoblox-nios-modules">
+<h2>infoblox.nios_modules<a class="headerlink" href="#infoblox-nios-modules" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="infoblox/nios_modules/nios_inventory_inventory.html#ansible-collections-infoblox-nios-modules-nios-inventory-inventory"><span class="std std-ref">infoblox.nios_modules.nios_inventory</span></a> – Infoblox inventory plugin</p></li>
+</ul>
+</section>
+<section id="kubernetes-core">
+<h2>kubernetes.core<a class="headerlink" href="#kubernetes-core" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="kubernetes/core/k8s_inventory.html#ansible-collections-kubernetes-core-k8s-inventory"><span class="std std-ref">kubernetes.core.k8s</span></a> – Kubernetes (K8s) inventory source</p></li>
+</ul>
+</section>
+<section id="microsoft-ad">
+<h2>microsoft.ad<a class="headerlink" href="#microsoft-ad" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="microsoft/ad/ldap_inventory.html#ansible-collections-microsoft-ad-ldap-inventory"><span class="std std-ref">microsoft.ad.ldap</span></a> – Inventory plugin for Active Directory</p></li>
+</ul>
+</section>
+<section id="netbox-netbox">
+<h2>netbox.netbox<a class="headerlink" href="#netbox-netbox" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="netbox/netbox/nb_inventory_inventory.html#ansible-collections-netbox-netbox-nb-inventory-inventory"><span class="std std-ref">netbox.netbox.nb_inventory</span></a> – NetBox inventory source</p></li>
+</ul>
+</section>
+<section id="ngine-io-cloudstack">
+<h2>ngine_io.cloudstack<a class="headerlink" href="#ngine-io-cloudstack" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="ngine_io/cloudstack/instance_inventory.html#ansible-collections-ngine-io-cloudstack-instance-inventory"><span class="std std-ref">ngine_io.cloudstack.instance</span></a> – Apache CloudStack instance inventory source</p></li>
+</ul>
+</section>
+<section id="openstack-cloud">
+<h2>openstack.cloud<a class="headerlink" href="#openstack-cloud" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="openstack/cloud/openstack_inventory.html#ansible-collections-openstack-cloud-openstack-inventory"><span class="std std-ref">openstack.cloud.openstack</span></a> – OpenStack inventory source</p></li>
+</ul>
+</section>
+<section id="ovirt-ovirt">
+<h2>ovirt.ovirt<a class="headerlink" href="#ovirt-ovirt" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="ovirt/ovirt/ovirt_inventory.html#ansible-collections-ovirt-ovirt-ovirt-inventory"><span class="std std-ref">ovirt.ovirt.ovirt</span></a> – oVirt inventory source</p></li>
+</ul>
+</section>
+<section id="telekom-mms-icinga-director">
+<h2>telekom_mms.icinga_director<a class="headerlink" href="#telekom-mms-icinga-director" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="telekom_mms/icinga_director/icinga_director_inventory_inventory.html#ansible-collections-telekom-mms-icinga-director-icinga-director-inventory-inventory"><span class="std std-ref">telekom_mms.icinga_director.icinga_director_inventory</span></a> – Returns Ansible inventory from Icinga</p></li>
+</ul>
+</section>
+<section id="theforeman-foreman">
+<h2>theforeman.foreman<a class="headerlink" href="#theforeman-foreman" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="theforeman/foreman/foreman_inventory.html#ansible-collections-theforeman-foreman-foreman-inventory"><span class="std std-ref">theforeman.foreman.foreman</span></a> – Foreman inventory source</p></li>
+</ul>
+</section>
+<section id="vultr-cloud">
+<h2>vultr.cloud<a class="headerlink" href="#vultr-cloud" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="vultr/cloud/vultr_inventory.html#ansible-collections-vultr-cloud-vultr-inventory"><span class="std std-ref">vultr.cloud.vultr</span></a> – Retrieves list of instances via Vultr v2 API</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -361,7 +577,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           
 
 <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index_filter.html" class="btn btn-neutral float-left" title="Index of all Filter Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index_httpapi.html" class="btn btn-neutral float-left" title="Index of all Httpapi Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="index_lookup.html" class="btn btn-neutral float-right" title="Index of all Lookup Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
