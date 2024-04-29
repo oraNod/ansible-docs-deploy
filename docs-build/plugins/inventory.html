@@ -395,6 +395,12 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </pre></div>
 </div>
 <p>To start using an inventory plugin with a YAML configuration source, create a file with the accepted file name schema documented for the plugin in question, then add <code class="docutils literal notranslate"><span class="pre">plugin:</span> <span class="pre">plugin_name</span></code>. Use the fully qualified name if the plugin is in a collection.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Inventory plugins have required name patterns to which they must conform, for example:</p>
+<p>An inventory that includes the <code class="docutils literal notranslate"><span class="pre">kubevirt.core.kubevirt</span></code> inventory plugin must use the <code class="docutils literal notranslate"><span class="pre">*.kubevirt.yml</span></code> filename pattern.
+An inventory that includes the <code class="docutils literal notranslate"><span class="pre">servicenow.servicenow.now</span></code> inventory plugin must use the <code class="docutils literal notranslate"><span class="pre">*.servicenow.yml</span></code> filename pattern.</p>
+</div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># demo.aws_ec2.yml</span>
 <span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amazon.aws.aws_ec2</span>
 </pre></div>
@@ -526,7 +532,7 @@ Use <code class="docutils literal notranslate"><span class="pre">ansible-doc</sp
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Apr 26, 2024.
+      <span class="lastupdated">Last updated on Apr 29, 2024.
       </span></p>
   </div>
 

@@ -3349,7 +3349,7 @@ you can use the command line utility mentioned above (<cite>ansible-config</cite
 <span id="id89"></span><h3>DEFAULT_PRIVATE_ROLE_VARS<a class="headerlink" href="#default-private-role-vars" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Description<span class="colon">:</span></dt>
-<dd class="field-odd"><p>By default, imported roles publish their variables to the play and other roles, this setting can avoid that. This was introduced as a way to reset role variables to default values if a role is used more than once in a playbook. Starting in version ‘2.17’ M(ansible.builtin.include_roles) and M(ansible.builtin.import_roles) can indivudually override this via the C(public) parameter. Included roles only make their variables public at execution, unlike imported roles which happen at playbook compile time.</p>
+<dd class="field-odd"><p>By default, imported roles publish their variables to the play and other roles, this setting can avoid that. This was introduced as a way to reset role variables to default values if a role is used more than once in a playbook. Starting in version ‘2.17’ M(ansible.builtin.include_roles) and M(ansible.builtin.import_roles) can individually override this via the C(public) parameter. Included roles only make their variables public at execution, unlike imported roles which happen at playbook compile time.</p>
 </dd>
 <dt class="field-even">Type<span class="colon">:</span></dt>
 <dd class="field-even"><p>boolean</p>
@@ -7638,7 +7638,7 @@ you can use the command line utility mentioned above (<cite>ansible-config</cite
 <dl class="std envvar">
 <dt class="sig sig-object std" id="envvar-ANSIBLE_PRIVATE_ROLE_VARS">
 <span class="sig-name descname"><span class="pre">ANSIBLE_PRIVATE_ROLE_VARS</span></span><a class="headerlink" href="#envvar-ANSIBLE_PRIVATE_ROLE_VARS" title="Link to this definition"></a></dt>
-<dd><p>By default, imported roles publish their variables to the play and other roles, this setting can avoid that.This was introduced as a way to reset role variables to default values if a role is used more than once in a playbook.Starting in version ‘2.17’ M(ansible.builtin.include_roles) and M(ansible.builtin.import_roles) can indivudually override this via the C(public) parameter.Included roles only make their variables public at execution, unlike imported roles which happen at playbook compile time.</p>
+<dd><p>By default, imported roles publish their variables to the play and other roles, this setting can avoid that.This was introduced as a way to reset role variables to default values if a role is used more than once in a playbook.Starting in version ‘2.17’ M(ansible.builtin.include_roles) and M(ansible.builtin.import_roles) can individually override this via the C(public) parameter.Included roles only make their variables public at execution, unlike imported roles which happen at playbook compile time.</p>
 <p>See also <a class="reference internal" href="#default-private-role-vars"><span class="std std-ref">DEFAULT_PRIVATE_ROLE_VARS</span></a></p>
 </dd></dl>
 
@@ -8402,7 +8402,7 @@ you can use the command line utility mentioned above (<cite>ansible-config</cite
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Apr 26, 2024.
+      <span class="lastupdated">Last updated on Apr 29, 2024.
       </span></p>
   </div>
 
