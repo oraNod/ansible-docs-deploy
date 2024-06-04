@@ -10,6 +10,7 @@ build:
     python: >-
       3.11
   commands:
+    - mkdir -p $READTHEDOCS_OUTPUT/html/
     - cp -r docs/* $READTHEDOCS_OUTPUT/html/
     #- python -m venv "${READTHEDOCS_VIRTUALENV_PATH}"
     #- >-
