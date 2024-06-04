@@ -11,7 +11,7 @@ build:
       3.11
   commands:
     #- mkdir -p $READTHEDOCS_OUTPUT/html/
-    - cp -rv docs $READTHEDOCS_OUTPUT/html
+    - cp -rv docs "${READTHEDOCS_OUTPUT}"/html
     #- python -m venv "${READTHEDOCS_VIRTUALENV_PATH}"
     #- >-
       #"${READTHEDOCS_VIRTUALENV_PATH}"/bin/python -m pip install --exists-action=w -r requirements.in -c requirements.txt
