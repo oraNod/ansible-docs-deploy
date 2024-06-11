@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installing collections &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Downloading collections" href="collections_downloading.html" />
+    <link rel="prev" title="Using Ansible collections" href="index.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using Ansible collections</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installing collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-collections-in-containers">Installing collections in containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-collections-with-ansible-galaxy">Installing collections with <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-collections-with-signature-verification">Installing collections with signature verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-an-older-version-of-a-collection">Installing an older version of a collection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-multiple-collections-with-a-requirements-file">Install multiple collections with a requirements file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-a-collection-for-offline-use">Downloading a collection for offline use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-collections-adjacent-to-playbooks">Installing collections adjacent to playbooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-a-collection-from-source-files">Installing a collection from source files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-a-collection-from-a-git-repository">Installing a collection from a git repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installing-a-collection-from-a-git-repository-at-the-command-line">Installing a collection from a git repository at the command line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#specifying-the-collection-location-within-the-git-repository">Specifying the collection location within the git repository</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-ansible-galaxy-client">Configuring the <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> client</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#removing-a-collection">Removing a collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections_downloading.html">Downloading collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections_listing.html">Listing collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections_verifying.html">Verifying collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections_using_playbooks.html">Using collections in a playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections_index.html">Collections index</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collections/index.html">Collection Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections/all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Using Ansible collections</a></li>
+      <li class="breadcrumb-item active">Installing collections</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <a href="https://github.com/ansible/ansible-documentation/edit/devel/docs/docsite/rst/collections_guide/collections_installing.rst?description=%23%23%23%23%23%20SUMMARY%0A%3C!---%20Your%20description%20here%20--%3E%0A%0A%0A%23%23%23%23%23%20ISSUE%20TYPE%0A-%20Docs%20Pull%20Request%0A%0A%2Blabel:%20docsite_pr" class="fa fa-github"> Edit on GitHub</a>
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <section id="installing-collections">
+<span id="collections-installing"></span><h1>Installing collections<a class="headerlink" href="#installing-collections" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you install a collection manually as described in this paragraph, the collection will not be upgraded automatically when you upgrade the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package or <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.</p>
+</div>
+<section id="installing-collections-in-containers">
+<h2>Installing collections in containers<a class="headerlink" href="#installing-collections-in-containers" title="Link to this heading"></a></h2>
+<p>You can install collections with their dependencies in containers known as Execution Environments.
+See <a class="reference external" href="https://ansible.readthedocs.io/en/latest/getting_started_ee/index.html">Getting started with Execution Environments</a> for details.</p>
+</section>
+<section id="installing-collections-with-ansible-galaxy">
+<h2>Installing collections with <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code><a class="headerlink" href="#installing-collections-with-ansible-galaxy" title="Link to this heading"></a></h2>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span></code> uses <a class="reference external" href="https://galaxy.ansible.com">https://galaxy.ansible.com</a> as the Galaxy server (as listed in the
+<code class="file docutils literal notranslate"><span class="pre">ansible.cfg</span></code> file under <a class="reference internal" href="../reference_appendices/config.html#galaxy-server"><span class="std std-ref">GALAXY_SERVER</span></a>). You do not need any further configuration.
+By default, Ansible installs the collection in <code class="docutils literal notranslate"><span class="pre">~/.ansible/collections</span></code> under the <code class="docutils literal notranslate"><span class="pre">ansible_collections</span></code> directory.</p>
+<p>See <a class="reference internal" href="#galaxy-server-config"><span class="std std-ref">Configuring the ansible-galaxy client</span></a> if you are using any other Galaxy server, such as Red Hat Automation Hub.</p>
+<p>To install a collection hosted in Galaxy:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>my_namespace.my_collection
+</pre></div>
+</div>
+<p>To upgrade a collection to the latest available version from the Galaxy server you can use the <code class="docutils literal notranslate"><span class="pre">--upgrade</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>my_namespace.my_collection<span class="w"> </span>--upgrade
+</pre></div>
+</div>
+<p>You can also directly use the tarball from your build:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>my_namespace-my_collection-1.0.0.tar.gz<span class="w"> </span>-p<span class="w"> </span>./collections
+</pre></div>
+</div>
+<p>You can build and install a collection from a local source directory. The <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> utility builds the collection using the <code class="docutils literal notranslate"><span class="pre">MANIFEST.json</span></code> or <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>
+metadata in the directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>/path/to/collection<span class="w"> </span>-p<span class="w"> </span>./collections
+</pre></div>
+</div>
+<p>You can also install multiple collections in a namespace directory.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ns/
+├── collection1/
+│   ├── MANIFEST.json
+│   └── plugins/
+└── collection2/
+    ├── galaxy.yml
+    └── plugins/
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>/path/to/ns<span class="w"> </span>-p<span class="w"> </span>./collections
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The install command automatically appends the path <code class="docutils literal notranslate"><span class="pre">ansible_collections</span></code> to the one specified  with the <code class="docutils literal notranslate"><span class="pre">-p</span></code> option unless the
+parent directory is already in a folder called <code class="docutils literal notranslate"><span class="pre">ansible_collections</span></code>.</p>
+</div>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">-p</span></code> option to specify the install path, use one of the values configured in <a class="reference internal" href="../reference_appendices/config.html#collections-paths"><span class="std std-ref">COLLECTIONS_PATHS</span></a>, as this is
+where Ansible itself will expect to find collections. If you don’t specify a path, <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span></code> installs
+the collection to the first path defined in <a class="reference internal" href="../reference_appendices/config.html#collections-paths"><span class="std std-ref">COLLECTIONS_PATHS</span></a>, which by default is <code class="docutils literal notranslate"><span class="pre">~/.ansible/collections</span></code></p>
+</section>
+<section id="installing-collections-with-signature-verification">
+<span id="installing-signed-collections"></span><h2>Installing collections with signature verification<a class="headerlink" href="#installing-collections-with-signature-verification" title="Link to this heading"></a></h2>
+<p>If a collection has been signed by a <a class="reference internal" href="../reference_appendices/glossary.html#term-Distribution-server"><span class="xref std std-term">distribution server</span></a>, the server will provide ASCII armored, detached signatures to verify the authenticity of the <code class="docutils literal notranslate"><span class="pre">MANIFEST.json</span></code> before using it to verify the collection’s contents. This option is not available on all distribution servers. See <a class="reference internal" href="../dev_guide/developing_collections_distributing.html#distributing-collections"><span class="std std-ref">Distributing collections</span></a> for a table listing the servers that support collection signing.</p>
+<p>To use signature verification for signed collections:</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="../reference_appendices/config.html#galaxy-gpg-keyring"><span class="std std-ref">Configured a GnuPG keyring</span></a> for <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code>, or provide the path to the keyring with the <code class="docutils literal notranslate"><span class="pre">--keyring</span></code> option when you install the signed collection.</p></li>
+<li><p>Import the public key from the distribution server into that keyring.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gpg<span class="w"> </span>--import<span class="w"> </span>--no-default-keyring<span class="w"> </span>--keyring<span class="w"> </span>~/.ansible/pubring.kbx<span class="w"> </span>my-public-key.asc
+</pre></div>
+</div>
+</li>
+<li><p>Verify the signature when you install the collection.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>my_namespace.my_collection<span class="w"> </span>--keyring<span class="w"> </span>~/.ansible/pubring.kbx
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--keyring</span></code> option is not necessary if you have <a class="reference internal" href="../reference_appendices/config.html#galaxy-gpg-keyring"><span class="std std-ref">configured a GnuPG keyring</span></a>.</p>
+</li>
+<li><p>Optionally, verify the signature at any point after installation to prove the collection has not been tampered with. See <a class="reference internal" href="collections_verifying.html#verify-signed-collections"><span class="std std-ref">Verifying signed collections</span></a> for details.</p></li>
+</ol>
+<p>You can also include signatures in addition to those provided by the distribution server. Use the <code class="docutils literal notranslate"><span class="pre">--signature</span></code> option to verify the collection’s <code class="docutils literal notranslate"><span class="pre">MANIFEST.json</span></code> with these additional signatures. Supplemental signatures should be provided as URIs.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>my_namespace.my_collection<span class="w"> </span>--signature<span class="w"> </span>https://examplehost.com/detached_signature.asc<span class="w"> </span>--keyring<span class="w"> </span>~/.ansible/pubring.kbx
+</pre></div>
+</div>
+<p>GnuPG verification only occurs for collections installed from a distribution server. User-provided signatures are not used to verify collections installed from git repositories, source directories, or URLs/paths to tar.gz files.</p>
+<p>You can also include additional signatures in the collection <code class="docutils literal notranslate"><span class="pre">requirements.yml</span></code> file under the <code class="docutils literal notranslate"><span class="pre">signatures</span></code> key.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># requirements.yml</span>
+<span class="nt">collections</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns.coll</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<span class="w">    </span><span class="nt">signatures</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://examplehost.com/detached_signature.asc</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file:///path/to/local/detached_signature.asc</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#collection-requirements-file"><span class="std std-ref">collection requirements file</span></a> for details on how to install collections with this file.</p>
+<p>By default, verification is considered successful if a minimum of 1 signature successfully verifies the collection. The number of required signatures can be configured with <code class="docutils literal notranslate"><span class="pre">--required-valid-signature-count</span></code> or <a class="reference internal" href="../reference_appendices/config.html#galaxy-required-valid-signature-count"><span class="std std-ref">GALAXY_REQUIRED_VALID_SIGNATURE_COUNT</span></a>. All signatures can be required by setting the option to <code class="docutils literal notranslate"><span class="pre">all</span></code>. To fail signature verification if no valid signatures are found, prepend the value with <code class="docutils literal notranslate"><span class="pre">+</span></code>, such as <code class="docutils literal notranslate"><span class="pre">+all</span></code> or <code class="docutils literal notranslate"><span class="pre">+1</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ANSIBLE_GALAXY_GPG_KEYRING</span><span class="o">=</span>~/.ansible/pubring.kbx
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANSIBLE_GALAXY_REQUIRED_VALID_SIGNATURE_COUNT</span><span class="o">=</span><span class="m">2</span>
+ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>my_namespace.my_collection<span class="w"> </span>--signature<span class="w"> </span>https://examplehost.com/detached_signature.asc<span class="w"> </span>--signature<span class="w"> </span>file:///path/to/local/detached_signature.asc
+</pre></div>
+</div>
+<p>Certain GnuPG errors can be ignored with <code class="docutils literal notranslate"><span class="pre">--ignore-signature-status-code</span></code> or <a class="reference internal" href="../reference_appendices/config.html#galaxy-required-valid-signature-count"><span class="std std-ref">GALAXY_REQUIRED_VALID_SIGNATURE_COUNT</span></a>. <a class="reference internal" href="../reference_appendices/config.html#galaxy-required-valid-signature-count"><span class="std std-ref">GALAXY_REQUIRED_VALID_SIGNATURE_COUNT</span></a> should be a list, and <code class="docutils literal notranslate"><span class="pre">--ignore-signature-status-code</span></code> can be provided multiple times to ignore multiple additional error status codes.</p>
+<p>This example requires any signatures provided by the distribution server to verify the collection except if they fail due to NO_PUBKEY:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ANSIBLE_GALAXY_GPG_KEYRING</span><span class="o">=</span>~/.ansible/pubring.kbx
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANSIBLE_GALAXY_REQUIRED_VALID_SIGNATURE_COUNT</span><span class="o">=</span>all
+ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>my_namespace.my_collection<span class="w"> </span>--ignore-signature-status-code<span class="w"> </span>NO_PUBKEY
+</pre></div>
+</div>
+<p>If verification fails for the example above, only errors other than NO_PUBKEY will be displayed.</p>
+<p>If verification is unsuccessful, the collection will not be installed. GnuPG signature verification can be disabled with <code class="docutils literal notranslate"><span class="pre">--disable-gpg-verify</span></code> or by configuring <a class="reference internal" href="../reference_appendices/config.html#galaxy-disable-gpg-verify"><span class="std std-ref">GALAXY_DISABLE_GPG_VERIFY</span></a>.</p>
+</section>
+<section id="installing-an-older-version-of-a-collection">
+<span id="collections-older-version"></span><h2>Installing an older version of a collection<a class="headerlink" href="#installing-an-older-version-of-a-collection" title="Link to this heading"></a></h2>
+<p>You can only have one version of a collection installed at a time. By default, <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> installs the latest available version. If you want to install a specific version, you can add a version range identifier. For example, to install the 1.0.0-beta.1 version of the collection:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>my_namespace.my_collection:<span class="o">==</span><span class="m">1</span>.0.0-beta.1
+</pre></div>
+</div>
+<p>You can specify multiple range identifiers separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>. Use single quotes so the shell passes the entire command, including <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code>, and other operators, along. For example, to install the most recent version that is greater than or equal to 1.0.0 and less than 2.0.0:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;my_namespace.my_collection:&gt;=1.0.0,&lt;2.0.0&#39;</span>
+</pre></div>
+</div>
+<p>Ansible will always install the most recent version that meets the range identifiers you specify. You can use the following range identifiers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: The most recent version. This is the default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!=</span></code>: Not equal to the version specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code>: Exactly the version specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>: Greater than or equal to the version specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code>: Greater than the version specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>: Less than or equal to the version specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code>: Less than the version specified.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> ignores pre-release versions. To install a pre-release version, you must use the <code class="docutils literal notranslate"><span class="pre">==</span></code> range identifier to require it explicitly.</p>
+</div>
+</section>
+<section id="install-multiple-collections-with-a-requirements-file">
+<span id="collection-requirements-file"></span><h2>Install multiple collections with a requirements file<a class="headerlink" href="#install-multiple-collections-with-a-requirements-file" title="Link to this heading"></a></h2>
+<p>You can set up a <code class="docutils literal notranslate"><span class="pre">requirements.yml</span></code> file to install multiple collections in one command. This file is a YAML file in the format:</p>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">collections</span><span class="p">:</span>
+<span class="c1"># With just the collection name</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_namespace.my_collection</span>
+
+<span class="c1"># With the collection name, version, and source options</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_namespace.my_other_collection</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&gt;=1.2.0&quot;</span><span class="w"> </span><span class="c1"># Version range identifiers (default: ``*``)</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># The Galaxy URL to pull the collection from (default: ``--api-server`` from cmdline)</span>
+</pre></div>
+</div>
+<p>You can specify the following keys for each collection entry:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">signatures</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">version</span></code> key uses the same range identifier format documented in <a class="reference internal" href="#collections-older-version"><span class="std std-ref">Installing an older version of a collection</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">signatures</span></code> key accepts a list of signature sources that are used to supplement those found on the Galaxy server during collection installation and <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">verify</span></code>. Signature sources should be URIs that contain the detached signature. The <code class="docutils literal notranslate"><span class="pre">--keyring</span></code> CLI option must be provided if signatures are specified.</p>
+<p>Signatures are only used to verify collections on Galaxy servers. User-provided signatures are not used to verify collections installed from git repositories, source directories, or URLs/paths to tar.gz files.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">collections</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace.name</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">galaxy</span>
+<span class="w">    </span><span class="nt">signatures</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://examplehost.com/detached_signature.asc</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file:///path/to/local/detached_signature.asc</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> key can be set to <code class="docutils literal notranslate"><span class="pre">file</span></code>, <code class="docutils literal notranslate"><span class="pre">galaxy</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">dir</span></code>, or <code class="docutils literal notranslate"><span class="pre">subdirs</span></code>. If <code class="docutils literal notranslate"><span class="pre">type</span></code> is omitted, the <code class="docutils literal notranslate"><span class="pre">name</span></code> key is used to implicitly determine the source of the collection.</p>
+<p>When you install a collection with <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">git</span></code>, the <code class="docutils literal notranslate"><span class="pre">version</span></code> key can refer to a branch or to a <a class="reference external" href="https://git-scm.com/docs/gitglossary#def_commit-ish">git commit-ish</a> object (commit or tag). For example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">collections</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/organization/repo_name.git</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">devel</span>
+</pre></div>
+</div>
+<p>You can also add roles to a <code class="docutils literal notranslate"><span class="pre">requirements.yml</span></code> file, under the <code class="docutils literal notranslate"><span class="pre">roles</span></code> key. The values follow the same format as a requirements file used in older Ansible releases.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">roles</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Install a role from Ansible Galaxy.</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geerlingguy.java</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.9.6&quot;</span><span class="w"> </span><span class="c1"># note that ranges are not supported for roles</span>
+
+
+<span class="nt">collections</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Install a collection from Ansible Galaxy.</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geerlingguy.php_roles</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&gt;=0.9.3&quot;</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://galaxy.ansible.com</span>
+</pre></div>
+</div>
+<p>To install both roles and collections at the same time with one command, run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ansible-galaxy<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.yml
+</pre></div>
+</div>
+<p>Running <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">-r</span></code> or <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">role</span> <span class="pre">install</span> <span class="pre">-r</span></code> will only install collections, or roles respectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Installing both roles and collections from the same requirements file will not work when specifying a custom collection or role install path. In this scenario the collections will be skipped and the command will process each like <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">role</span> <span class="pre">install</span></code> would.</p>
+</div>
+</section>
+<section id="downloading-a-collection-for-offline-use">
+<span id="collection-offline-download"></span><h2>Downloading a collection for offline use<a class="headerlink" href="#downloading-a-collection-for-offline-use" title="Link to this heading"></a></h2>
+<p>To download the collection tarball from Galaxy for offline use:</p>
+<ol class="arabic simple">
+<li><p>Navigate to the collection page.</p></li>
+<li><p>Click on <span class="guilabel">Download tarball</span>.</p></li>
+</ol>
+<p>You may also need to manually download any dependent collections.</p>
+</section>
+<section id="installing-collections-adjacent-to-playbooks">
+<span id="collection-local-install"></span><h2>Installing collections adjacent to playbooks<a class="headerlink" href="#installing-collections-adjacent-to-playbooks" title="Link to this heading"></a></h2>
+<p>You can install collections locally next to your playbooks inside your project instead of in a global location on your system or on AWX.</p>
+<p>Using locally installed collections adjacent to playbooks has some benefits, such as:
+* Ensuring that all users of the project use the same collection version.
+* Using self-contained projects makes it easy to move across different environments. Increased portability also reduces overhead when setting up new environments. This is a benefit when deploying Ansible playbooks in cloud environments.
+* Managing collections locally lets you version them along with your playbooks.
+* Installing collections locally isolates them from global installations in environments that have multiple projects.</p>
+<p>Here is an example of keeping a collection adjacent to the current playbook, under a <code class="docutils literal notranslate"><span class="pre">collections/ansible_collections/</span></code> directory structure.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>./
+├── play.yml
+├── collections/
+│   └── ansible_collections/
+│               └── my_namespace/
+│                   └── my_collection/&lt;collection structure lives here&gt;
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../dev_guide/developing_collections_structure.html#collection-structure"><span class="std std-ref">Collection structure</span></a> for details on the collection directory structure.</p>
+</section>
+<section id="installing-a-collection-from-source-files">
+<h2>Installing a collection from source files<a class="headerlink" href="#installing-a-collection-from-source-files" title="Link to this heading"></a></h2>
+<p>Ansible can also install from a source directory in several ways:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">collections</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># directory containing the collection</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./my_namespace/my_collection/</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dir</span>
+
+<span class="w">  </span><span class="c1"># directory containing a namespace, with collections as subdirectories</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./my_namespace/</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subdirs</span>
+</pre></div>
+</div>
+<p>Ansible can also install a collection collected with <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">build</span></code> or downloaded from Galaxy for offline use by specifying the output file directly:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">collections</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/my_namespace-my_collection-1.0.0.tar.gz</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Relative paths are calculated from the current working directory (where you are invoking <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">install</span> <span class="pre">-r</span></code> from). They are not taken relative to the <code class="docutils literal notranslate"><span class="pre">requirements.yml</span></code> file.</p>
+</div>
+</section>
+<section id="installing-a-collection-from-a-git-repository">
+<h2>Installing a collection from a git repository<a class="headerlink" href="#installing-a-collection-from-a-git-repository" title="Link to this heading"></a></h2>
+<p>You can install a collection from a git repository instead of from Galaxy or Automation Hub. As a developer, installing from a git repository lets you review your collection before you create the tarball and publish the collection. As a user, installing from a git repository lets you use collections or versions that are not in Galaxy or Automation Hub yet.</p>
+<p>The repository must contain a <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">MANIFEST.json</span></code> file. This file provides metadata such as the version number and namespace of the collection.</p>
+<section id="installing-a-collection-from-a-git-repository-at-the-command-line">
+<h3>Installing a collection from a git repository at the command line<a class="headerlink" href="#installing-a-collection-from-a-git-repository-at-the-command-line" title="Link to this heading"></a></h3>
+<p>To install a collection from a git repository at the command line, use the URI of the repository instead of a collection name or path to a <code class="docutils literal notranslate"><span class="pre">tar.gz</span></code> file. Use the prefix <code class="docutils literal notranslate"><span class="pre">git+</span></code>, unless you’re using SSH authentication with the user <code class="docutils literal notranslate"><span class="pre">git</span></code> (for example, <code class="docutils literal notranslate"><span class="pre">git&#64;github.com:ansible-collections/ansible.windows.git</span></code>). You can specify a branch, commit, or tag using the comma-separated <a class="reference external" href="https://git-scm.com/docs/gitglossary#def_commit-ish">git commit-ish</a> syntax.</p>
+<p>For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install a collection in a repository using the latest commit on the branch &#39;devel&#39;</span>
+ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>git+https://github.com/organization/repo_name.git,devel
+
+<span class="c1"># Install a collection from a private GitHub repository</span>
+ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>git@github.com:organization/repo_name.git
+
+<span class="c1"># Install a collection from a local git repository</span>
+ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>git+file:///home/user/path/to/repo_name.git
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Embedding credentials into a git URI is not secure. Use safe authentication options to prevent your credentials from being exposed in logs or elsewhere.</p>
+<ul class="simple">
+<li><p>Use <a class="reference external" href="https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">SSH</a> authentication</p></li>
+<li><p>Use <a class="reference external" href="https://linux.die.net/man/5/netrc">netrc</a> authentication</p></li>
+<li><p>Use <a class="reference external" href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-httpextraHeader">http.extraHeader</a> in your git configuration</p></li>
+<li><p>Use <a class="reference external" href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlltbasegtpushInsteadOf">url.&lt;base&gt;.pushInsteadOf</a> in your git configuration</p></li>
+</ul>
+</div>
+</section>
+<section id="specifying-the-collection-location-within-the-git-repository">
+<h3>Specifying the collection location within the git repository<a class="headerlink" href="#specifying-the-collection-location-within-the-git-repository" title="Link to this heading"></a></h3>
+<p>When you install a collection from a git repository, Ansible uses the collection <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">MANIFEST.json</span></code> metadata file to build the collection. By default, Ansible searches two paths for collection <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">MANIFEST.json</span></code> metadata files:</p>
+<ul class="simple">
+<li><p>The top level of the repository.</p></li>
+<li><p>Each directory in the repository path (one level deep).</p></li>
+</ul>
+<p>If a <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">MANIFEST.json</span></code> file exists in the top level of the repository, Ansible uses the collection metadata in that file to install an individual collection.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>├── galaxy.yml
+├── plugins/
+│   ├── lookup/
+│   ├── modules/
+│   └── module_utils/
+└─── README.md
+</pre></div>
+</div>
+<p>If a <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">MANIFEST.json</span></code> file exists in one or more directories in the repository path (one level deep), Ansible installs each directory with a metadata file as a collection. For example, Ansible installs both collection1 and collection2 from this repository structure by default:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>├── collection1
+│   ├── docs/
+│   ├── galaxy.yml
+│   └── plugins/
+│       ├── inventory/
+│       └── modules/
+└── collection2
+    ├── docs/
+    ├── galaxy.yml
+    ├── plugins/
+    |   ├── filter/
+    |   └── modules/
+    └── roles/
+</pre></div>
+</div>
+<p>If you have a different repository structure or only want to install a subset of collections, you can add a fragment to the end of your URI (before the optional comma-separated version) to indicate the location of the metadata file or files. The path should be a directory, not the metadata file itself. For example, to install only collection2 from the example repository with two collections:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ansible-galaxy collection install git+https://github.com/organization/repo_name.git#/collection2/
+</pre></div>
+</div>
+<p>In some repositories, the main directory corresponds to the namespace:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>namespace/
+├── collectionA/
+|   ├── docs/
+|   ├── galaxy.yml
+|   ├── plugins/
+|   │   ├── README.md
+|   │   └── modules/
+|   ├── README.md
+|   └── roles/
+└── collectionB/
+    ├── docs/
+    ├── galaxy.yml
+    ├── plugins/
+    │   ├── connection/
+    │   └── modules/
+    ├── README.md
+    └── roles/
+</pre></div>
+</div>
+<p>You can install all collections in this repository, or install one collection from a specific commit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install all collections in the namespace</span>
+ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>git+https://github.com/organization/repo_name.git#/namespace/
+
+<span class="c1"># Install an individual collection using a specific commit</span>
+ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>git+https://github.com/organization/repo_name.git#/namespace/collectionA/,7b60ddc245bc416b72d8ea6ed7b799885110f5e5
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuring-the-ansible-galaxy-client">
+<span id="galaxy-server-config"></span><h2>Configuring the <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> client<a class="headerlink" href="#configuring-the-ansible-galaxy-client" title="Link to this heading"></a></h2>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> uses <a class="reference external" href="https://galaxy.ansible.com">https://galaxy.ansible.com</a> as the Galaxy server (as listed in the <code class="file docutils literal notranslate"><span class="pre">ansible.cfg</span></code> file under <a class="reference internal" href="../reference_appendices/config.html#galaxy-server"><span class="std std-ref">GALAXY_SERVER</span></a>).</p>
+<p>You can use either option below to configure <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span></code> to use other servers (such as a custom Galaxy server):</p>
+<ul class="simple">
+<li><p>Set the server list in the <a class="reference internal" href="../reference_appendices/config.html#galaxy-server-list"><span class="std std-ref">GALAXY_SERVER_LIST</span></a> configuration option in <a class="reference internal" href="../reference_appendices/config.html#ansible-configuration-settings-locations"><span class="std std-ref">The configuration file</span></a>.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">--server</span></code> command line argument to limit to an individual server.</p></li>
+</ul>
+<p>To configure a Galaxy server list in <code class="docutils literal notranslate"><span class="pre">ansible.cfg</span></code>:</p>
+<ol class="arabic simple">
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">server_list</span></code>  option under the <code class="docutils literal notranslate"><span class="pre">[galaxy]</span></code> section to one or more server names.</p></li>
+<li><p>Create a new section for each server name.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">url</span></code> option for each server name.</p></li>
+<li><p>Optionally, set the API token for each server name. Go to <a class="reference external" href="https://galaxy.ansible.com/me/preferences">https://galaxy.ansible.com/me/preferences</a> and click <span class="guilabel">Show API key</span>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">url</span></code> option for each server name must end with a forward slash <code class="docutils literal notranslate"><span class="pre">/</span></code>. If you do not set the API token in your Galaxy server list, use the <code class="docutils literal notranslate"><span class="pre">--api-key</span></code> argument to pass in the token to  the <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">publish</span></code> command.</p>
+</div>
+<p>The following example shows how to configure multiple servers:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[galaxy]</span>
+<span class="na">server_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">my_org_hub, release_galaxy, test_galaxy, my_galaxy_ng</span>
+
+<span class="k">[galaxy_server.my_org_hub]</span>
+<span class="na">url</span><span class="o">=</span><span class="s">https://automation.my_org/</span>
+<span class="na">username</span><span class="o">=</span><span class="s">my_user</span>
+<span class="na">password</span><span class="o">=</span><span class="s">my_pass</span>
+
+<span class="k">[galaxy_server.release_galaxy]</span>
+<span class="na">url</span><span class="o">=</span><span class="s">https://galaxy.ansible.com/</span>
+<span class="na">token</span><span class="o">=</span><span class="s">my_token</span>
+
+<span class="k">[galaxy_server.test_galaxy]</span>
+<span class="na">url</span><span class="o">=</span><span class="s">https://galaxy-dev.ansible.com/</span>
+<span class="na">token</span><span class="o">=</span><span class="s">my_test_token</span>
+
+<span class="k">[galaxy_server.my_galaxy_ng]</span>
+<span class="na">url</span><span class="o">=</span><span class="s">http://my_galaxy_ng:8000/api/automation-hub/</span>
+<span class="na">auth_url</span><span class="o">=</span><span class="s">http://my_keycloak:8080/auth/realms/myco/protocol/openid-connect/token</span>
+<span class="na">client_id</span><span class="o">=</span><span class="s">galaxy-ng</span>
+<span class="na">token</span><span class="o">=</span><span class="s">my_keycloak_access_token</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">--server</span></code> command line argument to select an explicit Galaxy server in the <code class="docutils literal notranslate"><span class="pre">server_list</span></code> and
+the value of this argument should match the name of the server. To use a server not in the server list, set the value to the URL to access that server (all servers in the server list will be ignored). Also you cannot use the <code class="docutils literal notranslate"><span class="pre">--api-key</span></code> argument for any of the predefined servers. You can only use the <code class="docutils literal notranslate"><span class="pre">api_key</span></code> argument if you did not define a server list or if you specify a URL in the
+<code class="docutils literal notranslate"><span class="pre">--server</span></code> argument.</p>
+</div>
+<p><strong>Galaxy server list configuration options</strong></p>
+<p>The <a class="reference internal" href="../reference_appendices/config.html#galaxy-server-list"><span class="std std-ref">GALAXY_SERVER_LIST</span></a> option is a list of server identifiers in a prioritized order. When searching for a
+collection, the install process will search in that order, for example, <code class="docutils literal notranslate"><span class="pre">automation_hub</span></code> first, then <code class="docutils literal notranslate"><span class="pre">my_org_hub</span></code>, <code class="docutils literal notranslate"><span class="pre">release_galaxy</span></code>, and
+finally <code class="docutils literal notranslate"><span class="pre">test_galaxy</span></code> until the collection is found. The actual Galaxy instance is then defined under the section
+<code class="docutils literal notranslate"><span class="pre">[galaxy_server.{{</span> <span class="pre">id</span> <span class="pre">}}]</span></code> where <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">id</span> <span class="pre">}}</span></code> is the server identifier defined in the list. This section can then
+define the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: The URL of the Galaxy instance to connect to. Required.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">token</span></code>: An API token key to use for authentication against the Galaxy instance. Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">username</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">username</span></code>: The username to use for basic authentication against the Galaxy instance. Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">token</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">password</span></code>: The password to use, in conjunction with <code class="docutils literal notranslate"><span class="pre">username</span></code>, for basic authentication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auth_url</span></code>: The URL of a Keycloak server ‘token_endpoint’ if using SSO authentication (for example, galaxyNG). Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">username</span></code>. Requires <code class="docutils literal notranslate"><span class="pre">token</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate_certs</span></code>: Whether or not to verify TLS certificates for the Galaxy server. This defaults to True unless the <code class="docutils literal notranslate"><span class="pre">--ignore-certs</span></code> option is provided or <code class="docutils literal notranslate"><span class="pre">GALAXY_IGNORE_CERTS</span></code> is configured to True.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">client_id</span></code>: The Keycloak token’s client_id to use for authentication. Requires <code class="docutils literal notranslate"><span class="pre">auth_url</span></code> and <code class="docutils literal notranslate"><span class="pre">token</span></code>. The default <code class="docutils literal notranslate"><span class="pre">client_id</span></code> is cloud-services to work with Red Hat SSO.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code>: The maximum number of seconds to wait for a response from the Galaxy server.</p></li>
+</ul>
+<p>As well as defining these server options in the <code class="docutils literal notranslate"><span class="pre">ansible.cfg</span></code> file, you can also define them as environment variables.
+The environment variable is in the form <code class="docutils literal notranslate"><span class="pre">ANSIBLE_GALAXY_SERVER_{{</span> <span class="pre">id</span> <span class="pre">}}_{{</span> <span class="pre">key</span> <span class="pre">}}</span></code> where <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">id</span> <span class="pre">}}</span></code> is the upper
+case form of the server identifier and <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">key</span> <span class="pre">}}</span></code> is the key to define. For example, you can define <code class="docutils literal notranslate"><span class="pre">token</span></code> for
+<code class="docutils literal notranslate"><span class="pre">release_galaxy</span></code> by setting <code class="docutils literal notranslate"><span class="pre">ANSIBLE_GALAXY_SERVER_RELEASE_GALAXY_TOKEN=secret_token</span></code>.</p>
+<p>For operations that use only one Galaxy server (for example, the <code class="docutils literal notranslate"><span class="pre">publish</span></code>, <code class="docutils literal notranslate"><span class="pre">info</span></code>, or <code class="docutils literal notranslate"><span class="pre">install</span></code> commands). the <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span></code> command uses the first entry in the
+<code class="docutils literal notranslate"><span class="pre">server_list</span></code>, unless you pass in an explicit server with the <code class="docutils literal notranslate"><span class="pre">--server</span></code> argument.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> can seek out dependencies on other configured Galaxy instances to support the use case where a collection can depend on a collection from another Galaxy instance.</p>
+</div>
+</section>
+</section>
+<section id="removing-a-collection">
+<h1>Removing a collection<a class="headerlink" href="#removing-a-collection" title="Link to this heading"></a></h1>
+<p>If you no longer need a collection, simply remove the installation directory from your filesystem.
+The path can be different depending on your operating system:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>~/.ansible/collections/ansible_collections/community/general
+rm<span class="w"> </span>-rf<span class="w"> </span>./venv/lib/python3.9/site-packages/ansible_collections/community/general
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Using Ansible collections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="collections_downloading.html" class="btn btn-neutral float-right" title="Downloading collections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 11, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>
