@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Communicating with the Ansible community &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/community/communication.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=cfabbc46"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How can I help?" href="how_can_I_help.html" />
+    <link rel="prev" title="Developer Certificate Of Origin" href="developer_certificate_of_origin.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="9">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                9
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/9/") > -1
+            ? "/9/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            selected="selected"
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Ansible Community Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="getting_started.html">Getting started</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="code_of_conduct.html">Community Code of Conduct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_certificate_of_origin.html">Developer Certificate Of Origin</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Communicating with the Ansible community</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#forum">Forum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#real-time-chat">Real-time chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-groups">Working groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ansible-community-topics">Ansible Community Topics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ansible-automation-platform-support-questions">Ansible Automation Platform support questions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-bullhorn">The Bullhorn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#asking-questions-over-email">Asking questions over email</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="how_can_I_help.html">How can I help?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#other-ways-to-get-involved">Other ways to get involved</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributor_path.html">Contributor path</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/network_guides.html">Network Technology Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/virt_guides.html">Virtualization and Containerization Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collections/index.html">Collection Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections/all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Ansible Community Guide</a></li>
+          <li class="breadcrumb-item"><a href="getting_started.html">Getting started</a></li>
+      <li class="breadcrumb-item active">Communicating with the Ansible community</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <a href="https://github.com/ansible/ansible-documentation/edit/devel/docs/docsite/rst/community/communication.rst?description=%23%23%23%23%23%20SUMMARY%0A%3C!---%20Your%20description%20here%20--%3E%0A%0A%0A%23%23%23%23%23%20ISSUE%20TYPE%0A-%20Docs%20Pull%20Request%0A%0A%2Blabel:%20docsite_pr" class="fa fa-github"> Edit on GitHub</a>
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <section id="communicating-with-the-ansible-community">
+<span id="communication"></span><h1>Communicating with the Ansible community<a class="headerlink" href="#communicating-with-the-ansible-community" title="Permalink to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-of-conduct" id="id9">Code of Conduct</a></p></li>
+<li><p><a class="reference internal" href="#forum" id="id10">Forum</a></p></li>
+<li><p><a class="reference internal" href="#real-time-chat" id="id11">Real-time chat</a></p>
+<ul>
+<li><p><a class="reference internal" href="#ansible-community-on-matrix" id="id12">Ansible community on Matrix</a></p></li>
+<li><p><a class="reference internal" href="#ansible-community-on-irc" id="id13">Ansible community on IRC</a></p></li>
+<li><p><a class="reference internal" href="#general-channels" id="id14">General channels</a></p></li>
+<li><p><a class="reference internal" href="#working-group-specific-channels" id="id15">Working group-specific channels</a></p></li>
+<li><p><a class="reference internal" href="#regional-and-language-specific-channels" id="id16">Regional and Language-specific channels</a></p></li>
+<li><p><a class="reference internal" href="#meetings-on-chat" id="id17">Meetings on chat</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#working-groups" id="id18">Working groups</a></p>
+<ul>
+<li><p><a class="reference internal" href="#forming-a-new-working-group" id="id19">Forming a new working group</a></p>
+<ul>
+<li><p><a class="reference internal" href="#requesting-a-working-group" id="id20">Requesting a working group</a></p></li>
+<li><p><a class="reference internal" href="#requesting-a-community-collection-repository" id="id21">Requesting a community collection repository</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#ansible-community-topics" id="id22">Ansible Community Topics</a></p></li>
+<li><p><a class="reference internal" href="#ansible-automation-platform-support-questions" id="id23">Ansible Automation Platform support questions</a></p></li>
+<li><p><a class="reference internal" href="#the-bullhorn" id="id24">The Bullhorn</a></p></li>
+<li><p><a class="reference internal" href="#asking-questions-over-email" id="id25">Asking questions over email</a></p></li>
+</ul>
+</nav>
+<section id="code-of-conduct">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Code of Conduct</a><a class="headerlink" href="#code-of-conduct" title="Permalink to this heading"></a></h2>
+<p>All communication and interactions in the Ansible Community are governed by our <a class="reference internal" href="code_of_conduct.html#code-of-conduct"><span class="std std-ref">Community Code of Conduct</span></a>. Please read and understand it!</p>
+</section>
+<section id="forum">
+<span id="ansible-forum"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">Forum</a><a class="headerlink" href="#forum" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference external" href="https://forum.ansible.com">Ansible Community Forum</a> is a single starting point for questions and help, development discussions, events, and much more. <a class="reference external" href="https://forum.ansible.com/signup?">Register</a> to join the community. Search by categories and tags to find interesting topics or start a new one; subscribe only to topics you need!</p>
+<p>Take a look at the <a class="reference external" href="https://forum.ansible.com/g">forum groups</a> and join ones that match your interests.
+In most cases, joining a forum group automatically subscribes you to related posts.</p>
+<p>Want to create a group?
+Request it in the <a class="reference external" href="https://forum.ansible.com/t/requesting-a-forum-group/503">forum topic</a>.</p>
+</section>
+<section id="real-time-chat">
+<span id="communication-irc"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Real-time chat</a><a class="headerlink" href="#real-time-chat" title="Permalink to this heading"></a></h2>
+<p>For real-time interactions, conversations in the Ansible community happen over two chat protocols: Matrix and IRC. We maintain a bridge between Matrix and IRC, so you can choose whichever protocol you prefer. All channels exist in both places. Join a channel any time to ask questions, participate in a Working Group meeting, or just say hello.</p>
+<section id="ansible-community-on-matrix">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Ansible community on Matrix</a><a class="headerlink" href="#ansible-community-on-matrix" title="Permalink to this heading"></a></h3>
+<p>To join the community using Matrix, you need two things:</p>
+<ul class="simple">
+<li><p>a Matrix account (from <a class="reference external" href="https://app.element.io/#/register">Matrix.org</a> or any other Matrix homeserver)</p></li>
+<li><p>a <a class="reference external" href="https://matrix.org/clients/">Matrix client</a> (we recommend <a class="reference external" href="https://app.element.io">Element Webchat</a>)</p></li>
+</ul>
+<p>The Ansible community maintains its own Matrix homeserver at <code class="docutils literal notranslate"><span class="pre">ansible.im</span></code>, however, public registration is currently unavailable.</p>
+<p>Matrix chat supports:</p>
+<ul class="simple">
+<li><p>persistence (when you log on, you see all messages since you last logged off)</p></li>
+<li><p>edits (Let you fix typos and so on. <strong>NOTE</strong> Each edit you make on Matrix re-sends the message to IRC. Please try to avoid multiple edits!)</p></li>
+<li><p>replies to individual users</p></li>
+<li><p>reactions/emojis</p></li>
+<li><p>bridging to IRC</p></li>
+<li><p>no line limits</p></li>
+<li><p>images</p></li>
+</ul>
+<p>The room links in the <a class="reference internal" href="#general-channels"><span class="std std-ref">General channels</span></a> or the <a class="reference internal" href="#working-group-list"><span class="std std-ref">Working groups</span></a> list will take you directly to the relevant rooms.</p>
+<p>If there is no appropriate room for your community, please create it.</p>
+<p>For more information, see the community-hosted <a class="reference external" href="https://hackmd.io/&#64;ansible-community/community-matrix-faq">Matrix FAQ</a>.</p>
+<p>You can add Matrix shields to your repository’s <code class="docutils literal notranslate"><span class="pre">README.md</span></code> using the shield in the <a class="reference external" href="https://github.com/ansible-community/community-topics#community-topics">community-topics</a> repository as a template.</p>
+</section>
+<section id="ansible-community-on-irc">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Ansible community on IRC</a><a class="headerlink" href="#ansible-community-on-irc" title="Permalink to this heading"></a></h3>
+<p>The Ansible community maintains several IRC channels on <a class="reference external" href="https://libera.chat/">irc.libera.chat</a>. To join the community using IRC, you need one thing:</p>
+<ul class="simple">
+<li><p>an IRC client</p></li>
+</ul>
+<p>IRC chat supports:</p>
+<ul class="simple">
+<li><p>no persistence (you only see messages when you are logged on unless you add a bouncer)</p></li>
+<li><p>simple text interface</p></li>
+<li><p>bridging from Matrix</p></li>
+</ul>
+<p>Our IRC channels may require you to register your IRC nickname. If you receive an error when you connect or when posting a message, see <a class="reference external" href="https://libera.chat/guides/registration">libera.chat’s Nickname Registration guide</a> for instructions. To find all <code class="docutils literal notranslate"><span class="pre">ansible</span></code> specific channels on the libera.chat network, use the following command in your IRC client:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/msg alis LIST #ansible* -min 5
+</pre></div>
+</div>
+<p>as described in the <a class="reference external" href="https://libera.chat/guides/findingchannels">libera.chat docs</a>.</p>
+<p>Our channels record history on the Matrix side. The channel history can be viewed in a browser - all channels will report an appropriate link to <code class="docutils literal notranslate"><span class="pre">chat.ansible.im</span></code> in their Chanserv entrymsg upon joining the room. Alternatively, a URL of the form <code class="docutils literal notranslate"><span class="pre">https://chat.ansible.im/#/room/#</span> <span class="pre">{IRC</span> <span class="pre">channel</span> <span class="pre">name}:libera.chat</span></code> will also work, for example -  for the #ansible-docs channel it would be <cite>https://app.element.io/#/room/#ansible-docs:libera.chat</cite>.</p>
+</section>
+<section id="general-channels">
+<span id="id1"></span><h3><a class="toc-backref" href="#id14" role="doc-backlink">General channels</a><a class="headerlink" href="#general-channels" title="Permalink to this heading"></a></h3>
+<p>The clickable links will take you directly to the relevant Matrix room in your browser; room/channel information is also given for use in other clients:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://matrix.to:/#/#social:ansible.com">Community social room and posting news for the Bullhorn newsletter</a> - <code class="docutils literal notranslate"><span class="pre">Matrix:</span> <span class="pre">#social:ansible.com</span> <span class="pre">|</span> <span class="pre">IRC:</span> <span class="pre">#ansible-social</span></code></p></li>
+<li><p><a class="reference external" href="https://matrix.to:/#/#users:ansible.com">General usage and support questions</a> - <code class="docutils literal notranslate"><span class="pre">Matrix:</span> <span class="pre">#users:ansible.com</span> <span class="pre">|</span> <span class="pre">IRC:</span> <span class="pre">#ansible</span></code></p></li>
+<li><p><a class="reference external" href="https://matrix.to/#/#devel:ansible.com">Discussions on developer topics and code related to features or bugs</a> - <code class="docutils literal notranslate"><span class="pre">Matrix:</span> <span class="pre">#devel:ansible.com</span> <span class="pre">|</span> <span class="pre">IRC:</span> <span class="pre">#ansible-devel</span></code></p></li>
+<li><p><a class="reference external" href="https://matrix.to:/#/#community:ansible.com">Discussions on community and collections related topics</a> - <code class="docutils literal notranslate"><span class="pre">Matrix:</span> <span class="pre">#community:ansible.com</span> <span class="pre">|</span> <span class="pre">IRC:</span> <span class="pre">#ansible-community</span></code></p></li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://matrix.to/#/#meeting:ansible.im">For public community meetings</a> - <code class="docutils literal notranslate"><span class="pre">Matrix:</span> <span class="pre">#meeting:ansible.im</span> <span class="pre">|</span> <span class="pre">IRC:</span> <span class="pre">#ansible-meeting</span></code></dt><dd><ul>
+<li><p>We will generally announce these on one or more of the above mailing lists. See the <a class="reference external" href="https://github.com/ansible-community/meetings/blob/main/README.md">meeting schedule</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="working-group-specific-channels">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Working group-specific channels</a><a class="headerlink" href="#working-group-specific-channels" title="Permalink to this heading"></a></h3>
+<p>Many of the working groups have dedicated chat channels. See the <a class="reference internal" href="#working-group-list"><span class="std std-ref">Working groups</span></a> for more information.</p>
+</section>
+<section id="regional-and-language-specific-channels">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Regional and Language-specific channels</a><a class="headerlink" href="#regional-and-language-specific-channels" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Comunidad Ansible en español - Matrix: <a class="reference external" href="https://matrix.to:/#/#espanol:ansible.im">#espanol:ansible.im</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-es</span></code></p></li>
+<li><p>Communauté française d’Ansible - Matrix: <a class="reference external" href="https://matrix.to:/#/#francais:ansible.im">#francais:ansible.im</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-fr</span></code></p></li>
+<li><p>Communauté suisse d’Ansible - Matrix: <a class="reference external" href="https://matrix.to:/#/#suisse:ansible.im">#suisse:ansible.im</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-zh</span></code></p></li>
+<li><p>European Ansible Community - Matrix: <a class="reference external" href="https://matrix.to:/#/#europe:ansible.im">#europe:ansible.im</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-eu</span></code></p></li>
+</ul>
+</section>
+<section id="meetings-on-chat">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Meetings on chat</a><a class="headerlink" href="#meetings-on-chat" title="Permalink to this heading"></a></h3>
+<p>The Ansible community holds regular meetings on various topics on Matrix/IRC, and anyone who is interested is invited to participate. For more information about Ansible meetings, consult the <a class="reference external" href="https://github.com/ansible-community/meetings/blob/main/README.md">meeting schedule and agenda page</a>.</p>
+</section>
+</section>
+<section id="working-groups">
+<span id="working-group-list"></span><h2><a class="toc-backref" href="#id18" role="doc-backlink">Working groups</a><a class="headerlink" href="#working-groups" title="Permalink to this heading"></a></h2>
+<p>Working Groups are a way for Ansible community members to self-organize around particular topics of interest.</p>
+<p>Our community working groups are represented in Matrix rooms and  <a class="reference external" href="https://forum.ansible.com/g">Forum groups</a>.</p>
+<p>Many of them meet in chat. If you want to get involved in a working group, join the Matrix room or IRC channel where it meets or comment on the agenda.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/redhat-cop/controller_configuration/wiki/AAP-Configuration-as-Code">AAP Configuration as Code</a> - Matrix: <a class="reference external" href="https://matrix.to/#/#aap_config_as_code:ansible.com">#aap_config_as_code:ansible.com</a></p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/g/AWS/members">Amazon (AWS) Working Group</a> - Matrix: <a class="reference external" href="https://matrix.to:/#/#aws:ansible.com">#aws:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-aws</span></code></p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/g/AWX/members">AWX Working Group</a> - Matrix: <a class="reference external" href="https://matrix.to:/#/#awx:ansible.com">#awx:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-awx</span></code></p></li>
+<li><p>Azure Working Group  - Matrix: <a class="reference external" href="https://matrix.to:/#/#azure:ansible.com">#azure:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-azure</span></code></p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/tags/c/project/7/community-wg">Community Working Group</a> (including Meetups) - Matrix: <a class="reference external" href="https://matrix.to:/#/#community:ansible.com">#community:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-community</span></code></p></li>
+<li><p>Container Working Group  - Matrix: <a class="reference external" href="https://matrix.to:/#/#container:ansible.com">#container:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-container</span></code></p></li>
+<li><p>DigitalOcean Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#digitalocean:ansible.im">#digitalocean:ansible.im</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-digitalocean</span></code></p></li>
+<li><p>Diversity Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#diversity:ansible.com">#diversity:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-diversity</span></code></p></li>
+<li><p>Docker Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#devel:ansible.com">#devel:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-devel</span></code></p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/g/Docs">Documentation Working Group</a> - Matrix: <a class="reference external" href="https://matrix.to:/#/#docs:ansible.com">#docs:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-docs</span></code></p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/g/ExecutionEnvs">Execution Environments Group</a></p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/g/galaxy/members">Galaxy Working Group</a> - Matrix: <a class="reference external" href="https://matrix.to:/#/#galaxy:ansible.com">#galaxy:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-galaxy</span></code></p></li>
+<li><p>JBoss Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#jboss:ansible.com">#jboss:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-jboss</span></code></p></li>
+<li><p>Kubernetes Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#kubernetes:ansible.com">#kubernetes:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-kubernetes</span></code></p></li>
+<li><p>Linode Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#linode:ansible.com">#linode:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-linode</span></code></p></li>
+<li><p>Molecule Working Group (<a class="reference external" href="https://ansible.readthedocs.io/projects/molecule/">testing platform for Ansible playbooks and roles</a>) - Matrix: <a class="reference external" href="https://matrix.to:/#/#molecule:ansible.im">#molecule:ansible.im</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-molecule</span></code></p></li>
+<li><p>MySQL Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#mysql:ansible.com">#mysql:ansible.com</a></p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/g/network-wg/members">Network Working Group</a> - Matrix: <a class="reference external" href="https://matrix.to:/#/#network:ansible.com">#network:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-network</span></code></p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/g/PostgreSQLTeam/">PostgreSQL Working Group</a> - Matrix: <a class="reference external" href="https://matrix.to:/#/#postgresql:ansible.com">#postgresql:ansible.com</a></p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/g/release-managers">Release Management Working Group</a> - Matrix: <a class="reference external" href="https://matrix.to/#/#release-management:ansible.com">#release-management:ansible.com</a></p></li>
+<li><p>Remote Management Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#devel:ansible.com">#devel:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-devel</span></code></p></li>
+<li><p>Storage Working Group - Matrix: <a class="reference external" href="https://matrix.to/#/#storage:ansible.com">#storage:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-storage</span></code></p></li>
+<li><p>VMware Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#vmware:ansible.com">#vmware:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-vmware</span></code></p></li>
+<li><p>Windows Working Group - Matrix: <a class="reference external" href="https://matrix.to:/#/#windows:ansible.com">#windows:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-windows</span></code></p></li>
+<li><p>Ansible developer tools Group - Matrix: <a class="reference external" href="https://matrix.to/#/#devtools:ansible.com">#devtools:ansible.com</a> | IRC: <code class="docutils literal notranslate"><span class="pre">#ansible-devtools</span></code></p></li>
+</ul>
+<section id="forming-a-new-working-group">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Forming a new working group</a><a class="headerlink" href="#forming-a-new-working-group" title="Permalink to this heading"></a></h3>
+<p>The basic components of a working group are:</p>
+<ul class="simple">
+<li><p>Group name and charter (why the group exists).</p></li>
+<li><p>Registered <a class="reference internal" href="#communication-irc"><span class="std std-ref">real-time chat channel</span></a>.</p></li>
+<li><p>Group of users (at least two!) who will be driving the agenda of the working group.</p></li>
+<li><p>Dedicated <a class="reference external" href="https://forum.ansible.com/g">forum group</a>.</p></li>
+</ul>
+<p>The basic responsibilities of a working group are:</p>
+<ul class="simple">
+<li><p>Follow the <a class="reference internal" href="code_of_conduct.html#code-of-conduct"><span class="std std-ref">Community Code of Conduct</span></a>.</p></li>
+<li><p>Be responsive on your real-time chat channel.</p></li>
+<li><p>Be responsive on the <a class="reference external" href="https://forum.ansible.com/">forum</a> in related topics.</p></li>
+<li><p>Report semi-regularly on the cool stuff that your working group is working on.</p></li>
+<li><p>Keep your forum group information updated.</p></li>
+</ul>
+<section id="requesting-a-working-group">
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">Requesting a working group</a><a class="headerlink" href="#requesting-a-working-group" title="Permalink to this heading"></a></h4>
+<p>Anyone can request to start a Working Group, for any reason.</p>
+<p>If you need only a <a class="reference external" href="https://forum.ansible.com/g">Forum group</a>,
+request it in the <a class="reference external" href="https://forum.ansible.com/t/requesting-a-forum-group/503">forum topic</a>.</p>
+<p>If you also need a real-time chat channel, you can <a class="reference external" href="https://hackmd.io/&#64;ansible-community/community-matrix-faq#How-do-I-create-a-public-community-room">request one</a>.</p>
+</section>
+<section id="requesting-a-community-collection-repository">
+<span id="request-coll-repo"></span><h4><a class="toc-backref" href="#id21" role="doc-backlink">Requesting a community collection repository</a><a class="headerlink" href="#requesting-a-community-collection-repository" title="Permalink to this heading"></a></h4>
+<p>Working groups are often built around Ansible community collections. You can use a repository under your organization or request one under <a class="reference external" href="https://github.com/ansible-collections">ansible-collections</a> on the forum by creating a topic in the <a class="reference external" href="https://forum.ansible.com/new-topic?category=project&amp;tags=coll-repo-request">Project Discussions category and the coll-repo-request tag</a>.</p>
+</section>
+</section>
+</section>
+<section id="ansible-community-topics">
+<span id="id7"></span><h2><a class="toc-backref" href="#id22" role="doc-backlink">Ansible Community Topics</a><a class="headerlink" href="#ansible-community-topics" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference internal" href="steering/community_steering_committee.html#steering-responsibilities"><span class="std std-ref">Ansible Community Steering Committee</span></a> uses the <a class="reference internal" href="#ansible-forum"><span class="std std-ref">Forum</span></a> to asynchronously discuss with the Community and vote on Community topics.</p>
+<p>Create a <a class="reference external" href="https://forum.ansible.com/new-topic?category=project&amp;tags=community-wg">new topic</a> if you want to discuss an idea that impacts any of the following:</p>
+<ul class="simple">
+<li><p>Ansible Community</p></li>
+<li><p>Community collection best practices and <a class="reference internal" href="collection_contributors/collection_requirements.html#collections-requirements"><span class="std std-ref">requirements</span></a></p></li>
+<li><p><a class="reference internal" href="steering/community_steering_committee.html#steering-inclusion"><span class="std std-ref">Community collection inclusion policy</span></a></p></li>
+<li><p><a class="reference internal" href="steering/community_steering_committee.html#steering-responsibilities"><span class="std std-ref">The Community governance</span></a></p></li>
+<li><p>Other proposals of importance that need the Committee or overall Ansible community attention</p></li>
+</ul>
+<p>See the <a class="reference external" href="https://forum.ansible.com/new-topic?category=project&amp;tags=community-wg">Community topics workflow</a> to learn more.</p>
+</section>
+<section id="ansible-automation-platform-support-questions">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink">Ansible Automation Platform support questions</a><a class="headerlink" href="#ansible-automation-platform-support-questions" title="Permalink to this heading"></a></h2>
+<p>Red Hat Ansible <a class="reference external" href="https://www.ansible.com/products/automation-platform">Automation Platform</a> is a subscription that contains support, certified content, and tooling for Ansible including content management, a controller, UI and REST API.</p>
+<p>If you have a question about Ansible Automation Platform, visit <a class="reference external" href="https://access.redhat.com/products/red-hat-ansible-automation-platform/">Red Hat support</a> rather than using a chat channel or the general project mailing list.</p>
+</section>
+<section id="the-bullhorn">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">The Bullhorn</a><a class="headerlink" href="#the-bullhorn" title="Permalink to this heading"></a></h2>
+<p><strong>The Bullhorn</strong> is our newsletter for the Ansible contributor community. You can get Bullhorn updates
+from the <a class="reference internal" href="#ansible-forum"><span class="std std-ref">Forum</span></a>.</p>
+<p>If you have any questions or content you would like to share, you are welcome to chat with us
+in the <a class="reference external" href="https://matrix.to/#/&#64;newsbot:ansible.im">Ansible Social room on Matrix&lt;https://matrix.to/#/#social:ansible.com&gt;, and mention
+`newsbot</a> to have your news item tagged for review for
+the next weekly issue.</p>
+<p>Read past issues of <a class="reference external" href="https://forum.ansible.com/c/news/bullhorn/17">the Bullhorn</a>.</p>
+</section>
+<section id="asking-questions-over-email">
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Asking questions over email</a><a class="headerlink" href="#asking-questions-over-email" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This form of communication is deprecated. Consider using the <a class="reference internal" href="#ansible-forum"><span class="std std-ref">Forum</span></a> instead.</p>
+</div>
+<p>Your first post to the mailing list will be moderated (to reduce spam), so please allow up to a day or so for your first post to appear.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://groups.google.com/forum/#!forum/ansible-announce">Ansible Announce list</a> is a read-only list that shares information about new releases of Ansible, and also rare infrequent event information, such as announcements about an upcoming AnsibleFest, which is our official conference series. Worth subscribing to!</p></li>
+<li><p><a class="reference external" href="https://forum.ansible.com/tag/awx">Ansible AWX List</a> is for <a class="reference external" href="https://github.com/ansible/awx">Ansible AWX</a></p></li>
+<li><p><a class="reference external" href="https://groups.google.com/forum/#!forum/ansible-devel">Ansible Development List</a> is for questions about developing Ansible modules (mostly in Python), fixing bugs in the Ansible Core code, asking about prospective feature design, or discussions about extending Ansible or features in progress.</p></li>
+<li><p><a class="reference external" href="https://groups.google.com/forum/#!forum/ansible-outreach">Ansible Outreach List</a> help with promoting Ansible and <a class="reference external" href="https://www.meetup.com/topics/ansible/">Ansible Meetups</a></p></li>
+<li><p><a class="reference external" href="https://groups.google.com/forum/#!forum/ansible-project">Ansible Project List</a> is for sharing Ansible tips, answering questions about playbooks and roles, and general user discussion.</p></li>
+<li><p><a class="reference external" href="https://github.com/ansible-community/molecule/discussions">Molecule Discussions</a> is designed to aid with the development and testing of Ansible roles with Molecule.</p></li>
+</ul>
+<p>The Ansible mailing lists are hosted on Google, but you do not need a Google account to subscribe. To subscribe to a group from a non-Google account, send an email to the subscription address requesting the subscription. For example: <code class="docutils literal notranslate"><span class="pre">ansible-devel+subscribe&#64;googlegroups.com</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="developer_certificate_of_origin.html" class="btn btn-neutral float-left" title="Developer Certificate Of Origin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="how_can_I_help.html" class="btn btn-neutral float-right" title="How can I help?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>
