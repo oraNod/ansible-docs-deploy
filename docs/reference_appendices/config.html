@@ -5254,7 +5254,7 @@ you can use the command line utility mentioned above (<cite>ansible-config</cite
 <span id="id148"></span><h3>INJECT_FACTS_AS_VARS<a class="headerlink" href="#inject-facts-as-vars" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Description<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Facts are available inside the <cite>ansible_facts</cite> variable, this setting also pushes them as their own vars in the main namespace. Unlike inside the <cite>ansible_facts</cite> dictionary, these will have an <cite>ansible_</cite> prefix.</p>
+<dd class="field-odd"><p>Facts are available inside the <cite>ansible_facts</cite> variable, this setting also pushes them as their own vars in the main namespace. Unlike inside the <cite>ansible_facts</cite> dictionary where the prefix <cite>ansible_</cite> is removed from fact names, these will have the exact names that are returned by the module.</p>
 </dd>
 <dt class="field-even">Type<span class="colon">:</span></dt>
 <dd class="field-even"><p>boolean</p>
@@ -5329,7 +5329,7 @@ you can use the command line utility mentioned above (<cite>ansible-config</cite
 <dd class="field-odd"><p>list</p>
 </dd>
 <dt class="field-even">Default<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">['python3.12',</span> <span class="pre">'python3.11',</span> <span class="pre">'python3.10',</span> <span class="pre">'python3.9',</span> <span class="pre">'python3.8',</span> <span class="pre">'/usr/bin/python3',</span> <span class="pre">'python3']</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">['python3.13',</span> <span class="pre">'python3.12',</span> <span class="pre">'python3.11',</span> <span class="pre">'python3.10',</span> <span class="pre">'python3.9',</span> <span class="pre">'python3.8',</span> <span class="pre">'/usr/bin/python3',</span> <span class="pre">'python3']</span></code></p>
 </dd>
 <dt class="field-odd">Version Added<span class="colon">:</span></dt>
 <dd class="field-odd"><p>2.8</p>
@@ -8382,7 +8382,7 @@ you can use the command line utility mentioned above (<cite>ansible-config</cite
 <dl class="std envvar">
 <dt class="sig sig-object std" id="envvar-ANSIBLE_INJECT_FACT_VARS">
 <span class="sig-name descname"><span class="pre">ANSIBLE_INJECT_FACT_VARS</span></span><a class="headerlink" href="#envvar-ANSIBLE_INJECT_FACT_VARS" title="Link to this definition"></a></dt>
-<dd><p>Facts are available inside the <cite>ansible_facts</cite> variable, this setting also pushes them as their own vars in the main namespace.Unlike inside the <cite>ansible_facts</cite> dictionary, these will have an <cite>ansible_</cite> prefix.</p>
+<dd><p>Facts are available inside the <cite>ansible_facts</cite> variable, this setting also pushes them as their own vars in the main namespace.Unlike inside the <cite>ansible_facts</cite> dictionary where the prefix <cite>ansible_</cite> is removed from fact names, these will have the exact names that are returned by the module.</p>
 <p>See also <a class="reference internal" href="#inject-facts-as-vars"><span class="std std-ref">INJECT_FACTS_AS_VARS</span></a></p>
 </dd></dl>
 
@@ -8649,7 +8649,7 @@ you can use the command line utility mentioned above (<cite>ansible-config</cite
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

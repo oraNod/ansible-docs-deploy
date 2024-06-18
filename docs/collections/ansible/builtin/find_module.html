@@ -237,6 +237,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -554,6 +555,17 @@ the same module name.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-limit"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-find-module-parameter-limit"><strong>limit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-limit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<p><em class="ansible-option-versionadded">added in ansible-core 2.18</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Limit the maximum number of matching paths returned. After finding this many, the find action will stop looking.</p>
+<p>Matches are made from the top, down (i.e. shallowest directory first).</p>
+<p>If not set, or set to v(null), it will do unlimited matches.</p>
+<p>Default is unlimited matches.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mode"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-find-module-parameter-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 <p><em class="ansible-option-versionadded">added in ansible-core 2.16</em></p>
@@ -562,7 +574,7 @@ the same module name.</p>
 <p>The mode can be provided as an octal such as <code class="ansible-value docutils literal notranslate"><span class="pre">&quot;0644&quot;</span></code> or as symbolic such as <code class="ansible-value docutils literal notranslate"><span class="pre">u=rw,g=r,o=r</span></code>.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-paths"></div>
 <div class="ansibleOptionAnchor" id="parameter-name"></div>
 <div class="ansibleOptionAnchor" id="parameter-path"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-find-module-parameter-paths"><span id="ansible-collections-ansible-builtin-find-module-parameter-path"></span><span id="ansible-collections-ansible-builtin-find-module-parameter-name"></span><strong>paths</strong></p>
@@ -572,7 +584,7 @@ the same module name.</p>
 <td><div class="ansible-option-cell"><p>List of paths of directories to search. All paths must be fully qualified.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-patterns"></div>
 <div class="ansibleOptionAnchor" id="parameter-pattern"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-find-module-parameter-patterns"><span id="ansible-collections-ansible-builtin-find-module-parameter-pattern"></span><strong>patterns</strong></p>
 <a class="ansibleOptionLink" href="#parameter-patterns" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-aliases">aliases: pattern</span></p>
@@ -587,7 +599,7 @@ the same module name.</p>
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-read_whole_file"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-find-module-parameter-read-whole-file"><strong>read_whole_file</strong></p>
 <a class="ansibleOptionLink" href="#parameter-read_whole_file" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 <p><em class="ansible-option-versionadded">added in ansible-core 2.11</em></p>
@@ -602,7 +614,7 @@ the same module name.</p>
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-recurse"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-find-module-parameter-recurse"><strong>recurse</strong></p>
 <a class="ansibleOptionLink" href="#parameter-recurse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -614,7 +626,7 @@ the same module name.</p>
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-size"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-find-module-parameter-size"><strong>size</strong></p>
 <a class="ansibleOptionLink" href="#parameter-size" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -624,7 +636,7 @@ the same module name.</p>
 <p>Size is not evaluated for directories.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-use_regex"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-find-module-parameter-use-regex"><strong>use_regex</strong></p>
 <a class="ansibleOptionLink" href="#parameter-use_regex" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -747,6 +759,17 @@ the same module name.</p>
 <span class="w">    </span><span class="nt">patterns</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;^_[0-9]{2,4}_.*.log$&#39;</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;^[a-z]{1,5}_.*log$&#39;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Find file containing &quot;wally&quot; without necessarily reading all files</span>
+<span class="w">  </span><span class="nt">ansible.builtin.find</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/log</span>
+<span class="w">    </span><span class="nt">file_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">    </span><span class="nt">contains</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wally</span>
+<span class="w">    </span><span class="nt">read_whole_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">patterns</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;^.*\\.log$&quot;</span>
+<span class="w">    </span><span class="nt">use_regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">recurse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </pre></div>
 </div>
 </section>
@@ -830,7 +853,7 @@ the same module name.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

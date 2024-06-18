@@ -5,7 +5,7 @@
 <meta content="2.11.0" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>community.general.git_config module – Read and write git configuration &mdash; Ansible Community Documentation</title>
+  <title>community.general.git_config module – Update git configuration &mdash; Ansible Community Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
       <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
@@ -227,6 +227,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l4"><a class="reference internal" href="index.html#changelog">Changelog</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#guides">Guides</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#cloud-guides">Cloud Guides</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#developer-guides">Developer Guides</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
 </ul>
 </li>
@@ -260,6 +261,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -338,7 +340,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
           <li class="breadcrumb-item"><a href="../index.html">Collections in the Community Namespace</a></li>
           <li class="breadcrumb-item"><a href="index.html">Community.General</a></li>
-      <li class="breadcrumb-item active">community.general.git_config module – Read and write git configuration</li>
+      <li class="breadcrumb-item active">community.general.git_config module – Update git configuration</li>
   <li class="wy-breadcrumbs-aside">
           <!-- User defined GitHub URL -->
           <a href="https://github.com/ansible-collections/community.general/edit/main/plugins/modules/git_config.py?description=%23%23%23%23%23%20SUMMARY%0A%3C!—%20Your%20description%20here%20–%3E%0A%0A%0A%23%23%23%23%23%20ISSUE%20TYPE%0A-%20Docs%20Pull%20Request%0A%0A%2Blabel:%20docsite_pr" class="fa fa-github"> Edit on GitHub</a>
@@ -415,11 +417,11 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
   
            <div itemprop="articleBody">
              
-  <span class="target" id="ansible-collections-community-general-git-config-module"></span><section id="community-general-git-config-module-read-and-write-git-configuration">
-<h1>community.general.git_config module – Read and write git configuration<a class="headerlink" href="#community-general-git-config-module-read-and-write-git-configuration" title="Link to this heading"></a></h1>
+  <span class="target" id="ansible-collections-community-general-git-config-module"></span><section id="community-general-git-config-module-update-git-configuration">
+<h1>community.general.git_config module – Update git configuration<a class="headerlink" href="#community-general-git-config-module-update-git-configuration" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/general/">community.general collection</a> (version 9.0.1).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/general/">community.general collection</a> (version 9.1.0).</p>
 <p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
 It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
@@ -487,6 +489,7 @@ see <a class="reference internal" href="#ansible-collections-community-general-g
 <a class="ansibleOptionLink" href="#parameter-list_all" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>List all settings (optionally limited to a given <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-general-git-config-module-parameter-scope"><span class="std std-ref"><span class="pre">scope</span></span></a></strong></code>).</p>
+<p>This option is <strong>deprecated</strong> and will be removed from community.general 11.0.0. Please use <a class="reference internal" href="git_config_info_module.html#ansible-collections-community-general-git-config-info-module"><span class="std std-ref">community.general.git_config_info</span></a> instead.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
@@ -543,6 +546,7 @@ see <a class="reference internal" href="#ansible-collections-community-general-g
 <a class="ansibleOptionLink" href="#parameter-value" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>When specifying the name of a single setting, supply a value to set that setting to the given value.</p>
+<p>From community.general 11.0.0 on, <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-general-git-config-module-parameter-value"><span class="std std-ref"><span class="pre">value</span></span></a></strong></code> will be required if <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="#ansible-collections-community-general-git-config-module-parameter-state"><span class="std std-ref"><span class="pre">state=present</span></span></a></code>. To read values, use the <a class="reference internal" href="git_config_info_module.html#ansible-collections-community-general-git-config-info-module"><span class="std std-ref">community.general.git_config_info</span></a> module instead.</p>
 </div></td>
 </tr>
 </tbody>
@@ -634,29 +638,6 @@ see <a class="reference internal" href="#ansible-collections-community-general-g
 <span class="w">    </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc</span>
 <span class="w">    </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
 <span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;root@</span><span class="cp">{{</span> <span class="nv">ansible_fqdn</span> <span class="cp">}}</span><span class="s">&#39;</span>
-
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Read individual values from git config</span>
-<span class="w">  </span><span class="nt">community.general.git_config</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alias.ci</span>
-<span class="w">    </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global</span>
-
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope system is also assumed when reading values, unless list_all=true</span>
-<span class="w">  </span><span class="nt">community.general.git_config</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alias.diffc</span>
-
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Read all values from git config</span>
-<span class="w">  </span><span class="nt">community.general.git_config</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">list_all</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global</span>
-
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">When list_all is yes and no scope is specified, you get configuration from all scopes</span>
-<span class="w">  </span><span class="nt">community.general.git_config</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">list_all</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specify a repository to include local settings</span>
-<span class="w">  </span><span class="nt">community.general.git_config</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">list_all</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/repo.git</span>
 </pre></div>
 </div>
 </section>
@@ -724,7 +705,7 @@ see <a class="reference internal" href="#ansible-collections-community-general-g
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

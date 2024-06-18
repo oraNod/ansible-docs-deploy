@@ -227,6 +227,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l4"><a class="reference internal" href="index.html#changelog">Changelog</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#guides">Guides</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#cloud-guides">Cloud Guides</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#developer-guides">Developer Guides</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
 </ul>
 </li>
@@ -260,6 +261,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -419,7 +421,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <h1>community.general.redis_info module – Gather information about Redis servers<a class="headerlink" href="#community-general-redis-info-module-gather-information-about-redis-servers" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/general/">community.general collection</a> (version 9.0.1).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/general/">community.general collection</a> (version 9.1.0).</p>
 <p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
 It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
@@ -473,6 +475,19 @@ see <a class="reference internal" href="#ansible-collections-community-general-r
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cluster"></div><p class="ansible-option-title" id="ansible-collections-community-general-redis-info-module-parameter-cluster"><strong>cluster</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cluster" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+<p><em class="ansible-option-versionadded">added in community.general 9.1.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Get informations about cluster status as <code class="ansible-return-value docutils literal notranslate"><a class="reference internal" href="#ansible-collections-community-general-redis-info-module-return-cluster"><span class="std std-ref"><span class="pre">cluster</span></span></a></code>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-login_host"></div><p class="ansible-option-title" id="ansible-collections-community-general-redis-info-module-parameter-login-host"><strong>login_host</strong></p>
 <a class="ansibleOptionLink" href="#parameter-login_host" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -480,7 +495,7 @@ see <a class="reference internal" href="#ansible-collections-community-general-r
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;localhost&quot;</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-login_password"></div><p class="ansible-option-title" id="ansible-collections-community-general-redis-info-module-parameter-login-password"><strong>login_password</strong></p>
 <a class="ansibleOptionLink" href="#parameter-login_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -488,7 +503,7 @@ see <a class="reference internal" href="#ansible-collections-community-general-r
 <p>Usually not used when target is localhost.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-login_port"></div><p class="ansible-option-title" id="ansible-collections-community-general-redis-info-module-parameter-login-port"><strong>login_port</strong></p>
 <a class="ansibleOptionLink" href="#parameter-login_port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
 </div></td>
@@ -496,7 +511,7 @@ see <a class="reference internal" href="#ansible-collections-community-general-r
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">6379</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-login_user"></div><p class="ansible-option-title" id="ansible-collections-community-general-redis-info-module-parameter-login-user"><strong>login_user</strong></p>
 <a class="ansibleOptionLink" href="#parameter-login_user" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in community.general 7.5.0</em></p>
@@ -505,7 +520,7 @@ see <a class="reference internal" href="#ansible-collections-community-general-r
 <p>Requires <a class="reference external" href="https://pypi.org/project/redis">redis</a> &gt;= 3.4.0.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls"></div><p class="ansible-option-title" id="ansible-collections-community-general-redis-info-module-parameter-tls"><strong>tls</strong></p>
 <a class="ansibleOptionLink" href="#parameter-tls" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 <p><em class="ansible-option-versionadded">added in community.general 7.5.0</em></p>
@@ -518,7 +533,7 @@ see <a class="reference internal" href="#ansible-collections-community-general-r
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-validate_certs"></div><p class="ansible-option-title" id="ansible-collections-community-general-redis-info-module-parameter-validate-certs"><strong>validate_certs</strong></p>
 <a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 <p><em class="ansible-option-versionadded">added in community.general 7.5.0</em></p>
@@ -594,6 +609,15 @@ see <a class="reference internal" href="#ansible-collections-community-general-r
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Print server information</span>
 <span class="w">  </span><span class="nt">ansible.builtin.debug</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">result.info</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get server cluster information</span>
+<span class="w">  </span><span class="nt">community.general.redis_info</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">result</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Print server cluster information</span>
+<span class="w">  </span><span class="nt">ansible.builtin.debug</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">result.cluster_info</span>
 </pre></div>
 </div>
 </section>
@@ -608,6 +632,16 @@ see <a class="reference internal" href="#ansible-collections-community-general-r
 </thead>
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-cluster"></div><p class="ansible-option-title" id="ansible-collections-community-general-redis-info-module-return-cluster"><strong>cluster</strong></p>
+<a class="ansibleOptionLink" href="#return-cluster" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+<p><em class="ansible-option-versionadded">added in community.general 9.1.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The default set of cluster information sections <a class="reference external" href="https://redis.io/commands/cluster-info">https://redis.io/commands/cluster-info</a>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success if <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="#ansible-collections-community-general-redis-info-module-parameter-cluster"><span class="std std-ref"><span class="pre">cluster=true</span></span></a></code></p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">{&quot;cluster_current_epoch&quot;:</span> <span class="pre">6,</span> <span class="pre">&quot;cluster_known_nodes&quot;:</span> <span class="pre">6,</span> <span class="pre">&quot;cluster_my_epoch&quot;:</span> <span class="pre">2,</span> <span class="pre">&quot;cluster_size&quot;:</span> <span class="pre">3,</span> <span class="pre">&quot;cluster_slots_assigned&quot;:</span> <span class="pre">16384,</span> <span class="pre">&quot;cluster_slots_fail&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;cluster_slots_ok&quot;:</span> <span class="pre">16384,</span> <span class="pre">&quot;cluster_slots_pfail&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;cluster_state&quot;:</span> <span class="pre">&quot;ok&quot;,</span> <span class="pre">&quot;cluster_stats_messages_received&quot;:</span> <span class="pre">1483968,</span> <span class="pre">&quot;cluster_stats_messages_sent&quot;:</span> <span class="pre">1483972,</span> <span class="pre">&quot;total_cluster_links_buffer_limit_exceeded&quot;:</span> <span class="pre">0}</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="return-info"></div><p class="ansible-option-title" id="ansible-collections-community-general-redis-info-module-return-info"><strong>info</strong></p>
 <a class="ansibleOptionLink" href="#return-info" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
@@ -651,7 +685,7 @@ see <a class="reference internal" href="#ansible-collections-community-general-r
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

@@ -256,6 +256,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -418,7 +419,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <h1>community.zabbix.zabbix_host module – Create/update/delete Zabbix hosts<a class="headerlink" href="#community-zabbix-zabbix-host-module-create-update-delete-zabbix-hosts" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/zabbix/">community.zabbix collection</a> (version 2.5.1).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/zabbix/">community.zabbix collection</a> (version 3.0.0).</p>
 <p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
 It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
@@ -853,10 +854,34 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-monitored_by"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-host-module-parameter-monitored-by"><strong>monitored_by</strong></p>
+<a class="ansibleOptionLink" href="#parameter-monitored_by" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Source that is used to monitor the host.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;zabbix_server&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;proxy&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;proxy_group&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxy"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-host-module-parameter-proxy"><strong>proxy</strong></p>
 <a class="ansibleOptionLink" href="#parameter-proxy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The name of the Zabbix proxy to be used.</p>
+<p>Required if <code class="docutils literal notranslate"><span class="pre">monitored_by</span></code> is “proxy”</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-proxy_group"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-host-module-parameter-proxy-group"><strong>proxy_group</strong></p>
+<a class="ansibleOptionLink" href="#parameter-proxy_group" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Proxy group that is used to monitor the host.</p>
+<p>Required if <code class="docutils literal notranslate"><span class="pre">monitored_by</span></code> is “proxy_group”</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -980,7 +1005,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ansible_zabbix_auth_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8ec0d52432c15c91fcafe9888500cf9a607f44091ab554dbee860f6b44fac895</span>
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new host or rewrite an existing host&#39;s info</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new host or rewrite an existing host&#39;s info (Zabbix &lt;= 7.0)</span>
 <span class="c1"># Set task level following variables for Zabbix Server host in task</span>
 <span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
@@ -1041,6 +1066,46 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleHostsTag2</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleTagValue</span>
 
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new host or update it - monitored by Zabbix Proxy (Zabbix &gt;= 7.0)</span>
+<span class="c1"># Set task level following variables for Zabbix Server host in task</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
+<span class="w">    </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_url_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;zabbixeu&quot;</span><span class="w">  </span><span class="c1"># If Zabbix WebUI runs on non-default (zabbix) path ,e.g. http://&lt;FQDN&gt;/zabbixeu</span>
+<span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix-example-fqdn.org# you can use delegate_to or task level ansible_host like next example</span>
+<span class="w">  </span><span class="nt">community.zabbix.zabbix_host</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">host_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleHost</span>
+<span class="w">    </span><span class="nt">host_groups</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example group1</span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">    </span><span class="nt">monitored_by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+<span class="w">    </span><span class="nt">proxy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a.zabbix.proxy</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new host or update it - monitored by Zabbix Proxy Group (Zabbix &gt;= 7.0)</span>
+<span class="c1"># Set task level following variables for Zabbix Server host in task</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
+<span class="w">    </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_url_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;zabbixeu&quot;</span><span class="w">  </span><span class="c1"># If Zabbix WebUI runs on non-default (zabbix) path ,e.g. http://&lt;FQDN&gt;/zabbixeu</span>
+<span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix-example-fqdn.org# you can use delegate_to or task level ansible_host like next example</span>
+<span class="w">  </span><span class="nt">community.zabbix.zabbix_host</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">host_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleHost</span>
+<span class="w">    </span><span class="nt">host_groups</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example group1</span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">    </span><span class="nt">monitored_by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy_group</span>
+<span class="w">    </span><span class="nt">proxy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a.zabbix.proxy.group</span>
+
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update an existing host&#39;s TLS settings</span>
 <span class="c1"># Set current task level variables for Zabbix Server host in task</span>
 <span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
@@ -1098,7 +1163,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

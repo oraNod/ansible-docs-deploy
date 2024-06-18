@@ -226,6 +226,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l4"><a class="reference internal" href="../index.html#changelog">Changelog</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="../index.html#guides">Guides</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#cloud-guides">Cloud Guides</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#developer-guides">Developer Guides</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#plugin-index">Plugin Index</a></li>
 </ul>
 </li>
@@ -259,6 +260,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -421,64 +423,70 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
              
   <section id="merging-lists-of-dictionaries">
 <h1>Merging lists of dictionaries<a class="headerlink" href="#merging-lists-of-dictionaries" title="Link to this heading"></a></h1>
-<p>If you have two or more lists of dictionaries and want to combine them into a list of merged dictionaries, where the dictionaries are merged by an attribute, you can use the <a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter"><span class="std std-ref">community.general.lists_mergeby filter</span></a>.</p>
+<p>If you have two or more lists of dictionaries and want to combine them into a list of merged dictionaries, where the dictionaries are merged by an attribute, you can use the <a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter"><span class="std std-ref">community.general.lists_mergeby</span></a> filter.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The output of the examples in this section use the YAML callback plugin. Quoting: “Ansible output that can be quite a bit easier to read than the default JSON formatting.” See <a class="reference internal" href="../yaml_callback.html#ansible-collections-community-general-yaml-callback"><span class="std std-ref">the documentation for the community.general.yaml callback plugin</span></a>.</p>
+<p>The output of the examples in this section use the YAML callback plugin. Quoting: “Ansible output that can be quite a bit easier to read than the default JSON formatting.” See the documentation for the <a class="reference internal" href="../yaml_callback.html#ansible-collections-community-general-yaml-callback"><span class="std std-ref">community.general.yaml callback plugin</span></a>.</p>
 </div>
 <p>Let us use the lists below in the following examples:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list1</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="w">    </span><span class="nt">extra</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
-<span class="w">    </span><span class="nt">extra</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meh</span>
-<span class="w">    </span><span class="nt">extra</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">foo</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">bar</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">meh</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">}</span>
 
 <span class="nt">list2</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/foo</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz</span>
-<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/baz</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">foo</span><span class="p p-Indicator">,</span><span class="nt"> path</span><span class="p">:</span><span class="w"> </span><span class="nv">/foo</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">baz</span><span class="p p-Indicator">,</span><span class="nt"> path</span><span class="p">:</span><span class="w"> </span><span class="nv">/baz</span><span class="p p-Indicator">}</span>
 </pre></div>
 </div>
+<section id="two-lists">
+<h2>Two lists<a class="headerlink" href="#two-lists" title="Link to this heading"></a></h2>
 <p>In the example below the lists are merged by the attribute <code class="docutils literal notranslate"><span class="pre">name</span></code>:</p>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">list1</span><span class="o">|</span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">list1</span> <span class="o">|</span>
            <span class="nf">community</span><span class="nv">.general.lists_mergeby</span><span class="o">(</span><span class="nv">list2</span><span class="o">,</span> <span class="s1">&#39;name&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
 </pre></div>
 </div>
 <p>This produces:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">extra</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz</span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/baz</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">extra</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/foo</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">extra</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meh</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">bar</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">baz</span><span class="p p-Indicator">,</span><span class="nt"> path</span><span class="p">:</span><span class="w"> </span><span class="nv">/baz</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">foo</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> path</span><span class="p">:</span><span class="w"> </span><span class="nv">/foo</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">meh</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">}</span>
 </pre></div>
 </div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.0.0.</span></p>
 </div>
+</section>
+<section id="list-of-two-lists">
+<h2>List of two lists<a class="headerlink" href="#list-of-two-lists" title="Link to this heading"></a></h2>
 <p>It is possible to use a list of lists as an input of the filter:</p>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]|</span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]</span> <span class="o">|</span>
            <span class="nf">community</span><span class="nv">.general.lists_mergeby</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
 </pre></div>
 </div>
 <p>This produces the same result as in the previous example:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">extra</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz</span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/baz</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">extra</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/foo</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">extra</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meh</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">bar</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">baz</span><span class="p p-Indicator">,</span><span class="nt"> path</span><span class="p">:</span><span class="w"> </span><span class="nv">/baz</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">foo</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> path</span><span class="p">:</span><span class="w"> </span><span class="nv">/foo</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">meh</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</section>
+<section id="single-list">
+<h2>Single list<a class="headerlink" href="#single-list" title="Link to this heading"></a></h2>
+<p>It is possible to merge single list:</p>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span> <span class="o">+</span> <span class="nv">list2</span><span class="o">,</span> <span class="o">[]]</span> <span class="o">|</span>
+           <span class="nf">community</span><span class="nv">.general.lists_mergeby</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<p>This produces the same result as in the previous example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">bar</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">baz</span><span class="p p-Indicator">,</span><span class="nt"> path</span><span class="p">:</span><span class="w"> </span><span class="nv">/baz</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">foo</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> path</span><span class="p">:</span><span class="w"> </span><span class="nv">/foo</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">meh</span><span class="p p-Indicator">,</span><span class="nt"> extra</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">}</span>
 </pre></div>
 </div>
 <p>The filter also accepts two optional parameters: <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter-parameter-recursive"><span class="std std-ref"><span class="pre">recursive</span></span></a></strong></code> and <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter-parameter-list-merge"><span class="std std-ref"><span class="pre">list_merge</span></span></a></strong></code>. This is available since community.general 4.4.0.</p>
@@ -495,8 +503,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <span class="w">    </span><span class="nt">param01</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
 <span class="w">      </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">      </span><span class="nt">list</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
+<span class="w">      </span><span class="nt">list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">default_value</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
 <span class="w">    </span><span class="nt">param01</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">]</span>
 
@@ -505,37 +512,37 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <span class="w">    </span><span class="nt">param01</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
 <span class="w">      </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">      </span><span class="nt">list</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">      </span><span class="nt">list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">patch_value</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
-<span class="w">    </span><span class="nt">param01</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="nv">value</span><span class="p p-Indicator">}]</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
+</section>
+<section id="list-merge-replace-default">
+<h2>list_merge=replace (default)<a class="headerlink" href="#list-merge-replace-default" title="Link to this heading"></a></h2>
 <p>Example <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter-parameter-list-merge"><span class="std std-ref"><span class="pre">list_merge=replace</span></span></a></code> (default):</p>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]|</span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]</span> <span class="o">|</span>
            <span class="nf">community</span><span class="nv">.general.lists_mergeby</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">,</span>
                                            <span class="k">recursive</span><span class="o">=</span><span class="kp">true</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
 </pre></div>
 </div>
 <p>This produces:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">list</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
+<span class="w">      </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">      </span><span class="nt">list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">patch_value</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
+</section>
+<section id="list-merge-keep">
+<h2>list_merge=keep<a class="headerlink" href="#list-merge-keep" title="Link to this heading"></a></h2>
 <p>Example <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter-parameter-list-merge"><span class="std std-ref"><span class="pre">list_merge=keep</span></span></a></code>:</p>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]|</span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]</span> <span class="o">|</span>
            <span class="nf">community</span><span class="nv">.general.lists_mergeby</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">,</span>
                                            <span class="k">recursive</span><span class="o">=</span><span class="kp">true</span><span class="o">,</span>
                                            <span class="nv">list_merge</span><span class="o">=</span><span class="s1">&#39;keep&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
@@ -543,23 +550,21 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </div>
 <p>This produces:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">list</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
+<span class="w">      </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">      </span><span class="nt">list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">default_value</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
+</section>
+<section id="list-merge-append">
+<h2>list_merge=append<a class="headerlink" href="#list-merge-append" title="Link to this heading"></a></h2>
 <p>Example <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter-parameter-list-merge"><span class="std std-ref"><span class="pre">list_merge=append</span></span></a></code>:</p>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]|</span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]</span> <span class="o">|</span>
            <span class="nf">community</span><span class="nv">.general.lists_mergeby</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">,</span>
                                            <span class="k">recursive</span><span class="o">=</span><span class="kp">true</span><span class="o">,</span>
                                            <span class="nv">list_merge</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
@@ -567,28 +572,21 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </div>
 <p>This produces:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">list</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
+<span class="w">      </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">      </span><span class="nt">list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">default_value</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">patch_value</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
+</section>
+<section id="list-merge-prepend">
+<h2>list_merge=prepend<a class="headerlink" href="#list-merge-prepend" title="Link to this heading"></a></h2>
 <p>Example <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter-parameter-list-merge"><span class="std std-ref"><span class="pre">list_merge=prepend</span></span></a></code>:</p>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]|</span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]</span> <span class="o">|</span>
            <span class="nf">community</span><span class="nv">.general.lists_mergeby</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">,</span>
                                            <span class="k">recursive</span><span class="o">=</span><span class="kp">true</span><span class="o">,</span>
                                            <span class="nv">list_merge</span><span class="o">=</span><span class="s1">&#39;prepend&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
@@ -596,28 +594,21 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </div>
 <p>This produces:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">list</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
+<span class="w">      </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">      </span><span class="nt">list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">patch_value</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">default_value</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
+</section>
+<section id="list-merge-append-rp">
+<h2>list_merge=append_rp<a class="headerlink" href="#list-merge-append-rp" title="Link to this heading"></a></h2>
 <p>Example <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter-parameter-list-merge"><span class="std std-ref"><span class="pre">list_merge=append_rp</span></span></a></code>:</p>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]|</span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]</span> <span class="o">|</span>
            <span class="nf">community</span><span class="nv">.general.lists_mergeby</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">,</span>
                                            <span class="k">recursive</span><span class="o">=</span><span class="kp">true</span><span class="o">,</span>
                                            <span class="nv">list_merge</span><span class="o">=</span><span class="s1">&#39;append_rp&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
@@ -625,27 +616,21 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </div>
 <p>This produces:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">list</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
+<span class="w">      </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">      </span><span class="nt">list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">default_value</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">patch_value</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
+</section>
+<section id="list-merge-prepend-rp">
+<h2>list_merge=prepend_rp<a class="headerlink" href="#list-merge-prepend-rp" title="Link to this heading"></a></h2>
 <p>Example <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="../lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter-parameter-list-merge"><span class="std std-ref"><span class="pre">list_merge=prepend_rp</span></span></a></code>:</p>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]|</span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="o">[</span><span class="nv">list1</span><span class="o">,</span> <span class="nv">list2</span><span class="o">]</span> <span class="o">|</span>
            <span class="nf">community</span><span class="nv">.general.lists_mergeby</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">,</span>
                                            <span class="k">recursive</span><span class="o">=</span><span class="kp">true</span><span class="o">,</span>
                                            <span class="nv">list_merge</span><span class="o">=</span><span class="s1">&#39;prepend_rp&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
@@ -653,25 +638,17 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </div>
 <p>This produces:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">list3</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">list</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
-<span class="w">    </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="w">    </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
-<span class="w">  </span><span class="nt">param01</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname01</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default_value</span>
+<span class="w">      </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">      </span><span class="nt">list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">patch_value</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">default_value</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch_value</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myname02</span>
+<span class="w">    </span><span class="nt">param01</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
+</section>
 </section>
 
 
@@ -688,7 +665,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

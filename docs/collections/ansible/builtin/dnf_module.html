@@ -237,6 +237,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -792,14 +793,21 @@ the same module name.</p>
 <a class="ansibleOptionLink" href="#parameter-use_backend" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in ansible-core 2.15</em></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>By default, this module will select the backend based on the <code class="docutils literal notranslate"><span class="pre">ansible_pkg_mgr</span></code> fact.</p>
+<td><div class="ansible-option-cell"><p>Backend module to use.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;auto&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;yum&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;yum4&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;dnf4&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;dnf5&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;auto&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">(default)</span>:
+Automatically select the backend based on the <code class="docutils literal notranslate"><span class="pre">ansible_facts.pkg_mgr</span></code> fact.</p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;dnf&quot;</span></code>:
+<a class="reference internal" href="#ansible-collections-ansible-builtin-dnf-module"><span class="std std-ref">ansible.builtin.dnf</span></a></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;dnf4&quot;</span></code>:
+Alias for <code class="ansible-value docutils literal notranslate"><span class="pre">dnf</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;dnf5&quot;</span></code>:
+<a class="reference internal" href="dnf5_module.html#ansible-collections-ansible-builtin-dnf5-module"><span class="std std-ref">ansible.builtin.dnf5</span></a></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;yum&quot;</span></code>:
+Alias for <code class="ansible-value docutils literal notranslate"><span class="pre">auto</span></code> (see Notes)</p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;yum4&quot;</span></code>:
+Alias for <code class="ansible-value docutils literal notranslate"><span class="pre">dnf</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -891,6 +899,7 @@ the same module name.</p>
 <ul class="simple">
 <li><p>When used with a <code class="docutils literal notranslate"><span class="pre">loop:</span></code> each package will be processed individually, it is much more efficient to pass the list directly to the <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-dnf-module-parameter-name"><span class="std std-ref"><span class="pre">name</span></span></a></strong></code> option.</p></li>
 <li><p>Group removal doesn’t work if the group was installed with Ansible because upstream dnf’s API doesn’t properly mark groups as installed, therefore upon removal the module is unable to detect that the group is installed <a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1620324">https://bugzilla.redhat.com/show_bug.cgi?id=1620324</a>.</p></li>
+<li><p>While <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="#ansible-collections-ansible-builtin-dnf-module-parameter-use-backend"><span class="std std-ref"><span class="pre">use_backend=yum</span></span></a></code> and the ability to call the action plugin as <a class="reference external" href="https://docs.ansible.com/ansible/9/collections/ansible/builtin/yum_module.html#ansible-collections-ansible-builtin-yum-module" title="(in Ansible v9)"><span class="xref std std-ref">ansible.builtin.yum</span></a> are provided for syntax compatibility, the YUM backend was removed in ansible-core 2.17 because the required libraries are not available for any supported version of Python. If you rely on this functionality, use an older version of Ansible.</p></li>
 </ul>
 </div>
 </section>
@@ -1017,7 +1026,7 @@ the same module name.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

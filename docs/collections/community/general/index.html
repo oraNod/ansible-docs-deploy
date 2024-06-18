@@ -227,6 +227,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l4"><a class="reference internal" href="#changelog">Changelog</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#guides">Guides</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cloud-guides">Cloud Guides</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#developer-guides">Developer Guides</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#plugin-index">Plugin Index</a></li>
 </ul>
 </li>
@@ -260,6 +261,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -419,7 +421,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
              
   <section id="community-general">
 <span id="plugins-in-community-general"></span><h1>Community.General<a class="headerlink" href="#community-general" title="Link to this heading"></a></h1>
-<p>Collection version 9.0.1</p>
+<p>Collection version 9.1.0</p>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#description" id="id1">Description</a></p></li>
@@ -427,7 +429,8 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li><p><a class="reference internal" href="#changelog" id="id3">Changelog</a></p></li>
 <li><p><a class="reference internal" href="#guides" id="id4">Guides</a></p></li>
 <li><p><a class="reference internal" href="#cloud-guides" id="id5">Cloud Guides</a></p></li>
-<li><p><a class="reference internal" href="#plugin-index" id="id6">Plugin Index</a></p></li>
+<li><p><a class="reference internal" href="#developer-guides" id="id6">Developer Guides</a></p></li>
+<li><p><a class="reference internal" href="#plugin-index" id="id7">Plugin Index</a></p></li>
 </ul>
 </nav>
 <section id="description">
@@ -488,8 +491,17 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 </ul>
 </div>
 </section>
+<section id="developer-guides">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Developer Guides</a><a class="headerlink" href="#developer-guides" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docsite/guide_deps.html"><code class="docutils literal notranslate"><span class="pre">deps</span></code> Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docsite/guide_vardict.html">VarDict Guide</a></li>
+</ul>
+</div>
+</section>
 <section id="plugin-index">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Plugin Index</a><a class="headerlink" href="#plugin-index" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Plugin Index</a><a class="headerlink" href="#plugin-index" title="Link to this heading"></a></h2>
 <p>These are the plugins in the community.general collection:</p>
 <section id="modules">
 <h3>Modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h3>
@@ -552,6 +564,8 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li><p><a class="reference internal" href="consul_module.html#ansible-collections-community-general-consul-module"><span class="std std-ref">consul module</span></a> – Add, modify &amp; delete services within a consul cluster</p></li>
 <li><p><a class="reference internal" href="consul_acl_module.html#ansible-collections-community-general-consul-acl-module"><span class="std std-ref">consul_acl module</span></a> – Manipulate Consul ACL keys and rules</p></li>
 <li><p><a class="reference internal" href="consul_acl_bootstrap_module.html#ansible-collections-community-general-consul-acl-bootstrap-module"><span class="std std-ref">consul_acl_bootstrap module</span></a> – Bootstrap ACLs in Consul</p></li>
+<li><p><a class="reference internal" href="consul_agent_check_module.html#ansible-collections-community-general-consul-agent-check-module"><span class="std std-ref">consul_agent_check module</span></a> – Add, modify, and delete checks within a consul cluster</p></li>
+<li><p><a class="reference internal" href="consul_agent_service_module.html#ansible-collections-community-general-consul-agent-service-module"><span class="std std-ref">consul_agent_service module</span></a> – Add, modify and delete services within a consul cluster</p></li>
 <li><p><a class="reference internal" href="consul_auth_method_module.html#ansible-collections-community-general-consul-auth-method-module"><span class="std std-ref">consul_auth_method module</span></a> – Manipulate Consul auth methods</p></li>
 <li><p><a class="reference internal" href="consul_binding_rule_module.html#ansible-collections-community-general-consul-binding-rule-module"><span class="std std-ref">consul_binding_rule module</span></a> – Manipulate Consul binding rules</p></li>
 <li><p><a class="reference internal" href="consul_kv_module.html#ansible-collections-community-general-consul-kv-module"><span class="std std-ref">consul_kv module</span></a> – Manipulate entries in the key/value store of a consul cluster</p></li>
@@ -571,7 +585,9 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li><p><a class="reference internal" href="dimensiondata_network_module.html#ansible-collections-community-general-dimensiondata-network-module"><span class="std std-ref">dimensiondata_network module</span></a> – Create, update, and delete MCP 1.0 &amp; 2.0 networks</p></li>
 <li><p><a class="reference internal" href="dimensiondata_vlan_module.html#ansible-collections-community-general-dimensiondata-vlan-module"><span class="std std-ref">dimensiondata_vlan module</span></a> – Manage a VLAN in a Cloud Control network domain</p></li>
 <li><p><a class="reference internal" href="discord_module.html#ansible-collections-community-general-discord-module"><span class="std std-ref">discord module</span></a> – Send Discord messages</p></li>
+<li><p><a class="reference internal" href="django_check_module.html#ansible-collections-community-general-django-check-module"><span class="std std-ref">django_check module</span></a> – Wrapper for <code class="docutils literal notranslate"><span class="pre">django-admin</span> <span class="pre">check</span></code></p></li>
 <li><p><a class="reference internal" href="django_command_module.html#ansible-collections-community-general-django-command-module"><span class="std std-ref">django_command module</span></a> – Run Django admin commands</p></li>
+<li><p><a class="reference internal" href="django_createcachetable_module.html#ansible-collections-community-general-django-createcachetable-module"><span class="std std-ref">django_createcachetable module</span></a> – Wrapper for <code class="docutils literal notranslate"><span class="pre">django-admin</span> <span class="pre">createcachetable</span></code></p></li>
 <li><p><a class="reference internal" href="django_manage_module.html#ansible-collections-community-general-django-manage-module"><span class="std std-ref">django_manage module</span></a> – Manages a Django application</p></li>
 <li><p><a class="reference internal" href="dnf_config_manager_module.html#ansible-collections-community-general-dnf-config-manager-module"><span class="std std-ref">dnf_config_manager module</span></a> – Enable or disable dnf repositories using config-manager</p></li>
 <li><p><a class="reference internal" href="dnf_versionlock_module.html#ansible-collections-community-general-dnf-versionlock-module"><span class="std std-ref">dnf_versionlock module</span></a> – Locks package versions in <code class="docutils literal notranslate"><span class="pre">dnf</span></code> based systems</p></li>
@@ -595,7 +611,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li><p><a class="reference internal" href="gconftool2_info_module.html#ansible-collections-community-general-gconftool2-info-module"><span class="std std-ref">gconftool2_info module</span></a> – Retrieve GConf configurations</p></li>
 <li><p><a class="reference internal" href="gem_module.html#ansible-collections-community-general-gem-module"><span class="std std-ref">gem module</span></a> – Manage Ruby gems</p></li>
 <li><p><a class="reference internal" href="gio_mime_module.html#ansible-collections-community-general-gio-mime-module"><span class="std std-ref">gio_mime module</span></a> – Set default handler for MIME type, for applications using Gnome GIO</p></li>
-<li><p><a class="reference internal" href="git_config_module.html#ansible-collections-community-general-git-config-module"><span class="std std-ref">git_config module</span></a> – Read and write git configuration</p></li>
+<li><p><a class="reference internal" href="git_config_module.html#ansible-collections-community-general-git-config-module"><span class="std std-ref">git_config module</span></a> – Update git configuration</p></li>
 <li><p><a class="reference internal" href="git_config_info_module.html#ansible-collections-community-general-git-config-info-module"><span class="std std-ref">git_config_info module</span></a> – Read git configuration</p></li>
 <li><p><a class="reference internal" href="github_deploy_key_module.html#ansible-collections-community-general-github-deploy-key-module"><span class="std std-ref">github_deploy_key module</span></a> – Manages deploy keys for GitHub repositories</p></li>
 <li><p><a class="reference internal" href="github_issue_module.html#ansible-collections-community-general-github-issue-module"><span class="std std-ref">github_issue module</span></a> – View GitHub issue</p></li>
@@ -1171,12 +1187,15 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li><p><a class="reference internal" href="hashids_encode_filter.html#ansible-collections-community-general-hashids-encode-filter"><span class="std std-ref">hashids_encode filter</span></a> – Encodes YouTube-like hashes from a sequence of integers</p></li>
 <li><p><a class="reference internal" href="jc_filter.html#ansible-collections-community-general-jc-filter"><span class="std std-ref">jc filter</span></a> – Convert output of many shell commands and file-types to JSON</p></li>
 <li><p><a class="reference internal" href="json_query_filter.html#ansible-collections-community-general-json-query-filter"><span class="std std-ref">json_query filter</span></a> – Select a single element or a data subset from a complex data structure</p></li>
+<li><p><a class="reference internal" href="keep_keys_filter.html#ansible-collections-community-general-keep-keys-filter"><span class="std std-ref">keep_keys filter</span></a> – Keep specific keys from dictionaries in a list</p></li>
 <li><p><a class="reference internal" href="lists_difference_filter.html#ansible-collections-community-general-lists-difference-filter"><span class="std std-ref">lists_difference filter</span></a> – Difference of lists with a predictive order</p></li>
 <li><p><a class="reference internal" href="lists_intersect_filter.html#ansible-collections-community-general-lists-intersect-filter"><span class="std std-ref">lists_intersect filter</span></a> – Intersection of lists with a predictive order</p></li>
 <li><p><a class="reference internal" href="lists_mergeby_filter.html#ansible-collections-community-general-lists-mergeby-filter"><span class="std std-ref">lists_mergeby filter</span></a> – Merge two or more lists of dictionaries by a given attribute</p></li>
 <li><p><a class="reference internal" href="lists_symmetric_difference_filter.html#ansible-collections-community-general-lists-symmetric-difference-filter"><span class="std std-ref">lists_symmetric_difference filter</span></a> – Symmetric Difference of lists with a predictive order</p></li>
 <li><p><a class="reference internal" href="lists_union_filter.html#ansible-collections-community-general-lists-union-filter"><span class="std std-ref">lists_union filter</span></a> – Union of lists with a predictive order</p></li>
 <li><p><a class="reference internal" href="random_mac_filter.html#ansible-collections-community-general-random-mac-filter"><span class="std std-ref">random_mac filter</span></a> – Generate a random MAC address</p></li>
+<li><p><a class="reference internal" href="remove_keys_filter.html#ansible-collections-community-general-remove-keys-filter"><span class="std std-ref">remove_keys filter</span></a> – Remove specific keys from dictionaries in a list</p></li>
+<li><p><a class="reference internal" href="replace_keys_filter.html#ansible-collections-community-general-replace-keys-filter"><span class="std std-ref">replace_keys filter</span></a> – Replace specific keys in a list of dictionaries</p></li>
 <li><p><a class="reference internal" href="to_days_filter.html#ansible-collections-community-general-to-days-filter"><span class="std std-ref">to_days filter</span></a> – Converte a duration string to days</p></li>
 <li><p><a class="reference internal" href="to_hours_filter.html#ansible-collections-community-general-to-hours-filter"><span class="std std-ref">to_hours filter</span></a> – Converte a duration string to hours</p></li>
 <li><p><a class="reference internal" href="to_ini_filter.html#ansible-collections-community-general-to-ini-filter"><span class="std std-ref">to_ini filter</span></a> – Converts a dictionary to the INI file format</p></li>
@@ -1284,7 +1303,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

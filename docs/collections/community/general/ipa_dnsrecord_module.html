@@ -227,6 +227,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l4"><a class="reference internal" href="index.html#changelog">Changelog</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#guides">Guides</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#cloud-guides">Cloud Guides</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#developer-guides">Developer Guides</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
 </ul>
 </li>
@@ -260,6 +261,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -419,7 +421,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <h1>community.general.ipa_dnsrecord module – Manage FreeIPA DNS records<a class="headerlink" href="#community-general-ipa-dnsrecord-module-manage-freeipa-dns-records" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/general/">community.general collection</a> (version 9.0.1).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/general/">community.general collection</a> (version 9.1.0).</p>
 <p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
 It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
@@ -541,10 +543,11 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <a class="ansibleOptionLink" href="#parameter-record_type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The type of DNS record name.</p>
-<p>Currently, ‘A’, ‘AAAA’, ‘A6’, ‘CNAME’, ‘DNAME’, ‘NS’, ‘PTR’, ‘TXT’, ‘SRV’ and ‘MX’ are supported.</p>
+<p>Currently, ‘A’, ‘AAAA’, ‘A6’, ‘CNAME’, ‘DNAME’, ‘NS’, ‘PTR’, ‘TXT’, ‘SRV’, ‘MX’ and ‘SSHFP’ are supported.</p>
 <p>‘A6’, ‘CNAME’, ‘DNAME’ and ‘TXT’ are added in version 2.5.</p>
 <p>‘SRV’ and ‘MX’ are added in version 2.8.</p>
 <p>‘NS’ are added in comunity.general 8.2.0.</p>
+<p>‘SSHFP’ are added in community.general 9.1.0.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;A&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
@@ -557,6 +560,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;PTR&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SRV&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TXT&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SSHFP&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -576,6 +580,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>In the case of ‘TXT’ record type, this will be a text.</p>
 <p>In the case of ‘SRV’ record type, this will be a service record.</p>
 <p>In the case of ‘MX’ record type, this will be a mail exchanger record.</p>
+<p>In the case of ‘SSHFP’ record type, this will be an SSH fingerprint record.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -593,6 +598,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>In the case of ‘TXT’ record type, this will be a text.</p>
 <p>In the case of ‘SRV’ record type, this will be a service record.</p>
 <p>In the case of ‘MX’ record type, this will be a mail exchanger record.</p>
+<p>In the case of ‘SSHFP’ record type, this will be an SSH fingerprint record.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
@@ -745,6 +751,20 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <span class="w">    </span><span class="nt">ipa_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipa.example.com</span>
 <span class="w">    </span><span class="nt">ipa_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
 <span class="w">    </span><span class="nt">ipa_pass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChangeMe!</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Retrieve the current sshfp fingerprints</span>
+<span class="w">  </span><span class="nt">ansible.builtin.command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh-keyscan -D localhost</span>
+<span class="w">  </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh_hostkeys</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update the SSHFP records in DNS</span>
+<span class="w">  </span><span class="nt">community.general.ipa_dnsrecord</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">inventory_hostname</span><span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">zone_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="w">    </span><span class="nt">record_type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;SSHFP&#39;</span>
+<span class="w">    </span><span class="nt">record_values</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">ssh_hostkeys.stdout.split</span><span class="o">(</span><span class="s1">&#39;\n&#39;</span><span class="o">)</span> <span class="o">|</span> <span class="nf">map</span><span class="o">(</span><span class="s1">&#39;split&#39;</span><span class="o">,</span> <span class="s1">&#39;SSHFP &#39;</span><span class="o">)</span> <span class="o">|</span> <span class="nf">map</span><span class="o">(</span><span class="s1">&#39;last&#39;</span><span class="o">)</span> <span class="o">|</span> <span class="nf">list</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">ipa_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipa.example.com</span>
+<span class="w">    </span><span class="nt">ipa_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">    </span><span class="nt">ipa_pass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChangeMe!</span>
 </pre></div>
 </div>
 </section>
@@ -801,7 +821,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

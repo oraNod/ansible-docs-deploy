@@ -242,6 +242,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -404,7 +405,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <h1>cisco.ios.ios_service module – Resource module to configure service.<a class="headerlink" href="#cisco-ios-ios-service-module-resource-module-to-configure-service" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/cisco/ios/">cisco.ios collection</a> (version 8.0.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/cisco/ios/">cisco.ios collection</a> (version 9.0.0).</p>
 <p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
 It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
@@ -441,7 +442,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <div class="ansibleOptionAnchor" id="parameter-config"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config"><strong>config</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>A dictionnary of service configuration</p>
+<td><div class="ansible-option-cell"><p>A dictionary of service configuration</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
@@ -804,7 +805,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <div class="ansibleOptionAnchor" id="parameter-config/tcp_small_servers"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-tcp-small-servers"><strong>tcp_small_servers</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/tcp_small_servers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
-<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>TCP and UDP small servers are servers (daemons, in Unix parlance) that run in the router which are useful for diagnostics.</p>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>TCP small servers are servers (daemons, in Unix parlance) that run in the router which are useful for diagnostics.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
@@ -821,13 +822,25 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/tcp_small_servers/max_servers"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-tcp-small-servers-max-servers"><strong>max_servers</strong></p>
-<a class="ansibleOptionLink" href="#parameter-config/tcp_small_servers/max_servers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-config/tcp_small_servers/max_servers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
 </div></td>
 <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Set number of allowable TCP small servers</p>
-<p>1 to 2147483647 or no-limit</p>
+<p>1 to 2147483647</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/tcp_small_servers/no_limit"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-tcp-small-servers-no-limit"><strong>no_limit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/tcp_small_servers/no_limit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>No limit on number of allowable TCP small servers</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/telnet_zeroidle"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-telnet-zeroidle"><strong>telnet_zeroidle</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/telnet_zeroidle" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -839,21 +852,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/timestamps"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-timestamps"><strong>timestamps</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/timestamps" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Timestamp debug/log messages</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/timestamps/datetime_options"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-timestamps-datetime-options"><strong>datetime_options</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/timestamps/datetime_options" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Options for date and time timestamp</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/timestamps/datetime_options/localtime"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-timestamps-datetime-options-localtime"><strong>localtime</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/timestamps/datetime_options/localtime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -865,7 +878,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/timestamps/datetime_options/msec"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-timestamps-datetime-options-msec"><strong>msec</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/timestamps/datetime_options/msec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -877,7 +890,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/timestamps/datetime_options/show_timezone"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-timestamps-datetime-options-show-timezone"><strong>show_timezone</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/timestamps/datetime_options/show_timezone" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -889,7 +902,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/timestamps/datetime_options/year"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-timestamps-datetime-options-year"><strong>year</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/timestamps/datetime_options/year" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -901,7 +914,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/timestamps/enable"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-timestamps-enable"><strong>enable</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/timestamps/enable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -913,7 +926,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/timestamps/msg"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-timestamps-msg"><strong>msg</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/timestamps/msg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -925,7 +938,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/timestamps/timestamp"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-timestamps-timestamp"><strong>timestamp</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/timestamps/timestamp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -937,14 +950,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/udp_small_servers"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-udp-small-servers"><strong>udp_small_servers</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/udp_small_servers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
-<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>TCP and UDP small servers are servers (daemons, in Unix parlance) that run in the router which are useful for diagnostics.</p>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>UDP small servers are servers (daemons, in Unix parlance) that run in the router which are useful for diagnostics.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/udp_small_servers/enable"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-udp-small-servers-enable"><strong>enable</strong></p>
 <a class="ansibleOptionLink" href="#parameter-config/udp_small_servers/enable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -956,12 +969,24 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-config/udp_small_servers/max_servers"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-udp-small-servers-max-servers"><strong>max_servers</strong></p>
-<a class="ansibleOptionLink" href="#parameter-config/udp_small_servers/max_servers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-config/udp_small_servers/max_servers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
 </div></td>
-<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Set number of allowable TCP small servers</p>
-<p>1 to 2147483647 or no-limit</p>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Set number of allowable UDP small servers</p>
+<p>1 to 2147483647</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/udp_small_servers/no_limit"></div><p class="ansible-option-title" id="ansible-collections-cisco-ios-ios-service-module-parameter-config-udp-small-servers-no-limit"><strong>no_limit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/udp_small_servers/no_limit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>No limit on number of allowable UDP small servers</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
@@ -1012,7 +1037,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>Tested against Cisco IOSXE Version 16.9</p></li>
+<li><p>Tested against Cisco IOSXE Version 17.9.1a on CML.</p></li>
 <li><p>This module works with connection <code class="docutils literal notranslate"><span class="pre">network_cli</span></code>. See <a class="reference external" href="https://docs.ansible.com/ansible/latest/network/user_guide/platform_ios.html">https://docs.ansible.com/ansible/latest/network/user_guide/platform_ios.html</a></p></li>
 </ul>
 </div>
@@ -1473,6 +1498,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Ambroise Rosset (&#64;earendilfr)</p></li>
+<li><p>Sagar Paul (&#64;KB-perByte)</p></li>
 </ul>
 </section>
 <section id="collection-links">
@@ -1499,7 +1525,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

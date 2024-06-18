@@ -29,7 +29,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="community.zabbix.zabbix_proxy_info module – Gather information about Zabbix proxy" href="zabbix_proxy_info_module.html" />
+    <link rel="next" title="community.zabbix.zabbix_proxy_group module – Create/update/delete Zabbix proxy group" href="zabbix_proxy_group_module.html" />
     <link rel="prev" title="community.zabbix.zabbix_mediatype module – Create/Update/Delete Zabbix media types" href="zabbix_mediatype_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
 <script src="https://www.redhat.com/dtm.js"></script>
 
@@ -256,6 +256,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -418,7 +419,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <h1>community.zabbix.zabbix_proxy module – Create/delete/get/update Zabbix proxies<a class="headerlink" href="#community-zabbix-zabbix-proxy-module-create-delete-get-update-zabbix-proxies" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/zabbix/">community.zabbix collection</a> (version 2.5.1).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/zabbix/">community.zabbix collection</a> (version 3.0.0).</p>
 <p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
 It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
@@ -458,6 +459,23 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 </thead>
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-address"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-address"><strong>address</strong></p>
+<a class="ansibleOptionLink" href="#parameter-address" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>IP address or DNS name to connect to.</p>
+<p>Required if the Zabbix proxy operating mode is passive</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-allowed_addresses"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-allowed-addresses"><strong>allowed_addresses</strong></p>
+<a class="ansibleOptionLink" href="#parameter-allowed_addresses" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Comma-delimited IP addresses or DNS names of active Zabbix proxy.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ca_cert"></div>
 <div class="ansibleOptionAnchor" id="parameter-tls_issuer"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-tls-issuer"><span id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-ca-cert"></span><strong>ca_cert</strong></p>
 <a class="ansibleOptionLink" href="#parameter-ca_cert" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-aliases">aliases: tls_issuer</span></p>
@@ -467,37 +485,52 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-custom_timeouts"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-custom-timeouts"><strong>custom_timeouts</strong></p>
+<a class="ansibleOptionLink" href="#parameter-custom_timeouts" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Whether to override global item timeouts on the proxy level.</p>
+<p>0 - use global settings; 1 - override timeouts.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">0</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">1</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-description"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-description"><strong>description</strong></p>
 <a class="ansibleOptionLink" href="#parameter-description" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Description of the proxy.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-http_login_password"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-http-login-password"><strong>http_login_password</strong></p>
 <a class="ansibleOptionLink" href="#parameter-http_login_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Basic Auth password</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-http_login_user"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-http-login-user"><strong>http_login_user</strong></p>
 <a class="ansibleOptionLink" href="#parameter-http_login_user" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Basic Auth login</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-interface"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-interface"><strong>interface</strong></p>
 <a class="ansibleOptionLink" href="#parameter-interface" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>Dictionary with params for the interface when proxy is in passive mode.</p>
+<td><div class="ansible-option-cell"><p>Deprecated for Zabbix version &gt;= 7.0.</p>
+<p>Dictionary with params for the interface when proxy is in passive mode.</p>
 <p>For more information, review proxy interface documentation at</p>
 <p><a class="reference external" href="https://www.zabbix.com/documentation/current/en/manual/api/reference/proxy/object#proxy-interface">https://www.zabbix.com/documentation/current/en/manual/api/reference/proxy/object#proxy-interface</a>.</p>
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">{}</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-interface/dns"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-interface-dns"><strong>dns</strong></p>
 <a class="ansibleOptionLink" href="#parameter-interface/dns" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -506,7 +539,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-interface/ip"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-interface-ip"><strong>ip</strong></p>
 <a class="ansibleOptionLink" href="#parameter-interface/ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -515,7 +548,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-interface/port"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-interface-port"><strong>port</strong></p>
 <a class="ansibleOptionLink" href="#parameter-interface/port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -523,7 +556,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;10051&quot;</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-interface/useip"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-interface-useip"><strong>useip</strong></p>
 <a class="ansibleOptionLink" href="#parameter-interface/useip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
 </div></td>
@@ -536,12 +569,63 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 </ul>
 </div></td>
 </tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-local_address"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-local-address"><strong>local_address</strong></p>
+<a class="ansibleOptionLink" href="#parameter-local_address" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Address for active agents. IP address or DNS name to connect to.</p>
+<p>Required if proxy_groupid is not 0</p>
+</div></td>
+</tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-local_port"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-local-port"><strong>local_port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-local_port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Local proxy port number to connect to.</p>
+<p>Supported if proxy_groupid is not 0</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;10051&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-operating_mode"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-operating-mode"><strong>operating_mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-operating_mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Type of proxy.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;active&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;passive&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-port"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Port number to connect to.</p>
+<p>supported if the Zabbix proxy operating mode is passive.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;10051&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxy_address"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-proxy-address"><strong>proxy_address</strong></p>
 <a class="ansibleOptionLink" href="#parameter-proxy_address" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>Comma-delimited list of IP/CIDR addresses or DNS names to accept active proxy requests from.</p>
+<td><div class="ansible-option-cell"><p>Deprecated for Zabbix version &gt;= 7.0.</p>
+<p>Comma-delimited list of IP/CIDR addresses or DNS names to accept active proxy requests from.</p>
 <p>Requires <em>status=active</em>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-proxy_group"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-proxy-group"><strong>proxy_group</strong></p>
+<a class="ansibleOptionLink" href="#parameter-proxy_group" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Proxy group name.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -569,12 +653,123 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <div class="ansibleOptionAnchor" id="parameter-status"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-status"><strong>status</strong></p>
 <a class="ansibleOptionLink" href="#parameter-status" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>Type of proxy. (4 - active, 5 - passive)</p>
+<td><div class="ansible-option-cell"><p>Deprecated for Zabbix version &gt;= 7.0.</p>
+<p>Type of proxy. (4 - active, 5 - passive)</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;active&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;passive&quot;</span></code></p></li>
 </ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_browser"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-browser"><strong>timeout_browser</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_browser" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on browser type checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Required if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_db_monitor"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-db-monitor"><strong>timeout_db_monitor</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_db_monitor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on DB checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Required if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_external_check"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-external-check"><strong>timeout_external_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_external_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on external checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Required if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_http_agent"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-http-agent"><strong>timeout_http_agent</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_http_agent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on HTTPagent checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Required if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_script"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-script"><strong>timeout_script</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_script" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on script type checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Required if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_simple_check"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-simple-check"><strong>timeout_simple_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_simple_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on simple checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Required if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_snmp_agent"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-snmp-agent"><strong>timeout_snmp_agent</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_snmp_agent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on SNMP agent checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Required if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_ssh_agent"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-ssh-agent"><strong>timeout_ssh_agent</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_ssh_agent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on SSH checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Required if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_telnet_agent"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-telnet-agent"><strong>timeout_telnet_agent</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_telnet_agent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on Telnet checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Required if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout_zabbix_agent"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-proxy-module-parameter-timeout-zabbix-agent"><strong>timeout_zabbix_agent</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout_zabbix_agent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameter introduced in Zabbix 7.0.</p>
+<p>Spend no more than this number of seconds on Zabbix agent checks processing.</p>
+<p>Accepts seconds or time unit with suffix (e.g., 30s, 1m).</p>
+<p>Possible values range: 1-600s.</p>
+<p>Rired if if <code class="docutils literal notranslate"><span class="pre">custom_timeouts</span></code> is set to 1.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
@@ -641,7 +836,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ansible_zabbix_auth_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8ec0d52432c15c91fcafe9888500cf9a607f44091ab554dbee860f6b44fac895</span>
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create or update a proxy with proxy type active</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create or update a proxy with proxy type active (Zabbix version &lt; 7.0)</span>
 <span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
 <span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
@@ -658,7 +853,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
 <span class="w">    </span><span class="nt">proxy_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleProxy.local</span>
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new passive proxy using only it&#39;s IP</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new passive proxy using only its IP (Zabbix version &lt; 7.0)</span>
 <span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
 <span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
@@ -678,7 +873,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <span class="w">      </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1.1.2</span>
 <span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10051</span>
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new passive proxy using only it&#39;s DNS</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new passive proxy using only its DNS (Zabbix version &lt; 7.0)</span>
 <span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
 <span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
@@ -696,6 +891,59 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <span class="w">    </span><span class="nt">interface</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">dns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy.example.com</span>
 <span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10051</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create or update a proxy with proxy type active (Zabbix version &gt;= 7.0)</span>
+<span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
+<span class="w">    </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_url_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;zabbixeu&quot;</span><span class="w">  </span><span class="c1"># If Zabbix WebUI runs on non-default (zabbix) path ,e.g. http://&lt;FQDN&gt;/zabbixeu</span>
+<span class="w">    </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix-example-fqdn.org</span>
+<span class="w">  </span><span class="nt">community.zabbix.zabbix_proxy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">proxy_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleProxy</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleProxy</span>
+<span class="w">    </span><span class="nt">operating_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operating_mode</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">    </span><span class="nt">allowed_addresses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleProxy.local</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new passive proxy using only its IP (Zabbix version &gt;= 7.0)</span>
+<span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
+<span class="w">    </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_url_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;zabbixeu&quot;</span><span class="w">  </span><span class="c1"># If Zabbix WebUI runs on non-default (zabbix) path ,e.g. http://&lt;FQDN&gt;/zabbixeu</span>
+<span class="w">    </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix-example-fqdn.org</span>
+<span class="w">  </span><span class="nt">community.zabbix.zabbix_proxy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">proxy_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleProxy</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleProxy</span>
+<span class="w">    </span><span class="nt">operating_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">passive</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1.1.2</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10051</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new passive proxy using only its DNS (Zabbix version &gt;= 7.0)</span>
+<span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
+<span class="w">    </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_url_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;zabbixeu&quot;</span><span class="w">  </span><span class="c1"># If Zabbix WebUI runs on non-default (zabbix) path ,e.g. http://&lt;FQDN&gt;/zabbixeu</span>
+<span class="w">    </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix-example-fqdn.org</span>
+<span class="w">  </span><span class="nt">community.zabbix.zabbix_proxy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">proxy_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleProxy</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExampleProxy</span>
+<span class="w">    </span><span class="nt">operating_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">passive</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy.example.com</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10051</span>
 </pre></div>
 </div>
 <section id="authors">
@@ -722,14 +970,14 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 
 <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="zabbix_mediatype_module.html" class="btn btn-neutral float-left" title="community.zabbix.zabbix_mediatype module – Create/Update/Delete Zabbix media types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="zabbix_proxy_info_module.html" class="btn btn-neutral float-right" title="community.zabbix.zabbix_proxy_info module – Gather information about Zabbix proxy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="zabbix_proxy_group_module.html" class="btn btn-neutral float-right" title="community.zabbix.zabbix_proxy_group module – Create/update/delete Zabbix proxy group" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

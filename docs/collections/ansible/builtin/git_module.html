@@ -237,6 +237,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -441,9 +442,9 @@ the same module name.</p>
 <div class="ansibleOptionAnchor" id="parameter-accept_hostkey"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-git-module-parameter-accept-hostkey"><strong>accept_hostkey</strong></p>
 <a class="ansibleOptionLink" href="#parameter-accept_hostkey" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>Will ensure or not that “-o StrictHostKeyChecking=no” is present as an ssh option.</p>
+<td><div class="ansible-option-cell"><p>Will ensure or not that <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">StrictHostKeyChecking=no</span></code> is present as an ssh option.</p>
 <p>Be aware that this disables a protection against MITM attacks.</p>
-<p>Those using OpenSSH &gt;= 7.5 might want to set <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-git-module-parameter-ssh-opts"><span class="std std-ref"><span class="pre">ssh_opts</span></span></a></strong></code> to <code class="ansible-value docutils literal notranslate"><span class="pre">StrictHostKeyChecking=accept-new</span></code> instead, it does not remove the MITM issue but it does restrict it to the first attempt.</p>
+<p>Those using OpenSSH &gt;= 7.5 might want to use <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-git-module-parameter-accept-newhostkey"><span class="std std-ref"><span class="pre">accept_newhostkey</span></span></a></strong></code> or set <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-git-module-parameter-ssh-opts"><span class="std std-ref"><span class="pre">ssh_opts</span></span></a></strong></code> to <code class="ansible-value docutils literal notranslate"><span class="pre">StrictHostKeyChecking=accept-new</span></code> instead, it does not remove the MITM issue but it does restrict it to the first attempt.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
@@ -456,7 +457,7 @@ the same module name.</p>
 <a class="ansibleOptionLink" href="#parameter-accept_newhostkey" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 <p><em class="ansible-option-versionadded">added in ansible-core 2.12</em></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>As of OpenSSH 7.5, “-o StrictHostKeyChecking=accept-new” can be used which is safer and will only accepts host keys which are not present or are the same. if <code class="ansible-value docutils literal notranslate"><span class="pre">true</span></code>, ensure that “-o StrictHostKeyChecking=accept-new” is present as an ssh option.</p>
+<td><div class="ansible-option-cell"><p>As of OpenSSH 7.5, <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">StrictHostKeyChecking=accept-new</span></code> can be used which is safer and will only accepts host keys which are not present or are the same. If <code class="ansible-value docutils literal notranslate"><span class="pre">true</span></code>, ensure that <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">StrictHostKeyChecking=accept-new</span></code> is present as an ssh option.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
@@ -557,7 +558,7 @@ the same module name.</p>
 <a class="ansibleOptionLink" href="#parameter-key_file" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">path</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Specify an optional private key file path, on the target host, to use for the checkout.</p>
-<p>This ensures ‘IdentitiesOnly=yes’ is present in <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-git-module-parameter-ssh-opts"><span class="std std-ref"><span class="pre">ssh_opts</span></span></a></strong></code>.</p>
+<p>This ensures <code class="docutils literal notranslate"><span class="pre">IdentitiesOnly=yes</span></code> is present in <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-git-module-parameter-ssh-opts"><span class="std std-ref"><span class="pre">ssh_opts</span></span></a></strong></code>.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -576,7 +577,7 @@ the same module name.</p>
 <div class="ansibleOptionAnchor" id="parameter-reference"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-git-module-parameter-reference"><strong>reference</strong></p>
 <a class="ansibleOptionLink" href="#parameter-reference" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>Reference repository (see “git clone –reference …”).</p>
+<td><div class="ansible-option-cell"><p>Reference repository (see <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--reference</span> <span class="pre">...</span></code>).</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -631,15 +632,15 @@ the same module name.</p>
 <td><div class="ansible-option-cell"><p>Options git will pass to ssh when used as protocol, it works via <code class="docutils literal notranslate"><span class="pre">git</span></code>‘s <code class="xref std std-envvar docutils literal notranslate"><span class="pre">GIT_SSH</span></code>/<code class="xref std std-envvar docutils literal notranslate"><span class="pre">GIT_SSH_COMMAND</span></code> environment variables.</p>
 <p>For older versions it appends <code class="xref std std-envvar docutils literal notranslate"><span class="pre">GIT_SSH_OPTS</span></code> (specific to this module) to the variables above or via a wrapper script.</p>
 <p>Other options can add to this list, like <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-git-module-parameter-key-file"><span class="std std-ref"><span class="pre">key_file</span></span></a></strong></code> and <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-git-module-parameter-accept-hostkey"><span class="std std-ref"><span class="pre">accept_hostkey</span></span></a></strong></code>.</p>
-<p>An example value could be “-o StrictHostKeyChecking=no” (although this particular option is better set by <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-git-module-parameter-accept-hostkey"><span class="std std-ref"><span class="pre">accept_hostkey</span></span></a></strong></code>).</p>
-<p>The module ensures that ‘BatchMode=yes’ is always present to avoid prompts.</p>
+<p>An example value could be <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">StrictHostKeyChecking=no</span></code> (although this particular option is better set by <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-git-module-parameter-accept-hostkey"><span class="std std-ref"><span class="pre">accept_hostkey</span></span></a></strong></code>).</p>
+<p>The module ensures that <code class="docutils literal notranslate"><span class="pre">BatchMode=yes</span></code> is always present to avoid prompts.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-track_submodules"></div><p class="ansible-option-title" id="ansible-collections-ansible-builtin-git-module-parameter-track-submodules"><strong>track_submodules</strong></p>
 <a class="ansibleOptionLink" href="#parameter-track_submodules" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>If <code class="ansible-value docutils literal notranslate"><span class="pre">true</span></code>, submodules will track the latest commit on their master branch (or other branch specified in .gitmodules).  If <code class="ansible-value docutils literal notranslate"><span class="pre">false</span></code>, submodules will be kept at the revision specified by the main project. This is equivalent to specifying the <code class="docutils literal notranslate"><span class="pre">--remote</span></code> flag to git submodule update.</p>
+<td><div class="ansible-option-cell"><p>If <code class="ansible-value docutils literal notranslate"><span class="pre">true</span></code>, submodules will track the latest commit on their master branch (or other branch specified in <code class="docutils literal notranslate"><span class="pre">.gitmodules</span></code>).  If <code class="ansible-value docutils literal notranslate"><span class="pre">false</span></code>, submodules will be kept at the revision specified by the main project. This is equivalent to specifying the <code class="docutils literal notranslate"><span class="pre">--remote</span></code> flag to git submodule update.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
@@ -732,7 +733,7 @@ the same module name.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>If the task seems to be hanging, first verify remote host is in <code class="docutils literal notranslate"><span class="pre">known_hosts</span></code>. SSH will prompt user to authorize the first contact with a remote host.  To avoid this prompt, one solution is to use the option accept_hostkey. Another solution is to add the remote host public key in <code class="docutils literal notranslate"><span class="pre">/etc/ssh/ssh_known_hosts</span></code> before calling the git module, with the following command: ssh-keyscan -H remote_host.com &gt;&gt; /etc/ssh/ssh_known_hosts.</p></li>
+<li><p>If the task seems to be hanging, first verify remote host is in <code class="docutils literal notranslate"><span class="pre">known_hosts</span></code>. SSH will prompt user to authorize the first contact with a remote host.  To avoid this prompt, one solution is to use the option accept_hostkey. Another solution is to add the remote host public key in <code class="docutils literal notranslate"><span class="pre">/etc/ssh/ssh_known_hosts</span></code> before calling the git module, with the following command: <code class="docutils literal notranslate"><span class="pre">ssh-keyscan</span> <span class="pre">-H</span> <span class="pre">remote_host.com</span> <span class="pre">&gt;&gt;</span> <span class="pre">/etc/ssh/ssh_known_hosts</span></code>.</p></li>
 </ul>
 </div>
 </section>
@@ -895,7 +896,7 @@ the same module name.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

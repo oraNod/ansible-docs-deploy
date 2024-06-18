@@ -259,6 +259,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -418,7 +419,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <h1>community.docker.docker_compose_v2 module – Manage multi-container Docker applications with Docker Compose CLI plugin<a class="headerlink" href="#community-docker-docker-compose-v2-module-manage-multi-container-docker-applications-with-docker-compose-cli-plugin" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/docker/">community.docker collection</a> (version 3.10.3).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/docker/">community.docker collection</a> (version 3.10.4).</p>
 <p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
 It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
@@ -552,7 +553,7 @@ see <a class="reference internal" href="#ansible-collections-community-docker-do
 <p><em class="ansible-option-versionadded">added in community.docker 3.9.0</em></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Compose file describing one or more services, networks and volumes.</p>
-<p>Mutually exclusive with <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-project-src"><span class="std std-ref"><span class="pre">project_src</span></span></a></strong></code> and <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-files"><span class="std std-ref"><span class="pre">files</span></span></a></strong></code>.</p>
+<p>Mutually exclusive with <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-project-src"><span class="std std-ref"><span class="pre">project_src</span></span></a></strong></code> and <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-files"><span class="std std-ref"><span class="pre">files</span></span></a></strong></code>. One of <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-project-src"><span class="std std-ref"><span class="pre">project_src</span></span></a></strong></code> and <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-definition"><span class="std std-ref"><span class="pre">definition</span></span></a></strong></code> must be provided.</p>
 <p>If provided, PyYAML must be available to this module, and <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-project-name"><span class="std std-ref"><span class="pre">project_name</span></span></a></strong></code> must be specified.</p>
 <p>Note that a temporary directory will be created and deleted afterwards when using this option.</p>
 </div></td>
@@ -628,7 +629,7 @@ see <a class="reference internal" href="#ansible-collections-community-docker-do
 </div></td>
 <td><div class="ansible-option-cell"><p>Path to a directory containing a Compose file (<code class="docutils literal notranslate"><span class="pre">compose.yml</span></code>, <code class="docutils literal notranslate"><span class="pre">compose.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code>, or <code class="docutils literal notranslate"><span class="pre">docker-compose.yaml</span></code>).</p>
 <p>If <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-files"><span class="std std-ref"><span class="pre">files</span></span></a></strong></code> is provided, will look for these files in this directory instead.</p>
-<p>Mutually exclusive with <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-definition"><span class="std std-ref"><span class="pre">definition</span></span></a></strong></code>.</p>
+<p>Mutually exclusive with <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-definition"><span class="std std-ref"><span class="pre">definition</span></span></a></strong></code>. One of <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-project-src"><span class="std std-ref"><span class="pre">project_src</span></span></a></strong></code> and <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-community-docker-docker-compose-v2-module-parameter-definition"><span class="std std-ref"><span class="pre">definition</span></span></a></strong></code> must be provided.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -891,7 +892,7 @@ will change over time. New releases of the Docker compose CLI plugin can break t
 <span class="w">      </span><span class="nt">ansible.builtin.debug</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
 
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run `docker-compose up` again</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run `docker compose up` again</span>
 <span class="w">      </span><span class="nt">community.docker.docker_compose_v2</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">project_src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flask</span>
 <span class="w">      </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
@@ -1290,7 +1291,7 @@ will change over time. New releases of the Docker compose CLI plugin can break t
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

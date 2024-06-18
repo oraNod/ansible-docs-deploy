@@ -237,6 +237,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -443,7 +444,7 @@ the same module name.</p>
 <a class="ansibleOptionLink" href="#parameter-echo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Controls whether or not keyboard input is shown when typing.</p>
-<p>Only has effect if <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="#ansible-collections-ansible-builtin-pause-module-parameter-seconds"><span class="std std-ref"><span class="pre">seconds=None</span></span></a></code> and <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="#ansible-collections-ansible-builtin-pause-module-parameter-minutes"><span class="std std-ref"><span class="pre">minutes=None</span></span></a></code>.</p>
+<p>Only has effect if neither <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-pause-module-parameter-seconds"><span class="std std-ref"><span class="pre">seconds</span></span></a></strong></code> nor <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-pause-module-parameter-minutes"><span class="std std-ref"><span class="pre">minutes</span></span></a></strong></code> are set.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
@@ -463,7 +464,7 @@ the same module name.</p>
 <a class="ansibleOptionLink" href="#parameter-prompt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Optional text to use for the prompt message.</p>
-<p>User input is only returned if <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="#ansible-collections-ansible-builtin-pause-module-parameter-seconds"><span class="std std-ref"><span class="pre">seconds=None</span></span></a></code> and <code class="ansible-option-value docutils literal notranslate"><a class="reference internal" href="#ansible-collections-ansible-builtin-pause-module-parameter-minutes"><span class="std std-ref"><span class="pre">minutes=None</span></span></a></code>, otherwise this is just a custom message before playbook execution is paused.</p>
+<p>User input is only returned if <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-pause-module-parameter-seconds"><span class="std std-ref"><span class="pre">seconds</span></span></a></strong></code> and <code class="ansible-option docutils literal notranslate"><strong><a class="reference internal" href="#ansible-collections-ansible-builtin-pause-module-parameter-minutes"><span class="std std-ref"><span class="pre">minutes</span></span></a></strong></code> are both not specified, otherwise this is just a custom message before playbook execution is paused.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
@@ -568,7 +569,7 @@ the same module name.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>Starting in 2.2,  if you specify 0 or negative for minutes or seconds, it will wait for 1 second, previously it would wait indefinitely.</p></li>
+<li><p>Starting in 2.2, if you specify 0 or negative for minutes or seconds, it will wait for 1 second, previously it would wait indefinitely.</p></li>
 <li><p>User input is not captured or echoed, regardless of echo setting, when minutes or seconds is specified.</p></li>
 </ul>
 </div>
@@ -690,7 +691,7 @@ the same module name.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

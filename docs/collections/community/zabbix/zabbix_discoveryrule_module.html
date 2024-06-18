@@ -5,7 +5,7 @@
 <meta content="2.11.0" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>community.zabbix.zabbix_discoveryrule module – Create/delete Zabbix discovery rules &mdash; Ansible Community Documentation</title>
+  <title>community.zabbix.zabbix_discoveryrule module – Create/delete Zabbix low-level discovery (LLD) rules &mdash; Ansible Community Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
       <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
@@ -256,6 +256,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -334,7 +335,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
           <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
           <li class="breadcrumb-item"><a href="../index.html">Collections in the Community Namespace</a></li>
           <li class="breadcrumb-item"><a href="index.html">Community.Zabbix</a></li>
-      <li class="breadcrumb-item active">community.zabbix.zabbix_discoveryrule module – Create/delete Zabbix discovery rules</li>
+      <li class="breadcrumb-item active">community.zabbix.zabbix_discoveryrule module – Create/delete Zabbix low-level discovery (LLD) rules</li>
   <li class="wy-breadcrumbs-aside">
             <!-- Remove main index page as it is no longer editable -->
             
@@ -414,11 +415,11 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
   
            <div itemprop="articleBody">
              
-  <span class="target" id="ansible-collections-community-zabbix-zabbix-discoveryrule-module"></span><section id="community-zabbix-zabbix-discoveryrule-module-create-delete-zabbix-discovery-rules">
-<h1>community.zabbix.zabbix_discoveryrule module – Create/delete Zabbix discovery rules<a class="headerlink" href="#community-zabbix-zabbix-discoveryrule-module-create-delete-zabbix-discovery-rules" title="Link to this heading"></a></h1>
+  <span class="target" id="ansible-collections-community-zabbix-zabbix-discoveryrule-module"></span><section id="community-zabbix-zabbix-discoveryrule-module-create-delete-zabbix-low-level-discovery-lld-rules">
+<h1>community.zabbix.zabbix_discoveryrule module – Create/delete Zabbix low-level discovery (LLD) rules<a class="headerlink" href="#community-zabbix-zabbix-discoveryrule-module-create-delete-zabbix-low-level-discovery-lld-rules" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/zabbix/">community.zabbix collection</a> (version 2.5.1).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/zabbix/">community.zabbix collection</a> (version 3.0.0).</p>
 <p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
 It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
@@ -697,7 +698,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
 
-<span class="c1"># Add tags to the existing Zabbix LLD rule</span>
+<span class="c1"># Change interval for existing Zabbix LLD rule</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update rule</span>
 <span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
 <span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
@@ -712,13 +713,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mounted_filesystem_discovery</span>
 <span class="w">    </span><span class="nt">template_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_template</span>
 <span class="w">    </span><span class="nt">params</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix_agent</span>
-<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vfs.fs.discovery&#39;</span>
-<span class="w">        </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
-<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="w">        </span><span class="nt">tags</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class</span>
-<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application</span>
+<span class="w">        </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2h</span>
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
 
 <span class="c1"># Delete LLD rule</span>
@@ -769,7 +764,7 @@ see <a class="reference internal" href="#ansible-collections-community-zabbix-za
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

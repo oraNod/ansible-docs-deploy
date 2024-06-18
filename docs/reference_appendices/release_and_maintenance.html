@@ -218,6 +218,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l3"><a class="reference internal" href="#ansible-core-release-cycle">ansible-core release cycle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ansible-core-control-node-python-support"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> control node Python support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ansible-core-target-node-python-support"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> target node Python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ansible-core-target-node-powershell-and-windows-support"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> target node PowerShell and Windows support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ansible-core-support-matrix"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> support matrix</a></li>
 </ul>
 </li>
@@ -394,26 +395,27 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li><p><a class="reference internal" href="#ansible-core-release-cycle" id="id21">ansible-core release cycle</a></p></li>
 <li><p><a class="reference internal" href="#ansible-core-control-node-python-support" id="id22"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> control node Python support</a></p></li>
 <li><p><a class="reference internal" href="#ansible-core-target-node-python-support" id="id23"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> target node Python support</a></p></li>
-<li><p><a class="reference internal" href="#ansible-core-support-matrix" id="id24"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> support matrix</a></p></li>
+<li><p><a class="reference internal" href="#ansible-core-target-node-powershell-and-windows-support" id="id24"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> target node PowerShell and Windows support</a></p></li>
+<li><p><a class="reference internal" href="#ansible-core-support-matrix" id="id25"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> support matrix</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#preparing-for-a-new-release" id="id25">Preparing for a new release</a></p>
+<li><p><a class="reference internal" href="#preparing-for-a-new-release" id="id26">Preparing for a new release</a></p>
 <ul>
-<li><p><a class="reference internal" href="#feature-freezes" id="id26">Feature freezes</a></p></li>
-<li><p><a class="reference internal" href="#release-candidates" id="id27">Release candidates</a></p></li>
+<li><p><a class="reference internal" href="#feature-freezes" id="id27">Feature freezes</a></p></li>
+<li><p><a class="reference internal" href="#release-candidates" id="id28">Release candidates</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#development-and-maintenance-workflows" id="id28">Development and maintenance workflows</a></p>
+<li><p><a class="reference internal" href="#development-and-maintenance-workflows" id="id29">Development and maintenance workflows</a></p>
 <ul>
-<li><p><a class="reference internal" href="#ansible-community-package-workflow" id="id29">Ansible community package workflow</a></p></li>
-<li><p><a class="reference internal" href="#ansible-core-workflow" id="id30">ansible-core workflow</a></p></li>
-<li><p><a class="reference internal" href="#generating-changelogs" id="id31">Generating changelogs</a></p></li>
+<li><p><a class="reference internal" href="#ansible-community-package-workflow" id="id30">Ansible community package workflow</a></p></li>
+<li><p><a class="reference internal" href="#ansible-core-workflow" id="id31">ansible-core workflow</a></p></li>
+<li><p><a class="reference internal" href="#generating-changelogs" id="id32">Generating changelogs</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#deprecation-cycles" id="id32">Deprecation cycles</a></p>
+<li><p><a class="reference internal" href="#deprecation-cycles" id="id33">Deprecation cycles</a></p>
 <ul>
-<li><p><a class="reference internal" href="#ansible-community-package-deprecation-cycle" id="id33">Ansible community package deprecation cycle</a></p></li>
-<li><p><a class="reference internal" href="#ansible-core-deprecation-cycle" id="id34">ansible-core deprecation cycle</a></p></li>
+<li><p><a class="reference internal" href="#ansible-community-package-deprecation-cycle" id="id34">Ansible community package deprecation cycle</a></p></li>
+<li><p><a class="reference internal" href="#ansible-core-deprecation-cycle" id="id35">ansible-core deprecation cycle</a></p></li>
 </ul>
 </li>
 </ul>
@@ -540,8 +542,12 @@ see the chart in <a class="reference internal" href="#release-schedule"><span cl
 </ul>
 <p>Support for Python 2.7 is included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> version 2.16 and earlier.</p>
 </section>
+<section id="ansible-core-target-node-powershell-and-windows-support">
+<span id="target-node-windows-support"></span><h3><a class="toc-backref" href="#id24" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> target node PowerShell and Windows support</a><a class="headerlink" href="#ansible-core-target-node-powershell-and-windows-support" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> on Windows supports the baseline version of PowerShell that each Windows version ships with. For example, Windows Server 2016 shipped with PowerShell 5.1 so Ansible will support PowerShell 5.1 for the life of Windows Server 2016 support. Support for each Windows version is determined by the Windows lifecycle policy and when each version reaches the extended end date. For example Windows Server 2012 and 2012 R2 extended end date was for October 10th 2023 while Windows Server 2016 is January 12th 2027. Windows support does not align with the 3 year Extended Security Updates (<code class="docutils literal notranslate"><span class="pre">ESU</span></code>) support from Microsoft which is a paid support option for products that are past the normal end of support date from Microsoft.</p>
+</section>
 <section id="ansible-core-support-matrix">
-<span id="id8"></span><h3><a class="toc-backref" href="#id24" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> support matrix</a><a class="headerlink" href="#ansible-core-support-matrix" title="Link to this heading"></a></h3>
+<span id="id8"></span><h3><a class="toc-backref" href="#id25" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> support matrix</a><a class="headerlink" href="#ansible-core-support-matrix" title="Link to this heading"></a></h3>
 <p>This table links to the changelogs for each major <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> release. These changelogs contain the dates and significant changes in each minor release.
 Dates listed indicate the start date of the maintenance cycle.</p>
 <table class="docutils align-default">
@@ -568,7 +574,7 @@ Dates listed indicate the start date of the maintenance cycle.</p>
 </td>
 <td><div class="line-block">
 <div class="line">Python 3.7 - 3.12</div>
-<div class="line">PowerShell 3 - 5.1</div>
+<div class="line">PowerShell 5.1</div>
 </div>
 </td>
 </tr>
@@ -587,7 +593,7 @@ Dates listed indicate the start date of the maintenance cycle.</p>
 <td><div class="line-block">
 <div class="line">Python 2.7</div>
 <div class="line">Python 3.6 - 3.12</div>
-<div class="line">Powershell 3 - 5.1</div>
+<div class="line">Powershell 5.1</div>
 </div>
 </td>
 </tr>
@@ -756,14 +762,14 @@ Dates listed indicate the start date of the maintenance cycle.</p>
 </section>
 </section>
 <section id="preparing-for-a-new-release">
-<h2><a class="toc-backref" href="#id25" role="doc-backlink">Preparing for a new release</a><a class="headerlink" href="#preparing-for-a-new-release" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Preparing for a new release</a><a class="headerlink" href="#preparing-for-a-new-release" title="Link to this heading"></a></h2>
 <section id="feature-freezes">
-<span id="release-freezing"></span><h3><a class="toc-backref" href="#id26" role="doc-backlink">Feature freezes</a><a class="headerlink" href="#feature-freezes" title="Link to this heading"></a></h3>
+<span id="release-freezing"></span><h3><a class="toc-backref" href="#id27" role="doc-backlink">Feature freezes</a><a class="headerlink" href="#feature-freezes" title="Link to this heading"></a></h3>
 <p>During final preparations for a new release, core developers and maintainers focus on improving the release candidate, not on adding or reviewing new features. We may impose a feature freeze.</p>
 <p>A feature freeze means that we delay new features and fixes unrelated to the pending release so we can create the new release as soon as possible.</p>
 </section>
 <section id="release-candidates">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">Release candidates</a><a class="headerlink" href="#release-candidates" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">Release candidates</a><a class="headerlink" href="#release-candidates" title="Link to this heading"></a></h3>
 <p>We create at least one release candidate before each new major release of Ansible or <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>. Release candidates allow the Ansible community to try out new features, test existing playbooks on the release candidate, and report bugs or issues they find.</p>
 <p>Ansible and <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> tag the first release candidate (RC1) which is usually scheduled to last five business days. If no major bugs or issues are identified during this period, the release candidate becomes the final release.</p>
 <p>If there are major problems with the first candidate, the team and the community fix them and tag a second release candidate (RC2). This second candidate lasts for a shorter duration than the first. If no problems have been reported for an RC2 after two business days, the second release candidate becomes the final release.</p>
@@ -771,10 +777,10 @@ Dates listed indicate the start date of the maintenance cycle.</p>
 </section>
 </section>
 <section id="development-and-maintenance-workflows">
-<span id="development-and-stable-version-maintenance-workflow"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink">Development and maintenance workflows</a><a class="headerlink" href="#development-and-maintenance-workflows" title="Link to this heading"></a></h2>
+<span id="development-and-stable-version-maintenance-workflow"></span><h2><a class="toc-backref" href="#id29" role="doc-backlink">Development and maintenance workflows</a><a class="headerlink" href="#development-and-maintenance-workflows" title="Link to this heading"></a></h2>
 <p>In between releases, the Ansible community develops new features, maintains existing functionality, and fixes bugs in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> and in the collections included in the Ansible community package.</p>
 <section id="ansible-community-package-workflow">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">Ansible community package workflow</a><a class="headerlink" href="#ansible-community-package-workflow" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Ansible community package workflow</a><a class="headerlink" href="#ansible-community-package-workflow" title="Link to this heading"></a></h3>
 <p>The Ansible community develops and maintains the features and functionality included in the Ansible community package in Collections repositories, with a workflow that looks like this:</p>
 <blockquote>
 <div><ul class="simple">
@@ -788,7 +794,7 @@ Dates listed indicate the start date of the maintenance cycle.</p>
 <p>Some Collections are maintained by the Ansible team, some by Partner organizations, and some by community teams. For more information on adding features or fixing bugs in Ansible-maintained Collections, see <a class="reference internal" href="../community/contributing_maintained_collections.html#contributing-maintained-collections"><span class="std std-ref">Contributing to Ansible-maintained Collections</span></a>.</p>
 </section>
 <section id="ansible-core-workflow">
-<h3><a class="toc-backref" href="#id30" role="doc-backlink">ansible-core workflow</a><a class="headerlink" href="#ansible-core-workflow" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">ansible-core workflow</a><a class="headerlink" href="#ansible-core-workflow" title="Link to this heading"></a></h3>
 <p>The Ansible community develops and maintains <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> on <a class="reference external" href="https://github.com/ansible/ansible">GitHub</a>, with a workflow that looks like this:</p>
 <blockquote>
 <div><ul class="simple">
@@ -803,21 +809,21 @@ Dates listed indicate the start date of the maintenance cycle.</p>
 <p>For more information about adding features or fixing bugs in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> see <a class="reference internal" href="../community/development_process.html#community-development-process"><span class="std std-ref">The Ansible Development Cycle</span></a>.</p>
 </section>
 <section id="generating-changelogs">
-<span id="release-changelogs"></span><h3><a class="toc-backref" href="#id31" role="doc-backlink">Generating changelogs</a><a class="headerlink" href="#generating-changelogs" title="Link to this heading"></a></h3>
+<span id="release-changelogs"></span><h3><a class="toc-backref" href="#id32" role="doc-backlink">Generating changelogs</a><a class="headerlink" href="#generating-changelogs" title="Link to this heading"></a></h3>
 <p>We generate changelogs based on fragments. When creating new features for existing modules and plugins or fixing bugs, create a changelog fragment describing the change. A changelog entry is not needed for new modules or plugins. Details for those items will be generated from the module documentation.</p>
 <p>To add changelog fragments to Collections in the Ansible community package, we recommend the <a class="reference external" href="https://github.com/ansible-community/antsibull-changelog/blob/main/docs/changelogs.rst">antsibull-changelog utility</a>.</p>
 <p>To add changelog fragments for new features and bug fixes in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>, see the <a class="reference internal" href="../community/development_process.html#changelogs-how-to"><span class="std std-ref">changelog examples and instructions</span></a> in the Community Guide.</p>
 </section>
 </section>
 <section id="deprecation-cycles">
-<h2><a class="toc-backref" href="#id32" role="doc-backlink">Deprecation cycles</a><a class="headerlink" href="#deprecation-cycles" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id33" role="doc-backlink">Deprecation cycles</a><a class="headerlink" href="#deprecation-cycles" title="Link to this heading"></a></h2>
 <p>Sometimes we remove a feature, normally in favor of a reimplementation that we hope does a better job. To do this we have a deprecation cycle. First we mark a feature as ‘deprecated’. This is normally accompanied with warnings to the user as to why we deprecated it, what alternatives they should switch to and when (which version) we are scheduled to remove the feature permanently.</p>
 <section id="ansible-community-package-deprecation-cycle">
-<h3><a class="toc-backref" href="#id33" role="doc-backlink">Ansible community package deprecation cycle</a><a class="headerlink" href="#ansible-community-package-deprecation-cycle" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">Ansible community package deprecation cycle</a><a class="headerlink" href="#ansible-community-package-deprecation-cycle" title="Link to this heading"></a></h3>
 <p>Since Ansible is a package of individual collections, the deprecation cycle depends on the collection maintainers. We recommend the collection maintainers deprecate a feature in one Ansible major version and do not remove that feature for one year, or at least until the next major Ansible version. For example, deprecate the feature in 3.1.0 and do not remove the feature until 5.0.0 or 4.0.0 at the earliest. Collections should use semantic versioning, such that the major collection version cannot be changed within an Ansible major version. Therefore, the removal should not happen before the next major Ansible community package release. This is up to each collection maintainer and cannot be guaranteed.</p>
 </section>
 <section id="ansible-core-deprecation-cycle">
-<h3><a class="toc-backref" href="#id34" role="doc-backlink">ansible-core deprecation cycle</a><a class="headerlink" href="#ansible-core-deprecation-cycle" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id35" role="doc-backlink">ansible-core deprecation cycle</a><a class="headerlink" href="#ansible-core-deprecation-cycle" title="Link to this heading"></a></h3>
 <p>The deprecation cycle in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> is normally across 4 feature releases (2.x. where the x marks a feature release). The feature is normally removed in the 4th release after we announce the deprecation. For example, something deprecated in 2.10 will be removed in 2.13. The tracking is tied to the number of releases, not the release numbering itself. Although this is the standard, there are times where a deprecation cycle for a feature or behavior may have a longer or shorter deprecation cycle based on use or urgency of removal. Unintended or undocumented functionality may be removed without a deprecation cycle. In this context, unintended functionality refers specifically to emergent features that occur outside the release roadmap.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -852,7 +858,7 @@ Dates listed indicate the start date of the maintenance cycle.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 

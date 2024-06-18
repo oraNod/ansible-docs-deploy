@@ -237,6 +237,7 @@ _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
 <li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
@@ -494,6 +495,15 @@ example: <code class="docutils literal notranslate"><span class="pre">input</spa
 
 <span class="c1"># this is an error, wants bits, got bytes</span>
 <span class="nt">ERROR</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;</span><span class="cp">{{</span> <span class="s2">&quot;1.15 GB&quot;</span> <span class="o">|</span> <span class="nf">human_to_bytes</span><span class="o">(</span><span class="nv">isbits</span><span class="o">=</span><span class="kp">true</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&#39;</span>
+
+<span class="c1"># size =&gt; 2684354560</span>
+<span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;</span><span class="cp">{{</span> <span class="s2">&quot;2.5 gigabyte&quot;</span> <span class="o">|</span> <span class="nf">human_to_bytes</span> <span class="cp">}}</span><span class="s">&#39;</span>
+
+<span class="c1"># size =&gt; 1234803098</span>
+<span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;</span><span class="cp">{{</span> <span class="s2">&quot;1 Gigabyte&quot;</span> <span class="o">|</span> <span class="nf">human_to_bytes</span> <span class="cp">}}</span><span class="s">&#39;</span>
+
+<span class="c1"># this is an error, because gigggabyte is not a valid unit</span>
+<span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;</span><span class="cp">{{</span> <span class="s2">&quot;1 gigggabyte&quot;</span> <span class="o">|</span> <span class="nf">human_to_bytes</span> <span class="cp">}}</span><span class="s">&#39;</span>
 </pre></div>
 </div>
 </section>
@@ -545,7 +555,7 @@ example: <code class="docutils literal notranslate"><span class="pre">input</spa
 
   <div role="contentinfo">
     <p>&#169; Copyright Ansible project contributors.
-      <span class="lastupdated">Last updated on Jun 11, 2024.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
       </span></p>
   </div>
 
