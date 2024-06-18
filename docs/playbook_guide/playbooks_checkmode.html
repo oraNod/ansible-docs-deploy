@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validating tasks: check mode and diff mode &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_checkmode.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=eb3ed21c"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Understanding privilege escalation: become" href="playbooks_privilege_escalation.html" />
+    <link rel="prev" title="Executing playbooks" href="playbooks_execution.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="10">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                10
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/10/") > -1
+            ? "/10/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using Ansible playbooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="playbooks_intro.html">Ansible playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="playbooks.html">Working with playbooks</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="playbooks_execution.html">Executing playbooks</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Validating tasks: check mode and diff mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-check-mode">Using check mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-diff-mode">Using diff mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks_privilege_escalation.html">Understanding privilege escalation: become</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks_tags.html">Tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks_startnstep.html">Executing playbooks for troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks_debugger.html">Debugging tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks_async.html">Asynchronous actions and polling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks_strategies.html">Controlling playbook execution: strategies and more</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="playbooks_advanced_syntax.html">Advanced playbook syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complex_data_manipulation.html">Manipulating data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collections/index.html">Collection Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections/all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Using Ansible playbooks</a></li>
+          <li class="breadcrumb-item"><a href="playbooks_execution.html">Executing playbooks</a></li>
+      <li class="breadcrumb-item active">Validating tasks: check mode and diff mode</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <a href="https://github.com/ansible/ansible-documentation/edit/devel/docs/docsite/rst/playbook_guide/playbooks_checkmode.rst?description=%23%23%23%23%23%20SUMMARY%0A%3C!---%20Your%20description%20here%20--%3E%0A%0A%0A%23%23%23%23%23%20ISSUE%20TYPE%0A-%20Docs%20Pull%20Request%0A%0A%2Blabel:%20docsite_pr" class="fa fa-github"> Edit on GitHub</a>
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <section id="validating-tasks-check-mode-and-diff-mode">
+<span id="check-mode-dry"></span><h1>Validating tasks: check mode and diff mode<a class="headerlink" href="#validating-tasks-check-mode-and-diff-mode" title="Link to this heading"></a></h1>
+<p>Ansible provides two modes of execution that validate tasks: check mode and diff mode. These modes can be used separately or together. They are useful when you are creating or editing a playbook or role and you want to know what it will do. In check mode, Ansible runs without making any changes on remote systems. Modules that support check mode report the changes they would have made. Modules that do not support check mode report nothing and do nothing. In diff mode, Ansible provides before-and-after comparisons. Modules that support diff mode display detailed information. You can combine check mode and diff mode for detailed validation of your playbook or role.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#using-check-mode" id="id1">Using check mode</a></p>
+<ul>
+<li><p><a class="reference internal" href="#enforcing-or-preventing-check-mode-on-tasks" id="id2">Enforcing or preventing check mode on tasks</a></p></li>
+<li><p><a class="reference internal" href="#skipping-tasks-or-ignoring-errors-in-check-mode" id="id3">Skipping tasks or ignoring errors in check mode</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-diff-mode" id="id4">Using diff mode</a></p>
+<ul>
+<li><p><a class="reference internal" href="#enforcing-or-preventing-diff-mode-on-tasks" id="id5">Enforcing or preventing diff mode on tasks</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="using-check-mode">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Using check mode</a><a class="headerlink" href="#using-check-mode" title="Link to this heading"></a></h2>
+<p>Check mode is just a simulation. It will not generate output for tasks that use <a class="reference internal" href="playbooks_conditionals.html#conditionals-registered-vars"><span class="std std-ref">conditionals based on registered variables</span></a> (results of prior tasks). However, it is great for validating configuration management playbooks that run on one node at a time. To run a playbook in check mode:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ansible-playbook foo.yml --check</span>
+</pre></div>
+</div>
+<section id="enforcing-or-preventing-check-mode-on-tasks">
+<span id="forcing-to-run-in-check-mode"></span><h3><a class="toc-backref" href="#id2" role="doc-backlink">Enforcing or preventing check mode on tasks</a><a class="headerlink" href="#enforcing-or-preventing-check-mode-on-tasks" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.2.</span></p>
+</div>
+<p>If you want certain tasks to run in check mode always, or never, regardless of whether you run the playbook with or without <code class="docutils literal notranslate"><span class="pre">--check</span></code>, you can add the <code class="docutils literal notranslate"><span class="pre">check_mode</span></code> option to those tasks:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>To force a task to run in check mode, even when the playbook is called without <code class="docutils literal notranslate"><span class="pre">--check</span></code>, set <code class="docutils literal notranslate"><span class="pre">check_mode:</span> <span class="pre">true</span></code>.</p></li>
+<li><p>To force a task to run in normal mode and make changes to the system, even when the playbook is called with <code class="docutils literal notranslate"><span class="pre">--check</span></code>, set <code class="docutils literal notranslate"><span class="pre">check_mode:</span> <span class="pre">false</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>For example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This task will always make changes to the system</span>
+<span class="w">    </span><span class="nt">ansible.builtin.command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/something/to/run --even-in-check-mode</span>
+<span class="w">    </span><span class="nt">check_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This task will never make changes to the system</span>
+<span class="w">    </span><span class="nt">ansible.builtin.lineinfile</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">line</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;important</span><span class="nv"> </span><span class="s">config&quot;</span>
+<span class="w">      </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/myconfig.conf</span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">    </span><span class="nt">check_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">changes_to_important_config</span>
+</pre></div>
+</div>
+<p>Running single tasks with <code class="docutils literal notranslate"><span class="pre">check_mode:</span> <span class="pre">true</span></code> can be useful for testing Ansible modules, either to test the module itself or to test the conditions under which a module would make changes. You can register variables (see <a class="reference internal" href="playbooks_conditionals.html#playbooks-conditionals"><span class="std std-ref">Conditionals</span></a>) on these tasks for even more detail on the potential changes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Prior to version 2.2 only the equivalent of <code class="docutils literal notranslate"><span class="pre">check_mode:</span> <span class="pre">false</span></code> existed. The notation for that was <code class="docutils literal notranslate"><span class="pre">always_run:</span> <span class="pre">true</span></code>.</p>
+</div>
+</section>
+<section id="skipping-tasks-or-ignoring-errors-in-check-mode">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Skipping tasks or ignoring errors in check mode</a><a class="headerlink" href="#skipping-tasks-or-ignoring-errors-in-check-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.1.</span></p>
+</div>
+<p>If you want to skip a task or ignore errors on a task when you run Ansible in check mode, you can use a boolean magic variable <code class="docutils literal notranslate"><span class="pre">ansible_check_mode</span></code>, which is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when Ansible runs in check mode. For example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tasks</span><span class="p">:</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This task will be skipped in check mode</span>
+<span class="w">    </span><span class="nt">ansible.builtin.git</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh://git@github.com/mylogin/hello.git</span>
+<span class="w">      </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/mylogin/hello</span>
+<span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not ansible_check_mode</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This task will ignore errors in check mode</span>
+<span class="w">    </span><span class="nt">ansible.builtin.git</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh://git@github.com/mylogin/hello.git</span>
+<span class="w">      </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/mylogin/hello</span>
+<span class="w">    </span><span class="nt">ignore_errors</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">ansible_check_mode</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-diff-mode">
+<span id="diff-mode"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">Using diff mode</a><a class="headerlink" href="#using-diff-mode" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">--diff</span></code> option for ansible-playbook can be used alone or with <code class="docutils literal notranslate"><span class="pre">--check</span></code>. When you run in diff mode, any module that supports diff mode reports the changes made or, if used with <code class="docutils literal notranslate"><span class="pre">--check</span></code>, the changes that would have been made. Diff mode is most common in modules that manipulate files (for example, the template module) but other modules might also show ‘before and after’ information (for example, the user module).</p>
+<p>Diff mode produces a large amount of output, so it is best used when checking a single host at a time. For example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ansible-playbook foo.yml --check --diff --limit foo.example.com</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.4.</span></p>
+</div>
+<section id="enforcing-or-preventing-diff-mode-on-tasks">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Enforcing or preventing diff mode on tasks</a><a class="headerlink" href="#enforcing-or-preventing-diff-mode-on-tasks" title="Link to this heading"></a></h3>
+<p>Because the <code class="docutils literal notranslate"><span class="pre">--diff</span></code> option can reveal sensitive information, you can disable it for a task by specifying <code class="docutils literal notranslate"><span class="pre">diff:</span> <span class="pre">false</span></code>. For example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This task will not report a diff when the file changes</span>
+<span class="w">    </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret.conf.j2</span>
+<span class="w">      </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/secret.conf</span>
+<span class="w">      </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0600&#39;</span>
+<span class="w">    </span><span class="nt">diff</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="playbooks_execution.html" class="btn btn-neutral float-left" title="Executing playbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="playbooks_privilege_escalation.html" class="btn btn-neutral float-right" title="Understanding privilege escalation: become" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

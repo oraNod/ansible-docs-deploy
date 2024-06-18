@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.11.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>community.zabbix.zabbix_triggerprototype module – Create/delete Zabbix triggerprototypes &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/community/zabbix/zabbix_triggerprototype_module.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=eb3ed21c"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="community.zabbix.zabbix_user module – Create/update/delete Zabbix users" href="zabbix_user_module.html" />
+    <link rel="prev" title="community.zabbix.zabbix_trigger module – Create/delete Zabbix triggers" href="zabbix_trigger_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="10">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                10
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/10/") > -1
+            ? "/10/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../amazon/index.html">Collections in the Amazon Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Community Namespace</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../aws/index.html">Community.Aws</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ciscosmb/index.html">Community.Ciscosmb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../crypto/index.html">Community.Crypto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../digitalocean/index.html">Community.Digitalocean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dns/index.html">Community.Dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../docker/index.html">Community.Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/index.html">Community.General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../grafana/index.html">Community.Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hashi_vault/index.html">Community.Hashi_Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hrobot/index.html">Community.Hrobot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library_inventory_filtering_v1/index.html">Community.Library_Inventory_Filtering_V1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libvirt/index.html">Community.Libvirt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mongodb/index.html">Community.Mongodb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mysql/index.html">Community.Mysql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../network/index.html">Community.Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../okd/index.html">Community.Okd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/index.html">Community.Postgresql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../proxysql/index.html">Community.Proxysql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rabbitmq/index.html">Community.Rabbitmq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../routeros/index.html">Community.Routeros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sap_libs/index.html">Community.Sap_Libs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sops/index.html">Community.Sops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vmware/index.html">Community.Vmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../windows/index.html">Community.Windows</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Community.Zabbix</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dellemc/index.html">Collections in the Dellemc Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fortinet/index.html">Collections in the Fortinet Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kaytus/index.html">Collections in the Kaytus Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp_eseries/index.html">Collections in the Netapp_eseries Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wti/index.html">Collections in the Wti Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Community Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Community.Zabbix</a></li>
+      <li class="breadcrumb-item active">community.zabbix.zabbix_triggerprototype module – Create/delete Zabbix triggerprototypes</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module"></span><section id="community-zabbix-zabbix-triggerprototype-module-create-delete-zabbix-triggerprototypes">
+<h1>community.zabbix.zabbix_triggerprototype module – Create/delete Zabbix triggerprototypes<a class="headerlink" href="#community-zabbix-zabbix-triggerprototype-module-create-delete-zabbix-triggerprototypes" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/zabbix/">community.zabbix collection</a> (version 2.5.1).</p>
+<p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
+It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">community.zabbix</span></code>.
+You need further requirements to be able to use this module,
+see <a class="reference internal" href="#ansible-collections-community-zabbix-zabbix-triggerprototype-module-requirements"><span class="std std-ref">Requirements</span></a> for details.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">community.zabbix.zabbix_triggerprototype</span></code>.</p>
+</div>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#requirements" id="id2">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id3">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id4">Examples</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Create triggerprototypes if they do not exist.</p></li>
+<li><p>Delete existing triggerprototypes if they exist.</p></li>
+</ul>
+</section>
+<section id="requirements">
+<span id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-requirements"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">Requirements</a><a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>The below requirements are needed on the host that executes this module.</p>
+<ul class="simple">
+<li><p>python &gt;= 2.6</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dependencies"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-dependencies"><strong>dependencies</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dependencies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>list of trigger prototypes that this trigger prototype is dependent on</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dependencies/host_name"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-dependencies-host-name"><strong>host_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dependencies/host_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of host containing dependent trigger.</p>
+<p>Required when <em>template_name</em> is not used.</p>
+<p>Mutually exclusive with <em>template_name</em>.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dependencies/name"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-dependencies-name"><strong>name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dependencies/name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of dependent trigger.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dependencies/template_name"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-dependencies-template-name"><strong>template_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dependencies/template_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of template containing dependent trigger.</p>
+<p>Required when <em>host_name</em> is not used.</p>
+<p>Mutually exclusive with <em>host_name</em>.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-desc"></div>
+<div class="ansibleOptionAnchor" id="parameter-description"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-description"><span id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-desc"></span><strong>desc</strong></p>
+<a class="ansibleOptionLink" href="#parameter-desc" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-aliases">aliases: description</span></p>
+<p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Additional description of the trigger prototype.</p>
+<p>Overrides “comments” in API docs.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-host_name"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-host-name"><strong>host_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-host_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of host to add trigger prototype to.</p>
+<p>Required when <em>template_name</em> is not used.</p>
+<p>Mutually exclusive with <em>template_name</em>.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-http_login_password"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-http-login-password"><strong>http_login_password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-http_login_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Basic Auth password</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-http_login_user"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-http-login-user"><strong>http_login_user</strong></p>
+<a class="ansibleOptionLink" href="#parameter-http_login_user" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Basic Auth login</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-name"><strong>name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of trigger prototype to create or delete.</p>
+<p>Overrides “description” in API docs.</p>
+<p>Cannot be changed. If a trigger prototype’s name needs to be changed, it needs to deleted and recreated</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-params"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-params"><strong>params</strong></p>
+<a class="ansibleOptionLink" href="#parameter-params" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameters to create/update trigger prototype with.</p>
+<p>Required if state is “present”.</p>
+<p>Parameters as defined at <a class="reference external" href="https://www.zabbix.com/documentation/current/en/manual/api/reference/triggerprototype/object">https://www.zabbix.com/documentation/current/en/manual/api/reference/triggerprototype/object</a></p>
+<p>Additionally supported parameters are below.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-params/correlation_mode"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-params-correlation-mode"><strong>correlation_mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-params/correlation_mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>OK event closes.</p>
+<p>Overrides “correlation_mode” in API docs.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tag&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-params/enabled"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-params-enabled"><strong>enabled</strong></p>
+<a class="ansibleOptionLink" href="#parameter-params/enabled" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Status of the trigger prototype.</p>
+<p>Overrides “status” in API docs.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-params/generate_multiple_events"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-params-generate-multiple-events"><strong>generate_multiple_events</strong></p>
+<a class="ansibleOptionLink" href="#parameter-params/generate_multiple_events" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Whether the trigger prototype can generate multiple problem events.</p>
+<p>Alias for “type” in API docs.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-params/manual_close"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-params-manual-close"><strong>manual_close</strong></p>
+<a class="ansibleOptionLink" href="#parameter-params/manual_close" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Allow manual close.</p>
+<p>Overrides “manual_close” in API docs.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-params/recovery_mode"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-params-recovery-mode"><strong>recovery_mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-params/recovery_mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>OK event generation mode.</p>
+<p>Overrides “recovery_mode” in API docs.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;expression&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;recovery_expression&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-params/severity"></div>
+<div class="ansibleOptionAnchor" id="parameter-params/priority"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-params-severity"><span id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-params-priority"></span><strong>severity</strong></p>
+<a class="ansibleOptionLink" href="#parameter-params/severity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-aliases">aliases: priority</span></p>
+<p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Severity of the trigger prototype.</p>
+<p>Alias for “priority” in API docs.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;not_classified&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;information&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;warning&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;average&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;high&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disaster&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-params/status"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-params-status"><strong>status</strong></p>
+<a class="ansibleOptionLink" href="#parameter-params/status" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Status of the trigger prototype.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enabled&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disabled&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-state"><strong>state</strong></p>
+<a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Create or delete trigger prototype.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;present&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;absent&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-template_name"></div><p class="ansible-option-title" id="ansible-collections-community-zabbix-zabbix-triggerprototype-module-parameter-template-name"><strong>template_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-template_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of template to add trigger prototype to.</p>
+<p>Required when <em>host_name</em> is not used.</p>
+<p>Mutually exclusive with <em>host_name</em>.</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you want to use Username and Password to be authenticated by Zabbix Server</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set credentials to access Zabbix Server API</span>
+<span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Admin</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_pass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix</span>
+
+<span class="c1"># If you want to use API token to be authenticated by Zabbix Server</span>
+<span class="c1"># https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/administration/general#api-tokens</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set API token</span>
+<span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_auth_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8ec0d52432c15c91fcafe9888500cf9a607f44091ab554dbee860f6b44fac895</span>
+
+<span class="c1"># Create trigger prototype on example_host using example_rule</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">create trigger prototype</span>
+<span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
+<span class="w">    </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_url_path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;zabbixeu&#39;</span><span class="w">  </span><span class="c1"># If Zabbix WebUI runs on non-default (zabbix) path ,e.g. http://&lt;FQDN&gt;/zabbixeu</span>
+<span class="w">    </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix-example-fqdn.org</span>
+<span class="w">  </span><span class="nt">community.zabbix.zabbix_triggerprototype</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;</span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>Free disk space is less than 20% on volume {#FSNAME}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="s">&#39;</span>
+<span class="w">    </span><span class="nt">host_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_host</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high</span>
+<span class="w">      </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>last(/example_host/vfs.fs.size[{#FSNAME}, pused])&gt;80<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="nt">recovery_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">manual_close</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="c1"># Create trigger prototype on example_template using example_rule</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">create trigger prototype</span>
+<span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
+<span class="w">    </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_url_path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;zabbixeu&#39;</span><span class="w">  </span><span class="c1"># If Zabbix WebUI runs on non-default (zabbix) path ,e.g. http://&lt;FQDN&gt;/zabbixeu</span>
+<span class="w">    </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix-example-fqdn.org</span>
+<span class="w">  </span><span class="nt">community.zabbix.zabbix_triggerprototype</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;</span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>Free disk space is less than 20% on volume {#FSNAME}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="s">&#39;</span>
+<span class="w">    </span><span class="nt">template_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_template</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high</span>
+<span class="w">      </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>last(/example_host/vfs.fs.size[{#FSNAME}, pused])&gt;80<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="nt">recovery_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">manual_close</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="c1"># Add tags to the existing Zabbix trigger prototype</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update trigger prototype</span>
+<span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
+<span class="w">    </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_url_path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;zabbixeu&#39;</span><span class="w">  </span><span class="c1"># If Zabbix WebUI runs on non-default (zabbix) path ,e.g. http://&lt;FQDN&gt;/zabbixeu</span>
+<span class="w">    </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix-example-fqdn.org</span>
+<span class="w">  </span><span class="nt">community.zabbix.zabbix_triggerprototype</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;</span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>Free disk space is less than 20% on volume {#FSNAME}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="s">&#39;</span>
+<span class="w">    </span><span class="nt">template_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_template</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high</span>
+<span class="w">      </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>last(/example_host/vfs.fs.size[{#FSNAME}, pused])&gt;80<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="nt">recovery_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">manual_close</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="c1"># Delete Zabbix trigger prototype</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete trigger prototype</span>
+<span class="w">  </span><span class="c1"># set task level variables as we change ansible_connection plugin here</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.zabbix.zabbix</span>
+<span class="w">    </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_zabbix_url_path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;zabbixeu&#39;</span><span class="w">  </span><span class="c1"># If Zabbix WebUI runs on non-default (zabbix) path ,e.g. http://&lt;FQDN&gt;/zabbixeu</span>
+<span class="w">    </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zabbix-example-fqdn.org</span>
+<span class="w">  </span><span class="nt">community.zabbix.zabbix_triggerprototype</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;</span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>Free disk space is less than 20% on volume {#FSNAME}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="s">&#39;</span>
+<span class="w">    </span><span class="nt">template_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_template</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">absent</span>
+</pre></div>
+</div>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Andrew Lathrop (&#64;aplathrop)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h3>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/ansible-collections/community.zabbix/issues" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/ansible-collections/community.zabbix" rel="noopener external" target="_blank">Homepage</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/ansible-collections/community.zabbix.git" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="zabbix_trigger_module.html" class="btn btn-neutral float-left" title="community.zabbix.zabbix_trigger module – Create/delete Zabbix triggers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="zabbix_user_module.html" class="btn btn-neutral float-right" title="community.zabbix.zabbix_user module – Create/update/delete Zabbix users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

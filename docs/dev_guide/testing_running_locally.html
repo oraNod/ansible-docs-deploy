@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing Ansible and Collections &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/dev_guide/testing_running_locally.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=eb3ed21c"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="10">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                10
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/10/") > -1
+            ? "/10/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collections/index.html">Collection Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections/all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Testing Ansible and Collections</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <a href="https://github.com/ansible/ansible-documentation/edit/devel/docs/docsite/rst/dev_guide/testing_running_locally.rst?description=%23%23%23%23%23%20SUMMARY%0A%3C!---%20Your%20description%20here%20--%3E%0A%0A%0A%23%23%23%23%23%20ISSUE%20TYPE%0A-%20Docs%20Pull%20Request%0A%0A%2Blabel:%20docsite_pr" class="fa fa-github"> Edit on GitHub</a>
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <section id="testing-ansible-and-collections">
+<span id="testing-running-locally"></span><h1>Testing Ansible and Collections<a class="headerlink" href="#testing-ansible-and-collections" title="Link to this heading"></a></h1>
+<p>This document describes how to run tests using <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code>.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#setup" id="id6">Setup</a></p>
+<ul>
+<li><p><a class="reference internal" href="#testing-an-ansible-collection" id="id7">Testing an Ansible Collection</a></p></li>
+<li><p><a class="reference internal" href="#testing-ansible-core" id="id8">Testing <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#commands" id="id9">Commands</a></p></li>
+<li><p><a class="reference internal" href="#environments" id="id10">Environments</a></p>
+<ul>
+<li><p><a class="reference internal" href="#containers" id="id11">Containers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#choosing-a-container" id="id12">Choosing a container</a></p>
+<ul>
+<li><p><a class="reference internal" href="#custom-containers" id="id13">Custom containers</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#docker-and-selinux" id="id14">Docker and SELinux</a></p></li>
+<li><p><a class="reference internal" href="#docker-desktop-with-wsl2" id="id15">Docker Desktop with WSL2</a></p>
+<ul>
+<li><p><a class="reference internal" href="#configuration-requirements" id="id16">Configuration requirements</a></p></li>
+<li><p><a class="reference internal" href="#setup-instructions" id="id17">Setup instructions</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#linux-cgroup-configuration" id="id18">Linux cgroup configuration</a></p>
+<ul>
+<li><p><a class="reference internal" href="#podman" id="id19">Podman</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#remote-virtual-machines" id="id20">Remote virtual machines</a></p></li>
+<li><p><a class="reference internal" href="#python-virtual-environments" id="id21">Python virtual environments</a></p></li>
+<li><p><a class="reference internal" href="#composite-environment-arguments" id="id22">Composite environment arguments</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#additional-requirements" id="id23">Additional Requirements</a></p></li>
+<li><p><a class="reference internal" href="#environment-variables" id="id24">Environment variables</a></p></li>
+<li><p><a class="reference internal" href="#interactive-shell" id="id25">Interactive shell</a></p></li>
+<li><p><a class="reference internal" href="#code-coverage" id="id26">Code coverage</a></p></li>
+</ul>
+</nav>
+<section id="setup">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Setup</a><a class="headerlink" href="#setup" title="Link to this heading"></a></h2>
+<p>Before running <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code>, set up your environment for <a class="reference internal" href="#testing-an-ansible-collection"><span class="std std-ref">Testing an Ansible Collection</span></a> or
+<a class="reference internal" href="#testing-ansible-core"><span class="std std-ref">Testing ansible-core</span></a>, depending on which scenario applies to you.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">git</span></code> for version control, make sure the files you are working with are not ignored by <code class="docutils literal notranslate"><span class="pre">git</span></code>.
+If they are, <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> will ignore them as well.</p>
+</div>
+<section id="testing-an-ansible-collection">
+<span id="id1"></span><h3><a class="toc-backref" href="#id7" role="doc-backlink">Testing an Ansible Collection</a><a class="headerlink" href="#testing-an-ansible-collection" title="Link to this heading"></a></h3>
+<p>If you are testing an Ansible Collection, you need a copy of the collection, preferably a git clone.
+For example, to work with the <code class="docutils literal notranslate"><span class="pre">community.windows</span></code> collection, follow these steps:</p>
+<ol class="arabic">
+<li><p>Clone the collection you want to test into a valid collection root:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ansible-collections/community.windows<span class="w"> </span>~/dev/ansible_collections/community/windows
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The path must end with <code class="docutils literal notranslate"><span class="pre">/ansible_collections/{collection_namespace}/{collection_name}</span></code> where
+<code class="docutils literal notranslate"><span class="pre">{collection_namespace}</span></code> is the namespace of the collection and <code class="docutils literal notranslate"><span class="pre">{collection_name}</span></code> is the collection name.</p>
+</div>
+</li>
+<li><p>Clone any collections on which the collection depends:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ansible-collections/ansible.windows<span class="w"> </span>~/dev/ansible_collections/ansible/windows
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If your collection has any dependencies on other collections, they must be in the same collection root, since
+<code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> will not use your configured collection roots (or other Ansible configuration).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the collection’s <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> for a list of possible dependencies.</p>
+</div>
+</li>
+<li><p>Switch to the directory where the collection to test resides:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/dev/ansible_collections/community/windows
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="testing-ansible-core">
+<span id="id2"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">Testing <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code></a><a class="headerlink" href="#testing-ansible-core" title="Link to this heading"></a></h3>
+<p>If you are testing <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> itself, you need a copy of the <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> source code, preferably a git clone.
+Having an installed copy of <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> is not sufficient or required.
+For example, to work with the <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> source cloned from GitHub, follow these steps:</p>
+<ol class="arabic">
+<li><p>Clone the <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> repository:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ansible/ansible<span class="w"> </span>~/dev/ansible
+</pre></div>
+</div>
+</li>
+<li><p>Switch to the directory where the <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> source resides:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/dev/ansible
+</pre></div>
+</div>
+</li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> programs to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>hacking/env-setup
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can skip this step if you only need to run <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code>, and not other <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> programs.
+In that case, simply run <code class="docutils literal notranslate"><span class="pre">bin/ansible-test</span></code> from the root of the <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> source.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you have an installed version of <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> and are trying to run <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> from your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>,
+make sure the program found by your shell is the one from the <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> source:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>which<span class="w"> </span>ansible-test
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="commands">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Commands</a><a class="headerlink" href="#commands" title="Link to this heading"></a></h2>
+<p>The most commonly used test commands are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">sanity</span></code> - Run sanity tests (mostly linters and static analysis).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">integration</span></code> - Run integration tests.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">units</span></code> - Run unit tests.</p></li>
+</ul>
+<p>Run <code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">--help</span></code> to see a complete list of available commands.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For detailed help on a specific command, add the <code class="docutils literal notranslate"><span class="pre">--help</span></code> option after the command.</p>
+</div>
+</section>
+<section id="environments">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Environments</a><a class="headerlink" href="#environments" title="Link to this heading"></a></h2>
+<p>Most <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> commands support running in one or more isolated test environments to simplify testing.</p>
+<section id="containers">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Containers</a><a class="headerlink" href="#containers" title="Link to this heading"></a></h3>
+<p>Containers are recommended for running sanity, unit and integration tests, since they provide consistent environments.
+Unit tests will be run with network isolation, which avoids unintentional dependencies on network resources.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--docker</span></code> option runs tests in a container using either Docker or Podman.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If both Docker and Podman are installed, Docker will be used.
+To override this, set the environment variable <code class="docutils literal notranslate"><span class="pre">ANSIBLE_TEST_PREFER_PODMAN</span></code> to any non-empty value.</p>
+</div>
+<section id="choosing-a-container">
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Choosing a container</a><a class="headerlink" href="#choosing-a-container" title="Link to this heading"></a></h4>
+<p>Without an additional argument, the <code class="docutils literal notranslate"><span class="pre">--docker</span></code> option uses the <code class="docutils literal notranslate"><span class="pre">default</span></code> container.
+To use another container, specify it immediately after the <code class="docutils literal notranslate"><span class="pre">--docker</span></code> option.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">default</span></code> container is recommended for all sanity and unit tests.</p>
+</div>
+<p>To see the list of supported containers, use the <code class="docutils literal notranslate"><span class="pre">--help</span></code> option with the <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> command you want to use.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The list of available containers is dependent on the <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> command you are using.</p>
+</div>
+<p>You can also specify your own container.
+When doing so, you will need to indicate the Python version in the container with the <code class="docutils literal notranslate"><span class="pre">--python</span></code> option.</p>
+<section id="custom-containers">
+<h5><a class="toc-backref" href="#id13" role="doc-backlink">Custom containers</a><a class="headerlink" href="#custom-containers" title="Link to this heading"></a></h5>
+<p>When building custom containers, keep in mind the following requirements:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">USER</span></code> should be <code class="docutils literal notranslate"><span class="pre">root</span></code>.</p></li>
+<li><p>Use an <code class="docutils literal notranslate"><span class="pre">init</span></code> process, such as <code class="docutils literal notranslate"><span class="pre">systemd</span></code>.</p></li>
+<li><p>Include <code class="docutils literal notranslate"><span class="pre">sshd</span></code> and accept connections on the default port of <code class="docutils literal notranslate"><span class="pre">22</span></code>.</p></li>
+<li><p>Include a POSIX compatible <code class="docutils literal notranslate"><span class="pre">sh</span></code> shell which can be found on <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p></li>
+<li><p>Include a <code class="docutils literal notranslate"><span class="pre">sleep</span></code> utility which runs as a subprocess.</p></li>
+<li><p>Include a supported version of Python.</p></li>
+<li><p>Avoid using the <code class="docutils literal notranslate"><span class="pre">VOLUME</span></code> statement.</p></li>
+</ul>
+</section>
+</section>
+<section id="docker-and-selinux">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Docker and SELinux</a><a class="headerlink" href="#docker-and-selinux" title="Link to this heading"></a></h4>
+<p>Using Docker on a host with SELinux may require setting the system in permissive mode.
+Consider using Podman instead.</p>
+</section>
+<section id="docker-desktop-with-wsl2">
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">Docker Desktop with WSL2</a><a class="headerlink" href="#docker-desktop-with-wsl2" title="Link to this heading"></a></h4>
+<p>These instructions explain how to use <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> with WSL2 and Docker Desktop <em>without</em> <code class="docutils literal notranslate"><span class="pre">systemd</span></code> support.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your WSL2 environment includes <code class="docutils literal notranslate"><span class="pre">systemd</span></code> support, these steps are not required.</p>
+</div>
+<section id="configuration-requirements">
+<span id="id3"></span><h5><a class="toc-backref" href="#id16" role="doc-backlink">Configuration requirements</a><a class="headerlink" href="#configuration-requirements" title="Link to this heading"></a></h5>
+<ol class="arabic simple">
+<li><p>Open Docker Desktop and go to the <strong>Settings</strong> screen.</p></li>
+<li><p>On the the <strong>General</strong> tab:</p>
+<ol class="loweralpha simple">
+<li><p>Uncheck the <strong>Start Docker Desktop when you log in</strong> checkbox.</p></li>
+<li><p>Check the <strong>Use the WSL 2 based engine</strong> checkbox.</p></li>
+</ol>
+</li>
+<li><p>On the <strong>Resources</strong> tab under the <strong>WSL Integration</strong> section:</p>
+<ol class="loweralpha simple">
+<li><p>Enable distros you want to use under the <strong>Enable integration with additional distros</strong> section.</p></li>
+</ol>
+</li>
+<li><p>Click <strong>Apply and restart</strong> if changes were made.</p></li>
+</ol>
+</section>
+<section id="setup-instructions">
+<span id="id4"></span><h5><a class="toc-backref" href="#id17" role="doc-backlink">Setup instructions</a><a class="headerlink" href="#setup-instructions" title="Link to this heading"></a></h5>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If all WSL instances have been stopped, these changes will need to be re-applied.</p>
+</div>
+<ol class="arabic">
+<li><p>Verify Docker Desktop is properly configured (see <a class="reference internal" href="#configuration-requirements"><span class="std std-ref">Configuration requirements</span></a>).</p></li>
+<li><p>Quit Docker Desktop if it is running:</p>
+<ol class="loweralpha simple">
+<li><p>Right click the <strong>Docker Desktop</strong> taskbar icon.</p></li>
+<li><p>Click the <strong>Quit Docker Desktop</strong> option.</p></li>
+</ol>
+</li>
+<li><p>Stop any running WSL instances with the command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wsl<span class="w"> </span>--shutdown
+</pre></div>
+</div>
+</li>
+<li><p>Verify all WSL instances have stopped with the command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wsl<span class="w"> </span>-l<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+<li><p>Start a WSL instance and perform the following steps as <code class="docutils literal notranslate"><span class="pre">root</span></code>:</p>
+<ol class="loweralpha">
+<li><p>Verify the <code class="docutils literal notranslate"><span class="pre">systemd</span></code> subsystem is not registered:</p>
+<ol class="loweralpha">
+<li><p>Check for the <code class="docutils literal notranslate"><span class="pre">systemd</span></code> cgroup hierarchy with the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>grep<span class="w"> </span>systemd<span class="w"> </span>/proc/self/cgroup
+</pre></div>
+</div>
+</li>
+<li><p>If any matches are found, re-check the <a class="reference internal" href="#configuration-requirements"><span class="std std-ref">Configuration requirements</span></a> and follow the
+<a class="reference internal" href="#setup-instructions"><span class="std std-ref">Setup instructions</span></a> again.</p></li>
+</ol>
+</li>
+<li><p>Mount the <code class="docutils literal notranslate"><span class="pre">systemd</span></code> cgroup hierarchy with the following commands:</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>/sys/fs/cgroup/systemd
+mount<span class="w"> </span>cgroup<span class="w"> </span>-t<span class="w"> </span>cgroup<span class="w"> </span>/sys/fs/cgroup/systemd<span class="w"> </span>-o<span class="w"> </span>none,name<span class="o">=</span>systemd,xattr
+</pre></div>
+</div>
+</li>
+<li><p>Start Docker Desktop.</p></li>
+</ol>
+<p>You should now be able to use <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> with the <code class="docutils literal notranslate"><span class="pre">--docker</span></code> option.</p>
+</section>
+</section>
+<section id="linux-cgroup-configuration">
+<span id="id5"></span><h4><a class="toc-backref" href="#id18" role="doc-backlink">Linux cgroup configuration</a><a class="headerlink" href="#linux-cgroup-configuration" title="Link to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These changes will need to be re-applied each time the container host is booted.</p>
+</div>
+<p>For certain container hosts and container combinations, additional setup on the container host may be required.
+In these situations <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> will report an error and provide additional instructions to run as <code class="docutils literal notranslate"><span class="pre">root</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>/sys/fs/cgroup/systemd
+mount<span class="w"> </span>cgroup<span class="w"> </span>-t<span class="w"> </span>cgroup<span class="w"> </span>/sys/fs/cgroup/systemd<span class="w"> </span>-o<span class="w"> </span>none,name<span class="o">=</span>systemd,xattr
+</pre></div>
+</div>
+<p>If you are using rootless Podman, an additional command must be run, also as <code class="docutils literal notranslate"><span class="pre">root</span></code>.
+Make sure to substitute your user and group for <code class="docutils literal notranslate"><span class="pre">{user}</span></code> and <code class="docutils literal notranslate"><span class="pre">{group}</span></code> respectively:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>chown<span class="w"> </span>-R<span class="w"> </span><span class="o">{</span>user<span class="o">}</span>:<span class="o">{</span>group<span class="o">}</span><span class="w"> </span>/sys/fs/cgroup/systemd
+</pre></div>
+</div>
+<section id="podman">
+<h5><a class="toc-backref" href="#id19" role="doc-backlink">Podman</a><a class="headerlink" href="#podman" title="Link to this heading"></a></h5>
+<p>When using Podman, you may need to stop existing Podman processes after following the <a class="reference internal" href="#linux-cgroup-configuration"><span class="std std-ref">Linux cgroup configuration</span></a>
+instructions. Otherwise Podman may be unable to see the new mount point.</p>
+<p>You can check to see if Podman is running by looking for <code class="docutils literal notranslate"><span class="pre">podman</span></code> and <code class="docutils literal notranslate"><span class="pre">catatonit</span></code> processes.</p>
+</section>
+</section>
+</section>
+<section id="remote-virtual-machines">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Remote virtual machines</a><a class="headerlink" href="#remote-virtual-machines" title="Link to this heading"></a></h3>
+<p>Remote virtual machines are recommended for running integration tests not suitable for execution in containers.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--remote</span></code> option runs tests in a cloud hosted ephemeral virtual machine.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An API key is required to use this feature, unless running under an approved Azure Pipelines organization.</p>
+</div>
+<p>To see the list of supported systems, use the <code class="docutils literal notranslate"><span class="pre">--help</span></code> option with the <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> command you want to use.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The list of available systems is dependent on the <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> command you are using.</p>
+</div>
+</section>
+<section id="python-virtual-environments">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Python virtual environments</a><a class="headerlink" href="#python-virtual-environments" title="Link to this heading"></a></h3>
+<p>Python virtual environments provide a simple way to achieve isolation from the system and user Python environments.
+They are recommended for unit and integration tests when the <code class="docutils literal notranslate"><span class="pre">--docker</span></code> and <code class="docutils literal notranslate"><span class="pre">--remote</span></code> options cannot be used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--venv</span></code> option runs tests in a virtual environment managed by <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code>.
+Requirements are automatically installed before tests are run.</p>
+</section>
+<section id="composite-environment-arguments">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Composite environment arguments</a><a class="headerlink" href="#composite-environment-arguments" title="Link to this heading"></a></h3>
+<p>The environment arguments covered in this document are sufficient for most use cases.
+However, some scenarios may require the additional flexibility offered by composite environment arguments.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--controller</span></code> and <code class="docutils literal notranslate"><span class="pre">--target</span></code> options are alternatives to the <code class="docutils literal notranslate"><span class="pre">--docker</span></code>, <code class="docutils literal notranslate"><span class="pre">--remote</span></code> and <code class="docutils literal notranslate"><span class="pre">--venv</span></code> options.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">shell</span></code> command, the <code class="docutils literal notranslate"><span class="pre">--target</span></code> option is replaced by three platform specific options.</p>
+</div>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">--help</span></code> option to your <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> command to learn more about the composite environment arguments.</p>
+</section>
+</section>
+<section id="additional-requirements">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink">Additional Requirements</a><a class="headerlink" href="#additional-requirements" title="Link to this heading"></a></h2>
+<p>Some <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> commands have additional requirements.
+You can use the <code class="docutils literal notranslate"><span class="pre">--requirements</span></code> option to automatically install them.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using a test environment managed by <code class="docutils literal notranslate"><span class="pre">ansible-test</span></code> the <code class="docutils literal notranslate"><span class="pre">--requirements</span></code> option is usually unnecessary.</p>
+</div>
+</section>
+<section id="environment-variables">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Environment variables</a><a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h2>
+<p>When using environment variables to manipulate tests there some limitations to keep in mind. Environment variables are:</p>
+<ul>
+<li><p>Not propagated from the host to the test environment when using the <code class="docutils literal notranslate"><span class="pre">--docker</span></code> or <code class="docutils literal notranslate"><span class="pre">--remote</span></code> options.</p></li>
+<li><p>Not exposed to the test environment unless enabled in <code class="docutils literal notranslate"><span class="pre">test/lib/ansible_test/_internal/util.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">common_environment</span></code> function.</p>
+<blockquote>
+<div><p>Example: <code class="docutils literal notranslate"><span class="pre">ANSIBLE_KEEP_REMOTE_FILES=1</span></code> can be set when running <code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">integration</span> <span class="pre">--venv</span></code>. However, using the <code class="docutils literal notranslate"><span class="pre">--docker</span></code> option would
+require running <code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">shell</span></code> to gain access to the Docker environment. Once at the shell prompt, the environment variable could be set
+and the tests executed. This is useful for debugging tests inside a container by following the
+<a class="reference internal" href="debugging.html#debugging-modules"><span class="std std-ref">Debugging modules</span></a> instructions.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="interactive-shell">
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Interactive shell</a><a class="headerlink" href="#interactive-shell" title="Link to this heading"></a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">shell</span></code> command to get an interactive shell in the same environment used to run tests. Examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">shell</span> <span class="pre">--docker</span></code> - Open a shell in the default docker container.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">shell</span> <span class="pre">--venv</span> <span class="pre">--python</span> <span class="pre">3.10</span></code> - Open a shell in a Python 3.10 virtual environment.</p></li>
+</ul>
+</section>
+<section id="code-coverage">
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Code coverage</a><a class="headerlink" href="#code-coverage" title="Link to this heading"></a></h2>
+<p>Code coverage reports make it easy to identify untested code for which more tests should
+be written.  Online reports are available but only cover the <code class="docutils literal notranslate"><span class="pre">devel</span></code> branch (see
+<a class="reference internal" href="testing.html#developing-testing"><span class="std std-ref">Testing Ansible</span></a>).  For new code local reports are needed.</p>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">--coverage</span></code> option to any test command to collect code coverage data.  If you
+aren’t using the <code class="docutils literal notranslate"><span class="pre">--venv</span></code> or <code class="docutils literal notranslate"><span class="pre">--docker</span></code> options which create an isolated python
+environment then you may have to use the <code class="docutils literal notranslate"><span class="pre">--requirements</span></code> option to ensure that the
+correct version of the coverage module is installed:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ansible-test<span class="w"> </span>coverage<span class="w"> </span>erase
+ansible-test<span class="w"> </span>units<span class="w"> </span>--coverage<span class="w"> </span>apt
+ansible-test<span class="w"> </span>integration<span class="w"> </span>--coverage<span class="w"> </span>aws_lambda
+ansible-test<span class="w"> </span>coverage<span class="w"> </span>html
+</pre></div>
+</div>
+<p>Reports can be generated in several different formats:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">coverage</span> <span class="pre">report</span></code> - Console report.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">coverage</span> <span class="pre">html</span></code> - HTML report.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">coverage</span> <span class="pre">xml</span></code> - XML report.</p></li>
+</ul>
+<p>To clear data between test runs, use the <code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">coverage</span> <span class="pre">erase</span></code> command.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

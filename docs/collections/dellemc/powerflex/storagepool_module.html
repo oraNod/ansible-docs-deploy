@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.11.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dellemc.powerflex.storagepool module – Managing Dell PowerFlex storage pool &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/dellemc/powerflex/storagepool_module.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=eb3ed21c"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="dellemc.powerflex.volume module – Manage volumes on Dell PowerFlex" href="volume_module.html" />
+    <link rel="prev" title="dellemc.powerflex.snapshot_policy module – Manage snapshot policies on Dell PowerFlex" href="snapshot_policy_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="10">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                10
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/10/") > -1
+            ? "/10/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../amazon/index.html">Collections in the Amazon Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/index.html">Collections in the Community Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Dellemc Namespace</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../enterprise_sonic/index.html">Dellemc.Enterprise_Sonic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../openmanage/index.html">Dellemc.Openmanage</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Dellemc.Powerflex</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#role-index">Role Index</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../unity/index.html">Dellemc.Unity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fortinet/index.html">Collections in the Fortinet Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kaytus/index.html">Collections in the Kaytus Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp_eseries/index.html">Collections in the Netapp_eseries Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wti/index.html">Collections in the Wti Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Dellemc Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dellemc.Powerflex</a></li>
+      <li class="breadcrumb-item active">dellemc.powerflex.storagepool module – Managing Dell PowerFlex storage pool</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-dellemc-powerflex-storagepool-module"></span><section id="dellemc-powerflex-storagepool-module-managing-dell-powerflex-storage-pool">
+<h1>dellemc.powerflex.storagepool module – Managing Dell PowerFlex storage pool<a class="headerlink" href="#dellemc-powerflex-storagepool-module-managing-dell-powerflex-storage-pool" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/dellemc/powerflex/">dellemc.powerflex collection</a> (version 2.5.0).</p>
+<p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
+It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">dellemc.powerflex</span></code>.
+You need further requirements to be able to use this module,
+see <a class="reference internal" href="#ansible-collections-dellemc-powerflex-storagepool-module-requirements"><span class="std std-ref">Requirements</span></a> for details.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">dellemc.powerflex.storagepool</span></code>.</p>
+</div>
+<p class="ansible-version-added">New in dellemc.powerflex 1.0.0</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#requirements" id="id2">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id3">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id4">Notes</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id5">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id6">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Dell PowerFlex storage pool module includes getting the details of storage pool, creating a new storage pool, and modifying the attribute of a storage pool.</p></li>
+</ul>
+</section>
+<section id="requirements">
+<span id="ansible-collections-dellemc-powerflex-storagepool-module-requirements"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">Requirements</a><a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>The below requirements are needed on the host that executes this module.</p>
+<ul class="simple">
+<li><p>A Dell PowerFlex storage system version 3.6 or later.</p></li>
+<li><p>PyPowerFlex 1.12.0.</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cap_alert_thresholds"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-cap-alert-thresholds"><strong>cap_alert_thresholds</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cap_alert_thresholds" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set the threshold for triggering capacity usage alerts.</p>
+<p>Alerts thresholds are calculated from each Storage Pool capacity after deducting the defined amount of spare capacity.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cap_alert_thresholds/critical_threshold"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-cap-alert-thresholds-critical-threshold"><strong>critical_threshold</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cap_alert_thresholds/critical_threshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Threshold of the non-spare capacity of the Storage Pool that will trigger a critical-priority alert, expressed as a percentage.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cap_alert_thresholds/high_threshold"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-cap-alert-thresholds-high-threshold"><strong>high_threshold</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cap_alert_thresholds/high_threshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Threshold of the non-spare capacity of the Storage Pool that will trigger a high-priority alert, expressed as a percentage.</p>
+<p>This value must be lower than the <em>critical_threshold</em>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_fragmentation"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-enable-fragmentation"><strong>enable_fragmentation</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_fragmentation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable fragmentation of a specific storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_rebalance"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-enable-rebalance"><strong>enable_rebalance</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_rebalance" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable rebalance on a specific storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_rebuild"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-enable-rebuild"><strong>enable_rebuild</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_rebuild" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable rebuild of a specific storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_zero_padding"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-enable-zero-padding"><strong>enable_zero_padding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_zero_padding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable zero padding on a specific storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-hostname"></div>
+<div class="ansibleOptionAnchor" id="parameter-gateway_host"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-hostname"><span id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-gateway-host"></span><strong>hostname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-hostname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-aliases">aliases: gateway_host</span></p>
+<p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>IP or FQDN of the PowerFlex host.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-media_type"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-media-type"><strong>media_type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-media_type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Type of devices in the storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HDD&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SSD&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TRANSITIONAL&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-parallel_rebuild_rebalance_limit"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-parallel-rebuild-rebalance-limit"><strong>parallel_rebuild_rebalance_limit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-parallel_rebuild_rebalance_limit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set rebuild/rebalance parallelism limit of a storage pool.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-password"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The password of the PowerFlex host.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-persistent_checksum"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-persistent-checksum"><strong>persistent_checksum</strong></p>
+<a class="ansibleOptionLink" href="#parameter-persistent_checksum" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable persistent checksum of a specific storage pool.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-persistent_checksum/builder_limit"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-persistent-checksum-builder-limit"><strong>builder_limit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-persistent_checksum/builder_limit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Bandwidth limit in KB/s for the checksum building process.</p>
+<p>Valid range is 1024 to 10240.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3072</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-persistent_checksum/enable"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-persistent-checksum-enable"><strong>enable</strong></p>
+<a class="ansibleOptionLink" href="#parameter-persistent_checksum/enable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable / disable persistent checksum.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-persistent_checksum/validate_on_read"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-persistent-checksum-validate-on-read"><strong>validate_on_read</strong></p>
+<a class="ansibleOptionLink" href="#parameter-persistent_checksum/validate_on_read" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Validate checksum upon reading data.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-port"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Port number through which communication happens with PowerFlex host.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">443</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-protected_maintenance_mode_io_priority_policy"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-protected-maintenance-mode-io-priority-policy"><strong>protected_maintenance_mode_io_priority_policy</strong></p>
+<a class="ansibleOptionLink" href="#parameter-protected_maintenance_mode_io_priority_policy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set protected maintenance mode I/O priority policy of a storage pool.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-protected_maintenance_mode_io_priority_policy/bw_limit_per_device"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-protected-maintenance-mode-io-priority-policy-bw-limit-per-device"><strong>bw_limit_per_device</strong></p>
+<a class="ansibleOptionLink" href="#parameter-protected_maintenance_mode_io_priority_policy/bw_limit_per_device" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The maximum bandwidth of protected maintenance mode migration I/Os, in KB per second, per device.</p>
+<p>Valid range is 1024 to 1048576.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-protected_maintenance_mode_io_priority_policy/concurrent_ios_per_device"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-protected-maintenance-mode-io-priority-policy-concurrent-ios-per-device"><strong>concurrent_ios_per_device</strong></p>
+<a class="ansibleOptionLink" href="#parameter-protected_maintenance_mode_io_priority_policy/concurrent_ios_per_device" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The maximum number of concurrent protected maintenance mode migration I/Os per device.</p>
+<p>Valid range is 1 to 20.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-protected_maintenance_mode_io_priority_policy/policy"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-protected-maintenance-mode-io-priority-policy-policy"><strong>policy</strong></p>
+<a class="ansibleOptionLink" href="#parameter-protected_maintenance_mode_io_priority_policy/policy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The I/O priority policy for protected maintenance mode.</p>
+<p><code class="docutils literal notranslate"><span class="pre">unlimited</span></code> Protected maintenance mode IOPS are not limited</p>
+<p><code class="docutils literal notranslate"><span class="pre">limitNumOfConcurrentIos</span></code>Limit the number of allowed concurrent protected maintenance mode migration I/Os to the value defined for <em>concurrent_ios_per_device</em>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">favorAppIos</span></code> Always limit the number of allowed concurrent protected maintenance mode migration I/Os to value defined for <em>concurrent_ios_per_device</em>.</p>
+<p>If application I/Os are in progress, should also limit the bandwidth of protected maintenance mode migration I/Os to the limit defined for the <em>bw_limit_per_device</em>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unlimited&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;limitNumOfConcurrentIos&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;favorAppIos&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-protection_domain_id"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-protection-domain-id"><strong>protection_domain_id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-protection_domain_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The id of the protection domain.</p>
+<p>During creation of a pool, either protection domain name or id must be mentioned.</p>
+<p>Mutually exclusive with <em>protection_domain_name</em>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-protection_domain_name"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-protection-domain-name"><strong>protection_domain_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-protection_domain_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The name of the protection domain.</p>
+<p>During creation of a pool, either protection domain name or id must be mentioned.</p>
+<p>Mutually exclusive with <em>protection_domain_id</em>.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rebalance_io_priority_policy"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-rebalance-io-priority-policy"><strong>rebalance_io_priority_policy</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rebalance_io_priority_policy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set the rebalance I/O priority policy for a Storage Pool.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rebalance_io_priority_policy/bw_limit_per_device"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-rebalance-io-priority-policy-bw-limit-per-device"><strong>bw_limit_per_device</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rebalance_io_priority_policy/bw_limit_per_device" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The maximum bandwidth of rebalance I/Os, in KB/s, per device.</p>
+<p>Valid range is 1024 to 1048576.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rebalance_io_priority_policy/concurrent_ios_per_device"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-rebalance-io-priority-policy-concurrent-ios-per-device"><strong>concurrent_ios_per_device</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rebalance_io_priority_policy/concurrent_ios_per_device" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The maximum number of concurrent rebalance I/Os per device.</p>
+<p>Valid range is 1 to 20.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rebalance_io_priority_policy/policy"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-rebalance-io-priority-policy-policy"><strong>policy</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rebalance_io_priority_policy/policy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Policy to use for rebalance I/O priority.</p>
+<p><code class="docutils literal notranslate"><span class="pre">unlimited</span></code> Rebalance I/Os are not limited.</p>
+<p><code class="docutils literal notranslate"><span class="pre">limitNumOfConcurrentIos</span></code> Limit the number of allowed concurrent rebalance I/Os.</p>
+<p><code class="docutils literal notranslate"><span class="pre">favorAppIos</span></code> Limit the number and bandwidth of rebalance I/Os when application I/Os are in progress.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unlimited&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;limitNumOfConcurrentIos&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;favorAppIos&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rep_cap_max_ratio"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-rep-cap-max-ratio"><strong>rep_cap_max_ratio</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rep_cap_max_ratio" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set replication journal capacity of a storage pool.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rmcache_write_handling_mode"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-rmcache-write-handling-mode"><strong>rmcache_write_handling_mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rmcache_write_handling_mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set RM cache write handling mode of a storage pool.</p>
+<p><em>Passthrough</em> Writes skip the cache and are stored in storage only.</p>
+<p><em>Cached</em> Writes are stored in both cache and storage (the default).</p>
+<p>Caching is only performed for IOs whose size is a multiple of 4k bytes.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;Cached&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;Passthrough&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-spare_percentage"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-spare-percentage"><strong>spare_percentage</strong></p>
+<a class="ansibleOptionLink" href="#parameter-spare_percentage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set the spare percentage of a specific storage pool.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-state"><strong>state</strong></p>
+<a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>State of the storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;present&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;absent&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-storage_pool_id"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-storage-pool-id"><strong>storage_pool_id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-storage_pool_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The id of the storage pool.</p>
+<p>It is auto generated, hence should not be provided during creation of a storage pool.</p>
+<p>Mutually exclusive with <em>storage_pool_name</em>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-storage_pool_name"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-storage-pool-name"><strong>storage_pool_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-storage_pool_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The name of the storage pool.</p>
+<p>If more than one storage pool is found with the same name then protection domain id/name is required to perform the task.</p>
+<p>Mutually exclusive with <em>storage_pool_id</em>.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-storage_pool_new_name"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-storage-pool-new-name"><strong>storage_pool_new_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-storage_pool_new_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>New name for the storage pool can be provided.</p>
+<p>This parameter is used for renaming the storage pool.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time after which connection will get terminated.</p>
+<p>It is to be mentioned in seconds.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">120</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-use_rfcache"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-use-rfcache"><strong>use_rfcache</strong></p>
+<a class="ansibleOptionLink" href="#parameter-use_rfcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable RFcache on a specific storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-use_rmcache"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-use-rmcache"><strong>use_rmcache</strong></p>
+<a class="ansibleOptionLink" href="#parameter-use_rmcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable RMcache on a specific storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-username"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The username of the PowerFlex host.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-validate_certs"></div>
+<div class="ansibleOptionAnchor" id="parameter-verifycert"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-verifycert"><span id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-validate-certs"></span><strong>validate_certs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-aliases">aliases: verifycert</span></p>
+<p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Boolean variable to specify whether or not to validate SSL certificate.</p>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> - Indicates that the SSL certificate should be verified.</p>
+<p><code class="docutils literal notranslate"><span class="pre">false</span></code> - Indicates that the SSL certificate should not be verified.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">true</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vtree_migration_io_priority_policy"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-vtree-migration-io-priority-policy"><strong>vtree_migration_io_priority_policy</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vtree_migration_io_priority_policy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set the I/O priority policy for V-Tree migration for a specific Storage Pool.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vtree_migration_io_priority_policy/bw_limit_per_device"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-vtree-migration-io-priority-policy-bw-limit-per-device"><strong>bw_limit_per_device</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vtree_migration_io_priority_policy/bw_limit_per_device" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The maximum bandwidth of V-Tree migration I/Os, in KB per second, per device.</p>
+<p>Valid range is 1024 to 25600.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vtree_migration_io_priority_policy/concurrent_ios_per_device"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-vtree-migration-io-priority-policy-concurrent-ios-per-device"><strong>concurrent_ios_per_device</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vtree_migration_io_priority_policy/concurrent_ios_per_device" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The maximum number of concurrent V-Tree migration I/Os per device.</p>
+<p>Valid range is 1 to 20</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vtree_migration_io_priority_policy/policy"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-parameter-vtree-migration-io-priority-policy-policy"><strong>policy</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vtree_migration_io_priority_policy/policy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The I/O priority policy for protected maintenance mode.</p>
+<p><code class="docutils literal notranslate"><span class="pre">limitNumOfConcurrentIos</span></code> Limit the number of allowed concurrent V-Tree migration I/Os (default) to the <em>concurrent_ios_per_device</em>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">favorAppIos</span></code> Always limit the number of allowed concurrent V-Tree migration I/Os to defined for <em>concurrent_ios_per_device</em>.</p>
+<p>If application I/Os are in progress, should also limit the bandwidth of V-Tree migration I/Os to the limit defined for the <em>bw_limit_per_device</em>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;limitNumOfConcurrentIos&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;favorAppIos&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Notes</a><a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>TRANSITIONAL media type is supported only during modification.</p></li>
+<li><p>The <em>check_mode</em> is supported.</p></li>
+<li><p>The modules present in the collection named as ‘dellemc.powerflex’ are built to support the Dell PowerFlex storage platform.</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get the details of storage pool by name</span>
+<span class="w">  </span><span class="nt">dellemc.powerflex.storagepool</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">hostname</span><span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">username</span><span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">password</span><span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">validate_certs</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">validate_certs</span><span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">storage_pool_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sample_pool_name&quot;</span>
+<span class="w">    </span><span class="nt">protection_domain_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sample_protection_domain&quot;</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;present&quot;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get the details of storage pool by id</span>
+<span class="w">  </span><span class="nt">dellemc.powerflex.storagepool</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">hostname</span><span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">username</span><span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">password</span><span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">validate_certs</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">validate_certs</span><span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">storage_pool_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;abcd1234ab12r&quot;</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;present&quot;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a new Storage pool</span>
+<span class="w">  </span><span class="nt">dellemc.powerflex.storagepool</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">hostname</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">username</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">password</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">validate_certs</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">validate_certs</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">storage_pool_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">pool_name</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">protection_domain_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">protection_domain_name</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">cap_alert_thresholds</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">high_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">      </span><span class="nt">critical_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+<span class="w">    </span><span class="nt">media_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;TRANSITIONAL&quot;</span>
+<span class="w">    </span><span class="nt">enable_zero_padding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">rep_cap_max_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40</span>
+<span class="w">    </span><span class="nt">rmcache_write_handling_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Passthrough&quot;</span>
+<span class="w">    </span><span class="nt">spare_percentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">    </span><span class="nt">enable_rebalance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">enable_fragmentation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">enable_rebuild</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">use_rmcache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">use_rfcache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">parallel_rebuild_rebalance_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="nt">protected_maintenance_mode_io_priority_policy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unlimited&quot;</span>
+<span class="w">    </span><span class="nt">rebalance_io_priority_policy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unlimited&quot;</span>
+<span class="w">    </span><span class="nt">vtree_migration_io_priority_policy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;limitNumOfConcurrentIos&quot;</span>
+<span class="w">      </span><span class="nt">concurrent_ios_per_device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">    </span><span class="nt">persistent_checksum</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;present&quot;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Modify a Storage pool by name</span>
+<span class="w">  </span><span class="nt">dellemc.powerflex.storagepool</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">hostname</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">username</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">password</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">validate_certs</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">validate_certs</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">storage_pool_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">pool_name</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">protection_domain_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">protection_domain_name</span> <span class="cp">}}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="nt">storage_pool_new_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pool_name_new&quot;</span>
+<span class="w">    </span><span class="nt">cap_alert_thresholds</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">high_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+<span class="w">      </span><span class="nt">critical_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
+<span class="w">    </span><span class="nt">enable_zero_padding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">rep_cap_max_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="w">    </span><span class="nt">rmcache_write_handling_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Passthrough&quot;</span>
+<span class="w">    </span><span class="nt">spare_percentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
+<span class="w">    </span><span class="nt">enable_rebalance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">enable_fragmentation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">enable_rebuild</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">use_rmcache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">use_rfcache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">parallel_rebuild_rebalance_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<span class="w">    </span><span class="nt">protected_maintenance_mode_io_priority_policy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;limitNumOfConcurrentIos&quot;</span>
+<span class="w">      </span><span class="nt">concurrent_ios_per_device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="nt">rebalance_io_priority_policy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;favorAppIos&quot;</span>
+<span class="w">      </span><span class="nt">concurrent_ios_per_device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">      </span><span class="nt">bw_limit_per_device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4096</span>
+<span class="w">    </span><span class="nt">vtree_migration_io_priority_policy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;limitNumOfConcurrentIos&quot;</span>
+<span class="w">      </span><span class="nt">concurrent_ios_per_device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">    </span><span class="nt">persistent_checksum</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">validate_on_read</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">builder_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1024</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;present&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<p>Common return values are documented <a class="reference internal" href="../../../reference_appendices/common_return_values.html#common-return-values"><span class="std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-changed"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-changed"><strong>changed</strong></p>
+<a class="ansibleOptionLink" href="#return-changed" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Whether or not the resource has changed.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">false</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details"><strong>storage_pool_details</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Details of the storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> When storage pool exists</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">{&quot;addressSpaceUsage&quot;:</span> <span class="pre">&quot;Normal&quot;,</span> <span class="pre">&quot;addressSpaceUsageType&quot;:</span> <span class="pre">&quot;DeviceCapacityLimit&quot;,</span> <span class="pre">&quot;backgroundScannerBWLimitKBps&quot;:</span> <span class="pre">3072,</span> <span class="pre">&quot;backgroundScannerMode&quot;:</span> <span class="pre">&quot;DataComparison&quot;,</span> <span class="pre">&quot;bgScannerCompareErrorAction&quot;:</span> <span class="pre">&quot;ReportAndFix&quot;,</span> <span class="pre">&quot;bgScannerReadErrorAction&quot;:</span> <span class="pre">&quot;ReportAndFix&quot;,</span> <span class="pre">&quot;capacityAlertCriticalThreshold&quot;:</span> <span class="pre">90,</span> <span class="pre">&quot;capacityAlertHighThreshold&quot;:</span> <span class="pre">80,</span> <span class="pre">&quot;capacityUsageState&quot;:</span> <span class="pre">&quot;Normal&quot;,</span> <span class="pre">&quot;capacityUsageType&quot;:</span> <span class="pre">&quot;NetCapacity&quot;,</span> <span class="pre">&quot;checksumEnabled&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;compressionMethod&quot;:</span> <span class="pre">&quot;Invalid&quot;,</span> <span class="pre">&quot;dataLayout&quot;:</span> <span class="pre">&quot;MediumGranularity&quot;,</span> <span class="pre">&quot;externalAccelerationType&quot;:</span> <span class="pre">&quot;None&quot;,</span> <span class="pre">&quot;fglAccpId&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;fglExtraCapacity&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;fglMaxCompressionRatio&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;fglMetadataSizeXx100&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;fglNvdimmMetadataAmortizationX100&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;fglNvdimmWriteCacheSizeInMb&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;fglOverProvisioningFactor&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;fglPerfProfile&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;fglWriteAtomicitySize&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;fragmentationEnabled&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">&quot;e0d8f6c900000000&quot;,</span> <span class="pre">&quot;links&quot;:</span> <span class="pre">[{&quot;href&quot;:</span> <span class="pre">&quot;/api/instances/StoragePool::e0d8f6c900000000&quot;,</span> <span class="pre">&quot;rel&quot;:</span> <span class="pre">&quot;self&quot;},</span> <span class="pre">{&quot;href&quot;:</span> <span class="pre">&quot;/api/instances/StoragePool::e0d8f6c900000000</span> <span class="pre">/relationships/Statistics&quot;,</span> <span class="pre">&quot;rel&quot;:</span> <span class="pre">&quot;/api/StoragePool/relationship/Statistics&quot;},</span> <span class="pre">{&quot;href&quot;:</span> <span class="pre">&quot;/api/instances/StoragePool::e0d8f6c900000000</span> <span class="pre">/relationships/SpSds&quot;,</span> <span class="pre">&quot;rel&quot;:</span> <span class="pre">&quot;/api/StoragePool/relationship/SpSds&quot;},</span> <span class="pre">{&quot;href&quot;:</span> <span class="pre">&quot;/api/instances/StoragePool::e0d8f6c900000000</span> <span class="pre">/relationships/Volume&quot;,</span> <span class="pre">&quot;rel&quot;:</span> <span class="pre">&quot;/api/StoragePool/relationship/Volume&quot;},</span> <span class="pre">{&quot;href&quot;:</span> <span class="pre">&quot;/api/instances/StoragePool::e0d8f6c900000000</span> <span class="pre">/relationships/Device&quot;,</span> <span class="pre">&quot;rel&quot;:</span> <span class="pre">&quot;/api/StoragePool/relationship/Device&quot;},</span> <span class="pre">{&quot;href&quot;:</span> <span class="pre">&quot;/api/instances/StoragePool::e0d8f6c900000000</span> <span class="pre">/relationships/VTree&quot;,</span> <span class="pre">&quot;rel&quot;:</span> <span class="pre">&quot;/api/StoragePool/relationship/VTree&quot;},</span> <span class="pre">{&quot;href&quot;:</span> <span class="pre">&quot;/api/instances/ProtectionDomain::9300c1f900000000&quot;,</span> <span class="pre">&quot;rel&quot;:</span> <span class="pre">&quot;/api/parent/relationship/protectionDomainId&quot;}],</span> <span class="pre">&quot;mediaType&quot;:</span> <span class="pre">&quot;HDD&quot;,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;pool1&quot;,</span> <span class="pre">&quot;numOfParallelRebuildRebalanceJobsPerDevice&quot;:</span> <span class="pre">2,</span> <span class="pre">&quot;persistentChecksumBuilderLimitKb&quot;:</span> <span class="pre">3072,</span> <span class="pre">&quot;persistentChecksumEnabled&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;persistentChecksumState&quot;:</span> <span class="pre">&quot;Protected&quot;,</span> <span class="pre">&quot;persistentChecksumValidateOnRead&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;protectedMaintenanceModeIoPriorityAppBwPerDeviceThresholdInKbps&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;protectedMaintenanceModeIoPriorityAppIopsPerDeviceThreshold&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;protectedMaintenanceModeIoPriorityBwLimitPerDeviceInKbps&quot;:</span> <span class="pre">10240,</span> <span class="pre">&quot;protectedMaintenanceModeIoPriorityNumOfConcurrentIosPerDevice&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;protectedMaintenanceModeIoPriorityPolicy&quot;:</span> <span class="pre">&quot;limitNumOfConcurrentIos&quot;,</span> <span class="pre">&quot;protectedMaintenanceModeIoPriorityQuietPeriodInMsec&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;protectionDomainId&quot;:</span> <span class="pre">&quot;9300c1f900000000&quot;,</span> <span class="pre">&quot;protectionDomainName&quot;:</span> <span class="pre">&quot;domain1&quot;,</span> <span class="pre">&quot;rebalanceEnabled&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;rebalanceIoPriorityAppBwPerDeviceThresholdInKbps&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;rebalanceIoPriorityAppIopsPerDeviceThreshold&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;rebalanceIoPriorityBwLimitPerDeviceInKbps&quot;:</span> <span class="pre">10240,</span> <span class="pre">&quot;rebalanceIoPriorityNumOfConcurrentIosPerDevice&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;rebalanceIoPriorityPolicy&quot;:</span> <span class="pre">&quot;favorAppIos&quot;,</span> <span class="pre">&quot;rebalanceIoPriorityQuietPeriodInMsec&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;rebuildEnabled&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;rebuildIoPriorityAppBwPerDeviceThresholdInKbps&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;rebuildIoPriorityAppIopsPerDeviceThreshold&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;rebuildIoPriorityBwLimitPerDeviceInKbps&quot;:</span> <span class="pre">10240,</span> <span class="pre">&quot;rebuildIoPriorityNumOfConcurrentIosPerDevice&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;rebuildIoPriorityPolicy&quot;:</span> <span class="pre">&quot;limitNumOfConcurrentIos&quot;,</span> <span class="pre">&quot;rebuildIoPriorityQuietPeriodInMsec&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;replicationCapacityMaxRatio&quot;:</span> <span class="pre">32,</span> <span class="pre">&quot;rmcacheWriteHandlingMode&quot;:</span> <span class="pre">&quot;Cached&quot;,</span> <span class="pre">&quot;sparePercentage&quot;:</span> <span class="pre">10,</span> <span class="pre">&quot;statistics&quot;:</span> <span class="pre">{&quot;BackgroundScannedInMB&quot;:</span> <span class="pre">3466920,</span> <span class="pre">&quot;activeBckRebuildCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;activeEnterProtectedMaintenanceModeCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;aggregateCompressionLevel&quot;:</span> <span class="pre">&quot;Uncompressed&quot;,</span> <span class="pre">&quot;atRestCapacityInKb&quot;:</span> <span class="pre">1248256,</span> <span class="pre">&quot;backgroundScanCompareErrorCount&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;backgroundScanFixedCompareErrorCount&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;bckRebuildReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;bckRebuildWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;capacityAvailableForVolumeAllocationInKb&quot;:</span> <span class="pre">369098752,</span> <span class="pre">&quot;capacityInUseInKb&quot;:</span> <span class="pre">2496512,</span> <span class="pre">&quot;capacityInUseNoOverheadInKb&quot;:</span> <span class="pre">2496512,</span> <span class="pre">&quot;capacityLimitInKb&quot;:</span> <span class="pre">845783040,</span> <span class="pre">&quot;compressedDataCompressionRatio&quot;:</span> <span class="pre">0.0,</span> <span class="pre">&quot;compressionRatio&quot;:</span> <span class="pre">1.0,</span> <span class="pre">&quot;currentFglMigrationSizeInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;deviceIds&quot;:</span> <span class="pre">[],</span> <span class="pre">&quot;enterProtectedMaintenanceModeCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;enterProtectedMaintenanceModeReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;enterProtectedMaintenanceModeWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;exitProtectedMaintenanceModeReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;exitProtectedMaintenanceModeWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;exposedCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;failedCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;fwdRebuildReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;fwdRebuildWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;inMaintenanceCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;inMaintenanceVacInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;inUseVacInKb&quot;:</span> <span class="pre">184549376,</span> <span class="pre">&quot;inaccessibleCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;logWrittenBlocksInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;maxCapacityInKb&quot;:</span> <span class="pre">845783040,</span> <span class="pre">&quot;migratingVolumeIds&quot;:</span> <span class="pre">[],</span> <span class="pre">&quot;migratingVtreeIds&quot;:</span> <span class="pre">[],</span> <span class="pre">&quot;movingCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;netCapacityInUseInKb&quot;:</span> <span class="pre">1248256,</span> <span class="pre">&quot;normRebuildCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;normRebuildReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;normRebuildWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;numOfDeviceAtFaultRebuilds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numOfDevices&quot;:</span> <span class="pre">3,</span> <span class="pre">&quot;numOfIncomingVtreeMigrations&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numOfVolumes&quot;:</span> <span class="pre">8,</span> <span class="pre">&quot;numOfVolumesInDeletion&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numOfVtrees&quot;:</span> <span class="pre">8,</span> <span class="pre">&quot;overallUsageRatio&quot;:</span> <span class="pre">73.92289,</span> <span class="pre">&quot;pendingBckRebuildCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;pendingEnterProtectedMaintenanceModeCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;pendingExitProtectedMaintenanceModeCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;pendingFwdRebuildCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;pendingMovingCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;pendingMovingInBckRebuildJobs&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;persistentChecksumBuilderProgress&quot;:</span> <span class="pre">100.0,</span> <span class="pre">&quot;persistentChecksumCapacityInKb&quot;:</span> <span class="pre">414720,</span> <span class="pre">&quot;primaryReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;primaryReadFromDevBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;primaryReadFromRmcacheBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;primaryVacInKb&quot;:</span> <span class="pre">92274688,</span> <span class="pre">&quot;primaryWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;protectedCapacityInKb&quot;:</span> <span class="pre">2496512,</span> <span class="pre">&quot;protectedVacInKb&quot;:</span> <span class="pre">184549376,</span> <span class="pre">&quot;provisionedAddressesInKb&quot;:</span> <span class="pre">2496512,</span> <span class="pre">&quot;rebalanceCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rebalanceReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;rebalanceWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;rfacheReadHit&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rfacheWriteHit&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rfcacheAvgReadTime&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rfcacheAvgWriteTime&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rfcacheIoErrors&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rfcacheIosOutstanding&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rfcacheIosSkipped&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rfcacheReadMiss&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rmPendingAllocatedInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rmPendingThickInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rplJournalCapAllowed&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rplTotalJournalCap&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;rplUsedJournalCap&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;secondaryReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;secondaryReadFromDevBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;secondaryReadFromRmcacheBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;secondaryVacInKb&quot;:</span> <span class="pre">92274688,</span> <span class="pre">&quot;secondaryWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;semiProtectedCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;semiProtectedVacInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;snapCapacityInUseInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;snapCapacityInUseOccupiedInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;snapshotCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;spSdsIds&quot;:</span> <span class="pre">[&quot;abdfe71b00030001&quot;,</span> <span class="pre">&quot;abdce71d00040001&quot;,</span> <span class="pre">&quot;abdde71e00050001&quot;],</span> <span class="pre">&quot;spareCapacityInKb&quot;:</span> <span class="pre">84578304,</span> <span class="pre">&quot;targetOtherLatency&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;targetReadLatency&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;targetWriteLatency&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;tempCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;tempCapacityVacInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;thickCapacityInUseInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;thinAndSnapshotRatio&quot;:</span> <span class="pre">73.92289,</span> <span class="pre">&quot;thinCapacityAllocatedInKm&quot;:</span> <span class="pre">184549376,</span> <span class="pre">&quot;thinCapacityInUseInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;thinUserDataCapacityInKb&quot;:</span> <span class="pre">2496512,</span> <span class="pre">&quot;totalFglMigrationSizeInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;totalWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;trimmedUserDataCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;unreachableUnusedCapacityInKb&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;unusedCapacityInKb&quot;:</span> <span class="pre">758708224,</span> <span class="pre">&quot;userDataCapacityInKb&quot;:</span> <span class="pre">2496512,</span> <span class="pre">&quot;userDataCapacityNoTrimInKb&quot;:</span> <span class="pre">2496512,</span> <span class="pre">&quot;userDataReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;userDataSdcReadLatency&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;userDataSdcTrimLatency&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;userDataSdcWriteLatency&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;userDataTrimBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;userDataWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;volMigrationReadBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;volMigrationWriteBwc&quot;:</span> <span class="pre">{&quot;numOccured&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;numSeconds&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;totalWeightInKb&quot;:</span> <span class="pre">0},</span> <span class="pre">&quot;volumeAddressSpaceInKb&quot;:</span> <span class="pre">&quot;922XXXXX&quot;,</span> <span class="pre">&quot;volumeAllocationLimitInKb&quot;:</span> <span class="pre">&quot;3707XXXXX&quot;,</span> <span class="pre">&quot;volumeIds&quot;:</span> <span class="pre">[&quot;456afc7900XXXXXXXX&quot;],</span> <span class="pre">&quot;vtreeAddresSpaceInKb&quot;:</span> <span class="pre">92274688,</span> <span class="pre">&quot;vtreeIds&quot;:</span> <span class="pre">[&quot;32b1681bXXXXXXXX&quot;]},</span> <span class="pre">&quot;useRfcache&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;useRmcache&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;vtreeMigrationIoPriorityAppBwPerDeviceThresholdInKbps&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;vtreeMigrationIoPriorityAppIopsPerDeviceThreshold&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;vtreeMigrationIoPriorityBwLimitPerDeviceInKbps&quot;:</span> <span class="pre">10240,</span> <span class="pre">&quot;vtreeMigrationIoPriorityNumOfConcurrentIosPerDevice&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;vtreeMigrationIoPriorityPolicy&quot;:</span> <span class="pre">&quot;favorAppIos&quot;,</span> <span class="pre">&quot;vtreeMigrationIoPriorityQuietPeriodInMsec&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;zeroPaddingEnabled&quot;:</span> <span class="pre">true}</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/id"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-id"><strong>id</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/id" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>ID of the storage pool under protection domain.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/mediaType"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-mediatype"><strong>mediaType</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/mediaType" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Type of devices in the storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/name"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-name"><strong>name</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/name" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of the storage pool under protection domain.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/protectionDomainId"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-protectiondomainid"><strong>protectionDomainId</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/protectionDomainId" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>ID of the protection domain in which pool resides.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/protectionDomainName"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-protectiondomainname"><strong>protectionDomainName</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/protectionDomainName" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of the protection domain in which pool resides.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/statistics"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-statistics"><strong>statistics</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/statistics" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Statistics details of the storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/statistics/capacityInUseInKb"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-statistics-capacityinuseinkb"><strong>capacityInUseInKb</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/statistics/capacityInUseInKb" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Total capacity of the storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/statistics/deviceIds"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-statistics-deviceids"><strong>deviceIds</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/statistics/deviceIds" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Device Ids of the storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/statistics/unusedCapacityInKb"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-statistics-unusedcapacityinkb"><strong>unusedCapacityInKb</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/statistics/unusedCapacityInKb" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Unused capacity of the storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/useRfcache"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-userfcache"><strong>useRfcache</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/useRfcache" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable/Disable RFcache on a specific storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_pool_details/useRmcache"></div><p class="ansible-option-title" id="ansible-collections-dellemc-powerflex-storagepool-module-return-storage-pool-details-usermcache"><strong>useRmcache</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_pool_details/useRmcache" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable/Disable RMcache on a specific storage pool.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Arindam Datta (&#64;dattaarindam)</p></li>
+<li><p>P Srinivas Rao (&#64;srinivas-rao5)</p></li>
+<li><p>Trisha Datta (&#64;trisha-dell)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h3>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://www.dell.com/community/Automation/bd-p/Automation" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/dell/ansible-powerflex/tree/main" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="snapshot_policy_module.html" class="btn btn-neutral float-left" title="dellemc.powerflex.snapshot_policy module – Manage snapshot policies on Dell PowerFlex" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="volume_module.html" class="btn btn-neutral float-right" title="dellemc.powerflex.volume module – Manage volumes on Dell PowerFlex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

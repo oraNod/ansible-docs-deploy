@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.11.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dellemc.enterprise_sonic.sonic_route_maps module – route map configuration handling for SONiC &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/dellemc/enterprise_sonic/sonic_route_maps_module.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=eb3ed21c"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="dellemc.enterprise_sonic.sonic_static_routes module – Manage static routes configuration on SONiC" href="sonic_static_routes_module.html" />
+    <link rel="prev" title="dellemc.enterprise_sonic.sonic_radius_server module – Manage RADIUS server and its parameters" href="sonic_radius_server_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="10">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                10
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/10/") > -1
+            ? "/10/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../amazon/index.html">Collections in the Amazon Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/index.html">Collections in the Community Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Dellemc Namespace</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Dellemc.Enterprise_Sonic</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../openmanage/index.html">Dellemc.Openmanage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../powerflex/index.html">Dellemc.Powerflex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unity/index.html">Dellemc.Unity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fortinet/index.html">Collections in the Fortinet Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kaytus/index.html">Collections in the Kaytus Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp_eseries/index.html">Collections in the Netapp_eseries Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wti/index.html">Collections in the Wti Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Dellemc Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dellemc.Enterprise_Sonic</a></li>
+      <li class="breadcrumb-item active">dellemc.enterprise_sonic.sonic_route_maps module – route map configuration handling for SONiC</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module"></span><section id="dellemc-enterprise-sonic-sonic-route-maps-module-route-map-configuration-handling-for-sonic">
+<h1>dellemc.enterprise_sonic.sonic_route_maps module – route map configuration handling for SONiC<a class="headerlink" href="#dellemc-enterprise-sonic-sonic-route-maps-module-route-map-configuration-handling-for-sonic" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/dellemc/enterprise_sonic/">dellemc.enterprise_sonic collection</a> (version 2.4.0).</p>
+<p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
+It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">dellemc.enterprise_sonic</span></code>.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">dellemc.enterprise_sonic.sonic_route_maps</span></code>.</p>
+</div>
+<p class="ansible-version-added">New in dellemc.enterprise_sonic 2.1.0</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id2">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id3">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id4">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This module provides configuration management for route map parameters on devices running SONiC.</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config"><strong>config</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Specifies a list of route map configuration dictionaries</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/action"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-action"><strong>action</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/action" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>action type for the route map (permit or deny)</p>
+<p>This value is required for creation and modification of a route</p>
+<p>map or route map attributes as well as for deletion of route map</p>
+<p>attributes. It can be omitted only when requesting deletion of a</p>
+<p>route map statement or all route map statements for a given route</p>
+<p>map map_name.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;permit&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;deny&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/call"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-call"><strong>call</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/call" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of a route map to jump to after executing ‘match’ and ‘set’</p>
+<p>statements for the current route map.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/map_name"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-map-name"><strong>map_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/map_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of a route map</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match"><strong>match</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Criteria for matching the route map to a route</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/as_path"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-as-path"><strong>as_path</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/as_path" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of a configured BGP AS path list to be checked for</p>
+<p>a match with the target route</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/community"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-community"><strong>community</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/community" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of a configured BGP “community” to be checked for</p>
+<p>a match with the target route</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/evpn"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-evpn"><strong>evpn</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/evpn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>BGP Ethernet Virtual Private Network to be checked for</p>
+<p>a match with the target route</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/evpn/default_route"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-evpn-default-route"><strong>default_route</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/evpn/default_route" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Default EVPN type-5 route</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/evpn/route_type"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-evpn-route-type"><strong>route_type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/evpn/route_type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Non-default route type: One of the following:</p>
+<p>mac-ip route, EVPN Type 3 Inclusive Multicast Ethernet</p>
+<p>Tag (IMET) route, or prefix route</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;macip&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;multicast&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;prefix&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/evpn/vni"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-evpn-vni"><strong>vni</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/evpn/vni" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>VNI ID to be checked for a match; specified by a value in the</p>
+<p>range 1-16777215</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/ext_comm"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-ext-comm"><strong>ext_comm</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/ext_comm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of a configured BGP ‘extended community’ to be checked for</p>
+<p>a match with the target route</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/interface"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-interface"><strong>interface</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/interface" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Next hop interface name (type and number) to be checked for a</p>
+<p>match with the target route. The interface type can be any</p>
+<p>of the following; ‘Ethernet/Eth’ interface or sub-interface,</p>
+<p>‘Loopback’ interface, ‘PortChannel’ interface or</p>
+<p>sub-interface, ‘Vlan’ interface.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/ip"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-ip"><strong>ip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>IP addresses or IP next hops to be checked for a match with the</p>
+<p>target route</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/ip/address"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-ip-address"><strong>address</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/ip/address" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>name of an IPv4 prefix list containing a list of address</p>
+<p>prefixes to be checked for a match with the target route</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/ip/next_hop"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-ip-next-hop"><strong>next_hop</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/ip/next_hop" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>name of a prefix list containing a list of next-hop</p>
+<p>prefixes to be checked for a match with the target route</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/ipv6"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-ipv6"><strong>ipv6</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/ipv6" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>IPv6 addresses to be checked for a match with the</p>
+<p>target route</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/ipv6/address"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-ipv6-address"><strong>address</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/ipv6/address" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>name of an IPv6 prefix list containing a list of address</p>
+<p>prefixes to be checked for a match with the target route</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/local_preference"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-local-preference"><strong>local_preference</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/local_preference" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>local-preference value to be checked for a match with the</p>
+<p>target route. This is a value in the range 0-4294967295.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/metric"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-metric"><strong>metric</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/metric" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>metric value to be checked for a match with the target route.</p>
+<p>This is a value in the range 0-4294967295.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/origin"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-origin"><strong>origin</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/origin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>BGP origin to be checked for a match with the target route</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;egp&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;igp&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;incomplete&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/peer"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-peer"><strong>peer</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/peer" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>BGP routing peer/neighbor required for a matching route.</p>
+<p><em>ip</em>, <em>ipv6</em>, and <em>interface</em> are mutually exclusive.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/peer/interface"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-peer-interface"><strong>interface</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/peer/interface" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name (type and number) of a BGP peer interface.</p>
+<p>Allowed interface types are Ethernet or Eth (depending</p>
+<p>on the configured interface-naming mode),</p>
+<p>Vlan, and Portchannel</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/peer/ip"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-peer-ip"><strong>ip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/peer/ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>IPv4 address of a BGP peer</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/peer/ipv6"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-peer-ipv6"><strong>ipv6</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/peer/ipv6" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>IPv6 address of a BGP peer</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/source_protocol"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-source-protocol"><strong>source_protocol</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/source_protocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Source protocol required for a matching route</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bgp&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;connected&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ospf&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;static&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/source_vrf"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-source-vrf"><strong>source_vrf</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/source_vrf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Name of the source VRF required for a matching route</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/match/tag"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-match-tag"><strong>tag</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/match/tag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Tag value required for a matching route</p>
+<p>The value must be in the range 1-4294967295</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/sequence_num"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-sequence-num"><strong>sequence_num</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/sequence_num" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>unique number in the range 1-66535 to specify priority of the map</p>
+<p>This value is required for creation and modification of a route</p>
+<p>map or route map attributes as well as for deletion of route map</p>
+<p>attributes. It can be omitted only when requesting deletion of all</p>
+<p>route map “statements” for a given route map “map_name”.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set"><strong>set</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Information to set into a matching route for re-distribution</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/as_path_prepend"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-as-path-prepend"><strong>as_path_prepend</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/as_path_prepend" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>String specifying a comma-separated list of AS-path numbers</p>
+<p>to prepend to the BGP AS-path attribute in a matched route.</p>
+<p>AS-path values in the list must be in the range</p>
+<p>1-4294967295; for example, 2000,3000</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/comm_list_delete"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-comm-list-delete"><strong>comm_list_delete</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/comm_list_delete" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>String specifying the name of a BGP community list containing</p>
+<p>BGP Community values to be deleted from matching routes.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/community"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-community"><strong>community</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/community" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>BGP community attributes to add to or replace the BGP</p>
+<p>community attributes in a matching route. Specifying the</p>
+<p>‘additive’ attribute is allowed only if one of</p>
+<p>the other attributes (other than ‘none’) is specified.</p>
+<p>It causes the specified ‘set community’ attributes</p>
+<p>to be added to the already existing community</p>
+<p>attributes in the matching route. If the ‘additive’ attribute</p>
+<p>is not specified, the previously existing community attributes</p>
+<p>in the matching route are replaced by the configured</p>
+<p>‘set community’ attributes. Specifying a ‘set community’ attribute</p>
+<p>of ‘none’ is mutually exclusive with setting of other community</p>
+<p>attributes and causes any community attributes in the matching</p>
+<p>route to be removed.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/community/community_attributes"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-community-community-attributes"><strong>community_attributes</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/community/community_attributes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>A list of one or more BGP community attributes. The allowed</p>
+<p>values are the following:</p>
+<p>local_as</p>
+<p>Do not send outside local AS (well-known community)</p>
+<p>no_advertise</p>
+<p>Do not advertise to any peer (well-known community)</p>
+<p>no_export</p>
+<p>Do not export to next AS (well-known community)</p>
+<p>no_peer</p>
+<p>The route does not need to be advertised to peers.</p>
+<p>(Advertisement of the route can be suppressed based</p>
+<p>on other criteria.)</p>
+<p>additive</p>
+<p>Add the configured ‘set community’ attributes to</p>
+<p>the matching route (if set to ‘true’); Previously existing</p>
+<p>attributes in the matching route are, instead, replaced</p>
+<p>by the configured attributes if this attribute is</p>
+<p>not specified or if it is set to ‘false’.</p>
+<p>none</p>
+<p>Do not send any community attribute. This attribute</p>
+<p>is mutually exclusive with all other ‘set community’</p>
+<p>attributes. It causes all attributes to be removed</p>
+<p>from the matching route.</p>
+<p><em>none</em> is mutually exclusive with all of the other attributes:</p>
+<p><em>local_as</em>, <em>no_advertise</em>, <em>no_export</em>, <em>no_peer</em>, <em>additive</em>,</p>
+<p>and <em>additive</em>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;local_as&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;no_advertise&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;no_export&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;no_peer&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;additive&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/community/community_number"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-community-community-number"><strong>community_number</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/community/community_number" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>A list of one or more BGP community numbers in the</p>
+<p>form AA:NN where AA and NN are integers in the range</p>
+<p>0-65535.</p>
+<p>Note: Each community number in the list must be enclosed</p>
+<p>in double quotes to avoid YAML parsing errors due to the</p>
+<p>list values containing an embedded ‘:’ character.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/extcommunity"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-extcommunity"><strong>extcommunity</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/extcommunity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>BGP extended community attributes to set into a matching route.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/extcommunity/rt"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-extcommunity-rt"><strong>rt</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/extcommunity/rt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Route Target VPN extended communities in the format</p>
+<p>ASN:NN or IP-ADDRESS:NN</p>
+<p>Note: Each rt value in the list must be enclosed</p>
+<p>in double quotes to avoid YAML parsing errors due to the</p>
+<p>list values containing an embedded ‘:’ character.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/extcommunity/soo"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-extcommunity-soo"><strong>soo</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/extcommunity/soo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Site-of-Origin VPN extended communities in the format</p>
+<p>ASN:NN or IP-ADDRESS:NN</p>
+<p>Note: Each rt value in the list must be enclosed</p>
+<p>in double quotes to avoid YAML parsing errors due to the</p>
+<p>list values containing an embedded ‘:’ character.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/ip_next_hop"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-ip-next-hop"><strong>ip_next_hop</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/ip_next_hop" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>IPv4 next hop address to set into a matching route in the</p>
+<p>dotted decimal format A.B.C.D</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/ipv6_next_hop"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-ipv6-next-hop"><strong>ipv6_next_hop</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/ipv6_next_hop" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>IPv6 next hop address attributes to set into a matching route</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/ipv6_next_hop/global_addr"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-ipv6-next-hop-global-addr"><strong>global_addr</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/ipv6_next_hop/global_addr" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>IPv6 global next hop address to set into a matching</p>
+<p>route in the format A::B</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/ipv6_next_hop/prefer_global"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-ipv6-next-hop-prefer-global"><strong>prefer_global</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/ipv6_next_hop/prefer_global" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Set the corresponding attribute into a matching route</p>
+<p>if the value of this Ansible attribute is ‘true’.</p>
+<p>The attribute indicates that the routing algorithm must</p>
+<p>prefer the global next-hop address over the link-local</p>
+<p>address if both exist.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/local_preference"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-local-preference"><strong>local_preference</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/local_preference" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>BGP local preference path attribute; integer value in</p>
+<p>the range 0-4294967295</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/metric"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-metric"><strong>metric</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/metric" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>route metric value actions</p>
+<p><em>value</em> and <em>rtt_action</em> are mutually exclusive.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/metric/rtt_action"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-metric-rtt-action"><strong>rtt_action</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/metric/rtt_action" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Action to take for modifying the metric for a matched</p>
+<p>route using the Round Trip Time (rtt);</p>
+<p><code class="docutils literal notranslate"><span class="pre">set</span></code> causes the route metric to be set to the</p>
+<p>rtt value.</p>
+<p><code class="docutils literal notranslate"><span class="pre">add</span></code> causes the rtt value to be added</p>
+<p>to the route metric.</p>
+<p><code class="docutils literal notranslate"><span class="pre">subtract</span></code> causes the rtt value to be</p>
+<p>subtracted from route metric.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;set&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;add&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;subtract&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/metric/value"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-metric-value"><strong>value</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/metric/value" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>metric value to be set into a matching route;</p>
+<p>value in the range 0-4294967295</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/origin"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-origin"><strong>origin</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/origin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>BGP route origin; One of the following must be selected.</p>
+<p>egp (External; remote EGP)</p>
+<p>igp (Internal; local IGP)</p>
+<p>incomplete (Unknown origin)</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;egp&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;igp&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;incomplete&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config/set/weight"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-config-set-weight"><strong>weight</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config/set/weight" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>BGP weight for the routing table. The weight must be an</p>
+<p>integer in the range 0-4294967295</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-parameter-state"><strong>state</strong></p>
+<a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Specifies the type of configuration update to be performed on the device.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">merged</span></code>, merge specified attributes with existing configured attributes.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">deleted</span></code>, delete the specified attributes from existing configuration.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">replaced</span></code>, replace each modified list or dictionary with the</p>
+<p>specified items.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">overridden</span></code>, replace all current configuration for this resource</p>
+<p>module with the specified configuration.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;merged&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;deleted&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;replaced&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;overridden&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using &quot;merged&quot; state to create initial configuration</span>
+<span class="c1">#</span>
+<span class="c1"># Before state:</span>
+<span class="c1"># -------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># sonic#</span>
+<span class="c1"># (No configuration present)</span>
+<span class="c1">#</span>
+<span class="c1"># -------------</span>
+<span class="c1">#</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Merge initial route_maps configuration</span>
+<span class="w">  </span><span class="nt">dellemc.enterprise_sonic.sonic_route_maps</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_as1</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_comm_list1</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">default_route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">             </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">735</span>
+<span class="w">           </span><span class="nt">ext_comm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_ext_comm1</span>
+<span class="w">           </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet4</span>
+<span class="w">           </span><span class="nt">ip</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip_pfx_list1</span>
+<span class="w">           </span><span class="nt">ipv6</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv6_pfx_list1</span>
+<span class="w">           </span><span class="nt">local_preference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">egp</span>
+<span class="w">           </span><span class="nt">peer</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.20.30.40</span>
+<span class="w">           </span><span class="nt">source_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">           </span><span class="nt">source_vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Vrf1</span>
+<span class="w">           </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7284</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path_prepend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200,315,7135</span>
+<span class="w">           </span><span class="nt">comm_list_delete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_comm_list2</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">community_number</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;35:58&quot;</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;79:150&quot;</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;308:650&quot;</span>
+<span class="w">             </span><span class="nt">community_attributes</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_as</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_advertise</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_export</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_peer</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">additive</span>
+<span class="w">           </span><span class="nt">extcommunity</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rt</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;30:40&quot;</span>
+<span class="w">             </span><span class="nt">soo</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;10.73.14.9:78&quot;</span>
+<span class="w">           </span><span class="nt">ip_next_hop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.48.16.18</span>
+<span class="w">           </span><span class="nt">ipv6_next_hop</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">global_addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30::30</span>
+<span class="w">             </span><span class="nt">prefer_global</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">           </span><span class="nt">local_preference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">635</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">metric_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">870</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">egp</span>
+<span class="w">           </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">93471</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deny</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3047</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">route_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">incomplete</span>
+<span class="w">           </span><span class="nt">peer</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet6</span>
+<span class="w">           </span><span class="nt">source_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ospf</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rtt_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">incomplete</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm3</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deny</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">285</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">route_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">macip</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">igp</span>
+<span class="w">           </span><span class="nt">peer</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">ipv6</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">87:95:15::53</span>
+<span class="w">           </span><span class="nt">source_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connected</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">community_attributes</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rtt_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">set</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">igp</span>
+<span class="w">         </span><span class="nt">call</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm4</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">480</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">route_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefix</span>
+<span class="w">           </span><span class="nt">source_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">static</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rtt_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subtract</span>
+<span class="w">     </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">merged</span>
+
+<span class="c1"># After state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as1</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn vni 735</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list1</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Ethernet4</span>
+<span class="c1">#  match community bgp_comm_list1</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match peer 10.20.30.40</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 200,315,7135</span>
+<span class="c1">#  set community 35:58 79:150 308:650 local-AS no-advertise no-export no-peer additive</span>
+<span class="c1">#  set extcommunity rt 30:40</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric 870</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set ipv6 next-hop prefer-global</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 deny 3047</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match peer Ethernet6</span>
+<span class="c1">#  match source-protocol ospf</span>
+<span class="c1">#  match origin incomplete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set origin incomplete</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol connected</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community none</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1"># ------------</span>
+
+
+<span class="c1"># Using &quot;merged&quot; state to update and add configuration</span>
+<span class="c1">#</span>
+<span class="c1"># Before state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as1</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn vni 735</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list1</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Ethernet4</span>
+<span class="c1">#  match community bgp_comm_list1</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match peer 10.20.30.40</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 200,315,7135</span>
+<span class="c1">#  set community 35:58 79:150 308:650 local-AS no-advertise no-export no-peer additive</span>
+<span class="c1">#  set extcommunity rt 30:40</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric 870</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set ipv6 next-hop prefer-global</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 deny 3047</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match peer Ethernet6</span>
+<span class="c1">#  match source-protocol ospf</span>
+<span class="c1">#  match origin incomplete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set origin incomplete</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol connected</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community none</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Merge additional and modified route map configuration</span>
+<span class="w">  </span><span class="nt">dellemc.enterprise_sonic.sonic_route_maps</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_as2</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_comm_list3</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">route_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefix</span>
+<span class="w">             </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">850</span>
+<span class="w">           </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Vlan7</span>
+<span class="w">           </span><span class="nt">ip</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip_pfx_list2</span>
+<span class="w">             </span><span class="nt">next_hop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip_pfx_list3</span>
+<span class="w">           </span><span class="nt">peer</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Portchannel14</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path_prepend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">188,257</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">community_number</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;45:736&quot;</span>
+<span class="w">           </span><span class="nt">ipv6_next_hop</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">prefer_global</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rtt_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deny</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3047</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_as3</span>
+<span class="w">           </span><span class="nt">ext_comm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_ext_comm2</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">igp</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rtt_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subtract</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm2</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet16</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path_prepend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200,300,400</span>
+<span class="w">           </span><span class="nt">ipv6_next_hop</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">global_addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">37::58</span>
+<span class="w">             </span><span class="nt">prefer_global</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm3</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deny</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">285</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">local_preference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14783</span>
+<span class="w">           </span><span class="nt">source_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">community_attributes</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_advertise</span>
+<span class="w">     </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">merged</span>
+
+<span class="c1"># After state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as2</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match evpn vni 850</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list2</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match community bgp_comm_list3</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 188,257</span>
+<span class="c1">#  set community 35:58 79:150 308:650 45:736 local-AS no-advertise no-export no-peer additive</span>
+<span class="c1">#  set extcommunity rt 30:40</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 deny 3047</span>
+<span class="c1">#  match as-path bgp_as3</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match ext-community bgp_ext_comm2</span>
+<span class="c1">#  match peer Ethernet6</span>
+<span class="c1">#  match source-protocol ospf</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1">#  set origin incomplete</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm2 permit 100</span>
+<span class="c1">#  match interface Ethernet16</span>
+<span class="c1">#  set as-path prepend 200,300,400</span>
+<span class="c1">#  set ipv6 next-hop global 37::58</span>
+<span class="c1">#  set ipv6 next-hop prefer-global</span>
+<span class="c1">#  set metric 8000</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  match local-preference 14783</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+
+
+<span class="c1"># Using &quot;replaced&quot; state to replace the contents of a list</span>
+<span class="c1">#</span>
+<span class="c1"># Before state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic(config-route-map)# do show running-configuration route-map rm1 80</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as2</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match evpn vni 850</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list2</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match community bgp_comm_list3</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 188,257</span>
+<span class="c1">#  set community 35:58 79:150 308:650 45:736 local-AS no-export no-peer additive</span>
+<span class="c1">#  set extcommunity rt 30:40</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># ------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Replace a list</span>
+<span class="w">  </span><span class="nt">dellemc.enterprise_sonic.sonic_route_maps</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">community_number</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;15:30&quot;</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;26:54&quot;</span>
+<span class="w">     </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replaced</span>
+
+<span class="c1"># After state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic#show running-configuration route-map rm1 80</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as2</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match evpn vni 850</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list2</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match community bgp_comm_list3</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 188,257</span>
+<span class="c1">#  set community 15:30 26:54 local-AS no-export no-peer additive</span>
+<span class="c1">#  set extcommunity rt 30:40</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+
+
+<span class="c1"># Using &quot;replaced&quot; state to replace the contents of dictionaries</span>
+<span class="c1">#</span>
+<span class="c1"># Before state:</span>
+<span class="c1"># ------------</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as2</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match evpn vni 850</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list2</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match community bgp_comm_list3</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 188,257</span>
+<span class="c1">#  set community 15:30 26:54 local-AS no-export no-peer additive</span>
+<span class="c1">#  set extcommunity rt 30:40</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 deny 3047</span>
+<span class="c1">#  match as-path bgp_as3</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match ext-community bgp_ext_comm2</span>
+<span class="c1">#  match peer Ethernet6</span>
+<span class="c1">#  match source-protocol ospf</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1">#  set origin incomplete</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm2 permit 100</span>
+<span class="c1">#  match interface Ethernet16</span>
+<span class="c1">#  set as-path prepend 200,300,400</span>
+<span class="c1">#  set ipv6 next-hop global 37::58</span>
+<span class="c1">#  set ipv6 next-hop prefer-global</span>
+<span class="c1">#  set metric 8000</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  match local-preference 14783</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1"># ------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Replace dictionaries</span>
+<span class="w">  </span><span class="nt">dellemc.enterprise_sonic.sonic_route_maps</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">route_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">           </span><span class="nt">ip</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip_pfx_list1</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">community_attributes</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_advertise</span>
+<span class="w">           </span><span class="nt">extcommunity</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rt</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;20:20&quot;</span>
+
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm2</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">ipv6_next_hop</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">global_addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45::90</span>
+<span class="w">     </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replaced</span>
+
+<span class="c1"># After state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as2</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list1</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match community bgp_comm_list3</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 188,257</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set extcommunity rt 20:20</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 deny 3047</span>
+<span class="c1">#  match as-path bgp_as3</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match ext-community bgp_ext_comm2</span>
+<span class="c1">#  match peer Ethernet6</span>
+<span class="c1">#  match source-protocol ospf</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1">#  set origin incomplete</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm2 permit 100</span>
+<span class="c1">#  match interface Ethernet16</span>
+<span class="c1">#  set as-path prepend 200,300,400</span>
+<span class="c1">#  set metric 8000</span>
+<span class="c1">#  set ipv6 next-hop global 45::90</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  match local-preference 14783</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+
+
+<span class="c1"># Using &quot;overridden&quot; state to override all existing configuration with new</span>
+<span class="c1"># configuration</span>
+<span class="c1">#</span>
+<span class="c1"># Before state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as2</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list1</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match community bgp_comm_list3</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 188,257</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set extcommunity rt 30:40</span>
+<span class="c1">#  set extcommunity rt 20:20</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 deny 3047</span>
+<span class="c1">#  match as-path bgp_as3</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match ext-community bgp_ext_comm2</span>
+<span class="c1">#  match peer Ethernet6</span>
+<span class="c1">#  match source-protocol ospf</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1">#  set origin incomplete</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm2 permit 100</span>
+<span class="c1">#  match interface Ethernet16</span>
+<span class="c1">#  set as-path prepend 200,300,400</span>
+<span class="c1">#  set metric 8000</span>
+<span class="c1">#  set ipv6 next-hop global 45::90</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  match local-preference 14783</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1"># ------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Override all route map configuration with new configuration</span>
+<span class="w">  </span><span class="nt">dellemc.enterprise_sonic.sonic_route_maps</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm5</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">250</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet28</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path_prepend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150,275</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7249</span>
+<span class="w">     </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
+
+<span class="c1"># After state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm5 permit 250</span>
+<span class="c1">#  match interface Ethernet28</span>
+<span class="c1">#  set as-path prepend 150,275</span>
+<span class="c1">#  set metric 7249</span>
+
+
+<span class="c1"># Using &quot;overridden&quot; state to override all existing configuration with new</span>
+<span class="c1"># configuration. (Restore previous configuration.)</span>
+<span class="c1">#</span>
+<span class="c1"># Before state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm5 permit 250</span>
+<span class="c1">#  match interface Ethernet28</span>
+<span class="c1">#  set as-path prepend 150,275</span>
+<span class="c1">#  set metric 7249</span>
+<span class="c1"># ------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Override (restore) all route map configuration with older configuration</span>
+<span class="w">  </span><span class="nt">dellemc.enterprise_sonic.sonic_route_maps</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_as2</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_comm_list3</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">default_route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">             </span><span class="nt">route_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefix</span>
+<span class="w">             </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">850</span>
+<span class="w">           </span><span class="nt">ext_comm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_ext_comm1</span>
+<span class="w">           </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Vlan7</span>
+<span class="w">           </span><span class="nt">ip</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip_pfx_list2</span>
+<span class="w">             </span><span class="nt">next_hop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip_pfx_list3</span>
+<span class="w">           </span><span class="nt">ipv6</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv6_pfx_list1</span>
+<span class="w">           </span><span class="nt">local_preference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">egp</span>
+<span class="w">           </span><span class="nt">peer</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Portchannel14</span>
+<span class="w">           </span><span class="nt">source_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">           </span><span class="nt">source_vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Vrf1</span>
+<span class="w">           </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7284</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path_prepend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">188,257</span>
+<span class="w">           </span><span class="nt">comm_list_delete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_comm_list2</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">community_number</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;35:58&quot;</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;79:150&quot;</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;308:650&quot;</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;45:736&quot;</span>
+<span class="w">             </span><span class="nt">community_attributes</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_as</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_export</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_peer</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">additive</span>
+<span class="w">           </span><span class="nt">extcommunity</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rt</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;30:40&quot;</span>
+<span class="w">             </span><span class="nt">soo</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;10.73.14.9:78&quot;</span>
+<span class="w">           </span><span class="nt">ip_next_hop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.48.16.18</span>
+<span class="w">           </span><span class="nt">ipv6_next_hop</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">global_addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30::30</span>
+<span class="w">           </span><span class="nt">local_preference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">635</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rtt_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">egp</span>
+<span class="w">           </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">93471</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deny</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3047</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_as3</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">route_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">           </span><span class="nt">ext_comm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp_ext_comm2</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">igp</span>
+<span class="w">           </span><span class="nt">peer</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet6</span>
+<span class="w">           </span><span class="nt">source_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ospf</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rtt_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subtract</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">incomplete</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm2</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet16</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path_prepend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200,300,400</span>
+<span class="w">           </span><span class="nt">ipv6_next_hop</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">global_addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">37::58</span>
+<span class="w">             </span><span class="nt">prefer_global</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm3</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deny</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">285</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">route_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">macip</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">igp</span>
+<span class="w">           </span><span class="nt">peer</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">ipv6</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">87:95:15::53</span>
+<span class="w">           </span><span class="nt">local_preference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14783</span>
+<span class="w">           </span><span class="nt">source_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">community_attributes</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_advertise</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rtt_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">set</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">igp</span>
+<span class="w">         </span><span class="nt">call</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm4</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">480</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">route_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefix</span>
+<span class="w">           </span><span class="nt">source_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">static</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">metric</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rtt_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subtract</span>
+<span class="w">     </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
+
+<span class="c1"># After state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as2</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match evpn vni 850</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list2</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match community bgp_comm_list3</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 188,257</span>
+<span class="c1">#  set community 35:58 79:150 308:650 45:736 local-AS no-export no-peer additive</span>
+<span class="c1">#  set extcommunity rt 30:40</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 deny 3047</span>
+<span class="c1">#  match as-path bgp_as3</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match ext-community bgp_ext_comm2</span>
+<span class="c1">#  match peer Ethernet6</span>
+<span class="c1">#  match source-protocol ospf</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1">#  set origin incomplete</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm2 permit 100</span>
+<span class="c1">#  match interface Ethernet16</span>
+<span class="c1">#  set as-path prepend 200,300,400</span>
+<span class="c1">#  set ipv6 next-hop global 37::58</span>
+<span class="c1">#  set ipv6 next-hop prefer-global</span>
+<span class="c1">#  set metric 8000</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  match local-preference 14783</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+
+
+<span class="c1"># Using &quot;deleted&quot; state to remove configuration</span>
+<span class="c1">#</span>
+<span class="c1"># Before state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map rm1 80</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match as-path bgp_as2</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match evpn vni 850</span>
+<span class="c1">#  match ip address prefix-list ip_pfx_list2</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match community bgp_comm_list3</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set as-path prepend 188,257</span>
+<span class="c1">#  set community 35:58 79:150 308:650 45:736 local-AS no-export no-peer additive</span>
+<span class="c1">#  set extcommunity rt 30:40</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># ------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete selected route map configuration</span>
+<span class="w">  </span><span class="nt">dellemc.enterprise_sonic.sonic_route_maps</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">permit</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">         </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">bgp_as2</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">bgp_comm_list3</span>
+<span class="w">           </span><span class="nt">evpn</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">850</span>
+<span class="w">           </span><span class="nt">ip</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip_pfx_list2</span>
+<span class="w">         </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">as_path_prepend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">188,257</span>
+<span class="w">           </span><span class="nt">community</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">community_number</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;35:58&quot;</span>
+<span class="w">             </span><span class="nt">community_attributes</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_as</span>
+<span class="w">           </span><span class="nt">extcommunity</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">rt</span><span class="p">:</span>
+<span class="w">               </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;30:40&quot;</span>
+<span class="w">     </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deleted</span>
+
+<span class="c1"># After state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map rm1 80</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set community 79:150 308:650 45:736 no-export no-peer additive</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+
+
+<span class="c1"># Using &quot;deleted&quot; state to remove a route map or route map subset</span>
+<span class="c1">#</span>
+<span class="c1"># Before state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set community 79:150 308:650 45:736 no-export no-peer additive</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 deny 3047</span>
+<span class="c1">#  match as-path bgp_as3</span>
+<span class="c1">#  match evpn route-type multicast</span>
+<span class="c1">#  match ext-community bgp_ext_comm2</span>
+<span class="c1">#  match peer Ethernet6</span>
+<span class="c1">#  match source-protocol ospf</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1">#  set origin incomplete</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm2 permit 100</span>
+<span class="c1">#  match interface Ethernet16</span>
+<span class="c1">#  set as-path prepend 200,300,400</span>
+<span class="c1">#  set metric 8000</span>
+<span class="c1">#  set ipv6 next-hop prefer-global</span>
+<span class="c1">#  set ipv6 next-hop global 37::58</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  match local-preference 14783</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1"># ------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete a route map or route map subset</span>
+<span class="w">  </span><span class="nt">dellemc.enterprise_sonic.sonic_route_maps</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm1</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3047</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">map_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm2</span>
+<span class="w">         </span><span class="nt">sequence_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">     </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deleted</span>
+
+<span class="c1"># After state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set community 79:150 308:650 45:736 no-export no-peer additive</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  match local-preference 14783</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+
+
+<span class="c1"># Using &quot;deleted&quot; state to remove all route map configuration</span>
+<span class="c1">#</span>
+<span class="c1"># Before state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm1 permit 80</span>
+<span class="c1">#  match evpn default-route</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match ipv6 address prefix-list ipv6_pfx_list1</span>
+<span class="c1">#  match interface Vlan7</span>
+<span class="c1">#  match ext-community bgp_ext_comm1</span>
+<span class="c1">#  match tag 7284</span>
+<span class="c1">#  match local-preference 8000</span>
+<span class="c1">#  match source-vrf Vrf1</span>
+<span class="c1">#  match ip next-hop prefix-list ip_pfx_list3</span>
+<span class="c1">#  match peer PortChannel 14</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match metric 400</span>
+<span class="c1">#  match origin egp</span>
+<span class="c1">#  set community 79:150 308:650 45:736 no-export no-peer additive</span>
+<span class="c1">#  set extcommunity soo 10.73.14.9:78</span>
+<span class="c1">#  set comm-list bgp_comm_list2 delete</span>
+<span class="c1">#  set metric +rtt</span>
+<span class="c1">#  set ip next-hop 10.48.16.18</span>
+<span class="c1">#  set ipv6 next-hop global 30::30</span>
+<span class="c1">#  set local-preference 635</span>
+<span class="c1">#  set origin egp</span>
+<span class="c1">#  set weight 93471</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm3 deny 285</span>
+<span class="c1">#  match evpn route-type macip</span>
+<span class="c1">#  match local-preference 14783</span>
+<span class="c1">#  call rm1</span>
+<span class="c1">#  match peer 87:95:15::53</span>
+<span class="c1">#  match source-protocol bgp</span>
+<span class="c1">#  match origin igp</span>
+<span class="c1">#  set community no-advertise</span>
+<span class="c1">#  set metric rtt</span>
+<span class="c1">#  set origin igp</span>
+<span class="c1"># !</span>
+<span class="c1"># route-map rm4 permit 480</span>
+<span class="c1">#  match evpn route-type prefix</span>
+<span class="c1">#  match source-protocol static</span>
+<span class="c1">#  set metric -rtt</span>
+<span class="c1"># ------------</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete all route map configuration</span>
+<span class="w">  </span><span class="nt">dellemc.enterprise_sonic.sonic_route_maps</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">     </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deleted</span>
+
+<span class="c1"># After state:</span>
+<span class="c1"># ------------</span>
+<span class="c1">#</span>
+<span class="c1"># sonic# show running-configuration route-map</span>
+<span class="c1"># sonic#</span>
+<span class="c1"># (no route map configuration present)</span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<p>Common return values are documented <a class="reference internal" href="../../../reference_appendices/common_return_values.html#common-return-values"><span class="std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-after"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-return-after"><strong>after</strong></p>
+<a class="ansibleOptionLink" href="#return-after" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The resulting configuration model invocation.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> when changed</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[&quot;The</span> <span class="pre">configuration</span> <span class="pre">returned</span> <span class="pre">will</span> <span class="pre">always</span> <span class="pre">be</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">format\n</span> <span class="pre">as</span> <span class="pre">the</span> <span class="pre">parameters</span> <span class="pre">above.\n&quot;]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-before"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-return-before"><strong>before</strong></p>
+<a class="ansibleOptionLink" href="#return-before" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The configuration prior to the model invocation.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[&quot;The</span> <span class="pre">configuration</span> <span class="pre">returned</span> <span class="pre">will</span> <span class="pre">always</span> <span class="pre">be</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">format\n</span> <span class="pre">as</span> <span class="pre">the</span> <span class="pre">parameters</span> <span class="pre">above.\n&quot;]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-commands"></div><p class="ansible-option-title" id="ansible-collections-dellemc-enterprise-sonic-sonic-route-maps-module-return-commands"><strong>commands</strong></p>
+<a class="ansibleOptionLink" href="#return-commands" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The set of commands pushed to the remote device.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[&quot;command</span> <span class="pre">1&quot;,</span> <span class="pre">&quot;command</span> <span class="pre">2&quot;,</span> <span class="pre">&quot;command</span> <span class="pre">3&quot;]</span></code></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Kerry Meyer (&#64;kerry-meyer)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h3>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/ansible-collections/dellemc.enterprise_sonic/issues" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/ansible-collections/dellemc.enterprise_sonic" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sonic_radius_server_module.html" class="btn btn-neutral float-left" title="dellemc.enterprise_sonic.sonic_radius_server module – Manage RADIUS server and its parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sonic_static_routes_module.html" class="btn btn-neutral float-right" title="dellemc.enterprise_sonic.sonic_static_routes module – Manage static routes configuration on SONiC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.11.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>community.network.avi_serviceenginegroup module – Module for setup of ServiceEngineGroup Avi RESTful Object &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/community/network/avi_serviceenginegroup_module.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=eb3ed21c"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="community.network.avi_snmptrapprofile module – Module for setup of SnmpTrapProfile Avi RESTful Object" href="avi_snmptrapprofile_module.html" />
+    <link rel="prev" title="community.network.avi_serviceengine module – Module for setup of ServiceEngine Avi RESTful Object" href="avi_serviceengine_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="10">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                10
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/10/") > -1
+            ? "/10/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../amazon/index.html">Collections in the Amazon Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Community Namespace</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../aws/index.html">Community.Aws</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ciscosmb/index.html">Community.Ciscosmb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../crypto/index.html">Community.Crypto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../digitalocean/index.html">Community.Digitalocean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dns/index.html">Community.Dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../docker/index.html">Community.Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/index.html">Community.General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../grafana/index.html">Community.Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hashi_vault/index.html">Community.Hashi_Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hrobot/index.html">Community.Hrobot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library_inventory_filtering_v1/index.html">Community.Library_Inventory_Filtering_V1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libvirt/index.html">Community.Libvirt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mongodb/index.html">Community.Mongodb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mysql/index.html">Community.Mysql</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Community.Network</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../okd/index.html">Community.Okd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/index.html">Community.Postgresql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../proxysql/index.html">Community.Proxysql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rabbitmq/index.html">Community.Rabbitmq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../routeros/index.html">Community.Routeros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sap_libs/index.html">Community.Sap_Libs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sops/index.html">Community.Sops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vmware/index.html">Community.Vmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../windows/index.html">Community.Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zabbix/index.html">Community.Zabbix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dellemc/index.html">Collections in the Dellemc Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fortinet/index.html">Collections in the Fortinet Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kaytus/index.html">Collections in the Kaytus Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp_eseries/index.html">Collections in the Netapp_eseries Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wti/index.html">Collections in the Wti Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Community Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Community.Network</a></li>
+      <li class="breadcrumb-item active">community.network.avi_serviceenginegroup module – Module for setup of ServiceEngineGroup Avi RESTful Object</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-community-network-avi-serviceenginegroup-module"></span><section id="community-network-avi-serviceenginegroup-module-module-for-setup-of-serviceenginegroup-avi-restful-object">
+<h1>community.network.avi_serviceenginegroup module – Module for setup of ServiceEngineGroup Avi RESTful Object<a class="headerlink" href="#community-network-avi-serviceenginegroup-module-module-for-setup-of-serviceenginegroup-avi-restful-object" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/community/network/">community.network collection</a> (version 5.0.3).</p>
+<p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
+It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">community.network</span></code>.
+You need further requirements to be able to use this module,
+see <a class="reference internal" href="#ansible-collections-community-network-avi-serviceenginegroup-module-requirements"><span class="std std-ref">Requirements</span></a> for details.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">community.network.avi_serviceenginegroup</span></code>.</p>
+</div>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#requirements" id="id2">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id3">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id4">Notes</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id5">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id6">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This module is used to configure ServiceEngineGroup object</p></li>
+<li><p>more examples at <a class="reference external" href="https://github.com/avinetworks/devops">https://github.com/avinetworks/devops</a></p></li>
+</ul>
+<p>Aliases: network.avi.avi_serviceenginegroup</p>
+</section>
+<section id="requirements">
+<span id="ansible-collections-community-network-avi-serviceenginegroup-module-requirements"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">Requirements</a><a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>The below requirements are needed on the host that executes this module.</p>
+<ul class="simple">
+<li><p>avisdk</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-accelerated_networking"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-accelerated-networking"><strong>accelerated_networking</strong></p>
+<a class="ansibleOptionLink" href="#parameter-accelerated_networking" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable accelerated networking option for azure se.</p>
+<p>Accelerated networking enables single root i/o virtualization (sr-iov) to a se vm.</p>
+<p>This improves networking performance.</p>
+<p>Field introduced in 17.2.14,18.1.5,18.2.1.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-active_standby"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-active-standby"><strong>active_standby</strong></p>
+<a class="ansibleOptionLink" href="#parameter-active_standby" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Service engines in active/standby mode for ha failover.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-additional_config_memory"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-additional-config-memory"><strong>additional_config_memory</strong></p>
+<a class="ansibleOptionLink" href="#parameter-additional_config_memory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Indicates the percent of config memory used for config updates.</p>
+<p>Allowed values are 0-90.</p>
+<p>Field deprecated in 18.1.2.</p>
+<p>Field introduced in 18.1.1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-advertise_backend_networks"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-advertise-backend-networks"><strong>advertise_backend_networks</strong></p>
+<a class="ansibleOptionLink" href="#parameter-advertise_backend_networks" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Advertise reach-ability of backend server networks via adc through bgp for default gateway feature.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-aggressive_failure_detection"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-aggressive-failure-detection"><strong>aggressive_failure_detection</strong></p>
+<a class="ansibleOptionLink" href="#parameter-aggressive_failure_detection" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable aggressive failover configuration for ha.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-algo"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-algo"><strong>algo</strong></p>
+<a class="ansibleOptionLink" href="#parameter-algo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>In compact placement, virtual services are placed on existing ses until max_vs_per_se limit is reached.</p>
+<p>Enum options - PLACEMENT_ALGO_PACKED, PLACEMENT_ALGO_DISTRIBUTED.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as PLACEMENT_ALGO_PACKED.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-allow_burst"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-allow-burst"><strong>allow_burst</strong></p>
+<a class="ansibleOptionLink" href="#parameter-allow_burst" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Allow ses to be created using burst license.</p>
+<p>Field introduced in 17.2.5.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-api_context"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-api-context"><strong>api_context</strong></p>
+<a class="ansibleOptionLink" href="#parameter-api_context" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Avi API context that includes current session ID and CSRF Token.</p>
+<p>This allows user to perform single login and re-use the session.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-api_version"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-api-version"><strong>api_version</strong></p>
+<a class="ansibleOptionLink" href="#parameter-api_version" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Avi API version of to use for Avi API and objects.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;16.4.4&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-app_cache_percent"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-app-cache-percent"><strong>app_cache_percent</strong></p>
+<a class="ansibleOptionLink" href="#parameter-app_cache_percent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>A percent value of total se memory reserved for application caching.</p>
+<p>This is an se bootup property and requires se restart.</p>
+<p>Allowed values are 0 - 100.</p>
+<p>Special values are 0- ‘disable’.</p>
+<p>Field introduced in 18.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-app_learning_memory_percent"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-app-learning-memory-percent"><strong>app_learning_memory_percent</strong></p>
+<a class="ansibleOptionLink" href="#parameter-app_learning_memory_percent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>A percent value of total se memory reserved for application learning.</p>
+<p>This is an se bootup property and requires se restart.</p>
+<p>Allowed values are 0 - 10.</p>
+<p>Field introduced in 18.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-archive_shm_limit"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-archive-shm-limit"><strong>archive_shm_limit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-archive_shm_limit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Amount of se memory in gb until which shared memory is collected in core archive.</p>
+<p>Field introduced in 17.1.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 8.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-async_ssl"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-async-ssl"><strong>async_ssl</strong></p>
+<a class="ansibleOptionLink" href="#parameter-async_ssl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Ssl handshakes will be handled by dedicated ssl threads.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-async_ssl_threads"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-async-ssl-threads"><strong>async_ssl_threads</strong></p>
+<a class="ansibleOptionLink" href="#parameter-async_ssl_threads" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of async ssl threads per se_dp.</p>
+<p>Allowed values are 1-16.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-auto_rebalance"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-auto-rebalance"><strong>auto_rebalance</strong></p>
+<a class="ansibleOptionLink" href="#parameter-auto_rebalance" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If set, virtual services will be automatically migrated when load on an se is less than minimum or more than maximum thresholds.</p>
+<p>Only alerts are generated when the auto_rebalance is not set.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-auto_rebalance_capacity_per_se"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-auto-rebalance-capacity-per-se"><strong>auto_rebalance_capacity_per_se</strong></p>
+<a class="ansibleOptionLink" href="#parameter-auto_rebalance_capacity_per_se" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Capacities of se for auto rebalance for each criteria.</p>
+<p>Field introduced in 17.2.4.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-auto_rebalance_criteria"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-auto-rebalance-criteria"><strong>auto_rebalance_criteria</strong></p>
+<a class="ansibleOptionLink" href="#parameter-auto_rebalance_criteria" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set of criteria for se auto rebalance.</p>
+<p>Enum options - SE_AUTO_REBALANCE_CPU, SE_AUTO_REBALANCE_PPS, SE_AUTO_REBALANCE_MBPS, SE_AUTO_REBALANCE_OPEN_CONNS, SE_AUTO_REBALANCE_CPS.</p>
+<p>Field introduced in 17.2.3.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-auto_rebalance_interval"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-auto-rebalance-interval"><strong>auto_rebalance_interval</strong></p>
+<a class="ansibleOptionLink" href="#parameter-auto_rebalance_interval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Frequency of rebalance, if ‘auto rebalance’ is enabled.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 300.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-auto_redistribute_active_standby_load"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-auto-redistribute-active-standby-load"><strong>auto_redistribute_active_standby_load</strong></p>
+<a class="ansibleOptionLink" href="#parameter-auto_redistribute_active_standby_load" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Redistribution of virtual services from the takeover se to the replacement se can cause momentary traffic loss.</p>
+<p>If the auto-redistribute load option is left in its default off state, any desired rebalancing requires calls to rest api.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_api_patch_op"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-api-patch-op"><strong>avi_api_patch_op</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_api_patch_op" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Patch operation to use when using avi_api_update_method as patch.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;add&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;replace&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;delete&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_api_update_method"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-api-update-method"><strong>avi_api_update_method</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_api_update_method" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Default method for object update is HTTP PUT.</p>
+<p>Setting to patch will override that behavior to use HTTP PATCH.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;put&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;patch&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials"><strong>avi_credentials</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Avi Credentials dictionary which can be used in lieu of enumerating Avi Controller login details.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/api_version"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-api-version"><strong>api_version</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/api_version" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller version</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;16.4.4&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/controller"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-controller"><strong>controller</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/controller" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller IP or SQDN</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/csrftoken"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-csrftoken"><strong>csrftoken</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/csrftoken" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller API csrftoken to reuse existing session with session id</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/password"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller password</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/port"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller port</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/session_id"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-session-id"><strong>session_id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/session_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller API session id to reuse existing session with csrftoken</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/tenant"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-tenant"><strong>tenant</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/tenant" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller tenant</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;admin&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/tenant_uuid"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-tenant-uuid"><strong>tenant_uuid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/tenant_uuid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller tenant UUID</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/timeout"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller request timeout</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">300</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/token"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-token"><strong>token</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller API token</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_credentials/username"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-credentials-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_credentials/username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Avi controller username</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-avi_disable_session_cache_as_fact"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-avi-disable-session-cache-as-fact"><strong>avi_disable_session_cache_as_fact</strong></p>
+<a class="ansibleOptionLink" href="#parameter-avi_disable_session_cache_as_fact" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>It disables avi session information to be cached as a fact.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-bgp_state_update_interval"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-bgp-state-update-interval"><strong>bgp_state_update_interval</strong></p>
+<a class="ansibleOptionLink" href="#parameter-bgp_state_update_interval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bgp peer state update interval.</p>
+<p>Allowed values are 5-100.</p>
+<p>Field introduced in 17.2.14,18.1.5,18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 10.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-buffer_se"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-buffer-se"><strong>buffer_se</strong></p>
+<a class="ansibleOptionLink" href="#parameter-buffer_se" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Excess service engine capacity provisioned for ha failover.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cloud_ref"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-cloud-ref"><strong>cloud_ref</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cloud_ref" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>It is a reference to an object of type cloud.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-config_debugs_on_all_cores"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-config-debugs-on-all-cores"><strong>config_debugs_on_all_cores</strong></p>
+<a class="ansibleOptionLink" href="#parameter-config_debugs_on_all_cores" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable config debugs on all cores of se.</p>
+<p>Field introduced in 17.2.13,18.1.5,18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-connection_memory_percentage"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-connection-memory-percentage"><strong>connection_memory_percentage</strong></p>
+<a class="ansibleOptionLink" href="#parameter-connection_memory_percentage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Percentage of memory for connection state.</p>
+<p>This will come at the expense of memory used for http in-memory cache.</p>
+<p>Allowed values are 10-90.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 50.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-controller"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-controller"><strong>controller</strong></p>
+<a class="ansibleOptionLink" href="#parameter-controller" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>IP address or hostname of the controller. The default value is the environment variable <code class="docutils literal notranslate"><span class="pre">AVI_CONTROLLER</span></code>.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cpu_reserve"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-cpu-reserve"><strong>cpu_reserve</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cpu_reserve" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Boolean flag to set cpu_reserve.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cpu_socket_affinity"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-cpu-socket-affinity"><strong>cpu_socket_affinity</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cpu_socket_affinity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Allocate all the cpu cores for the service engine virtual machines  on the same cpu socket.</p>
+<p>Applicable only for vcenter cloud.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-custom_securitygroups_data"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-custom-securitygroups-data"><strong>custom_securitygroups_data</strong></p>
+<a class="ansibleOptionLink" href="#parameter-custom_securitygroups_data" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Custom security groups to be associated with data vnics for se instances in openstack and aws clouds.</p>
+<p>Field introduced in 17.1.3.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-custom_securitygroups_mgmt"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-custom-securitygroups-mgmt"><strong>custom_securitygroups_mgmt</strong></p>
+<a class="ansibleOptionLink" href="#parameter-custom_securitygroups_mgmt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Custom security groups to be associated with management vnic for se instances in openstack and aws clouds.</p>
+<p>Field introduced in 17.1.3.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-custom_tag"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-custom-tag"><strong>custom_tag</strong></p>
+<a class="ansibleOptionLink" href="#parameter-custom_tag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Custom tag will be used to create the tags for se instance in aws.</p>
+<p>Note this is not the same as the prefix for se name.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-data_network_id"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-data-network-id"><strong>data_network_id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-data_network_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Subnet used to spin up the data nic for service engines, used only for azure cloud.</p>
+<p>Overrides the cloud level setting for service engine subnet.</p>
+<p>Field introduced in 18.2.3.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-datascript_timeout"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-datascript-timeout"><strong>datascript_timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-datascript_timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of instructions before datascript times out.</p>
+<p>Allowed values are 0-100000000.</p>
+<p>Field introduced in 18.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1000000.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dedicated_dispatcher_core"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-dedicated-dispatcher-core"><strong>dedicated_dispatcher_core</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dedicated_dispatcher_core" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Dedicate the core that handles packet receive/transmit from the network to just the dispatching function.</p>
+<p>Don’t use it for tcp/ip and ssl functions.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-description"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-description"><strong>description</strong></p>
+<a class="ansibleOptionLink" href="#parameter-description" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>User defined description for the object.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-disable_avi_securitygroups"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-disable-avi-securitygroups"><strong>disable_avi_securitygroups</strong></p>
+<a class="ansibleOptionLink" href="#parameter-disable_avi_securitygroups" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>By default, avi creates and manages security groups along with custom sg provided by user.</p>
+<p>Set this to true to disallow avi to create and manage new security groups.</p>
+<p>Avi will only make use of custom security groups provided by user.</p>
+<p>This option is only supported for aws cloud type.</p>
+<p>Field introduced in 17.2.13,18.1.4,18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-disable_csum_offloads"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-disable-csum-offloads"><strong>disable_csum_offloads</strong></p>
+<a class="ansibleOptionLink" href="#parameter-disable_csum_offloads" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Stop using tcp/udp and ip checksum offload features of nics.</p>
+<p>Field introduced in 17.1.14, 17.2.5, 18.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-disable_gro"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-disable-gro"><strong>disable_gro</strong></p>
+<a class="ansibleOptionLink" href="#parameter-disable_gro" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Disable generic receive offload (gro) in dpdk poll-mode driver packet receive path.</p>
+<p>Gro is on by default on nics that do not support lro (large receive offload) or do not gain performance boost from lro.</p>
+<p>Field introduced in 17.2.5, 18.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-disable_se_memory_check"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-disable-se-memory-check"><strong>disable_se_memory_check</strong></p>
+<a class="ansibleOptionLink" href="#parameter-disable_se_memory_check" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If set, disable the config memory check done in service engine.</p>
+<p>Field introduced in 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-disable_tso"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-disable-tso"><strong>disable_tso</strong></p>
+<a class="ansibleOptionLink" href="#parameter-disable_tso" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Disable tcp segmentation offload (tso) in dpdk poll-mode driver packet transmit path.</p>
+<p>Tso is on by default on nics that support it.</p>
+<p>Field introduced in 17.2.5, 18.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-disk_per_se"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-disk-per-se"><strong>disk_per_se</strong></p>
+<a class="ansibleOptionLink" href="#parameter-disk_per_se" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Amount of disk space for each of the service engine virtual machines.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 10.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-distribute_load_active_standby"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-distribute-load-active-standby"><strong>distribute_load_active_standby</strong></p>
+<a class="ansibleOptionLink" href="#parameter-distribute_load_active_standby" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Use both the active and standby service engines for virtual service placement in the legacy active standby ha mode.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-distribute_queues"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-distribute-queues"><strong>distribute_queues</strong></p>
+<a class="ansibleOptionLink" href="#parameter-distribute_queues" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Distributes queue ownership among cores so multiple cores handle dispatcher duties.</p>
+<p>Field introduced in 17.2.8.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_hsm_priming"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-enable-hsm-priming"><strong>enable_hsm_priming</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_hsm_priming" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>(this is a beta feature).</p>
+<p>Enable hsm key priming.</p>
+<p>If enabled, key handles on the hsm will be synced to se before processing client connections.</p>
+<p>Field introduced in 17.2.7, 18.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_multi_lb"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-enable-multi-lb"><strong>enable_multi_lb</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_multi_lb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Applicable only for azure cloud with basic sku lb.</p>
+<p>If set, additional azure lbs will be automatically created if resources in existing lb are exhausted.</p>
+<p>Field introduced in 17.2.10, 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_routing"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-enable-routing"><strong>enable_routing</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_routing" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable routing for this serviceenginegroup .</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_vip_on_all_interfaces"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-enable-vip-on-all-interfaces"><strong>enable_vip_on_all_interfaces</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_vip_on_all_interfaces" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable vip on all interfaces of se.</p>
+<p>Field introduced in 17.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_vmac"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-enable-vmac"><strong>enable_vmac</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_vmac" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Use virtual mac address for interfaces on which floating interface ips are placed.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ephemeral_portrange_end"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-ephemeral-portrange-end"><strong>ephemeral_portrange_end</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ephemeral_portrange_end" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>End local ephemeral port number for outbound connections.</p>
+<p>Field introduced in 17.2.13, 18.1.5, 18.2.1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ephemeral_portrange_start"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-ephemeral-portrange-start"><strong>ephemeral_portrange_start</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ephemeral_portrange_start" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Start local ephemeral port number for outbound connections.</p>
+<p>Field introduced in 17.2.13, 18.1.5, 18.2.1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-extra_config_multiplier"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-extra-config-multiplier"><strong>extra_config_multiplier</strong></p>
+<a class="ansibleOptionLink" href="#parameter-extra_config_multiplier" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Multiplier for extra config to support large vs/pool config.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.0.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-extra_shared_config_memory"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-extra-shared-config-memory"><strong>extra_shared_config_memory</strong></p>
+<a class="ansibleOptionLink" href="#parameter-extra_shared_config_memory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Extra config memory to support large geo db configuration.</p>
+<p>Field introduced in 17.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-floating_intf_ip"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-floating-intf-ip"><strong>floating_intf_ip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-floating_intf_ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If serviceenginegroup is configured for legacy 1+1 active standby ha mode, floating ip’s will be advertised only by the active se in the pair.</p>
+<p>Virtual services in this group must be disabled/enabled for any changes to the floating ip’s to take effect.</p>
+<p>Only active se hosting vs tagged with active standby se 1 tag will advertise this floating ip when manual load distribution is enabled.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-floating_intf_ip_se_2"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-floating-intf-ip-se-2"><strong>floating_intf_ip_se_2</strong></p>
+<a class="ansibleOptionLink" href="#parameter-floating_intf_ip_se_2" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If serviceenginegroup is configured for legacy 1+1 active standby ha mode, floating ip’s will be advertised only by the active se in the pair.</p>
+<p>Virtual services in this group must be disabled/enabled for any changes to the floating ip’s to take effect.</p>
+<p>Only active se hosting vs tagged with active standby se 2 tag will advertise this floating ip when manual load distribution is enabled.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-flow_table_new_syn_max_entries"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-flow-table-new-syn-max-entries"><strong>flow_table_new_syn_max_entries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-flow_table_new_syn_max_entries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maximum number of flow table entries that have not completed tcp three-way handshake yet.</p>
+<p>Field introduced in 17.2.5.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-free_list_size"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-free-list-size"><strong>free_list_size</strong></p>
+<a class="ansibleOptionLink" href="#parameter-free_list_size" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of entries in the free list.</p>
+<p>Field introduced in 17.2.10, 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1024.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ha_mode"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-ha-mode"><strong>ha_mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ha_mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>High availability mode for all the virtual services using this service engine group.</p>
+<p>Enum options - HA_MODE_SHARED_PAIR, HA_MODE_SHARED, HA_MODE_LEGACY_ACTIVE_STANDBY.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as HA_MODE_SHARED.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-hardwaresecuritymodulegroup_ref"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-hardwaresecuritymodulegroup-ref"><strong>hardwaresecuritymodulegroup_ref</strong></p>
+<a class="ansibleOptionLink" href="#parameter-hardwaresecuritymodulegroup_ref" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>It is a reference to an object of type hardwaresecuritymodulegroup.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-heap_minimum_config_memory"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-heap-minimum-config-memory"><strong>heap_minimum_config_memory</strong></p>
+<a class="ansibleOptionLink" href="#parameter-heap_minimum_config_memory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Minimum required heap memory to apply any configuration.</p>
+<p>Allowed values are 0-100.</p>
+<p>Field introduced in 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 8.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-hm_on_standby"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-hm-on-standby"><strong>hm_on_standby</strong></p>
+<a class="ansibleOptionLink" href="#parameter-hm_on_standby" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable active health monitoring from the standby se for all placed virtual services.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-host_attribute_key"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-host-attribute-key"><strong>host_attribute_key</strong></p>
+<a class="ansibleOptionLink" href="#parameter-host_attribute_key" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Key of a (key, value) pair identifying a label for a set of nodes usually in container clouds.</p>
+<p>Needs to be specified together with host_attribute_value.</p>
+<p>Ses can be configured differently including ha modes across different se groups.</p>
+<p>May also be used for isolation between different classes of virtualservices.</p>
+<p>Virtualservices’ se group may be specified via annotations/labels.</p>
+<p>A openshift/kubernetes namespace maybe annotated with a matching se group label as openshift.io/node-selector  apptype=prod.</p>
+<p>When multiple se groups are used in a cloud with host attributes specified,just a single se group can exist as a match-all se group without a</p>
+<p>host_attribute_key.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-host_attribute_value"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-host-attribute-value"><strong>host_attribute_value</strong></p>
+<a class="ansibleOptionLink" href="#parameter-host_attribute_value" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Value of a (key, value) pair identifying a label for a set of nodes usually in container clouds.</p>
+<p>Needs to be specified together with host_attribute_key.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-host_gateway_monitor"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-host-gateway-monitor"><strong>host_gateway_monitor</strong></p>
+<a class="ansibleOptionLink" href="#parameter-host_gateway_monitor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable the host gateway monitor when service engine is deployed as docker container.</p>
+<p>Disabled by default.</p>
+<p>Field introduced in 17.2.4.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-hypervisor"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-hypervisor"><strong>hypervisor</strong></p>
+<a class="ansibleOptionLink" href="#parameter-hypervisor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Override default hypervisor.</p>
+<p>Enum options - DEFAULT, VMWARE_ESX, KVM, VMWARE_VSAN, XEN.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ignore_rtt_threshold"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-ignore-rtt-threshold"><strong>ignore_rtt_threshold</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ignore_rtt_threshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Ignore rtt samples if it is above threshold.</p>
+<p>Field introduced in 17.1.6,17.2.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 5000.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ingress_access_data"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-ingress-access-data"><strong>ingress_access_data</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ingress_access_data" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Program se security group ingress rules to allow vip data access from remote cidr type.</p>
+<p>Enum options - SG_INGRESS_ACCESS_NONE, SG_INGRESS_ACCESS_ALL, SG_INGRESS_ACCESS_VPC.</p>
+<p>Field introduced in 17.1.5.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as SG_INGRESS_ACCESS_ALL.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ingress_access_mgmt"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-ingress-access-mgmt"><strong>ingress_access_mgmt</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ingress_access_mgmt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Program se security group ingress rules to allow ssh/icmp management access from remote cidr type.</p>
+<p>Enum options - SG_INGRESS_ACCESS_NONE, SG_INGRESS_ACCESS_ALL, SG_INGRESS_ACCESS_VPC.</p>
+<p>Field introduced in 17.1.5.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as SG_INGRESS_ACCESS_ALL.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-instance_flavor"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-instance-flavor"><strong>instance_flavor</strong></p>
+<a class="ansibleOptionLink" href="#parameter-instance_flavor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Instance/flavor name for se instance.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-iptables"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-iptables"><strong>iptables</strong></p>
+<a class="ansibleOptionLink" href="#parameter-iptables" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Iptables rules.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-least_load_core_selection"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-least-load-core-selection"><strong>least_load_core_selection</strong></p>
+<a class="ansibleOptionLink" href="#parameter-least_load_core_selection" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Select core with least load for new flow.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-license_tier"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-license-tier"><strong>license_tier</strong></p>
+<a class="ansibleOptionLink" href="#parameter-license_tier" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Specifies the license tier which would be used.</p>
+<p>This field by default inherits the value from cloud.</p>
+<p>Enum options - ENTERPRISE_16, ENTERPRISE_18.</p>
+<p>Field introduced in 17.2.5.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-license_type"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-license-type"><strong>license_type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-license_type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If no license type is specified then default license enforcement for the cloud type is chosen.</p>
+<p>Enum options - LIC_BACKEND_SERVERS, LIC_SOCKETS, LIC_CORES, LIC_HOSTS, LIC_SE_BANDWIDTH, LIC_METERED_SE_BANDWIDTH.</p>
+<p>Field introduced in 17.2.5.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-log_disksz"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-log-disksz"><strong>log_disksz</strong></p>
+<a class="ansibleOptionLink" href="#parameter-log_disksz" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maximum disk capacity (in mb) to be allocated to an se.</p>
+<p>This is exclusively used for debug and log data.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 10000.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-max_cpu_usage"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-max-cpu-usage"><strong>max_cpu_usage</strong></p>
+<a class="ansibleOptionLink" href="#parameter-max_cpu_usage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>When cpu usage on an se exceeds this threshold, virtual services hosted on this se may be rebalanced to other ses to reduce load.</p>
+<p>A new se may be created as part of this process.</p>
+<p>Allowed values are 40-90.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 80.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-max_memory_per_mempool"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-max-memory-per-mempool"><strong>max_memory_per_mempool</strong></p>
+<a class="ansibleOptionLink" href="#parameter-max_memory_per_mempool" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Max bytes that can be allocated in a single mempool.</p>
+<p>Field introduced in 18.1.5.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 64.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-max_public_ips_per_lb"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-max-public-ips-per-lb"><strong>max_public_ips_per_lb</strong></p>
+<a class="ansibleOptionLink" href="#parameter-max_public_ips_per_lb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Applicable to azure platform only.</p>
+<p>Maximum number of public ips per azure lb.</p>
+<p>Field introduced in 17.2.12, 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 30.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-max_rules_per_lb"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-max-rules-per-lb"><strong>max_rules_per_lb</strong></p>
+<a class="ansibleOptionLink" href="#parameter-max_rules_per_lb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Applicable to azure platform only.</p>
+<p>Maximum number of rules per azure lb.</p>
+<p>Field introduced in 17.2.12, 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 150.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-max_scaleout_per_vs"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-max-scaleout-per-vs"><strong>max_scaleout_per_vs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-max_scaleout_per_vs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maximum number of active service engines for the virtual service.</p>
+<p>Allowed values are 1-64.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 4.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-max_se"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-max-se"><strong>max_se</strong></p>
+<a class="ansibleOptionLink" href="#parameter-max_se" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maximum number of services engines in this group.</p>
+<p>Allowed values are 0-1000.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 10.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-max_vs_per_se"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-max-vs-per-se"><strong>max_vs_per_se</strong></p>
+<a class="ansibleOptionLink" href="#parameter-max_vs_per_se" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maximum number of virtual services that can be placed on a single service engine.</p>
+<p>East west virtual services are excluded from this limit.</p>
+<p>Allowed values are 1-1000.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 10.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mem_reserve"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-mem-reserve"><strong>mem_reserve</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mem_reserve" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Boolean flag to set mem_reserve.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-memory_for_config_update"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-memory-for-config-update"><strong>memory_for_config_update</strong></p>
+<a class="ansibleOptionLink" href="#parameter-memory_for_config_update" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Indicates the percent of memory reserved for config updates.</p>
+<p>Allowed values are 0-100.</p>
+<p>Field introduced in 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 15.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-memory_per_se"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-memory-per-se"><strong>memory_per_se</strong></p>
+<a class="ansibleOptionLink" href="#parameter-memory_per_se" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Amount of memory for each of the service engine virtual machines.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 2048.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mgmt_network_ref"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-mgmt-network-ref"><strong>mgmt_network_ref</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mgmt_network_ref" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Management network to use for avi service engines.</p>
+<p>It is a reference to an object of type network.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mgmt_subnet"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-mgmt-subnet"><strong>mgmt_subnet</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mgmt_subnet" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Management subnet to use for avi service engines.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-min_cpu_usage"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-min-cpu-usage"><strong>min_cpu_usage</strong></p>
+<a class="ansibleOptionLink" href="#parameter-min_cpu_usage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>When cpu usage on an se falls below the minimum threshold, virtual services hosted on the se may be consolidated onto other underutilized ses.</p>
+<p>After consolidation, unused service engines may then be eligible for deletion.</p>
+<p>Allowed values are 20-60.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 30.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-min_scaleout_per_vs"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-min-scaleout-per-vs"><strong>min_scaleout_per_vs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-min_scaleout_per_vs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Minimum number of active service engines for the virtual service.</p>
+<p>Allowed values are 1-64.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-min_se"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-min-se"><strong>min_se</strong></p>
+<a class="ansibleOptionLink" href="#parameter-min_se" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Minimum number of services engines in this group (relevant for se autorebalance only).</p>
+<p>Allowed values are 0-1000.</p>
+<p>Field introduced in 17.2.13,18.1.3,18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-minimum_connection_memory"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-minimum-connection-memory"><strong>minimum_connection_memory</strong></p>
+<a class="ansibleOptionLink" href="#parameter-minimum_connection_memory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Indicates the percent of memory reserved for connections.</p>
+<p>Allowed values are 0-100.</p>
+<p>Field introduced in 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 20.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-minimum_required_config_memory"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-minimum-required-config-memory"><strong>minimum_required_config_memory</strong></p>
+<a class="ansibleOptionLink" href="#parameter-minimum_required_config_memory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Required available config memory to apply any configuration.</p>
+<p>Allowed values are 0-90.</p>
+<p>Field deprecated in 18.1.2.</p>
+<p>Field introduced in 18.1.1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-n_log_streaming_threads"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-n-log-streaming-threads"><strong>n_log_streaming_threads</strong></p>
+<a class="ansibleOptionLink" href="#parameter-n_log_streaming_threads" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of threads to use for log streaming.</p>
+<p>Allowed values are 1-100.</p>
+<p>Field introduced in 17.2.12, 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-name"><strong>name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the object.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-non_significant_log_throttle"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-non-significant-log-throttle"><strong>non_significant_log_throttle</strong></p>
+<a class="ansibleOptionLink" href="#parameter-non_significant_log_throttle" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>This setting limits the number of non-significant logs generated per second per core on this se.</p>
+<p>Default is 100 logs per second.</p>
+<p>Set it to zero (0) to disable throttling.</p>
+<p>Field introduced in 17.1.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 100.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-num_dispatcher_cores"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-num-dispatcher-cores"><strong>num_dispatcher_cores</strong></p>
+<a class="ansibleOptionLink" href="#parameter-num_dispatcher_cores" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of dispatcher cores (0,1,2,4,8 or 16).</p>
+<p>If set to 0, then number of dispatcher cores is deduced automatically.</p>
+<p>Allowed values are 0,1,2,4,8,16.</p>
+<p>Field introduced in 17.2.12, 18.1.3, 18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-num_flow_cores_sum_changes_to_ignore"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-num-flow-cores-sum-changes-to-ignore"><strong>num_flow_cores_sum_changes_to_ignore</strong></p>
+<a class="ansibleOptionLink" href="#parameter-num_flow_cores_sum_changes_to_ignore" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of changes in num flow cores sum to ignore.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 8.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-openstack_availability_zone"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-openstack-availability-zone"><strong>openstack_availability_zone</strong></p>
+<a class="ansibleOptionLink" href="#parameter-openstack_availability_zone" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Field deprecated in 17.1.1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-openstack_availability_zones"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-openstack-availability-zones"><strong>openstack_availability_zones</strong></p>
+<a class="ansibleOptionLink" href="#parameter-openstack_availability_zones" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Field introduced in 17.1.1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-openstack_mgmt_network_name"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-openstack-mgmt-network-name"><strong>openstack_mgmt_network_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-openstack_mgmt_network_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Avi management network name.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-openstack_mgmt_network_uuid"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-openstack-mgmt-network-uuid"><strong>openstack_mgmt_network_uuid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-openstack_mgmt_network_uuid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Management network uuid.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-os_reserved_memory"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-os-reserved-memory"><strong>os_reserved_memory</strong></p>
+<a class="ansibleOptionLink" href="#parameter-os_reserved_memory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Amount of extra memory to be reserved for use by the operating system on a service engine.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-password"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-password"><strong>password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Password of Avi user in Avi controller. The default value is the environment variable <code class="docutils literal notranslate"><span class="pre">AVI_PASSWORD</span></code>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-per_app"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-per-app"><strong>per_app</strong></p>
+<a class="ansibleOptionLink" href="#parameter-per_app" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Per-app se mode is designed for deploying dedicated load balancers per app (vs).</p>
+<p>In this mode, each se is limited to a max of 2 vss.</p>
+<p>Vcpus in per-app ses count towards licensing usage at 25% rate.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-placement_mode"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-placement-mode"><strong>placement_mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-placement_mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If placement mode is ‘auto’, virtual services are automatically placed on service engines.</p>
+<p>Enum options - PLACEMENT_MODE_AUTO.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as PLACEMENT_MODE_AUTO.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-realtime_se_metrics"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-realtime-se-metrics"><strong>realtime_se_metrics</strong></p>
+<a class="ansibleOptionLink" href="#parameter-realtime_se_metrics" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable or disable real time se metrics.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-reboot_on_stop"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-reboot-on-stop"><strong>reboot_on_stop</strong></p>
+<a class="ansibleOptionLink" href="#parameter-reboot_on_stop" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Reboot the system if the se is stopped.</p>
+<p>Field introduced in 17.2.16,18.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_bandwidth_type"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-bandwidth-type"><strong>se_bandwidth_type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_bandwidth_type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Select the se bandwidth for the bandwidth license.</p>
+<p>Enum options - SE_BANDWIDTH_UNLIMITED, SE_BANDWIDTH_25M, SE_BANDWIDTH_200M, SE_BANDWIDTH_1000M, SE_BANDWIDTH_10000M.</p>
+<p>Field introduced in 17.2.5.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_deprovision_delay"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-deprovision-delay"><strong>se_deprovision_delay</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_deprovision_delay" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Duration to preserve unused service engine virtual machines before deleting them.</p>
+<p>If traffic to a virtual service were to spike up abruptly, this se would still be available to be utilized again rather than creating a new se.</p>
+<p>If this value is set to 0, controller will never delete any ses and administrator has to manually cleanup unused ses.</p>
+<p>Allowed values are 0-525600.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 120.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_dos_profile"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-dos-profile"><strong>se_dos_profile</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_dos_profile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Dosthresholdprofile settings for serviceenginegroup.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_dpdk_pmd"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-dpdk-pmd"><strong>se_dpdk_pmd</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_dpdk_pmd" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Determines if dpdk pool mode driver should be used or not   0  automatically determine based on hypervisor/nic type 1  unconditionally use dpdk</p>
+<p>poll mode driver 2  don’t use dpdk poll mode driver.</p>
+<p>Allowed values are 0-2.</p>
+<p>Field introduced in 18.1.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_flow_probe_retries"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-flow-probe-retries"><strong>se_flow_probe_retries</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_flow_probe_retries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Flow probe retry count if no replies are received.</p>
+<p>Allowed values are 0-5.</p>
+<p>Field introduced in 18.1.4, 18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 2.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_flow_probe_timer"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-flow-probe-timer"><strong>se_flow_probe_timer</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_flow_probe_timer" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Timeout in milliseconds for flow probe entries.</p>
+<p>Allowed values are 10-200.</p>
+<p>Field introduced in 18.1.4, 18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 100.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_ipc_udp_port"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-ipc-udp-port"><strong>se_ipc_udp_port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_ipc_udp_port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Udp port for se_dp ipc in docker bridge mode.</p>
+<p>Field introduced in 17.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1500.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_name_prefix"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-name-prefix"><strong>se_name_prefix</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_name_prefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Prefix to use for virtual machine name of service engines.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as Avi.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_pcap_lookahead"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-pcap-lookahead"><strong>se_pcap_lookahead</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_pcap_lookahead" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enables lookahead mode of packet receive in pcap mode.</p>
+<p>Introduced to overcome an issue with hv_netvsc driver.</p>
+<p>Lookahead mode attempts to ensure that application and kernel’s view of the receive rings are consistent.</p>
+<p>Field introduced in 18.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_pcap_reinit_frequency"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-pcap-reinit-frequency"><strong>se_pcap_reinit_frequency</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_pcap_reinit_frequency" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Frequency in seconds at which periodically a pcap reinit check is triggered.</p>
+<p>May be used in conjunction with the configuration pcap_reinit_threshold.</p>
+<p>(valid range   15 mins - 12 hours, 0 - disables).</p>
+<p>Allowed values are 900-43200.</p>
+<p>Special values are 0- ‘disable’.</p>
+<p>Field introduced in 17.2.13, 18.1.3, 18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_pcap_reinit_threshold"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-pcap-reinit-threshold"><strong>se_pcap_reinit_threshold</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_pcap_reinit_threshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Threshold for input packet receive errors in pcap mode exceeding which a pcap reinit is triggered.</p>
+<p>If not set, an unconditional reinit is performed.</p>
+<p>This value is checked every pcap_reinit_frequency interval.</p>
+<p>Field introduced in 17.2.13, 18.1.3, 18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_probe_port"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-probe-port"><strong>se_probe_port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_probe_port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Tcp port on se where echo service will be run.</p>
+<p>Field introduced in 17.2.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 7.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_remote_punt_udp_port"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-remote-punt-udp-port"><strong>se_remote_punt_udp_port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_remote_punt_udp_port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Udp port for punted packets in docker bridge mode.</p>
+<p>Field introduced in 17.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1501.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_routing"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-routing"><strong>se_routing</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_routing" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable routing via service engine datapath.</p>
+<p>When disabled, routing is done by the linux kernel.</p>
+<p>Ip routing needs to be enabled in service engine group for se routing to be effective.</p>
+<p>Field introduced in 18.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_sb_dedicated_core"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-sb-dedicated-core"><strong>se_sb_dedicated_core</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_sb_dedicated_core" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Sideband traffic will be handled by a dedicated core.</p>
+<p>Field introduced in 16.5.2, 17.1.9, 17.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_sb_threads"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-sb-threads"><strong>se_sb_threads</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_sb_threads" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of sideband threads per se.</p>
+<p>Allowed values are 1-128.</p>
+<p>Field introduced in 16.5.2, 17.1.9, 17.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_thread_multiplier"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-thread-multiplier"><strong>se_thread_multiplier</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_thread_multiplier" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Multiplier for se threads based on vcpu.</p>
+<p>Allowed values are 1-10.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_tracert_port_range"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-tracert-port-range"><strong>se_tracert_port_range</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_tracert_port_range" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Traceroute port range.</p>
+<p>Field introduced in 17.2.8.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_tunnel_mode"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-tunnel-mode"><strong>se_tunnel_mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_tunnel_mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Determines if dsr from secondary se is active or not  0  automatically determine based on hypervisor type.</p>
+<p>1  disable dsr unconditionally.</p>
+<p>2  enable dsr unconditionally.</p>
+<p>Allowed values are 0-2.</p>
+<p>Field introduced in 17.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_tunnel_udp_port"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-tunnel-udp-port"><strong>se_tunnel_udp_port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_tunnel_udp_port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Udp port for tunneled packets from secondary to primary se in docker bridge mode.</p>
+<p>Field introduced in 17.1.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1550.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_udp_encap_ipc"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-udp-encap-ipc"><strong>se_udp_encap_ipc</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_udp_encap_ipc" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Determines if se-se ipc messages are encapsulated in a udp header  0  automatically determine based on hypervisor type.</p>
+<p>1  use udp encap unconditionally.</p>
+<p>Allowed values are 0-1.</p>
+<p>Field introduced in 17.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_use_dpdk"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-use-dpdk"><strong>se_use_dpdk</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_use_dpdk" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Determines if dpdk library should be used or not   0  automatically determine based on hypervisor type 1  use dpdk if pcap is not enabled 2</p>
+<p>don’t use dpdk.</p>
+<p>Allowed values are 0-2.</p>
+<p>Field introduced in 18.1.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_vs_hb_max_pkts_in_batch"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-vs-hb-max-pkts-in-batch"><strong>se_vs_hb_max_pkts_in_batch</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_vs_hb_max_pkts_in_batch" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maximum number of aggregated vs heartbeat packets to send in a batch.</p>
+<p>Allowed values are 1-256.</p>
+<p>Field introduced in 17.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 64.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-se_vs_hb_max_vs_in_pkt"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-se-vs-hb-max-vs-in-pkt"><strong>se_vs_hb_max_vs_in_pkt</strong></p>
+<a class="ansibleOptionLink" href="#parameter-se_vs_hb_max_vs_in_pkt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maximum number of virtualservices for which heartbeat messages are aggregated in one packet.</p>
+<p>Allowed values are 1-1024.</p>
+<p>Field introduced in 17.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 256.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-self_se_election"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-self-se-election"><strong>self_se_election</strong></p>
+<a class="ansibleOptionLink" href="#parameter-self_se_election" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable ses to elect a primary amongst themselves in the absence of a connectivity to controller.</p>
+<p>Field introduced in 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-service_ip6_subnets"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-service-ip6-subnets"><strong>service_ip6_subnets</strong></p>
+<a class="ansibleOptionLink" href="#parameter-service_ip6_subnets" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Ipv6 subnets assigned to the se group.</p>
+<p>Required for vs group placement.</p>
+<p>Field introduced in 18.1.1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-service_ip_subnets"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-service-ip-subnets"><strong>service_ip_subnets</strong></p>
+<a class="ansibleOptionLink" href="#parameter-service_ip_subnets" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Subnets assigned to the se group.</p>
+<p>Required for vs group placement.</p>
+<p>Field introduced in 17.1.1.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-shm_minimum_config_memory"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-shm-minimum-config-memory"><strong>shm_minimum_config_memory</strong></p>
+<a class="ansibleOptionLink" href="#parameter-shm_minimum_config_memory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Minimum required shared memory to apply any configuration.</p>
+<p>Allowed values are 0-100.</p>
+<p>Field introduced in 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 4.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-significant_log_throttle"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-significant-log-throttle"><strong>significant_log_throttle</strong></p>
+<a class="ansibleOptionLink" href="#parameter-significant_log_throttle" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>This setting limits the number of significant logs generated per second per core on this se.</p>
+<p>Default is 100 logs per second.</p>
+<p>Set it to zero (0) to disable throttling.</p>
+<p>Field introduced in 17.1.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 100.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ssl_preprocess_sni_hostname"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-ssl-preprocess-sni-hostname"><strong>ssl_preprocess_sni_hostname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ssl_preprocess_sni_hostname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>(beta) preprocess ssl client hello for sni hostname extension.if set to true, this will apply sni child’s ssl protocol(s), if they are different</p>
+<p>from sni parent’s allowed ssl protocol(s).</p>
+<p>Field introduced in 17.2.12, 18.1.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-state"><strong>state</strong></p>
+<a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The state that should be applied on the entity.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;absent&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;present&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-tenant"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-tenant"><strong>tenant</strong></p>
+<a class="ansibleOptionLink" href="#parameter-tenant" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of tenant used for all Avi API calls and context of object.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;admin&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-tenant_ref"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-tenant-ref"><strong>tenant_ref</strong></p>
+<a class="ansibleOptionLink" href="#parameter-tenant_ref" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>It is a reference to an object of type tenant.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-tenant_uuid"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-tenant-uuid"><strong>tenant_uuid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-tenant_uuid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>UUID of tenant used for all Avi API calls and context of object.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-udf_log_throttle"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-udf-log-throttle"><strong>udf_log_throttle</strong></p>
+<a class="ansibleOptionLink" href="#parameter-udf_log_throttle" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>This setting limits the number of udf logs generated per second per core on this se.</p>
+<p>Udf logs are generated due to the configured client log filters or the rules with logging enabled.</p>
+<p>Default is 100 logs per second.</p>
+<p>Set it to zero (0) to disable throttling.</p>
+<p>Field introduced in 17.1.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 100.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-url"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-url"><strong>url</strong></p>
+<a class="ansibleOptionLink" href="#parameter-url" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Avi controller URL of the object.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-use_standard_alb"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-use-standard-alb"><strong>use_standard_alb</strong></p>
+<a class="ansibleOptionLink" href="#parameter-use_standard_alb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Use standard sku azure load balancer.</p>
+<p>By default cloud level flag is set.</p>
+<p>If not set, it inherits/uses the use_standard_alb flag from the cloud.</p>
+<p>Field introduced in 18.2.3.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-username"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-username"><strong>username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Username used for accessing Avi controller. The default value is the environment variable <code class="docutils literal notranslate"><span class="pre">AVI_USERNAME</span></code>.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-uuid"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-uuid"><strong>uuid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-uuid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Unique object identifier of the object.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vcenter_clusters"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vcenter-clusters"><strong>vcenter_clusters</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vcenter_clusters" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Vcenterclusters settings for serviceenginegroup.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vcenter_datastore_mode"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vcenter-datastore-mode"><strong>vcenter_datastore_mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vcenter_datastore_mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enum options - vcenter_datastore_any, vcenter_datastore_local, vcenter_datastore_shared.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as VCENTER_DATASTORE_ANY.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vcenter_datastores"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vcenter-datastores"><strong>vcenter_datastores</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vcenter_datastores" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of vcenterdatastore.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vcenter_datastores_include"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vcenter-datastores-include"><strong>vcenter_datastores_include</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vcenter_datastores_include" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Boolean flag to set vcenter_datastores_include.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vcenter_folder"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vcenter-folder"><strong>vcenter_folder</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vcenter_folder" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Folder to place all the service engine virtual machines in vcenter.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as AviSeFolder.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vcenter_hosts"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vcenter-hosts"><strong>vcenter_hosts</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vcenter_hosts" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Vcenterhosts settings for serviceenginegroup.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vcpus_per_se"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vcpus-per-se"><strong>vcpus_per_se</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vcpus_per_se" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of vcpus for each of the service engine virtual machines.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 1.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vip_asg"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vip-asg"><strong>vip_asg</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vip_asg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>When vip_asg is set, vip configuration will be managed by avi.user will be able to configure vip_asg or vips individually at the time of create.</p>
+<p>Field introduced in 17.2.12, 18.1.2.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vs_host_redundancy"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vs-host-redundancy"><strong>vs_host_redundancy</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vs_host_redundancy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Ensure primary and secondary service engines are deployed on different physical hosts.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vs_scalein_timeout"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vs-scalein-timeout"><strong>vs_scalein_timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vs_scalein_timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time to wait for the scaled in se to drain existing flows before marking the scalein done.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 30.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vs_scalein_timeout_for_upgrade"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vs-scalein-timeout-for-upgrade"><strong>vs_scalein_timeout_for_upgrade</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vs_scalein_timeout_for_upgrade" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>During se upgrade, time to wait for the scaled-in se to drain existing flows before marking the scalein done.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 30.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vs_scaleout_timeout"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vs-scaleout-timeout"><strong>vs_scaleout_timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vs_scaleout_timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time to wait for the scaled out se to become ready before marking the scaleout done.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 600.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vs_se_scaleout_additional_wait_time"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vs-se-scaleout-additional-wait-time"><strong>vs_se_scaleout_additional_wait_time</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vs_se_scaleout_additional_wait_time" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Wait time for sending scaleout ready notification after virtual service is marked up.</p>
+<p>In certain deployments, there may be an additional delay to accept traffic.</p>
+<p>For example, for bgp, some time is needed for route advertisement.</p>
+<p>Allowed values are 0-20.</p>
+<p>Field introduced in 18.1.5,18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vs_se_scaleout_ready_timeout"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vs-se-scaleout-ready-timeout"><strong>vs_se_scaleout_ready_timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vs_se_scaleout_ready_timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Timeout in seconds for service engine to sendscaleout ready notification of a virtual service.</p>
+<p>Allowed values are 0-60.</p>
+<p>Field introduced in 18.1.5,18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 25.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vs_switchover_timeout"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vs-switchover-timeout"><strong>vs_switchover_timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vs_switchover_timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>During se upgrade in a legacy active/standby segroup, time to wait for the new primary se to accept flows before marking the switchover done.</p>
+<p>Field introduced in 17.2.13,18.1.4,18.2.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 300.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vss_placement"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vss-placement"><strong>vss_placement</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vss_placement" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Parameters to place virtual services on only a subset of the cores of an se.</p>
+<p>Field introduced in 17.2.5.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vss_placement_enabled"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-vss-placement-enabled"><strong>vss_placement_enabled</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vss_placement_enabled" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If set, virtual services will be placed on only a subset of the cores of an se.</p>
+<p>Field introduced in 18.1.1.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as False.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-waf_learning_interval"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-waf-learning-interval"><strong>waf_learning_interval</strong></p>
+<a class="ansibleOptionLink" href="#parameter-waf_learning_interval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Frequency with which se publishes waf learning.</p>
+<p>Allowed values are 1-43200.</p>
+<p>Field deprecated in 18.2.3.</p>
+<p>Field introduced in 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 10.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-waf_learning_memory"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-waf-learning-memory"><strong>waf_learning_memory</strong></p>
+<a class="ansibleOptionLink" href="#parameter-waf_learning_memory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Amount of memory reserved on se for waf learning.</p>
+<p>Cannot exceed 5% of se memory.</p>
+<p>Field deprecated in 18.2.3.</p>
+<p>Field introduced in 18.1.2.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 0.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-waf_mempool"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-waf-mempool"><strong>waf_mempool</strong></p>
+<a class="ansibleOptionLink" href="#parameter-waf_mempool" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable memory pool for waf.</p>
+<p>Field introduced in 17.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as True.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-waf_mempool_size"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-parameter-waf-mempool-size"><strong>waf_mempool_size</strong></p>
+<a class="ansibleOptionLink" href="#parameter-waf_mempool_size" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Memory pool size used for waf.</p>
+<p>Field introduced in 17.2.3.</p>
+<p>Default value when not specified in API or module is interpreted by Avi Controller as 64.</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Notes</a><a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>For more information on using Ansible to manage Avi Network devices see <a class="reference external" href="https://www.ansible.com/ansible-avi-networks">https://www.ansible.com/ansible-avi-networks</a>.</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example to create ServiceEngineGroup object</span>
+<span class="w">  </span><span class="nt">community.network.avi_serviceenginegroup</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.10.25.42</span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">something</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_serviceenginegroup</span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<p>Common return values are documented <a class="reference internal" href="../../../reference_appendices/common_return_values.html#common-return-values"><span class="std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-obj"></div><p class="ansible-option-title" id="ansible-collections-community-network-avi-serviceenginegroup-module-return-obj"><strong>obj</strong></p>
+<a class="ansibleOptionLink" href="#return-obj" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>ServiceEngineGroup (api/serviceenginegroup) object</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success, changed</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Gaurav Rastogi (&#64;grastogi23)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h3>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/ansible-collections/community.network/issues" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/ansible-collections/community.network" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avi_serviceengine_module.html" class="btn btn-neutral float-left" title="community.network.avi_serviceengine module – Module for setup of ServiceEngine Avi RESTful Object" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avi_snmptrapprofile_module.html" class="btn btn-neutral float-right" title="community.network.avi_snmptrapprofile module – Module for setup of SnmpTrapProfile Avi RESTful Object" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>
