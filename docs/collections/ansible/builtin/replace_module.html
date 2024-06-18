@@ -711,7 +711,7 @@ the same module name.</p>
 <span class="w">  </span><span class="nt">ansible.builtin.replace</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/hosts</span>
 <span class="w">    </span><span class="nt">after</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;(?m)^&lt;VirtualHost</span><span class="nv"> </span><span class="s">[*]&gt;&#39;</span>
-<span class="w">    </span><span class="nt">before</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;(?m)^&lt;/VirtualHost&gt;&#39;</span>
+<span class="w">    </span><span class="nt">before</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&lt;/VirtualHost&gt;&#39;</span>
 <span class="w">    </span><span class="nt">regexp</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^(.+)$&#39;</span>
 <span class="w">    </span><span class="nt">replace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#</span><span class="nv"> </span><span class="s">\1&#39;</span>
 
