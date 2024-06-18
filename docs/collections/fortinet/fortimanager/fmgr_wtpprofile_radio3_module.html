@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.11.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fortinet.fortimanager.fmgr_wtpprofile_radio3 module – Configuration options for radio 3. &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/fortinet/fortimanager/fmgr_wtpprofile_radio3_module.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="fortinet.fortimanager.fmgr_wtpprofile_radio4 module – Configuration options for radio 4." href="fmgr_wtpprofile_radio4_module.html" />
+    <link rel="prev" title="fortinet.fortimanager.fmgr_wtpprofile_radio2 module – Configuration options for radio 2." href="fmgr_wtpprofile_radio2_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../amazon/index.html">Collections in the Amazon Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/index.html">Collections in the Community Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dellemc/index.html">Collections in the Dellemc Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Fortinet Namespace</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Fortinet.Fortimanager</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../fortios/index.html">Fortinet.Fortios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kaytus/index.html">Collections in the Kaytus Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp_eseries/index.html">Collections in the Netapp_eseries Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wti/index.html">Collections in the Wti Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Fortinet Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Fortinet.Fortimanager</a></li>
+      <li class="breadcrumb-item active">fortinet.fortimanager.fmgr_wtpprofile_radio3 module – Configuration options for radio 3.</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module"></span><section id="fortinet-fortimanager-fmgr-wtpprofile-radio3-module-configuration-options-for-radio-3">
+<h1>fortinet.fortimanager.fmgr_wtpprofile_radio3 module – Configuration options for radio 3.<a class="headerlink" href="#fortinet-fortimanager-fmgr-wtpprofile-radio3-module-configuration-options-for-radio-3" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/fortinet/fortimanager/">fortinet.fortimanager collection</a> (version 2.5.0).</p>
+<p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
+It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">fortinet.fortimanager</span></code>.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">fortinet.fortimanager.fmgr_wtpprofile_radio3</span></code>.</p>
+</div>
+<p class="ansible-version-added">New in fortinet.fortimanager 2.1.0</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id2">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id3">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id4">Notes</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id5">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id6">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This module is able to configure a FortiManager device.</p></li>
+<li><p>Examples include all parameters and values which need to be adjusted to data sources before usage.</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-access_token"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-access-token"><strong>access_token</strong></p>
+<a class="ansibleOptionLink" href="#parameter-access_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The token to access FortiManager without using username and password.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-adom"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-adom"><strong>adom</strong></p>
+<a class="ansibleOptionLink" href="#parameter-adom" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The parameter (adom) in requested url.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-bypass_validation"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-bypass-validation"><strong>bypass_validation</strong></p>
+<a class="ansibleOptionLink" href="#parameter-bypass_validation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-enable_log"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-enable-log"><strong>enable_log</strong></p>
+<a class="ansibleOptionLink" href="#parameter-enable_log" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable/Disable logging for task.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-forticloud_access_token"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-forticloud-access-token"><strong>forticloud_access_token</strong></p>
+<a class="ansibleOptionLink" href="#parameter-forticloud_access_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Authenticate Ansible client with forticloud API access token.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-proposed_method"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-proposed-method"><strong>proposed_method</strong></p>
+<a class="ansibleOptionLink" href="#parameter-proposed_method" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The overridden method for the underlying Json RPC request.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;update&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;set&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;add&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rc_failed"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-rc-failed"><strong>rc_failed</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rc_failed" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The rc codes list with which the conditions to fail will be overriden.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rc_succeeded"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-rc-succeeded"><strong>rc_succeeded</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rc_succeeded" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The rc codes list with which the conditions to succeed will be overriden.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-workspace_locking_adom"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-workspace-locking-adom"><strong>workspace_locking_adom</strong></p>
+<a class="ansibleOptionLink" href="#parameter-workspace_locking_adom" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-workspace_locking_timeout"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-workspace-locking-timeout"><strong>workspace_locking_timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-workspace_locking_timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The maximum time in seconds to wait for other user to release the workspace lock.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">300</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtp-profile"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtp-profile"><strong>wtp-profile</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtp-profile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Deprecated, please use “wtp_profile”</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtp_profile"></div><p class="ansible-option-title" id="id1"><strong>wtp_profile</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtp_profile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The parameter (wtp-profile) in requested url.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3"><strong>wtpprofile_radio3</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The top level parameters set.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/80211d"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-80211d"><strong>80211d</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/80211d" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to d80211d. Enable/disable 802.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/airtime-fairness"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-airtime-fairness"><strong>airtime-fairness</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/airtime-fairness" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to airtime_fairness. Enable/disable airtime fairness</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/amsdu"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-amsdu"><strong>amsdu</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/amsdu" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable/disable 802.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/ap-handoff"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-ap-handoff"><strong>ap-handoff</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/ap-handoff" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ap_handoff. Enable/disable AP handoff of clients to other APs</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/ap-sniffer-addr"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-ap-sniffer-addr"><strong>ap-sniffer-addr</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/ap-sniffer-addr" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ap_sniffer_addr. MAC address to monitor.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/ap-sniffer-bufsize"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-ap-sniffer-bufsize"><strong>ap-sniffer-bufsize</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/ap-sniffer-bufsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ap_sniffer_bufsize. Sniffer buffer size</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/ap-sniffer-chan"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-ap-sniffer-chan"><strong>ap-sniffer-chan</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/ap-sniffer-chan" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ap_sniffer_chan. Channel on which to operate the sniffer</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/ap-sniffer-ctl"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-ap-sniffer-ctl"><strong>ap-sniffer-ctl</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/ap-sniffer-ctl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ap_sniffer_ctl. Enable/disable sniffer on WiFi control frame</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/ap-sniffer-data"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-ap-sniffer-data"><strong>ap-sniffer-data</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/ap-sniffer-data" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ap_sniffer_data. Enable/disable sniffer on WiFi data frame</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/ap-sniffer-mgmt-beacon"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-ap-sniffer-mgmt-beacon"><strong>ap-sniffer-mgmt-beacon</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/ap-sniffer-mgmt-beacon" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ap_sniffer_mgmt_beacon. Enable/disable sniffer on WiFi management Beacon frames</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/ap-sniffer-mgmt-other"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-ap-sniffer-mgmt-other"><strong>ap-sniffer-mgmt-other</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/ap-sniffer-mgmt-other" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ap_sniffer_mgmt_other. Enable/disable sniffer on WiFi management other frames</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/ap-sniffer-mgmt-probe"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-ap-sniffer-mgmt-probe"><strong>ap-sniffer-mgmt-probe</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/ap-sniffer-mgmt-probe" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to ap_sniffer_mgmt_probe. Enable/disable sniffer on WiFi management probe frames</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/arrp-profile"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-arrp-profile"><strong>arrp-profile</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/arrp-profile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to arrp_profile. Distributed Automatic Radio Resource Provisioning</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/auto-power-high"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-auto-power-high"><strong>auto-power-high</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/auto-power-high" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to auto_power_high. The upper bound of automatic transmit power adjustment in dBm</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/auto-power-level"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-auto-power-level"><strong>auto-power-level</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/auto-power-level" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to auto_power_level. Enable/disable automatic power-level adjustment to prevent co-channel in…</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/auto-power-low"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-auto-power-low"><strong>auto-power-low</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/auto-power-low" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to auto_power_low. The lower bound of automatic transmit power adjustment in dBm</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/auto-power-target"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-auto-power-target"><strong>auto-power-target</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/auto-power-target" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to auto_power_target. The target of automatic transmit power adjustment in dBm.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/band"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-band"><strong>band</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/band" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>WiFi band that Radio 3 operates on.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11b&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11a&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11g&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11n&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ac&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11n-5G&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ax-5G&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ax&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11g-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11n-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11n,g-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ac-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ac,n-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11n-5G-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ax-5G-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ax,ac-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ax,ac,n-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ax-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ax,n-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ax,n,g-only&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ac-2G&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;802.11ax-6G&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/band-5g-type"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-band-5g-type"><strong>band-5g-type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/band-5g-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to band_5g_type. WiFi 5G band type.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;5g-full&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;5g-high&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;5g-low&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/bandwidth-admission-control"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-bandwidth-admission-control"><strong>bandwidth-admission-control</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/bandwidth-admission-control" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to bandwidth_admission_control. Enable/disable WiFi multimedia</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/bandwidth-capacity"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-bandwidth-capacity"><strong>bandwidth-capacity</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/bandwidth-capacity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to bandwidth_capacity. Maximum bandwidth capacity allowed</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/beacon-interval"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-beacon-interval"><strong>beacon-interval</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/beacon-interval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to beacon_interval. Beacon interval.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/bss-color"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-bss-color"><strong>bss-color</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/bss-color" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to bss_color. BSS color value for this 11ax radio</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/bss-color-mode"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-bss-color-mode"><strong>bss-color-mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/bss-color-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to bss_color_mode. BSS color mode for this 11ax radio</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;static&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/call-admission-control"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-call-admission-control"><strong>call-admission-control</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/call-admission-control" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to call_admission_control. Enable/disable WiFi multimedia</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/call-capacity"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-call-capacity"><strong>call-capacity</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/call-capacity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to call_capacity. Maximum number of Voice over WLAN</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/channel"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-channel"><strong>channel</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/channel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>(list) No description.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/channel-bonding"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-channel-bonding"><strong>channel-bonding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/channel-bonding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to channel_bonding. Channel bandwidth</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;80MHz&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;40MHz&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;20MHz&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;160MHz&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/channel-utilization"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-channel-utilization"><strong>channel-utilization</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/channel-utilization" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to channel_utilization. Enable/disable measuring channel utilization.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/coexistence"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-coexistence"><strong>coexistence</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/coexistence" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable/disable allowing both HT20 and HT40 on the same radio</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/darrp"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-darrp"><strong>darrp</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/darrp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable/disable Distributed Automatic Radio Resource Provisioning</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/drma"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-drma"><strong>drma</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/drma" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Enable/disable dynamic radio mode assignment</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/drma-sensitivity"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-drma-sensitivity"><strong>drma-sensitivity</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/drma-sensitivity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to drma_sensitivity. Network Coverage Factor</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;low&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;medium&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;high&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/dtim"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-dtim"><strong>dtim</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/dtim" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Delivery Traffic Indication Map</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/frag-threshold"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-frag-threshold"><strong>frag-threshold</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/frag-threshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to frag_threshold. Maximum packet size that can be sent without fragmentation</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/frequency-handoff"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-frequency-handoff"><strong>frequency-handoff</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/frequency-handoff" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to frequency_handoff. Enable/disable frequency handoff of clients to other channels</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/iperf-protocol"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-iperf-protocol"><strong>iperf-protocol</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/iperf-protocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to iperf_protocol. Iperf test protocol</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;udp&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tcp&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/iperf-server-port"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-iperf-server-port"><strong>iperf-server-port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/iperf-server-port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to iperf_server_port. Iperf service port number.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/max-clients"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-max-clients"><strong>max-clients</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/max-clients" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to max_clients. Maximum number of stations</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/max-distance"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-max-distance"><strong>max-distance</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/max-distance" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to max_distance. Maximum expected distance between the AP and clients</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/mimo-mode"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-mimo-mode"><strong>mimo-mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/mimo-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to mimo_mode. Configure radio MIMO mode</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;1x1&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2x2&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;3x3&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;4x4&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;8x8&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/mode"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Mode of radio 3.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disabled&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ap&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;monitor&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;sniffer&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;sam&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/optional-antenna"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-optional-antenna"><strong>optional-antenna</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/optional-antenna" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to optional_antenna. Optional antenna used on FAP</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FANT-04ABGN-0606-O-N&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FANT-04ABGN-1414-P-N&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FANT-04ABGN-8065-P-N&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FANT-04ABGN-0606-O-R&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FANT-04ABGN-0606-P-R&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FANT-10ACAX-1213-D-N&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FANT-08ABGN-1213-D-R&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/optional-antenna-gain"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-optional-antenna-gain"><strong>optional-antenna-gain</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/optional-antenna-gain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to optional_antenna_gain. Optional antenna gain in dBi</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/power-level"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-power-level"><strong>power-level</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/power-level" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to power_level. Radio power level as a percentage of the maximum transmit power</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/power-mode"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-power-mode"><strong>power-mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/power-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to power_mode. Set radio effective isotropic radiated power</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;dBm&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;percentage&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/power-value"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-power-value"><strong>power-value</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/power-value" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to power_value. Radio EIRP power in dBm</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/powersave-optimize"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-powersave-optimize"><strong>powersave-optimize</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/powersave-optimize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to powersave_optimize.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tim&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ac-vo&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;no-obss-scan&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;no-11b-rate&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;client-rate-follow&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/protection-mode"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-protection-mode"><strong>protection-mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/protection-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to protection_mode. Enable/disable 802.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;rtscts&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ctsonly&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/radio-id"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-radio-id"><strong>radio-id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/radio-id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to radio_id.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/rts-threshold"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-rts-threshold"><strong>rts-threshold</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/rts-threshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to rts_threshold. Maximum packet size for RTS transmissions, specifying the maximum size of a…</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-bssid"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-bssid"><strong>sam-bssid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-bssid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_bssid. BSSID for WiFi network.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-ca-certificate"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-ca-certificate"><strong>sam-ca-certificate</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-ca-certificate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_ca_certificate. CA certificate for WPA2/WPA3-ENTERPRISE.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-captive-portal"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-captive-portal"><strong>sam-captive-portal</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-captive-portal" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_captive_portal. Enable/disable Captive Portal Authentication</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-client-certificate"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-client-certificate"><strong>sam-client-certificate</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-client-certificate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_client_certificate. Client certificate for WPA2/WPA3-ENTERPRISE.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-cwp-failure-string"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-cwp-failure-string"><strong>sam-cwp-failure-string</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-cwp-failure-string" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_cwp_failure_string. Failure identification on the page after an incorrect login.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-cwp-match-string"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-cwp-match-string"><strong>sam-cwp-match-string</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-cwp-match-string" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_cwp_match_string. Identification string from the captive portal login form.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-cwp-password"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-cwp-password"><strong>sam-cwp-password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-cwp-password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>(list) Deprecated, please rename it to sam_cwp_password.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-cwp-success-string"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-cwp-success-string"><strong>sam-cwp-success-string</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-cwp-success-string" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_cwp_success_string. Success identification on the page after a successful login.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-cwp-test-url"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-cwp-test-url"><strong>sam-cwp-test-url</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-cwp-test-url" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_cwp_test_url. Website the client is trying to access.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-cwp-username"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-cwp-username"><strong>sam-cwp-username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-cwp-username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_cwp_username. Username for captive portal authentication.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-eap-method"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-eap-method"><strong>sam-eap-method</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-eap-method" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_eap_method. Select WPA2/WPA3-ENTERPRISE EAP Method</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tls&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;peap&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;both&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-password"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-password"><strong>sam-password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>(list) Deprecated, please rename it to sam_password.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-private-key"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-private-key"><strong>sam-private-key</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-private-key" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_private_key. Private key for WPA2/WPA3-ENTERPRISE.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-private-key-password"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-private-key-password"><strong>sam-private-key-password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-private-key-password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>(list) Deprecated, please rename it to sam_private_key_password.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-report-intv"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-report-intv"><strong>sam-report-intv</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-report-intv" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_report_intv. SAM report interval</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-security-type"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-security-type"><strong>sam-security-type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-security-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_security_type. Select WiFi network security type</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;open&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;wpa-personal&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;wpa-enterprise&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;owe&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;wpa3-sae&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-server"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-server"><strong>sam-server</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-server" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_server. SAM test server IP address or domain name.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-server-fqdn"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-server-fqdn"><strong>sam-server-fqdn</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-server-fqdn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_server_fqdn. SAM test server domain name.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-server-ip"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-server-ip"><strong>sam-server-ip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-server-ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_server_ip. SAM test server IP address.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-server-type"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-server-type"><strong>sam-server-type</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-server-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_server_type. Select SAM server type</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ip&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;fqdn&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-ssid"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-ssid"><strong>sam-ssid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-ssid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_ssid. SSID for WiFi network.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-test"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-test"><strong>sam-test</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-test" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_test. Select SAM test type</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ping&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;iperf&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/sam-username"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-sam-username"><strong>sam-username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/sam-username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to sam_username. Username for WiFi network connection.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/short-guard-interval"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-short-guard-interval"><strong>short-guard-interval</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/short-guard-interval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to short_guard_interval. Use either the short guard interval</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/spectrum-analysis"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-spectrum-analysis"><strong>spectrum-analysis</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/spectrum-analysis" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to spectrum_analysis. Enable/disable spectrum analysis to find interference that would negati…</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;scan-only&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/transmit-optimize"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-transmit-optimize"><strong>transmit-optimize</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/transmit-optimize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to transmit_optimize.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;power-save&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;aggr-limit&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;retry-limit&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;send-bar&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vap-all"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vap-all"><strong>vap-all</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vap-all" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to vap_all. Enable/disable the automatic inheritance of all Virtual Access Points</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;tunnel&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bridge&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;manual&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vap1"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vap1"><strong>vap1</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vap1" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Virtual Access Point</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vap2"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vap2"><strong>vap2</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vap2" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Virtual Access Point</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vap3"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vap3"><strong>vap3</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vap3" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Virtual Access Point</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vap4"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vap4"><strong>vap4</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vap4" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Virtual Access Point</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vap5"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vap5"><strong>vap5</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vap5" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Virtual Access Point</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vap6"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vap6"><strong>vap6</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vap6" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Virtual Access Point</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vap7"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vap7"><strong>vap7</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vap7" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Virtual Access Point</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vap8"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vap8"><strong>vap8</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vap8" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Virtual Access Point</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/vaps"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-vaps"><strong>vaps</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/vaps" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>(list or str) Manually selected list of Virtual Access Points</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/wids-profile"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-wids-profile"><strong>wids-profile</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/wids-profile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to wids_profile. Wireless Intrusion Detection System</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-wtpprofile_radio3/zero-wait-dfs"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-parameter-wtpprofile-radio3-zero-wait-dfs"><strong>zero-wait-dfs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-wtpprofile_radio3/zero-wait-dfs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>Deprecated, please rename it to zero_wait_dfs. Enable/disable zero wait DFS on radio</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disable&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enable&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Notes</a><a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Starting in version 2.4.0, all input arguments are named using the underscore naming convention (snake_case). Please change the arguments such as “var-name” to “var_name”. Old argument names are still available yet you will receive deprecation warnings. You can ignore this warning by setting deprecation_warnings=False in ansible.cfg.</p></li>
+<li><p>Running in workspace locking mode is supported in this FortiManager module, the top level parameters workspace_locking_adom and workspace_locking_timeout help do the work.</p></li>
+<li><p>Normally, running one module can fail when a non-zero rc is returned. you can also override the conditions to fail or succeed with parameters rc_failed and rc_succeeded</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example playbook (generated based on argument schema)</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fortimanagers</span>
+<span class="w">  </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_use_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ansible_httpapi_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configuration options for radio 3.</span>
+<span class="w">      </span><span class="nt">fortinet.fortimanager.fmgr_wtpprofile_radio3</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># bypass_validation: false</span>
+<span class="w">        </span><span class="nt">workspace_locking_adom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [global, custom adom including root]&gt;</span>
+<span class="w">        </span><span class="nt">workspace_locking_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">        </span><span class="c1"># rc_succeeded: [0, -2, -3, ...]</span>
+<span class="w">        </span><span class="c1"># rc_failed: [-2, -3, ...]</span>
+<span class="w">        </span><span class="nt">adom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your own value&gt;</span>
+<span class="w">        </span><span class="nt">wtp_profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your own value&gt;</span>
+<span class="w">        </span><span class="nt">wtpprofile_radio3</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">airtime_fairness</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">amsdu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">ap_handoff</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">ap_sniffer_addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">ap_sniffer_bufsize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">ap_sniffer_chan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">ap_sniffer_ctl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">ap_sniffer_data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">ap_sniffer_mgmt_beacon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">ap_sniffer_mgmt_other</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">ap_sniffer_mgmt_probe</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">auto_power_high</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">auto_power_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">auto_power_low</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">band</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [802.11b, 802.11a, 802.11g, ...]&gt;</span>
+<span class="w">          </span><span class="nt">bandwidth_admission_control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">bandwidth_capacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">beacon_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">call_admission_control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">call_capacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">channel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;list or string&gt;</span>
+<span class="w">          </span><span class="nt">channel_bonding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [80MHz, 40MHz, 20MHz, ...]&gt;</span>
+<span class="w">          </span><span class="nt">channel_utilization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">coexistence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">darrp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">dtim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">frag_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">frequency_handoff</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">max_clients</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">max_distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disabled, ap, monitor, ...]&gt;</span>
+<span class="w">          </span><span class="nt">power_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">powersave_optimize</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tim</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ac-vo</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-obss-scan</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-11b-rate</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client-rate-follow</span>
+<span class="w">          </span><span class="nt">protection_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [rtscts, ctsonly, disable]&gt;</span>
+<span class="w">          </span><span class="nt">radio_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">rts_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">short_guard_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">spectrum_analysis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable, scan-only]&gt;</span>
+<span class="w">          </span><span class="nt">transmit_optimize</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">disable</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">power-save</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggr-limit</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">retry-limit</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">send-bar</span>
+<span class="w">          </span><span class="nt">vap_all</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable, tunnel, ...]&gt;</span>
+<span class="w">          </span><span class="nt">vaps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;list or string&gt;</span>
+<span class="w">          </span><span class="nt">wids_profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">band_5g_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [5g-full, 5g-high, 5g-low]&gt;</span>
+<span class="w">          </span><span class="nt">zero_wait_dfs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">vap1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">vap2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">vap3</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">vap4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">vap5</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">vap6</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">vap7</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">vap8</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">bss_color</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">auto_power_target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">drma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">drma_sensitivity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [low, medium, high]&gt;</span>
+<span class="w">          </span><span class="nt">iperf_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [udp, tcp]&gt;</span>
+<span class="w">          </span><span class="nt">iperf_server_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">power_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [dBm, percentage]&gt;</span>
+<span class="w">          </span><span class="nt">power_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">sam_bssid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_captive_portal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">sam_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;list or string&gt;</span>
+<span class="w">          </span><span class="nt">sam_report_intv</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;integer&gt;</span>
+<span class="w">          </span><span class="nt">sam_security_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [open, wpa-personal, wpa-enterprise, ...]&gt;</span>
+<span class="w">          </span><span class="nt">sam_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_ssid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_test</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [ping, iperf]&gt;</span>
+<span class="w">          </span><span class="nt">sam_username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">arrp_profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">bss_color_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [auto, static]&gt;</span>
+<span class="w">          </span><span class="nt">sam_cwp_failure_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_cwp_match_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_cwp_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;list or string&gt;</span>
+<span class="w">          </span><span class="nt">sam_cwp_success_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_cwp_test_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_cwp_username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_server_fqdn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_server_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_server_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [ip, fqdn]&gt;</span>
+<span class="w">          </span><span class="nt">d80211d</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [disable, enable]&gt;</span>
+<span class="w">          </span><span class="nt">optional_antenna</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [none, FANT-04ABGN-0606-O-N, FANT-04ABGN-1414-P-N, ...]&gt;</span>
+<span class="w">          </span><span class="nt">mimo_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [default, 1x1, 2x2, ...]&gt;</span>
+<span class="w">          </span><span class="nt">optional_antenna_gain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_ca_certificate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_client_certificate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_eap_method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;value in [tls, peap, both]&gt;</span>
+<span class="w">          </span><span class="nt">sam_private_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+<span class="w">          </span><span class="nt">sam_private_key_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;list or string&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<p>Common return values are documented <a class="reference internal" href="../../../reference_appendices/common_return_values.html#common-return-values"><span class="std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-return-meta"><strong>meta</strong></p>
+<a class="ansibleOptionLink" href="#return-meta" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The result of the request.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/request_url"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-return-meta-request-url"><strong>request_url</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/request_url" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The full url requested.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">&quot;/sys/login/user&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/response_code"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-return-meta-response-code"><strong>response_code</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/response_code" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The status of api request.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/response_data"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-return-meta-response-data"><strong>response_data</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/response_data" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The api response.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/response_message"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-return-meta-response-message"><strong>response_message</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/response_message" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The descriptive message of the api response.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">&quot;OK.&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-meta/system_information"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-return-meta-system-information"><strong>system_information</strong></p>
+<a class="ansibleOptionLink" href="#return-meta/system_information" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The information of the target system.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-rc"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-return-rc"><strong>rc</strong></p>
+<a class="ansibleOptionLink" href="#return-rc" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The status the request.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-version_check_warning"></div><p class="ansible-option-title" id="ansible-collections-fortinet-fortimanager-fmgr-wtpprofile-radio3-module-return-version-check-warning"><strong>version_check_warning</strong></p>
+<a class="ansibleOptionLink" href="#return-version_check_warning" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Warning if the parameters used in the playbook are not supported by the current FortiManager version.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> complex</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Xinwei Du (&#64;dux-fortinet)</p></li>
+<li><p>Xing Li (&#64;lix-fortinet)</p></li>
+<li><p>Jie Xue (&#64;JieX19)</p></li>
+<li><p>Link Zheng (&#64;chillancezen)</p></li>
+<li><p>Frank Shen (&#64;fshen01)</p></li>
+<li><p>Hongbin Lu (&#64;fgtdev-hblu)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h3>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/fortinet-ansible-dev/ansible-galaxy-fortimanager-collection/issues" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://fortinet.com" rel="noopener external" target="_blank">Homepage</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/fortinet-ansible-dev/ansible-galaxy-fortimanager-collection" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fmgr_wtpprofile_radio2_module.html" class="btn btn-neutral float-left" title="fortinet.fortimanager.fmgr_wtpprofile_radio2 module – Configuration options for radio 2." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fmgr_wtpprofile_radio4_module.html" class="btn btn-neutral float-right" title="fortinet.fortimanager.fmgr_wtpprofile_radio4 module – Configuration options for radio 4." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

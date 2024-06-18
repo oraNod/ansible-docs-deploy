@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using encrypted variables and files &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/vault_guide/vault_using_encrypted_content.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using Ansible modules and plugins" href="../module_plugin_guide/index.html" />
+    <link rel="prev" title="Encrypting content with Ansible Vault" href="vault_encrypting_content.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Protecting sensitive data with Ansible vault</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vault.html">Ansible Vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault_managing_passwords.html">Managing vault passwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault_encrypting_content.html">Encrypting content with Ansible Vault</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using encrypted variables and files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#passing-a-single-password">Passing a single password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-vault-ids">Passing vault IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-multiple-vault-passwords">Passing multiple vault passwords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-vault-id-without-a-vault-id">Using <code class="docutils literal notranslate"><span class="pre">--vault-id</span></code> without a vault ID</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-defaults-for-using-encrypted-content">Configuring defaults for using encrypted content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-a-default-vault-id">Setting a default vault ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-a-default-password-source">Setting a default password source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#when-are-encrypted-files-made-visible">When are encrypted files made visible?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#format-of-files-encrypted-with-ansible-vault">Format of files encrypted with Ansible Vault</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ansible-vault-payload-format-1-1-1-2">Ansible Vault payload format 1.1 - 1.2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collections/index.html">Collection Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections/all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Protecting sensitive data with Ansible vault</a></li>
+      <li class="breadcrumb-item active">Using encrypted variables and files</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <a href="https://github.com/ansible/ansible-documentation/edit/devel/docs/docsite/rst/vault_guide/vault_using_encrypted_content.rst?description=%23%23%23%23%23%20SUMMARY%0A%3C!---%20Your%20description%20here%20--%3E%0A%0A%0A%23%23%23%23%23%20ISSUE%20TYPE%0A-%20Docs%20Pull%20Request%0A%0A%2Blabel:%20docsite_pr" class="fa fa-github"> Edit on GitHub</a>
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <section id="using-encrypted-variables-and-files">
+<span id="providing-vault-passwords"></span><span id="playbooks-vault"></span><span id="vault-using-encrypted-content"></span><h1>Using encrypted variables and files<a class="headerlink" href="#using-encrypted-variables-and-files" title="Link to this heading"></a></h1>
+<p>When you run a task or playbook that uses encrypted variables or files, you must provide the passwords to decrypt the variables or files. You can do this at the command line or by setting a default password source in a config option or an environment variable.</p>
+<section id="passing-a-single-password">
+<h2>Passing a single password<a class="headerlink" href="#passing-a-single-password" title="Link to this heading"></a></h2>
+<p>If all the encrypted variables and files in your task or playbook need to use a single password, you can use the <a class="reference internal" href="../cli/ansible-playbook.html#cmdoption-ansible-playbook-J"><code class="xref std std-option docutils literal notranslate"><span class="pre">--ask-vault-pass</span></code></a> or <a class="reference internal" href="../cli/ansible-playbook.html#cmdoption-ansible-playbook-vault-password-file"><code class="xref std std-option docutils literal notranslate"><span class="pre">--vault-password-file</span></code></a> cli options.</p>
+<p>To prompt for the password:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--ask-vault-pass<span class="w"> </span>site.yml
+</pre></div>
+</div>
+<p>To retrieve the password from the <code class="file docutils literal notranslate"><span class="pre">/path/to/my/vault-password-file</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--vault-password-file<span class="w"> </span>/path/to/my/vault-password-file<span class="w"> </span>site.yml
+</pre></div>
+</div>
+<p>To get the password from the vault password client script <code class="file docutils literal notranslate"><span class="pre">my-vault-password-client.py</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--vault-password-file<span class="w"> </span>my-vault-password-client.py
+</pre></div>
+</div>
+</section>
+<section id="passing-vault-ids">
+<span id="specifying-vault-ids"></span><h2>Passing vault IDs<a class="headerlink" href="#passing-vault-ids" title="Link to this heading"></a></h2>
+<p>You can also use the <a class="reference internal" href="../cli/ansible-playbook.html#cmdoption-ansible-playbook-vault-id"><code class="xref std std-option docutils literal notranslate"><span class="pre">--vault-id</span></code></a> option to pass a single password with its vault label. This approach is clearer when multiple vaults are used within a single inventory.</p>
+<p>To prompt for the password for the ‘dev’ vault ID:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--vault-id<span class="w"> </span>dev@prompt<span class="w"> </span>site.yml
+</pre></div>
+</div>
+<p>To retrieve the password for the ‘dev’ vault ID from the <code class="file docutils literal notranslate"><span class="pre">dev-password</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--vault-id<span class="w"> </span>dev@dev-password<span class="w"> </span>site.yml
+</pre></div>
+</div>
+<p>To get the password for the ‘dev’ vault ID from the vault password client script <code class="file docutils literal notranslate"><span class="pre">my-vault-password-client.py</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--vault-id<span class="w"> </span>dev@my-vault-password-client.py
+</pre></div>
+</div>
+</section>
+<section id="passing-multiple-vault-passwords">
+<h2>Passing multiple vault passwords<a class="headerlink" href="#passing-multiple-vault-passwords" title="Link to this heading"></a></h2>
+<p>If your task or playbook requires multiple encrypted variables or files that you encrypted with different vault IDs, you must use the <a class="reference internal" href="../cli/ansible-playbook.html#cmdoption-ansible-playbook-vault-id"><code class="xref std std-option docutils literal notranslate"><span class="pre">--vault-id</span></code></a> option, passing multiple <code class="docutils literal notranslate"><span class="pre">--vault-id</span></code> options to specify the vault IDs (‘dev’, ‘prod’, ‘cloud’, ‘db’) and sources for the passwords (prompt, file, script). For example, to use a ‘dev’ password read from a file and to be prompted for the ‘prod’ password:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--vault-id<span class="w"> </span>dev@dev-password<span class="w"> </span>--vault-id<span class="w"> </span>prod@prompt<span class="w"> </span>site.yml
+</pre></div>
+</div>
+<p>By default, the vault ID labels (dev, prod and so on) are only hints. Ansible attempts to decrypt vault content with each password. The password with the same label as the encrypted data will be tried first, after that, each vault secret will be tried in the order they were provided on the command line.</p>
+<p>Where the encrypted data has no label, or the label does not match any of the provided labels, the passwords will be tried in the order they are specified. In the example above, the ‘dev’ password will be tried first, then the ‘prod’ password for cases where Ansible doesn’t know which vault ID is used to encrypt something.</p>
+</section>
+<section id="using-vault-id-without-a-vault-id">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">--vault-id</span></code> without a vault ID<a class="headerlink" href="#using-vault-id-without-a-vault-id" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../cli/ansible-playbook.html#cmdoption-ansible-playbook-vault-id"><code class="xref std std-option docutils literal notranslate"><span class="pre">--vault-id</span></code></a> option can also be used without specifying a vault-id. This behavior is equivalent to <a class="reference internal" href="../cli/ansible-playbook.html#cmdoption-ansible-playbook-J"><code class="xref std std-option docutils literal notranslate"><span class="pre">--ask-vault-pass</span></code></a> or <a class="reference internal" href="../cli/ansible-playbook.html#cmdoption-ansible-playbook-vault-password-file"><code class="xref std std-option docutils literal notranslate"><span class="pre">--vault-password-file</span></code></a> so is rarely used.</p>
+<p>For example, to use a password file <code class="file docutils literal notranslate"><span class="pre">dev-password</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--vault-id<span class="w"> </span>dev-password<span class="w"> </span>site.yml
+</pre></div>
+</div>
+<p>To prompt for the password:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--vault-id<span class="w"> </span>@prompt<span class="w"> </span>site.yml
+</pre></div>
+</div>
+<p>To get the password from an executable script <code class="file docutils literal notranslate"><span class="pre">my-vault-password-client.py</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook<span class="w"> </span>--vault-id<span class="w"> </span>my-vault-password-client.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuring-defaults-for-using-encrypted-content">
+<h1>Configuring defaults for using encrypted content<a class="headerlink" href="#configuring-defaults-for-using-encrypted-content" title="Link to this heading"></a></h1>
+<section id="setting-a-default-vault-id">
+<h2>Setting a default vault ID<a class="headerlink" href="#setting-a-default-vault-id" title="Link to this heading"></a></h2>
+<p>If you use one vault ID more frequently than any other, you can set the config option <a class="reference internal" href="../reference_appendices/config.html#default-vault-identity-list"><span class="std std-ref">DEFAULT_VAULT_IDENTITY_LIST</span></a> to specify a default vault ID and password source. Ansible will use the default vault ID and source any time you do not specify <a class="reference internal" href="../cli/ansible-playbook.html#cmdoption-ansible-playbook-vault-id"><code class="xref std std-option docutils literal notranslate"><span class="pre">--vault-id</span></code></a>. You can set multiple values for this option. Setting multiple values is equivalent to passing multiple <a class="reference internal" href="../cli/ansible-playbook.html#cmdoption-ansible-playbook-vault-id"><code class="xref std std-option docutils literal notranslate"><span class="pre">--vault-id</span></code></a> cli options.</p>
+</section>
+<section id="setting-a-default-password-source">
+<h2>Setting a default password source<a class="headerlink" href="#setting-a-default-password-source" title="Link to this heading"></a></h2>
+<p>If you don’t want to provide the password file on the command line or if you use one vault password file more frequently than any other, you can set the <a class="reference internal" href="../reference_appendices/config.html#default-vault-password-file"><span class="std std-ref">DEFAULT_VAULT_PASSWORD_FILE</span></a> config option or the <span class="target" id="index-0"></span><a class="reference internal" href="../reference_appendices/config.html#envvar-ANSIBLE_VAULT_PASSWORD_FILE"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">ANSIBLE_VAULT_PASSWORD_FILE</span></code></a> environment variable to specify a default file to use. For example, if you set <code class="docutils literal notranslate"><span class="pre">ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt</span></code>, Ansible will automatically search for the password in that file. This is useful if, for example, you use Ansible from a continuous integration system such as Jenkins.</p>
+<p>The file that you reference can be either a file containing the password (in plain text), or it can be a script (with executable permissions set) that returns the password.</p>
+</section>
+</section>
+<section id="when-are-encrypted-files-made-visible">
+<h1>When are encrypted files made visible?<a class="headerlink" href="#when-are-encrypted-files-made-visible" title="Link to this heading"></a></h1>
+<p>In general, the content you encrypt with Ansible Vault remains encrypted after execution. However, there is one exception. If you pass an encrypted file as the <code class="docutils literal notranslate"><span class="pre">src</span></code> argument to the <a class="reference internal" href="../collections/ansible/builtin/copy_module.html#copy-module"><span class="std std-ref">copy</span></a>, <a class="reference internal" href="../collections/ansible/builtin/template_module.html#template-module"><span class="std std-ref">template</span></a>, <a class="reference internal" href="../collections/ansible/builtin/unarchive_module.html#unarchive-module"><span class="std std-ref">unarchive</span></a>, <a class="reference internal" href="../collections/ansible/builtin/script_module.html#script-module"><span class="std std-ref">script</span></a> or <a class="reference internal" href="../collections/ansible/builtin/assemble_module.html#assemble-module"><span class="std std-ref">assemble</span></a> module, the file will not be encrypted on the target host (assuming you supply the correct vault password when you run the play). This behavior is intended and useful. You can encrypt a configuration file or template to avoid sharing the details of your configuration, but when you copy that configuration to servers in your environment, you want it to be decrypted so local users and processes can access it.</p>
+</section>
+<section id="format-of-files-encrypted-with-ansible-vault">
+<span id="vault-format"></span><h1>Format of files encrypted with Ansible Vault<a class="headerlink" href="#format-of-files-encrypted-with-ansible-vault" title="Link to this heading"></a></h1>
+<p>Ansible Vault creates UTF-8 encoded txt files. The file format includes a newline terminated header. For example:</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ANSIBLE_VAULT;1.1;AES256
+</pre></div>
+</div>
+</div></blockquote>
+<p>or</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ANSIBLE_VAULT;1.2;AES256;vault-id-label
+</pre></div>
+</div>
+</div></blockquote>
+<p>The header contains up to four elements, separated by semi-colons (<code class="docutils literal notranslate"><span class="pre">;</span></code>).</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The format ID (<code class="docutils literal notranslate"><span class="pre">$ANSIBLE_VAULT</span></code>). Currently <code class="docutils literal notranslate"><span class="pre">$ANSIBLE_VAULT</span></code> is the only valid format ID. The format ID identifies content that is encrypted with Ansible Vault (with vault.is_encrypted_file()).</p></li>
+<li><p>The vault format version (<code class="docutils literal notranslate"><span class="pre">1.X</span></code>). All supported versions of Ansible will currently default to ‘1.1’ or ‘1.2’ if a labeled vault ID is supplied. The ‘1.0’ format is supported for reading only (and will be converted automatically to the ‘1.1’ format on write). The format version is currently used as an exact string compare only (version numbers are not currently ‘compared’).</p></li>
+<li><p>The cipher algorithm used to encrypt the data (<code class="docutils literal notranslate"><span class="pre">AES256</span></code>). Currently <code class="docutils literal notranslate"><span class="pre">AES256</span></code> is the only supported cipher algorithm. Vault format 1.0 used ‘AES’, but the current code always uses ‘AES256’.</p></li>
+<li><p>The vault ID label used to encrypt the data (optional, <code class="docutils literal notranslate"><span class="pre">vault-id-label</span></code>) For example, if you encrypt a file with <code class="docutils literal notranslate"><span class="pre">--vault-id</span> <span class="pre">dev&#64;prompt</span></code>, the vault-id-label is <code class="docutils literal notranslate"><span class="pre">dev</span></code>.</p></li>
+</ol>
+</div></blockquote>
+<p>Note: In the future, the header could change. Fields after the format ID and format version depend on the format version. Future vault format versions may add more cipher algorithm options and/or additional fields.</p>
+<p>The rest of the content of the file is the ‘vaulttext’. The vaulttext is a text-armored version of the
+encrypted ciphertext. Each line is 80 characters wide, except for the last line which may be shorter.</p>
+<section id="ansible-vault-payload-format-1-1-1-2">
+<h2>Ansible Vault payload format 1.1 - 1.2<a class="headerlink" href="#ansible-vault-payload-format-1-1-1-2" title="Link to this heading"></a></h2>
+<p>The vaulttext is a concatenation of the ciphertext and a SHA256 digest with the result ‘hexlifyied’.</p>
+<p>‘hexlify’ refers to the <code class="docutils literal notranslate"><span class="pre">hexlify()</span></code> method of the Python Standard Library’s <a class="reference external" href="https://docs.python.org/3/library/binascii.html">binascii</a> module.</p>
+<p>hexlify()’ed result of:</p>
+<ul class="simple">
+<li><p>hexlify()’ed string of the salt, followed by a newline (<code class="docutils literal notranslate"><span class="pre">0x0a</span></code>)</p></li>
+<li><p>hexlify()’ed string of the encrypted HMAC, followed by a newline. The HMAC is:</p>
+<ul>
+<li><p>a <a class="reference external" href="https://www.ietf.org/rfc/rfc2104.txt">RFC2104</a> style HMAC</p>
+<ul>
+<li><p>inputs are:</p>
+<ul>
+<li><p>The AES256 encrypted ciphertext</p></li>
+<li><p>A PBKDF2 key. This key, the cipher key, and the cipher IV are generated from:</p>
+<ul>
+<li><p>the salt, in bytes</p></li>
+<li><p>10000 iterations</p></li>
+<li><p>SHA256() algorithm</p></li>
+<li><p>the first 32 bytes are the cipher key</p></li>
+<li><p>the second 32 bytes are the HMAC key</p></li>
+<li><p>the remaining 16 bytes are the cipher IV</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>hexlify()’ed string of the ciphertext. The ciphertext is:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>AES256 encrypted data. The data is encrypted using:</p>
+<ul>
+<li><p>AES-CTR stream cipher</p></li>
+<li><p>cipher key</p></li>
+<li><p>IV</p></li>
+<li><p>a 128-bit counter block seeded from an integer IV</p></li>
+<li><p>the plaintext</p>
+<ul>
+<li><p>the original plaintext</p></li>
+<li><p>padding up to the AES256 blocksize. (The data used for padding is based on <a class="reference external" href="https://tools.ietf.org/html/rfc5652#section-6.3">RFC5652</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vault_encrypting_content.html" class="btn btn-neutral float-left" title="Encrypting content with Ansible Vault" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../module_plugin_guide/index.html" class="btn btn-neutral float-right" title="Using Ansible modules and plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

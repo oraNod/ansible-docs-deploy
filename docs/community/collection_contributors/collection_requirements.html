@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ansible community package collections requirements &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/community/collection_contributors/collection_requirements.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Guidelines for collection maintainers" href="../maintainers.html" />
+    <link rel="prev" title="Review checklist for collection PRs" href="collection_reviewing.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../contributions_collections.html">Ansible Collections Contributor Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../collection_development_process.html">The Ansible Collections Development Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting_collections.html">Requesting changes to a collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_pr_quick_start.html">Creating your first collection pull request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_index.html">Testing Collection Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collection_reviewing.html">Review checklist for collection PRs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Ansible community package collections requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#feedback-and-communications">Feedback and communications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keeping-informed">Keeping informed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collection-infrastructure">Collection infrastructure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-compatibility">Python Compatibility</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-requirements">Python Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#standards-for-developing-module-and-plugin-utilities">Standards for developing module and plugin utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repository-structure-requirements">Repository structure requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#galaxy-yml">galaxy.yml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#readme-md">README.md</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#meta-runtime-yml">meta/runtime.yml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#meta-execution-environment-yml">meta/execution-environment.yml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-plugins">Modules &amp; Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-directories">Other directories</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#contributor-workflow">Contributor Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#changelogs">Changelogs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#naming">Naming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#collection-naming">Collection naming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-naming">Module naming</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#collection-licensing-requirements">Collection licensing requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contributor-license-agreements">Contributor License Agreements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repository-management">Repository management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#branch-name-and-configuration">Branch name and configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ci-testing">CI Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collections-and-working-groups">Collections and Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-moving-modules-between-collections">When moving modules between collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#development-conventions">Development conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collection-dependencies">Collection Dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements-for-collections-to-be-included-in-the-ansible-package">Requirements for collections to be included in the Ansible Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-requirements">Other requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../maintainers.html">Guidelines for collection maintainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_maintained_collections.html">Contributing to Ansible-maintained Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../steering/steering_index.html">Ansible Community Steering Committee</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation_contributions.html">Contributing to the Ansible Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other_tools_and_programs.html">Other Tools and Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributions_collections.html#working-with-the-ansible-collection-repositories">Working with the Ansible collection repositories</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../collections/index.html">Collection Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../collections/all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+      <li class="breadcrumb-item active">Ansible community package collections requirements</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <a href="https://github.com/ansible/ansible-documentation/edit/devel/docs/docsite/rst/community/collection_contributors/collection_requirements.rst?description=%23%23%23%23%23%20SUMMARY%0A%3C!---%20Your%20description%20here%20--%3E%0A%0A%0A%23%23%23%23%23%20ISSUE%20TYPE%0A-%20Docs%20Pull%20Request%0A%0A%2Blabel:%20docsite_pr" class="fa fa-github"> Edit on GitHub</a>
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <section id="ansible-community-package-collections-requirements">
+<span id="collections-requirements"></span><h1>Ansible community package collections requirements<a class="headerlink" href="#ansible-community-package-collections-requirements" title="Link to this heading"></a></h1>
+<p>This section describes the requirements for maintainers of Ansible community collections in the <a class="reference external" href="https://github.com/ansible-collections">ansible-collections</a> repository or included in the Ansible community package.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id8">Overview</a></p></li>
+<li><p><a class="reference internal" href="#feedback-and-communications" id="id9">Feedback and communications</a></p></li>
+<li><p><a class="reference internal" href="#keeping-informed" id="id10">Keeping informed</a></p></li>
+<li><p><a class="reference internal" href="#collection-infrastructure" id="id11">Collection infrastructure</a></p></li>
+<li><p><a class="reference internal" href="#python-compatibility" id="id12">Python Compatibility</a></p>
+<ul>
+<li><p><a class="reference internal" href="#python-requirements" id="id13">Python Requirements</a></p>
+<ul>
+<li><p><a class="reference internal" href="#controller-environment" id="id14">Controller environment</a></p></li>
+<li><p><a class="reference internal" href="#other-environment" id="id15">Other environment</a></p></li>
+<li><p><a class="reference internal" href="#dropping-python-versions-support" id="id16">Dropping Python versions support</a></p></li>
+<li><p><a class="reference internal" href="#python-documentation-requirements" id="id17">Python documentation requirements</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#standards-for-developing-module-and-plugin-utilities" id="id18">Standards for developing module and plugin utilities</a></p></li>
+<li><p><a class="reference internal" href="#repository-structure-requirements" id="id19">Repository structure requirements</a></p>
+<ul>
+<li><p><a class="reference internal" href="#galaxy-yml" id="id20">galaxy.yml</a></p></li>
+<li><p><a class="reference internal" href="#readme-md" id="id21">README.md</a></p></li>
+<li><p><a class="reference internal" href="#meta-runtime-yml" id="id22">meta/runtime.yml</a></p></li>
+<li><p><a class="reference internal" href="#meta-execution-environment-yml" id="id23">meta/execution-environment.yml</a></p></li>
+<li><p><a class="reference internal" href="#modules-plugins" id="id24">Modules &amp; Plugins</a></p></li>
+<li><p><a class="reference internal" href="#other-directories" id="id25">Other directories</a></p>
+<ul>
+<li><p><a class="reference internal" href="#documentation-requirements" id="id26">Documentation requirements</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#contributor-workflow" id="id27">Contributor Workflow</a></p>
+<ul>
+<li><p><a class="reference internal" href="#changelogs" id="id28">Changelogs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#versioning-and-deprecation" id="id29">Versioning and deprecation</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#naming" id="id30">Naming</a></p>
+<ul>
+<li><p><a class="reference internal" href="#collection-naming" id="id31">Collection naming</a></p></li>
+<li><p><a class="reference internal" href="#module-naming" id="id32">Module naming</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#collection-licensing-requirements" id="id33">Collection licensing requirements</a></p></li>
+<li><p><a class="reference internal" href="#contributor-license-agreements" id="id34">Contributor License Agreements</a></p></li>
+<li><p><a class="reference internal" href="#repository-management" id="id35">Repository management</a></p>
+<ul>
+<li><p><a class="reference internal" href="#branch-name-and-configuration" id="id36">Branch name and configuration</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#ci-testing" id="id37">CI Testing</a></p></li>
+<li><p><a class="reference internal" href="#collections-and-working-groups" id="id38">Collections and Working Groups</a></p></li>
+<li><p><a class="reference internal" href="#when-moving-modules-between-collections" id="id39">When moving modules between collections</a></p></li>
+<li><p><a class="reference internal" href="#development-conventions" id="id40">Development conventions</a></p></li>
+<li><p><a class="reference internal" href="#collection-dependencies" id="id41">Collection Dependencies</a></p>
+<ul>
+<li><p><a class="reference internal" href="#examples" id="id42">Examples</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#requirements-for-collections-to-be-included-in-the-ansible-package" id="id43">Requirements for collections to be included in the Ansible Package</a></p></li>
+<li><p><a class="reference internal" href="#other-requirements" id="id44">Other requirements</a></p></li>
+</ul>
+</nav>
+<section id="overview">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Overview</a><a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This section provides help, advice, and guidance on making sure your collections are correct and ready for inclusion in the Ansible community package.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://github.com/ansible-collections/ansible-inclusion">Inclusion of a new collection</a> in the Ansible package is ultimately at the discretion of the <a class="reference internal" href="../steering/steering_index.html#community-steering-committee"><span class="std std-ref">Ansible Community Steering Committee</span></a>. Every rejected candidate will get feedback. Differences of opinion should be taken to a dedicated <a class="reference internal" href="../steering/community_steering_committee.html#creating-community-topic"><span class="std std-ref">community topic</span></a> for discussion and a final vote.</p>
+</div>
+</section>
+<section id="feedback-and-communications">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Feedback and communications</a><a class="headerlink" href="#feedback-and-communications" title="Link to this heading"></a></h2>
+<p>As with any project it is very important that we get feedback from users, contributors, and maintainers. You can get feedback and help as follows:</p>
+<ul class="simple">
+<li><p>Discussing in the <a class="reference external" href="https://matrix.to/#/#community:ansible.com">#community:ansible.com Matrix room</a>, which is bridged with the <code class="docutils literal notranslate"><span class="pre">#ansible-community</span></code> channel on Libera.Chat IRC. See the <a class="reference internal" href="../communication.html#communication-irc"><span class="std std-ref">Ansible Communication Guide</span></a> for details.</p></li>
+<li><p>Discussing in the <a class="reference external" href="https://github.com/ansible-community/meetings/blob/main/README.md#wednesdays">Community Working Group meeting</a>.</p></li>
+<li><p>Creating <a class="reference external" href="https://github.com/ansible-collections/overview/issues">GitHub Issues</a> in the <code class="docutils literal notranslate"><span class="pre">ansible-collections</span></code> repository.</p></li>
+</ul>
+</section>
+<section id="keeping-informed">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Keeping informed</a><a class="headerlink" href="#keeping-informed" title="Link to this heading"></a></h2>
+<p>To track changes that affect collections:</p>
+<ul class="simple">
+<li><p>Join the <a class="reference external" href="https://forum.ansible.com/g/CollectionMaintainer">Collection Maintainers &amp; Contributors forum group</a>.</p></li>
+<li><p>Subscribe to the <a class="reference external" href="https://forum.ansible.com/c/news/bullhorn/17">Bullhorn</a> Ansible contributor newsletter.</p></li>
+</ul>
+</section>
+<section id="collection-infrastructure">
+<span id="coll-infrastructure-reqs"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Collection infrastructure</a><a class="headerlink" href="#collection-infrastructure" title="Link to this heading"></a></h2>
+<p>The following guidelines describe the required structure for your collection:</p>
+<ul class="simple">
+<li><p>MUST have a publicly available issue tracker that does not require a paid level of service to create an account or view issues.</p></li>
+<li><p>MUST have a Code of Conduct (CoC).</p>
+<ul>
+<li><p>The collection’s CoC MUST be compatible with the <a class="reference internal" href="../code_of_conduct.html#code-of-conduct"><span class="std std-ref">Community Code of Conduct</span></a>.</p></li>
+<li><p>The collections SHOULD consider using the Ansible CoC if they do not have a CoC that they consider better.</p></li>
+<li><p>The <a class="reference internal" href="../communication.html#working-group-list"><span class="std std-ref">Diversity and Inclusion working group</span></a> may evaluate all CoCs and object to a collection’s inclusion based on the CoCs contents.</p></li>
+<li><p>The CoC MUST be linked from the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file, or MUST be present or linked from the <code class="docutils literal notranslate"><span class="pre">CODE_OF_CONDUCT.md</span></code> file in the collection root.</p></li>
+</ul>
+</li>
+<li><p>MUST be published to <a class="reference external" href="https://galaxy.ansible.com">Ansible Galaxy</a>.</p></li>
+<li><p>SHOULD NOT contain any large objects (binaries) comparatively to the current Galaxy tarball size limit of 20 MB, For example, do not include package installers for testing purposes.</p></li>
+<li><p>SHOULD NOT contain any unnecessary files such as temporary files.</p></li>
+<li><p>MUST only contain objects that follow the <a class="reference internal" href="#coll-licensing-req"><span class="std std-ref">Licensing rules</span></a>.</p></li>
+</ul>
+</section>
+<section id="python-compatibility">
+<span id="coll-python-compatibility"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink">Python Compatibility</a><a class="headerlink" href="#python-compatibility" title="Link to this heading"></a></h2>
+<p>In addition to the Python requirements specified in this section, collections SHOULD adhere to the tips at <span class="xref std std-ref">ansible-and-python-3</span>.</p>
+<section id="python-requirements">
+<span id="coll-python-reqs"></span><h3><a class="toc-backref" href="#id13" role="doc-backlink">Python Requirements</a><a class="headerlink" href="#python-requirements" title="Link to this heading"></a></h3>
+<p>Python requirements for a collection vary between <strong>controller environment</strong> and <strong>other environment</strong>.</p>
+<section id="controller-environment">
+<span id="coll-controller-req"></span><h4><a class="toc-backref" href="#id14" role="doc-backlink">Controller environment</a><a class="headerlink" href="#controller-environment" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Collections MUST support all eligible controller Python versions in the controller environment, unless required libraries do not support these Python versions. The <a class="reference internal" href="../steering/community_steering_committee.html#steering-responsibilities"><span class="std std-ref">Steering Committee</span></a> can grant other exceptions on a case-by-case basis.</p>
+<ul>
+<li><p>controller environment: the plugins/modules always run in the same environment (Python interpreter, venv, host, and so on) as ansible-core itself.</p></li>
+<li><p>eligible controller Python version: a Python version that is supported on the controller side by at least one ansible-core version that the collection supports. The eligible versions can be determined from the <a class="reference internal" href="../../reference_appendices/release_and_maintenance.html#ansible-core-support-matrix"><span class="std std-ref">ansible-core support matrix</span></a> and from the <code class="docutils literal notranslate"><span class="pre">requires_ansible</span></code> value in <code class="docutils literal notranslate"><span class="pre">meta/runtime.yml</span></code> in the collection.</p></li>
+</ul>
+</li>
+<li><p>The collection MUST document all eligible controller Python versions that are <strong>not</strong> supported in the controller environment. See <a class="reference internal" href="#coll-python-docs-req"><span class="std std-ref">Python documentation requirements</span></a> for details.</p></li>
+</ul>
+</section>
+<section id="other-environment">
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">Other environment</a><a class="headerlink" href="#other-environment" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Collections MUST support all eligible controller Python versions in the other environment, unless required libraries do not support these Python versions. The <a class="reference internal" href="../steering/community_steering_committee.html#steering-responsibilities"><span class="std std-ref">Steering Committee</span></a> can grant other exceptions on a case-by-case basis.</p>
+<ul>
+<li><p>other environment: the plugins/modules run not in a controller environment.</p></li>
+<li><p>eligible target Python version: a Python version that is supported on the target side by at least one ansible-core version that the collection supports. The eligible versions can be determined from the <a class="reference internal" href="../../reference_appendices/release_and_maintenance.html#ansible-core-support-matrix"><span class="std std-ref">ansible-core support matrix</span></a> and from the <code class="docutils literal notranslate"><span class="pre">requires_ansible</span></code> value in <code class="docutils literal notranslate"><span class="pre">meta/runtime.yml</span></code> in the collection.</p></li>
+</ul>
+</li>
+<li><p>The collection MUST document all eligible target Python versions that are not supported in the other environment. See <a class="reference internal" href="#coll-python-docs-req"><span class="std std-ref">Python documentation requirements</span></a> for details.</p></li>
+</ul>
+</section>
+<section id="dropping-python-versions-support">
+<h4><a class="toc-backref" href="#id16" role="doc-backlink">Dropping Python versions support</a><a class="headerlink" href="#dropping-python-versions-support" title="Link to this heading"></a></h4>
+<p>Because dropping support for a Python version for an existing module/plugin is a breaking change, the collection:</p>
+<ul class="simple">
+<li><p>SHOULD announce it under the deprecated features section in its changelog in previous versions before the support is dropped.</p></li>
+<li><p>MUST release a major version that actually drops the support.</p></li>
+</ul>
+</section>
+<section id="python-documentation-requirements">
+<span id="coll-python-docs-req"></span><h4><a class="toc-backref" href="#id17" role="doc-backlink">Python documentation requirements</a><a class="headerlink" href="#python-documentation-requirements" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>If your collection does not support all eligible controller/target Python versions, you MUST document which versions it supports in the README.</p></li>
+<li><p>If most of your collection supports the same Python versions as ansible-core, but some modules and plugins do not, you MUST include the supported Python versions in the documentation for those modules and plugins.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="standards-for-developing-module-and-plugin-utilities">
+<span id="coll-plugin-standards"></span><h2><a class="toc-backref" href="#id18" role="doc-backlink">Standards for developing module and plugin utilities</a><a class="headerlink" href="#standards-for-developing-module-and-plugin-utilities" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">module_utils</span></code> and <code class="docutils literal notranslate"><span class="pre">plugin_utils</span></code> can be marked for only internal use in the collection, but they MUST document this and MUST use a leading underscore for file names.</p></li>
+<li><p>It is a breaking change when you make an existing <code class="docutils literal notranslate"><span class="pre">module_utils</span></code> private and in that case the collection requires a major version bump.</p></li>
+<li><p>Below are some recommendations for <code class="docutils literal notranslate"><span class="pre">module_utils</span></code> documentation:</p>
+<ul>
+<li><p>No docstring: everything we recommend for <code class="docutils literal notranslate"><span class="pre">other-environment</span></code> is supported.</p></li>
+<li><p>The docstring <code class="docutils literal notranslate"><span class="pre">'Python</span> <span class="pre">versions</span> <span class="pre">supported:</span> <span class="pre">same</span> <span class="pre">as</span> <span class="pre">for</span> <span class="pre">controller-environment'</span></code>: everything we recommend for <code class="docutils literal notranslate"><span class="pre">controller-environment</span></code> is supported.</p></li>
+<li><p>The docstring with specific versions otherwise: <code class="docutils literal notranslate"><span class="pre">'Python</span> <span class="pre">versions</span> <span class="pre">supported:</span> <span class="pre">'</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="repository-structure-requirements">
+<span id="coll-repo-structure"></span><h2><a class="toc-backref" href="#id19" role="doc-backlink">Repository structure requirements</a><a class="headerlink" href="#repository-structure-requirements" title="Link to this heading"></a></h2>
+<section id="galaxy-yml">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">galaxy.yml</a><a class="headerlink" href="#galaxy-yml" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">tags</span></code> field MUST be set.</p></li>
+<li><p>Collection dependencies must meet a set of rules. See the section on <cite>Collection Dependencies &lt;collection_dependencies_&gt;</cite> for details.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package MUST NOT depend on collections not shipped in the package.</p></li>
+<li><p>If you plan to split up your collection, the new collection MUST be approved for inclusion before the smaller collections replace the larger in Ansible.</p></li>
+<li><p>If you plan to add other collections as dependencies, they MUST run through the formal application process.</p></li>
+</ul>
+</section>
+<section id="readme-md">
+<span id="coll-readme-req"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink">README.md</a><a class="headerlink" href="#readme-md" title="Link to this heading"></a></h3>
+<p>Your collection repository MUST have a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> in the root of the collection, see <a class="reference external" href="https://github.com/ansible-collections/collection_template/blob/main/README.md">collection_template/README.md</a> for an example.</p>
+</section>
+<section id="meta-runtime-yml">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">meta/runtime.yml</a><a class="headerlink" href="#meta-runtime-yml" title="Link to this heading"></a></h3>
+<p>Example: <a class="reference external" href="https://github.com/ansible-collections/collection_template/blob/main/meta/runtime.yml">meta/runtime.yml</a></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">meta/runtime.yml</span></code> MUST define the minimum version of Ansible which this collection works with.</p>
+<ul>
+<li><p>If the collection works with Ansible 2.9, then this should be set to <cite>&gt;=2.9.10</cite></p></li>
+<li><p>It is usually better to avoid adding <cite>&lt;2.11</cite> as a restriction, since this for example makes it impossible to use the collection with the current ansible-base devel branch (which has version 2.11.0.dev0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="meta-execution-environment-yml">
+<span id="coll-module-reqs"></span><h3><a class="toc-backref" href="#id23" role="doc-backlink">meta/execution-environment.yml</a><a class="headerlink" href="#meta-execution-environment-yml" title="Link to this heading"></a></h3>
+<p>If a collection has controller-side Python package and/or system package requirements, to allow easy <a class="reference external" href="https://ansible.readthedocs.io/en/latest/getting_started_ee/index.html">execution environment</a> building, they SHOULD be listed in corresponding files under the <code class="docutils literal notranslate"><span class="pre">meta</span></code> directory, specified in <code class="docutils literal notranslate"><span class="pre">meta/execution-environment.yml</span></code>, and <a class="reference external" href="https://ansible.readthedocs.io/projects/builder/en/latest/collection_metadata/#when-installing-collections-using-ansible-galaxy">verified</a>.</p>
+<p>See the <a class="reference external" href="https://ansible.readthedocs.io/projects/builder/en/latest/collection_metadata/#collection-level-dependencies">Collection-level dependencies guide</a> for more information and <cite>collection_template/meta &lt;https://github.com/ansible-collections/collection_template/tree/main/meta&gt;</cite> directory content as an example.</p>
+</section>
+<section id="modules-plugins">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Modules &amp; Plugins</a><a class="headerlink" href="#modules-plugins" title="Link to this heading"></a></h3>
+<ul>
+<li><p>Collections MUST only use the directories specified below in the <code class="docutils literal notranslate"><span class="pre">plugins/</span></code> directory and
+only for the purposes listed:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Those recognized by ansible-core<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">doc_fragments</span></code>, <code class="docutils literal notranslate"><span class="pre">modules</span></code>, <code class="docutils literal notranslate"><span class="pre">module_utils</span></code>, <code class="docutils literal notranslate"><span class="pre">terminal</span></code>, and those listed in <a class="reference internal" href="../../plugins/plugins.html#working-with-plugins"><span class="std std-ref">Working with plugins</span></a>. This list can be verified by looking at the last element of the package argument of each <code class="docutils literal notranslate"><span class="pre">*_loader</span></code> in <a class="reference external" href="https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/loader.py#L1126">https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/loader.py#L1126</a></p>
+</dd>
+<dt class="field-even">plugin_utils<span class="colon">:</span></dt>
+<dd class="field-even"><p>For shared code which is only used controller-side, not in modules.</p>
+</dd>
+<dt class="field-odd">sub_plugins<span class="colon">:</span></dt>
+<dd class="field-odd"><p>For other plugins that are managed by plugins inside of collections instead of ansible-core.  We use a subfolder so there aren’t conflicts when ansible-core adds new plugin types.</p>
+</dd>
+</dl>
+<p>The core team (which maintains ansible-core) has committed not to use these directories for
+anything which would conflict with the uses specified here.</p>
+</li>
+</ul>
+</section>
+<section id="other-directories">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Other directories</a><a class="headerlink" href="#other-directories" title="Link to this heading"></a></h3>
+<p>Collections MUST not use files outside <code class="docutils literal notranslate"><span class="pre">meta/</span></code>, <code class="docutils literal notranslate"><span class="pre">plugins/</span></code>, <code class="docutils literal notranslate"><span class="pre">roles/</span></code> and <code class="docutils literal notranslate"><span class="pre">playbooks/</span></code> in any plugin, role, or playbook that can be called by FQCN, used from other collections, or used from user playbooks and roles. A collection must work if every file or directory is deleted from the installed collection except those four directories and their contents.</p>
+<p>Internal plugins, roles and playbooks (artifacts used only in testing, or only to release the collection, or only for some other internal purpose and not used externally) are exempt from this rule and may rely on files in other directories.</p>
+<section id="documentation-requirements">
+<span id="coll-docs-structure-reqs"></span><h4><a class="toc-backref" href="#id26" role="doc-backlink">Documentation requirements</a><a class="headerlink" href="#documentation-requirements" title="Link to this heading"></a></h4>
+<p>All modules and plugins MUST:</p>
+<ul class="simple">
+<li><p>Include a <span class="xref std std-ref">DOCUMENTATION</span> block.</p></li>
+<li><p>Include an <span class="xref std std-ref">EXAMPLES</span> block (except where not relevant for the plugin type).</p></li>
+<li><p>Use FQCNs when referring to modules, plugins and documentation fragments inside and outside the collection (including <code class="docutils literal notranslate"><span class="pre">ansible.builtin</span></code> for the listed entities from ansible-core.</p></li>
+</ul>
+<p>When using <code class="docutils literal notranslate"><span class="pre">version_added</span></code> in the documentation:</p>
+<ul class="simple">
+<li><p>Declare the version of the collection in which the options were added – NOT the version of Ansible.</p></li>
+<li><p>If you for some reason really have to specify version numbers of Ansible or of another collection, you also have to provide <code class="docutils literal notranslate"><span class="pre">version_added_collection:</span> <span class="pre">collection_name</span></code>. We strongly recommend to NOT do this.</p></li>
+<li><p>Include <code class="docutils literal notranslate"><span class="pre">version_added</span></code> when you add new content (modules, plugins, options) to an existing collection. The values are shown in the documentation and can be useful, but you do not need to add <code class="docutils literal notranslate"><span class="pre">version_added</span></code> to every option, module, and plugin when creating a new collection.</p></li>
+</ul>
+<p>Other items:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code> (or <code class="docutils literal notranslate"><span class="pre">README.md</span></code>) file MUST state what types of contributions (pull requests, feature requests, and so on) are accepted and any relevant contributor guidance. Issues (bugs and feature requests) reports must always be accepted.</p></li>
+<li><p>Collections are encouraged to use <span class="xref std std-ref">links and formatting macros</span></p></li>
+<li><p>Including a <span class="xref std std-ref">RETURN</span> block for modules is strongly encouraged but not required.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="contributor-workflow">
+<span id="coll-workflow"></span><h2><a class="toc-backref" href="#id27" role="doc-backlink">Contributor Workflow</a><a class="headerlink" href="#contributor-workflow" title="Link to this heading"></a></h2>
+<section id="changelogs">
+<span id="coll-changlogs-req"></span><h3><a class="toc-backref" href="#id28" role="doc-backlink">Changelogs</a><a class="headerlink" href="#changelogs" title="Link to this heading"></a></h3>
+<p>Collections are required to include a changelog. To give a consistent feel for changelogs across collections and ensure changelogs exist for collections included in the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package we suggest you use <a class="reference external" href="https://github.com/ansible-community/antsibull-changelog">antsibull-changelog</a> to maintain and generate this but other options exist. Preferred (in descending order):</p>
+<ol class="arabic simple">
+<li><p>Use antsibull-changelog (preferred).</p></li>
+<li><p>Provide <code class="docutils literal notranslate"><span class="pre">changelogs/changelog.yaml</span></code> in the <a class="reference external" href="https://github.com/ansible-community/antsibull-changelog/blob/main/docs/changelog.yaml-format.md">correct format</a>. (You can use <code class="docutils literal notranslate"><span class="pre">antsibull-lint</span> <span class="pre">changelog-yaml</span> <span class="pre">/path/to/changelog.yaml</span></code> to validate the format.)</p></li>
+<li><p>Provide a link to the changelog file (self-hosted) (not recommended).</p></li>
+</ol>
+<p>Note that the porting guide is compiled from <code class="docutils literal notranslate"><span class="pre">changelogs/changelog.yaml</span></code> (sections <code class="docutils literal notranslate"><span class="pre">breaking_changes</span></code>, <code class="docutils literal notranslate"><span class="pre">major_changes</span></code>, <code class="docutils literal notranslate"><span class="pre">deprecated_features</span></code>, <code class="docutils literal notranslate"><span class="pre">removed_features</span></code>). So if you use option 3, you will not be able to add something to the porting guide.</p>
+<section id="versioning-and-deprecation">
+<span id="coll-versioning-req"></span><h4><a class="toc-backref" href="#id29" role="doc-backlink">Versioning and deprecation</a><a class="headerlink" href="#versioning-and-deprecation" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Collections MUST adhere to <a class="reference external" href="https://semver.org/">semantic versioning</a>.</p></li>
+<li><p>To preserve backward compatibility for users, every Ansible minor version series (x.Y.z) will keep the major version of a collection constant. If Ansible 3.0.0 includes <code class="docutils literal notranslate"><span class="pre">community.general</span></code> 2.2.0, then each 3.Y.z (3.1.z, 3.2.z, and so on) release will include the latest <code class="docutils literal notranslate"><span class="pre">community.general</span></code> 2.y.z release available at build time. Ansible 3.y.z will <strong>never</strong> include a <code class="docutils literal notranslate"><span class="pre">community.general</span></code> 3.y.z release, even if it is available. Major collection version changes will be included in the next Ansible major release (4.0.0 in this example).</p></li>
+<li><p>Therefore, ensure that the current major release of your collection included in 3.0.0 receives at least bugfixes as long as new 3.Y.Z releases are produced.</p></li>
+<li><p>Since new minor releases are included, you can include new features, modules and plugins. You must make sure that you do not break backward compatibility! (See <a class="reference external" href="https://semver.org/">semantic versioning</a>.) This means in particular:</p>
+<ul>
+<li><p>You can fix bugs in patch releases, but not add new features or deprecate things.</p></li>
+<li><p>You can add new features and deprecate things in minor releases but not remove things or change the behavior of existing features.</p></li>
+<li><p>You can only remove things or make breaking changes in major releases.</p></li>
+</ul>
+</li>
+<li><p>We recommend that you ensure that if a deprecation is added in a collection version that is included in Ansible 3.y.z, the removal itself will only happen in a collection version included in Ansible 5.0.0 or later, but not in a collection version included in Ansible 4.0.0.</p></li>
+<li><p>Content moved from ansible/ansible that was scheduled for removal in 2.11 or later MUST NOT be removed in the current major release available when ansible 2.10.0 is released. Otherwise it would already be removed in 2.10, unexpectedly for users! Deprecation cycles can be shortened (since they are now uncoupled from ansible or ansible-base versions), but existing ones must not be unexpectedly terminated.</p></li>
+<li><p>We recommend you announce your policy of releasing, versioning and deprecation to contributors and users in some way. For an example of how to do this, see <a class="reference external" href="https://github.com/ansible-collections/community.general/issues/582">the announcement in community.general</a>. You could also do this in the README.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="naming">
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">Naming</a><a class="headerlink" href="#naming" title="Link to this heading"></a></h2>
+<section id="collection-naming">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Collection naming</a><a class="headerlink" href="#collection-naming" title="Link to this heading"></a></h3>
+<p>For collections under ansible-collections the repository SHOULD be named <code class="docutils literal notranslate"><span class="pre">NAMESPACE.COLLECTION</span></code>.</p>
+<p>To create a new collection and corresponding repository, first, a new namespace in Galaxy has to be created by submitting <a class="reference external" href="https://github.com/ansible/galaxy/issues/new/choose">Request a namespace</a>.</p>
+<p><a class="reference external" href="https://galaxy.ansible.com/docs/contributing/namespaces.html#galaxy-namespace-limitations">Namespace limitations</a>  lists requirements for namespaces in Galaxy.</p>
+<p>For collections created for working with a particular entity, they should contain the entity name, for example <code class="docutils literal notranslate"><span class="pre">community.mysql</span></code>.</p>
+<p>For corporate maintained collections, the repository can be named <code class="docutils literal notranslate"><span class="pre">COMPANY_NAME.PRODUCT_NAME</span></code>, for example <code class="docutils literal notranslate"><span class="pre">ibm.db2</span></code>.</p>
+<p>We should avoid FQCN / repository names:</p>
+<ul class="simple">
+<li><p>which are unnecessary long: try to make it compact but clear.</p></li>
+<li><p>contain the same words / collocations in <code class="docutils literal notranslate"><span class="pre">NAMESPACE</span></code> and <code class="docutils literal notranslate"><span class="pre">COLLECTION</span></code> parts, for example <code class="docutils literal notranslate"><span class="pre">my_system.my_system</span></code>.</p></li>
+</ul>
+<p>If your collection is planned to be certified on <strong>Red Hat Automation Hub</strong>, please consult with Red Hat Partner Engineering through <code class="docutils literal notranslate"><span class="pre">ansiblepartners&#64;redhat.com</span></code> to ensure collection naming compatibility between the community collection on <strong>Galaxy</strong>.</p>
+</section>
+<section id="module-naming">
+<span id="coll-module-name-req"></span><h3><a class="toc-backref" href="#id32" role="doc-backlink">Module naming</a><a class="headerlink" href="#module-naming" title="Link to this heading"></a></h3>
+<p>Modules that only gather information MUST be named <code class="docutils literal notranslate"><span class="pre">&lt;something&gt;_info</span></code>. Modules that return <code class="docutils literal notranslate"><span class="pre">ansible_facts</span></code> are named <code class="docutils literal notranslate"><span class="pre">&lt;something&gt;_facts</span></code> and do not return non-facts.
+For more information, refer to the <span class="xref std std-ref">Developing modules guidelines</span>.</p>
+</section>
+</section>
+<section id="collection-licensing-requirements">
+<span id="coll-licensing-req"></span><h2><a class="toc-backref" href="#id33" role="doc-backlink">Collection licensing requirements</a><a class="headerlink" href="#collection-licensing-requirements" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The guidelines below are more restrictive than strictly necessary. We will try to add a larger list of acceptable licenses once we have approval from Red Hat Legal.</p>
+</div>
+<p>There are four types of content in collections which licensing has to address in different
+ways:</p>
+<dl class="field-list simple">
+<dt class="field-odd">modules<span class="colon">:</span></dt>
+<dd class="field-odd"><p>must be licensed with a free software license that is compatible with the
+<a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL-3.0-or-later</a></p>
+</dd>
+<dt class="field-even">module_utils<span class="colon">:</span></dt>
+<dd class="field-even"><p>must be licensed with a free software license that is compatible with the
+<a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL-3.0-or-later</a>.  Ansible
+itself typically uses the <a class="reference external" href="https://opensource.org/licenses/BSD-2-Clause">BSD-2-clause</a> license to make it possible for
+third-party modules which are licensed incompatibly with the GPLv3 to use them.
+Please consider this use case when licensing your own <code class="docutils literal notranslate"><span class="pre">module_utils</span></code>.</p>
+</dd>
+<dt class="field-odd">All other code in <code class="docutils literal notranslate"><span class="pre">plugins/</span></code><span class="colon">:</span></dt>
+<dd class="field-odd"><p>All other code in <code class="docutils literal notranslate"><span class="pre">plugins/</span></code> must be under the <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL-3.0-or-later</a>.  These plugins
+are run inside of the Ansible controller process which is licensed under
+the <code class="docutils literal notranslate"><span class="pre">GPL-3.0-or-later</span></code> and often must import code from the controller.
+For these reasons, <code class="docutils literal notranslate"><span class="pre">GPL-3.0-or-later</span></code> must be used.</p>
+</dd>
+<dt class="field-even">All other code<span class="colon">:</span></dt>
+<dd class="field-even"><p>Code outside <code class="docutils literal notranslate"><span class="pre">plugins/</span></code> may be licensed under another free software license that is compatible
+with the <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL-3.0-or-later</a>,
+provided that such code does not import any other code that is licensed under
+the <code class="docutils literal notranslate"><span class="pre">GPL-3.0-or-later</span></code>. If the file does import other <code class="docutils literal notranslate"><span class="pre">GPL-3.0-or-later</span></code> code,
+then it must similarly be licensed under <code class="docutils literal notranslate"><span class="pre">GPL-3.0-or-later</span></code>. Note that this applies in
+particular to unit tests; these often import code from ansible-core, plugins, module utils,
+or modules, and such code is often licensed under <code class="docutils literal notranslate"><span class="pre">GPL-3.0-or-later</span></code>.</p>
+</dd>
+<dt class="field-odd">Non code content<span class="colon">:</span></dt>
+<dd class="field-odd"><p>At the moment, these must also be under the <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL-3.0-or-later</a>.</p>
+</dd>
+</dl>
+<p>Use <a class="reference external" href="https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses">the list of licenses from gnu.org</a> to find which licenses are
+compatible with the GPLv3+. The license must be considered open source and compatible with GPLv3+ on both the gnu.org license
+list and the <a class="reference external" href="https://wiki.debian.org/DFSGLicenses">Debian Free Software Guidelines</a> to be
+allowed.</p>
+<p>These guidelines are the policy for inclusion in the Ansible package and are in addition to any
+licensing and legal concerns that may otherwise affect your code.</p>
+</section>
+<section id="contributor-license-agreements">
+<h2><a class="toc-backref" href="#id34" role="doc-backlink">Contributor License Agreements</a><a class="headerlink" href="#contributor-license-agreements" title="Link to this heading"></a></h2>
+<p>Collections MUST NOT require community contributors to sign any type of
+contributor license agreement (CLA) other than the
+<a class="reference external" href="https://developercertificate.org/">Developer Certificate of Origin</a>
+or similar agreements that only require confirming the provenance of contributions.
+This requirement seeks to preserve the community’s ownership over its contributions,
+prevent unwelcome licensing changes that can occur when one entity
+owns the copyrights for an entire project,
+and lower barriers to contribution.</p>
+</section>
+<section id="repository-management">
+<span id="coll-repo-management"></span><h2><a class="toc-backref" href="#id35" role="doc-backlink">Repository management</a><a class="headerlink" href="#repository-management" title="Link to this heading"></a></h2>
+<p>Every collection MUST have a public git repository. Releases of the collection MUST be tagged in said repository. This means that releases MUST be <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span></code>ed and that the tag name MUST exactly match the Galaxy version number. Tag names MAY have a <code class="docutils literal notranslate"><span class="pre">v</span></code> prefix, but a collection’s tag names MUST have a consistent format from release to release.</p>
+<p>Additionally, collection artifacts released to Galaxy MUST be built from the sources that are tagged in the collection’s git repository as that release. Any changes made during the build process MUST be clearly documented so the collection artifact can be reproduced.</p>
+<p>We are open to allowing other SCM software once our tooling supports them.</p>
+<section id="branch-name-and-configuration">
+<span id="coll-branch-config"></span><h3><a class="toc-backref" href="#id36" role="doc-backlink">Branch name and configuration</a><a class="headerlink" href="#branch-name-and-configuration" title="Link to this heading"></a></h3>
+<p>This subsection is <strong>only</strong> for repositories under <a class="reference external" href="https://github.com/ansible-collections">ansible-collections</a>! Other collection repositories can also follow these guidelines, but do not have to.</p>
+<p>All new repositories MUST have <code class="docutils literal notranslate"><span class="pre">main</span></code> as the default branch.</p>
+<p>Existing repositories SHOULD be converted to use <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+<p>Repository Protections:</p>
+<ul class="simple">
+<li><p>Allow merge commits: disallowed</p></li>
+</ul>
+<p>Branch protections MUST be enforced:</p>
+<ul class="simple">
+<li><p>Require linear history</p></li>
+<li><p>Include administrators</p></li>
+</ul>
+</section>
+</section>
+<section id="ci-testing">
+<span id="coll-ci-tests"></span><h2><a class="toc-backref" href="#id37" role="doc-backlink">CI Testing</a><a class="headerlink" href="#ci-testing" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can copy the free-to-use <a class="reference external" href="https://github.com/ansible-collections/collection_template/blob/main/.github/workflows/ansible-test.yml">GitHub action workflow file</a> from the <a class="reference external" href="https://github.com/ansible-collections/collection_template/">Collection Template repository</a> to the <cite>.github/workflows</cite> directory in your collection to set up testing through GitHub actions. The workflow covers all the requirements below.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Subscribe to the <a class="reference external" href="https://github.com/ansible-collections/news-for-maintainers">news-for-maintainers repository</a>
+and keep your matrix up to date in accordance to related announcements.
+Add new <cite>ansible-core</cite> versions in a timely manner and consider dropping support and testing against its EOL versions and versions your collection does not support.</p>
+<p>If your collection repository is under the <code class="docutils literal notranslate"><span class="pre">ansible-collections</span></code> GitHub organization, please keep in mind that the number of testing jobs is limited
+and shared across all the collections in the organization. So, focusing on good test coverage of your collection,
+please avoid testing against unnecessary entities such as <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> EOL versions your collection does not support.</p>
+</div>
+<ul class="simple">
+<li><p>You MUST run the <code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">sanity</span></code> command from the <a class="reference external" href="https://github.com/ansible/ansible/branches/all?query=stable-">latest stable ansible-base/ansible-core branch</a>.</p>
+<ul>
+<li><p>Collections MUST run an equivalent of the <code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">sanity</span> <span class="pre">--docker</span></code> command.</p></li>
+<li><p>If they do not use <code class="docutils literal notranslate"><span class="pre">--docker</span></code>, they must make sure that all tests run, in particular the compile and import tests (which should run for all <span class="xref std std-ref">supported Python versions</span>).</p></li>
+<li><p>Collections can choose to skip certain Python versions that they explicitly do not support; this needs to be documented in <code class="docutils literal notranslate"><span class="pre">README.md</span></code> and in every module and plugin (hint: use a docs fragment). However, we strongly recommend you follow the <span class="xref std std-ref">Ansible Python Compatibility</span> section for more details.</p></li>
+</ul>
+</li>
+<li><p>You SHOULD suggest to <em>additionally</em> run <code class="docutils literal notranslate"><span class="pre">ansible-test</span> <span class="pre">sanity</span></code> from the ansible/ansible <code class="docutils literal notranslate"><span class="pre">devel</span></code> branch so that you find out about new linting requirements earlier.</p></li>
+<li><p>The sanity tests MUST pass.</p>
+<ul>
+<li><p>Adding some entries to the <code class="docutils literal notranslate"><span class="pre">test/sanity/ignore*.txt</span></code> file is an allowed method of getting them to pass, except cases listed below.</p></li>
+<li><p>You SHOULD not have ignored test entries.  A reviewer can manually evaluate and approve your collection if they deem an ignored entry to be valid.</p></li>
+<li><dl class="simple">
+<dt>You MUST not ignore the following validations. They must be fixed before approval:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:doc-choices-do-not-match-spec</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:doc-default-does-not-match-spec</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:doc-missing-type</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:doc-required-mismatch</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:mutually_exclusive-unknown</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:no-log-needed</span></code> (use <code class="docutils literal notranslate"><span class="pre">no_log=False</span></code> in the argument spec to flag false positives!)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:nonexistent-parameter-documented</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:parameter-list-no-elements</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:parameter-type-not-in-doc</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>The following validations MUST not be ignored except in specific circumstances:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">validate-modules:undocumented-parameter</span></code>: this MUST only be ignored in one of these two cases:</p>
+<ol class="arabic simple">
+<li><p>A dangerous module parameter has been deprecated or removed, and code is present to inform the user that they should not use this specific parameter anymore or that it stopped working intentionally.</p></li>
+<li><p>Module parameters are only used to pass in data from an accompanying action plugin.</p></li>
+</ol>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>All entries in ignores.txt MUST have a justification in a comment in the ignore.txt file for each entry.  For example <code class="docutils literal notranslate"><span class="pre">plugins/modules/docker_container.py</span> <span class="pre">use-argspec-type-path</span> <span class="pre">#</span> <span class="pre">uses</span> <span class="pre">colon-separated</span> <span class="pre">paths,</span> <span class="pre">can't</span> <span class="pre">use</span> <span class="pre">type=path</span></code>.</p></li>
+<li><p>Reviewers can block acceptance of a new collection if they don’t agree with the ignores.txt entries.</p></li>
+</ul>
+</li>
+<li><p>You MUST run CI against each of the “major versions” (2.10, 2.11, 2.12, etc) of <code class="docutils literal notranslate"><span class="pre">ansible-base</span></code>/<code class="docutils literal notranslate"><span class="pre">ansible-core</span></code> that the collection supports. (Usually the <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> of the stable-xxx branches.)</p></li>
+<li><p>All CI tests MUST run against every pull request and SHOULD pass before merge.</p></li>
+<li><p>At least sanity tests MUST run against a commit that releases the collection; if they do not pass, the collection will NOT be released.</p>
+<ul>
+<li><p>If the collection has integration/unit tests, they SHOULD run too; if they do not pass, the errors SHOULD be analyzed to decide whether they should block the release or not.</p></li>
+</ul>
+</li>
+<li><p>All CI tests MUST run regularly (nightly, or at least once per week) to ensure that repositories without regular commits are tested against the latest version of ansible-test from each ansible-base/ansible-core version tested. The results from the regular CI runs MUST be checked regularly.</p></li>
+</ul>
+<p>All of the above can be achieved by using the <a class="reference external" href="https://github.com/ansible-collections/collection_template/tree/main/.github/workflows">GitHub Action template</a>.</p>
+<p>To learn how to add tests to your collection, see:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="collection_integration_tests.html#collection-integration-tests"><span class="std std-ref">Adding integration tests to a collection</span></a></p></li>
+<li><p><a class="reference internal" href="collection_unit_tests.html#collection-unit-tests"><span class="std std-ref">Add unit tests to a collection</span></a></p></li>
+</ul>
+</section>
+<section id="collections-and-working-groups">
+<span id="coll-wg-reqs"></span><h2><a class="toc-backref" href="#id38" role="doc-backlink">Collections and Working Groups</a><a class="headerlink" href="#collections-and-working-groups" title="Link to this heading"></a></h2>
+<p>The collections have:</p>
+<ul class="simple">
+<li><p>Working group page(s) on a corresponding wiki if needed. Makes sense if there is a group of modules for working with one common entity, for example, postgresql, zabbix, grafana, and so on.</p></li>
+<li><p>Issue for agenda (or pinboard if there are no regular meetings) as a pinned issue in the repository.</p></li>
+</ul>
+</section>
+<section id="when-moving-modules-between-collections">
+<span id="coll-migrating-reqs"></span><h2><a class="toc-backref" href="#id39" role="doc-backlink">When moving modules between collections</a><a class="headerlink" href="#when-moving-modules-between-collections" title="Link to this heading"></a></h2>
+<p>All related entities must be moved/copied including:</p>
+<ul class="simple">
+<li><p>Related plugins and module_utils files (when moving, be sure it is not used by other modules, otherwise copy).</p></li>
+<li><p>CI and unit tests.</p></li>
+<li><p>Corresponding documentation fragments from <code class="docutils literal notranslate"><span class="pre">plugins/doc_fragments</span></code>.</p></li>
+</ul>
+<p>Also:</p>
+<ul class="simple">
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">M()</span></code>, examples, <code class="docutils literal notranslate"><span class="pre">seealso</span></code>, <code class="docutils literal notranslate"><span class="pre">extended_documentation_fragments</span></code> to use actual FQCNs in moved content and in other collections that have references to the content.</p></li>
+<li><p>Move all related issues, pull requests, and wiki pages.</p></li>
+<li><p>Look through <code class="docutils literal notranslate"><span class="pre">docs/docsite</span></code> directory of <a class="reference external" href="https://github.com/ansible/ansible">ansible-base GitHub repository</a> (for example, using the <code class="docutils literal notranslate"><span class="pre">grep</span></code> command-line utility) to check if there are examples using the moved modules and plugins to update their FQCNs.</p></li>
+</ul>
+<p>See <span class="xref std std-ref">Migrating content to a different collection</span> for complete details.</p>
+</section>
+<section id="development-conventions">
+<span id="coll-development-conventions"></span><h2><a class="toc-backref" href="#id40" role="doc-backlink">Development conventions</a><a class="headerlink" href="#development-conventions" title="Link to this heading"></a></h2>
+<p>Besides all the requirements listed in the <a class="reference internal" href="../../dev_guide/developing_modules_best_practices.html#module-dev-conventions"><span class="std std-ref">Conventions, tips, and pitfalls</span></a>, be sure:</p>
+<ul class="simple">
+<li><p>Your modules satisfy the concept of <span class="xref std std-ref">idempotency</span>: if a module repeatedly runs with the same set of inputs, it will not make any changes on the system.</p></li>
+<li><p>Your modules do not query information using special <code class="docutils literal notranslate"><span class="pre">state</span></code> option values like <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">query</span></code>, or <code class="docutils literal notranslate"><span class="pre">info</span></code> -
+create new <code class="docutils literal notranslate"><span class="pre">_info</span></code> or <code class="docutils literal notranslate"><span class="pre">_facts</span></code> modules instead (for more information, refer to the <span class="xref std std-ref">Developing modules guidelines</span>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">check_mode</span></code> is supported in all <code class="docutils literal notranslate"><span class="pre">*_info</span></code> and <code class="docutils literal notranslate"><span class="pre">*_facts</span></code> modules (for more information, refer to the <span class="xref std std-ref">Development conventions</span>).</p></li>
+</ul>
+</section>
+<section id="collection-dependencies">
+<span id="coll-dependencies"></span><h2><a class="toc-backref" href="#id41" role="doc-backlink">Collection Dependencies</a><a class="headerlink" href="#collection-dependencies" title="Link to this heading"></a></h2>
+<p><strong>Notation:</strong> if foo.bar has a dependency on baz.bam, we say that baz.bam is the collection <em>depended on</em>, and foo.bar is the <em>dependent collection</em>.</p>
+<ul class="simple">
+<li><p>Collection dependencies must have a lower bound on the version which is at least 1.0.0.</p>
+<ul>
+<li><p>This means that all collection dependencies have to specify lower bounds on the versions, and these lower bounds should be stable releases, and not versions of the form 0.x.y.</p></li>
+<li><p>When creating new collections where collection dependencies are also under development, you need to watch out since Galaxy checks whether dependencies exist in the required versions:</p>
+<ol class="arabic simple">
+<li><p>Assume that <code class="docutils literal notranslate"><span class="pre">foo.bar</span></code> depends on <code class="docutils literal notranslate"><span class="pre">foo.baz</span></code>.</p></li>
+<li><p>First release <code class="docutils literal notranslate"><span class="pre">foo.baz</span></code> as 1.0.0.</p></li>
+<li><p>Then modify <code class="docutils literal notranslate"><span class="pre">foo.bar</span></code>’s <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> to specify <code class="docutils literal notranslate"><span class="pre">'&gt;=1.0.0'</span></code> for <code class="docutils literal notranslate"><span class="pre">foo.baz</span></code>.</p></li>
+<li><p>Finally release <code class="docutils literal notranslate"><span class="pre">foo.bar</span></code> as 1.0.0.</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>The dependencies between collections included in Ansible must be valid. If a dependency is violated, the involved collections must be pinned so that all dependencies are valid again. This means that the version numbers from the previous release are kept or only partially incremented so that the resulting set of versions has no invalid dependencies.</p></li>
+<li><p>If a collection has a too strict dependency for a longer time, and forces another collection depended on to be held back, that collection will be removed from the next major Ansible release. What “longer time” means depends on when the next Ansible major release happens. If a dependent collection prevents a new major version of a collection it depends on to be included in the next major Ansible release, the dependent collection will be removed from that major release to avoid blocking the collection being depended on.</p></li>
+<li><p>We strongly suggest that collections also test against the <code class="docutils literal notranslate"><span class="pre">main</span></code> branches of their dependencies to ensure that incompatibilities with future releases of these are detected as early as possible and can be resolved in time to avoid such problems. Collections depending on other collections must understand that they bear the risk of being removed when they do not ensure compatibility with the latest releases of their dependencies.</p></li>
+<li><p>Collections included in Ansible must not depend on other collections except if they satisfy one of the following cases:</p>
+<ol class="arabic simple">
+<li><p>They have a loose dependency on one (or more) major versions of other collections included in Ansible. For example, <code class="docutils literal notranslate"><span class="pre">ansible.netcommon:</span> <span class="pre">&gt;=1.0.0</span></code>, or <code class="docutils literal notranslate"><span class="pre">ansible.netcommon:</span> <span class="pre">&gt;=2.0.0,</span> <span class="pre">&lt;3.0.0</span></code>. In case a collection depends on releases of a new major version outside of this version range that will be included in the next major Ansible release, the dependent collection will be removed from the next major Ansible release. The cut-off date for this is feature freeze.</p></li>
+<li><p>They are explicitly being allowed to do so by the Steering Committee.</p></li>
+</ol>
+</li>
+</ul>
+<section id="examples">
+<h3><a class="toc-backref" href="#id42" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">community.foo</span> <span class="pre">1.2.0</span></code> has a dependency on <code class="docutils literal notranslate"><span class="pre">community.bar</span> <span class="pre">&gt;=</span> <span class="pre">1.0.0,</span> <span class="pre">&lt;</span> <span class="pre">1.3.0</span></code>.</p>
+<ul class="simple">
+<li><p>Now <code class="docutils literal notranslate"><span class="pre">community.bar</span></code> creates a new release <code class="docutils literal notranslate"><span class="pre">1.3.0</span></code>. When <code class="docutils literal notranslate"><span class="pre">community.foo</span></code> does not create a new release with a relaxed dependency, we have to include <code class="docutils literal notranslate"><span class="pre">community.bar</span> <span class="pre">1.2.x</span></code> in the next Ansible release despite <code class="docutils literal notranslate"><span class="pre">1.3.0</span></code> being available.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">community.foo</span></code> does not relax its dependency on <code class="docutils literal notranslate"><span class="pre">community.bar</span></code> for some time, <code class="docutils literal notranslate"><span class="pre">community.foo</span></code> will be removed from the next Ansible major release.</p></li>
+<li><p>Unfortunately <code class="docutils literal notranslate"><span class="pre">community.bar</span></code> has to stay at <code class="docutils literal notranslate"><span class="pre">1.2.x</span></code> until either <code class="docutils literal notranslate"><span class="pre">community.foo</span></code> is removed (in the next major release), or loosens its requirements so that newer <code class="docutils literal notranslate"><span class="pre">community.bar</span> <span class="pre">1.3.z</span></code> releases can be included.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">community.foonetwork</span></code> depends on <code class="docutils literal notranslate"><span class="pre">ansible.netcommon</span> <span class="pre">&gt;=</span> <span class="pre">2.0.0,</span> <span class="pre">&lt;3.0.0</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible.netcommon</span> <span class="pre">4.0.0</span></code> is released during this major Ansible release cycle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">community.foonetwork</span></code> either releases a new version before feature freeze of the next major Ansible release that allows depending on all <code class="docutils literal notranslate"><span class="pre">ansible.netcommon</span> <span class="pre">4.x.y</span></code> releases, or it will be removed from the next major Ansible release.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="requirements-for-collections-to-be-included-in-the-ansible-package">
+<span id="coll-inclusion-reqs"></span><h2><a class="toc-backref" href="#id43" role="doc-backlink">Requirements for collections to be included in the Ansible Package</a><a class="headerlink" href="#requirements-for-collections-to-be-included-in-the-ansible-package" title="Link to this heading"></a></h2>
+<p>To be included in the <cite>ansible</cite> package, collections must meet the following criteria:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../dev_guide/developing_modules_best_practices.html#module-dev-conventions"><span class="std std-ref">Development conventions</span></a>.</p></li>
+<li><p><a class="reference external" href="https://docs.ansible.com/ansible/devel/community/collection_contributors/collection_requirements.html">Collection requirements</a> (this document).</p>
+<ul>
+<li><p>The <a class="reference external" href="https://github.com/ansible-collections/ansible-inclusion/blob/main/collection_checklist.md">Collection Inclusion Criteria Checklist</a> covers most of the criteria from this document.</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../../dev_guide/developing_modules_documenting.html#module-documenting"><span class="std std-ref">Ansible documentation format</span></a> and the <span class="xref std std-ref">style guide</span>.</p></li>
+<li><p>To pass the Ansible <span class="xref std std-ref">sanity tests</span>.</p></li>
+<li><p>To have <span class="xref std std-ref">unit</span> according to the corresponding sections of this document.</p></li>
+</ul>
+</section>
+<section id="other-requirements">
+<h2><a class="toc-backref" href="#id44" role="doc-backlink">Other requirements</a><a class="headerlink" href="#other-requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>After content is moved out of another currently included collection such as <code class="docutils literal notranslate"><span class="pre">community.general</span></code> or <code class="docutils literal notranslate"><span class="pre">community.network</span></code> OR a new collection satisfies all the requirements, see <a class="reference external" href="https://github.com/ansible-community/ansible-build-data/#adding-a-new-collection">Adding a new collection</a> in the <a class="reference external" href="https://github.com/ansible-community/ansible-build-data/">ansible-build-data repository</a>’s README.</p></li>
+<li><p><a class="reference internal" href="../steering/community_steering_committee.html#steering-responsibilities"><span class="std std-ref">The Steering Committee</span></a> can reject a collection inclusion request or exclude a collection from the Ansible package even if the collection satisfies the requirements listed in this document. See the <a class="reference internal" href="../steering/community_steering_committee.html#steering-inclusion"><span class="std std-ref">Collection inclusion request workflow</span></a> for details.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../../dev_guide/developing_collections_path.html#developing-collections-path"><span class="std std-ref">Ansible collection creator path</span></a></dt><dd><p>A consistent overview of the Ansible collection creator journey</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="collection_reviewing.html" class="btn btn-neutral float-left" title="Review checklist for collection PRs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../maintainers.html" class="btn btn-neutral float-right" title="Guidelines for collection maintainers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

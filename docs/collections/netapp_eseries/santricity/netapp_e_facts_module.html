@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="2.11.0" name="antsibull-docs" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>netapp_eseries.santricity.netapp_e_facts module – NetApp E-Series retrieve facts about NetApp E-Series storage arrays &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/collections/netapp_eseries/santricity/netapp_e_facts_module.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="netapp_eseries.santricity.netapp_e_firmware module – NetApp E-Series manage firmware." href="netapp_e_firmware_module.html" />
+    <link rel="prev" title="netapp_eseries.santricity.netapp_e_drive_firmware module – NetApp E-Series manage drive firmware" href="netapp_e_drive_firmware_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../amazon/index.html">Collections in the Amazon Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ansible/index.html">Collections in the Ansible Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../arista/index.html">Collections in the Arista Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/index.html">Collections in the Awx Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../azure/index.html">Collections in the Azure Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../check_point/index.html">Collections in the Check_point Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chocolatey/index.html">Collections in the Chocolatey Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cisco/index.html">Collections in the Cisco Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloud/index.html">Collections in the Cloud Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cloudscale_ch/index.html">Collections in the Cloudscale_ch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/index.html">Collections in the Community Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/index.html">Collections in the Containers Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cyberark/index.html">Collections in the Cyberark Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dellemc/index.html">Collections in the Dellemc Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../f5networks/index.html">Collections in the F5networks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fortinet/index.html">Collections in the Fortinet Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../frr/index.html">Collections in the Frr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../google/index.html">Collections in the Google Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grafana/index.html">Collections in the Grafana Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hetzner/index.html">Collections in the Hetzner Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ibm/index.html">Collections in the Ibm Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ieisystem/index.html">Collections in the Ieisystem Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infinidat/index.html">Collections in the Infinidat Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../infoblox/index.html">Collections in the Infoblox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspur/index.html">Collections in the Inspur Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../junipernetworks/index.html">Collections in the Junipernetworks Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kaytus/index.html">Collections in the Kaytus Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kubernetes/index.html">Collections in the Kubernetes Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lowlydba/index.html">Collections in the Lowlydba Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../microsoft/index.html">Collections in the Microsoft Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../netapp/index.html">Collections in the Netapp Namespace</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Netapp_eseries Namespace</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Netapp_Eseries.Santricity</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../netbox/index.html">Collections in the Netbox Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ngine_io/index.html">Collections in the Ngine_io Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openstack/index.html">Collections in the Openstack Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../openvswitch/index.html">Collections in the Openvswitch Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ovirt/index.html">Collections in the Ovirt Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../purestorage/index.html">Collections in the Purestorage Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sensu/index.html">Collections in the Sensu Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../splunk/index.html">Collections in the Splunk Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../t_systems_mms/index.html">Collections in the T_systems_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../telekom_mms/index.html">Collections in the Telekom_mms Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theforeman/index.html">Collections in the Theforeman Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vmware/index.html">Collections in the Vmware Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vultr/index.html">Collections in the Vultr Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vyos/index.html">Collections in the Vyos Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../wti/index.html">Collections in the Wti Namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Netapp_eseries Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Netapp_Eseries.Santricity</a></li>
+      <li class="breadcrumb-item active">netapp_eseries.santricity.netapp_e_facts module – NetApp E-Series retrieve facts about NetApp E-Series storage arrays</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <br>
+
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module"></span><section id="netapp-eseries-santricity-netapp-e-facts-module-netapp-e-series-retrieve-facts-about-netapp-e-series-storage-arrays">
+<h1>netapp_eseries.santricity.netapp_e_facts module – NetApp E-Series retrieve facts about NetApp E-Series storage arrays<a class="headerlink" href="#netapp-eseries-santricity-netapp-e-facts-module-netapp-e-series-retrieve-facts-about-netapp-e-series-storage-arrays" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netapp_eseries/santricity/">netapp_eseries.santricity collection</a> (version 1.4.0).</p>
+<p>You might already have this collection installed if you are using the <code class="docutils literal notranslate"><span class="pre">ansible</span></code> package.
+It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netapp_eseries.santricity</span></code>.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">netapp_eseries.santricity.netapp_e_facts</span></code>.</p>
+</div>
+<p class="ansible-version-added">New in netapp_eseries.santricity 2.2</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id2">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id3">Notes</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id4">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id5">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The netapp_e_facts module returns a collection of facts regarding NetApp E-Series storage arrays.</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-api_password"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-parameter-api-password"><strong>api_password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-api_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The password to authenticate with the SANtricity Web Services Proxy or Embedded Web Services API.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-api_url"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-parameter-api-url"><strong>api_url</strong></p>
+<a class="ansibleOptionLink" href="#parameter-api_url" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The url to the SANtricity Web Services Proxy or Embedded Web Services API. Example <a class="reference external" href="https://prod-1.wahoo.acme.com/devmgr/v2">https://prod-1.wahoo.acme.com/devmgr/v2</a></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-api_username"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-parameter-api-username"><strong>api_username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-api_username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The username to authenticate with the SANtricity Web Services Proxy or Embedded Web Services API.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ssid"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-parameter-ssid"><strong>ssid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ssid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The ID of the array to manage. This value must be unique for each array.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-validate_certs"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-parameter-validate-certs"><strong>validate_certs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Should https certificates be validated?</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">true</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Notes</a><a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The E-Series Ansible modules require either an instance of the Web Services Proxy (WSP), to be available to manage the storage-system, or an E-Series storage-system that supports the Embedded Web Services API.</p></li>
+<li><p>Embedded Web Services is currently available on the E2800, E5700, EF570, and newer hardware models.</p></li>
+<li><p><strong>ERROR while parsing</strong>: While parsing “M(netapp_e_storage_system)” at index 1: Module name “netapp_e_storage_system” is not a FQCN may be utilized for configuring the systems managed by a WSP instance.</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get array facts</span>
+<span class="w">  </span><span class="nt">netapp_e_facts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">api_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://192.168.1.100:8443/devmgr/v2&quot;</span>
+<span class="w">    </span><span class="nt">api_username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;admin&quot;</span>
+<span class="w">    </span><span class="nt">api_password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;adminpass&quot;</span>
+<span class="w">    </span><span class="nt">validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<p>Common return values are documented <a class="reference internal" href="../../../reference_appendices/common_return_values.html#common-return-values"><span class="std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-msg"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-msg"><strong>msg</strong></p>
+<a class="ansibleOptionLink" href="#return-msg" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Success message</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> on success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">&quot;['Gathered</span> <span class="pre">facts</span> <span class="pre">for</span> <span class="pre">storage</span> <span class="pre">array.</span> <span class="pre">Array</span> <span class="pre">ID</span> <span class="pre">[1].',</span> <span class="pre">'Gathered</span> <span class="pre">facts</span> <span class="pre">for</span> <span class="pre">web</span> <span class="pre">services</span> <span class="pre">proxy.']&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts"><strong>storage_array_facts</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>provides details about the array, controllers, management interfaces, hostside interfaces, driveside interfaces, disks, storage pools, volumes, snapshots, and features.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> on successful inquiry from from embedded web services rest api</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_controllers"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-controllers"><strong>netapp_controllers</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_controllers" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>storage array controller list that contains basic controller identification and status</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;name&quot;:</span> <span class="pre">&quot;A&quot;,</span> <span class="pre">&quot;serial&quot;:</span> <span class="pre">&quot;021632007299&quot;,</span> <span class="pre">&quot;status&quot;:</span> <span class="pre">&quot;optimal&quot;},</span> <span class="pre">{&quot;name&quot;:</span> <span class="pre">&quot;B&quot;,</span> <span class="pre">&quot;serial&quot;:</span> <span class="pre">&quot;021632007300&quot;,</span> <span class="pre">&quot;status&quot;:</span> <span class="pre">&quot;failed&quot;}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_disks"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-disks"><strong>netapp_disks</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_disks" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>drive list that contains identification, type, and status information for each drive</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;available&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;firmware_version&quot;:</span> <span class="pre">&quot;MS02&quot;,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">&quot;01000000500003960C8B67880000000000000000&quot;,</span> <span class="pre">&quot;media_type&quot;:</span> <span class="pre">&quot;ssd&quot;,</span> <span class="pre">&quot;product_id&quot;:</span> <span class="pre">&quot;PX02SMU080</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;,</span> <span class="pre">&quot;serial_number&quot;:</span> <span class="pre">&quot;15R0A08LT2BA&quot;,</span> <span class="pre">&quot;status&quot;:</span> <span class="pre">&quot;optimal&quot;,</span> <span class="pre">&quot;tray_ref&quot;:</span> <span class="pre">&quot;0E00000000000000000000000000000000000000&quot;,</span> <span class="pre">&quot;usable_bytes&quot;:</span> <span class="pre">&quot;799629205504&quot;}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_driveside_interfaces"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-driveside-interfaces"><strong>netapp_driveside_interfaces</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_driveside_interfaces" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>drive side interface list that contains identification, type, and speed for each interface</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;controller&quot;:</span> <span class="pre">&quot;A&quot;,</span> <span class="pre">&quot;interface_speed&quot;:</span> <span class="pre">&quot;12g&quot;,</span> <span class="pre">&quot;interface_type&quot;:</span> <span class="pre">&quot;sas&quot;}],</span> <span class="pre">[{&quot;controller&quot;:</span> <span class="pre">&quot;B&quot;,</span> <span class="pre">&quot;interface_speed&quot;:</span> <span class="pre">&quot;10g&quot;,</span> <span class="pre">&quot;interface_type&quot;:</span> <span class="pre">&quot;iscsi&quot;}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_enabled_features"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-enabled-features"><strong>netapp_enabled_features</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_enabled_features" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>specifies the enabled features on the storage array.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> on success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[&quot;flashReadCache&quot;,</span> <span class="pre">&quot;performanceTier&quot;,</span> <span class="pre">&quot;protectionInformation&quot;,</span> <span class="pre">&quot;secureVolume&quot;]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_host_groups"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-host-groups"><strong>netapp_host_groups</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_host_groups" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>specifies the host groups on the storage arrays.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> on success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;id&quot;:</span> <span class="pre">&quot;85000000600A098000A4B28D003610705C40B964&quot;,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;group1&quot;}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_host_types"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-host-types"><strong>netapp_host_types</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_host_types" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>lists the available host types on the storage array.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> on success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;index&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;FactoryDefault&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;W2KNETNCL&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">2,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;SOL&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">5,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;AVT_4M&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">6,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;LNX&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">7,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;LnxALUA&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">8,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;W2KNETCL&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">9,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;AIX</span> <span class="pre">MPIO&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">10,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;VmwTPGSALUA&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">15,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;HPXTPGS&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">17,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;SolTPGSALUA&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">18,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;SVC&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">22,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;MacTPGSALUA&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">23,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;WinTPGSALUA&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">24,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;LnxTPGSALUA&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">25,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;LnxTPGSALUA_PM&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">26,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;ONTAP_ALUA&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">27,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;LnxTPGSALUA_SF&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">28,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;LnxDHALUA&quot;},</span> <span class="pre">{&quot;index&quot;:</span> <span class="pre">29,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;ATTOClusterAllOS&quot;}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_hosts"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-hosts"><strong>netapp_hosts</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_hosts" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>specifies the hosts on the storage arrays.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> on success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;group_id&quot;:</span> <span class="pre">&quot;85000000600A098000A4B28D003610705C40B964&quot;,</span> <span class="pre">&quot;host_type_index&quot;:</span> <span class="pre">28,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">&quot;8203800000000000000000000000000000000000&quot;,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;host1&quot;,</span> <span class="pre">&quot;ports&quot;:</span> <span class="pre">[{&quot;address&quot;:</span> <span class="pre">&quot;1000FF7CFFFFFF01&quot;,</span> <span class="pre">&quot;label&quot;:</span> <span class="pre">&quot;FC_1&quot;,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;fc&quot;},</span> <span class="pre">{&quot;address&quot;:</span> <span class="pre">&quot;1000FF7CFFFFFF00&quot;,</span> <span class="pre">&quot;label&quot;:</span> <span class="pre">&quot;FC_2&quot;,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;fc&quot;}]}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_hostside_interfaces"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-hostside-interfaces"><strong>netapp_hostside_interfaces</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_hostside_interfaces" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>host side interface list that contains identification, configuration, type, speed, and status information for each interface</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;iscsi&quot;:</span> <span class="pre">[{&quot;controller&quot;:</span> <span class="pre">&quot;A&quot;,</span> <span class="pre">&quot;current_interface_speed&quot;:</span> <span class="pre">&quot;10g&quot;,</span> <span class="pre">&quot;ipv4_address&quot;:</span> <span class="pre">&quot;10.10.10.1&quot;,</span> <span class="pre">&quot;ipv4_enabled&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;ipv4_gateway&quot;:</span> <span class="pre">&quot;10.10.10.1&quot;,</span> <span class="pre">&quot;ipv4_subnet_mask&quot;:</span> <span class="pre">&quot;255.255.255.0&quot;,</span> <span class="pre">&quot;ipv6_enabled&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;iqn&quot;:</span> <span class="pre">&quot;iqn.1996-03.com.netapp:2806.600a098000a81b6d0000000059d60c76&quot;,</span> <span class="pre">&quot;link_status&quot;:</span> <span class="pre">&quot;up&quot;,</span> <span class="pre">&quot;mtu&quot;:</span> <span class="pre">9000,</span> <span class="pre">&quot;supported_interface_speeds&quot;:</span> <span class="pre">[&quot;10g&quot;]}]}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_management_interfaces"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-management-interfaces"><strong>netapp_management_interfaces</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_management_interfaces" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>management interface list that contains identification, configuration, and status for each interface</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;alias&quot;:</span> <span class="pre">&quot;ict-2800-A&quot;,</span> <span class="pre">&quot;channel&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;controller&quot;:</span> <span class="pre">&quot;A&quot;,</span> <span class="pre">&quot;dns_config_method&quot;:</span> <span class="pre">&quot;dhcp&quot;,</span> <span class="pre">&quot;dns_servers&quot;:</span> <span class="pre">[],</span> <span class="pre">&quot;ipv4_address&quot;:</span> <span class="pre">&quot;10.1.1.1&quot;,</span> <span class="pre">&quot;ipv4_address_config_method&quot;:</span> <span class="pre">&quot;static&quot;,</span> <span class="pre">&quot;ipv4_enabled&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;ipv4_gateway&quot;:</span> <span class="pre">&quot;10.113.1.1&quot;,</span> <span class="pre">&quot;ipv4_subnet_mask&quot;:</span> <span class="pre">&quot;255.255.255.0&quot;,</span> <span class="pre">&quot;ipv6_enabled&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;link_status&quot;:</span> <span class="pre">&quot;up&quot;,</span> <span class="pre">&quot;mac_address&quot;:</span> <span class="pre">&quot;00A098A81B5D&quot;,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;wan0&quot;,</span> <span class="pre">&quot;ntp_config_method&quot;:</span> <span class="pre">&quot;disabled&quot;,</span> <span class="pre">&quot;ntp_servers&quot;:</span> <span class="pre">[],</span> <span class="pre">&quot;remote_ssh_access&quot;:</span> <span class="pre">false}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_storage_array"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-storage-array"><strong>netapp_storage_array</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_storage_array" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>provides storage array identification, firmware version, and available capabilities</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[{&quot;cacheBlockSizes&quot;:</span> <span class="pre">[4096,</span> <span class="pre">8192,</span> <span class="pre">16384,</span> <span class="pre">32768],</span> <span class="pre">&quot;chassis_serial&quot;:</span> <span class="pre">&quot;021540006043&quot;,</span> <span class="pre">&quot;firmware&quot;:</span> <span class="pre">&quot;08.40.00.01&quot;,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;ict-2800-11_40&quot;,</span> <span class="pre">&quot;supportedSegSizes&quot;:</span> <span class="pre">[8192,</span> <span class="pre">16384,</span> <span class="pre">32768,</span> <span class="pre">65536,</span> <span class="pre">131072,</span> <span class="pre">262144,</span> <span class="pre">524288],</span> <span class="pre">&quot;wwn&quot;:</span> <span class="pre">&quot;600A098000A81B5D0000000059D60C76&quot;}]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_storage_pools"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-storage-pools"><strong>netapp_storage_pools</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_storage_pools" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>storage pool list that contains identification and capacity information for each pool</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;available_capacity&quot;:</span> <span class="pre">&quot;3490353782784&quot;,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">&quot;04000000600A098000A81B5D000002B45A953A61&quot;,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;Raid6&quot;,</span> <span class="pre">&quot;total_capacity&quot;:</span> <span class="pre">&quot;5399466745856&quot;,</span> <span class="pre">&quot;used_capacity&quot;:</span> <span class="pre">&quot;1909112963072&quot;}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_volumes"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-volumes"><strong>netapp_volumes</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_volumes" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>storage volume list that contains identification and capacity information for each volume</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;capacity&quot;:</span> <span class="pre">&quot;5368709120&quot;,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">&quot;02000000600A098000AAC0C3000002C45A952BAA&quot;,</span> <span class="pre">&quot;is_thin_provisioned&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;5G&quot;,</span> <span class="pre">&quot;parent_storage_pool_id&quot;:</span> <span class="pre">&quot;04000000600A098000A81B5D000002B45A953A61&quot;}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_volumes_by_initiators"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-volumes-by-initiators"><strong>netapp_volumes_by_initiators</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_volumes_by_initiators" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>list of available volumes keyed by the mapped initiators.</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[{&quot;192_168_1_1&quot;:</span> <span class="pre">[{&quot;id&quot;:</span> <span class="pre">&quot;02000000600A098000A4B9D1000015FD5C8F7F9E&quot;,</span> <span class="pre">&quot;meta_data&quot;:</span> <span class="pre">{&quot;filetype&quot;:</span> <span class="pre">&quot;xfs&quot;,</span> <span class="pre">&quot;public&quot;:</span> <span class="pre">true},</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;some_volume&quot;,</span> <span class="pre">&quot;workload_name&quot;:</span> <span class="pre">&quot;test2_volumes&quot;,</span> <span class="pre">&quot;wwn&quot;:</span> <span class="pre">&quot;600A098000A4B9D1000015FD5C8F7F9E&quot;}]}]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/netapp_workload_tags"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-netapp-workload-tags"><strong>netapp_workload_tags</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/netapp_workload_tags" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>workload tag list</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;id&quot;:</span> <span class="pre">&quot;87e19568-43fb-4d8d-99ea-2811daaa2b38&quot;,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;ftp_server&quot;,</span> <span class="pre">&quot;workloadAttributes&quot;:</span> <span class="pre">[{&quot;key&quot;:</span> <span class="pre">&quot;use&quot;,</span> <span class="pre">&quot;value&quot;:</span> <span class="pre">&quot;general&quot;}]}]]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-storage_array_facts/snapshot_images"></div><p class="ansible-option-title" id="ansible-collections-netapp-eseries-santricity-netapp-e-facts-module-return-storage-array-facts-snapshot-images"><strong>snapshot_images</strong></p>
+<a class="ansibleOptionLink" href="#return-storage_array_facts/snapshot_images" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">complex</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>snapshot image list that contains identification, capacity, and status information for each snapshot image</p>
+<p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+<p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[[{&quot;active_cow&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;creation_method&quot;:</span> <span class="pre">&quot;user&quot;,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">&quot;34000000600A098000A81B5D00630A965B0535AC&quot;,</span> <span class="pre">&quot;pit_capacity&quot;:</span> <span class="pre">&quot;5368709120&quot;,</span> <span class="pre">&quot;reposity_cap_utilization&quot;:</span> <span class="pre">&quot;0&quot;,</span> <span class="pre">&quot;rollback_source&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;status&quot;:</span> <span class="pre">&quot;optimal&quot;}]]</span></code></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Kevin Hulquest (&#64;hulquest)</p></li>
+<li><p>Nathan Swartz (&#64;ndswartz)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h3>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/netappeseries/santricity/issues" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://www.github.com/netapp-eseries/santricity" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="netapp_e_drive_firmware_module.html" class="btn btn-neutral float-left" title="netapp_eseries.santricity.netapp_e_drive_firmware module – NetApp E-Series manage drive firmware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="netapp_e_firmware_module.html" class="btn btn-neutral float-right" title="netapp_eseries.santricity.netapp_e_firmware module – NetApp E-Series manage firmware." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

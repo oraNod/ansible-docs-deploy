@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxy Developer Guide &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/galaxy/dev_guide.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Collection Index" href="../collections/index.html" />
+    <link rel="prev" title="Galaxy User Guide" href="user_guide.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os_guide/index.html">Using Ansible on Windows and BSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Galaxy Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-collections-for-galaxy">Creating collections for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-roles-for-galaxy">Creating roles for Galaxy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#force">Force</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#container-enabled">Container enabled</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-custom-role-skeleton">Using a custom role skeleton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authenticate-with-galaxy">Authenticate with Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-a-role">Import a role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-a-role">Delete a role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#travis-integrations">Travis integrations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#list-travis-integrations">List Travis integrations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-travis-integrations">Remove Travis integrations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collections/index.html">Collection Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections/all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Galaxy Developer Guide</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <a href="https://github.com/ansible/ansible-documentation/edit/devel/docs/docsite/rst/galaxy/dev_guide.rst?description=%23%23%23%23%23%20SUMMARY%0A%3C!---%20Your%20description%20here%20--%3E%0A%0A%0A%23%23%23%23%23%20ISSUE%20TYPE%0A-%20Docs%20Pull%20Request%0A%0A%2Blabel:%20docsite_pr" class="fa fa-github"> Edit on GitHub</a>
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <section id="galaxy-developer-guide">
+<span id="developing-galaxy"></span><h1>Galaxy Developer Guide<a class="headerlink" href="#galaxy-developer-guide" title="Link to this heading"></a></h1>
+<p>You can host collections and roles on Galaxy to share with the Ansible community. Galaxy content is formatted in pre-packaged units of work such as <a class="reference internal" href="../playbook_guide/playbooks_reuse_roles.html#playbooks-reuse-roles"><span class="std std-ref">roles</span></a>, and <a class="reference internal" href="../collections_guide/index.html#collections"><span class="std std-ref">collections</span></a>.
+You can create roles for provisioning infrastructure, deploying applications, and all of the tasks you do everyday. Taking this a step further, you can create collections which provide a comprehensive package of automation that may include multiple playbooks, roles, modules, and plugins.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#creating-collections-for-galaxy" id="id1">Creating collections for Galaxy</a></p></li>
+<li><p><a class="reference internal" href="#creating-roles-for-galaxy" id="id2">Creating roles for Galaxy</a></p>
+<ul>
+<li><p><a class="reference internal" href="#force" id="id3">Force</a></p></li>
+<li><p><a class="reference internal" href="#container-enabled" id="id4">Container enabled</a></p></li>
+<li><p><a class="reference internal" href="#using-a-custom-role-skeleton" id="id5">Using a custom role skeleton</a></p></li>
+<li><p><a class="reference internal" href="#authenticate-with-galaxy" id="id6">Authenticate with Galaxy</a></p></li>
+<li><p><a class="reference internal" href="#import-a-role" id="id7">Import a role</a></p></li>
+<li><p><a class="reference internal" href="#delete-a-role" id="id8">Delete a role</a></p></li>
+<li><p><a class="reference internal" href="#travis-integrations" id="id9">Travis integrations</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="creating-collections-for-galaxy">
+<span id="creating-collections-galaxy"></span><h2><a class="toc-backref" href="#id1" role="doc-backlink">Creating collections for Galaxy</a><a class="headerlink" href="#creating-collections-for-galaxy" title="Link to this heading"></a></h2>
+<p>Collections are a distribution format for Ansible content. You can use collections to package and distribute playbooks, roles, modules, and plugins.
+You can publish and use collections through <a class="reference external" href="https://galaxy.ansible.com">Ansible Galaxy</a>.</p>
+<p>See <a class="reference internal" href="../dev_guide/developing_collections.html#developing-collections"><span class="std std-ref">Developing collections</span></a> for details on how to create collections.</p>
+</section>
+<section id="creating-roles-for-galaxy">
+<span id="creating-roles-galaxy"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">Creating roles for Galaxy</a><a class="headerlink" href="#creating-roles-for-galaxy" title="Link to this heading"></a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">init</span></code> command to initialize the base structure of a new role, saving time on creating the various directories and main.yml files a role requires</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>init<span class="w"> </span>role_name
+</pre></div>
+</div>
+<p>The above will create the following directory structure in the current working directory:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>role_name/
+    README.md
+    defaults/
+        main.yml
+    files/
+    handlers/
+        main.yml
+    meta/
+        main.yml
+    tasks/
+        main.yml
+    templates/
+    tests/
+        inventory
+        test.yml
+    vars/
+        main.yml
+</pre></div>
+</div>
+<p>If you want to create a repository for the role, the repository root should be <cite>role_name</cite>.</p>
+<section id="force">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Force</a><a class="headerlink" href="#force" title="Link to this heading"></a></h3>
+<p>If a directory matching the name of the role already exists in the current working directory, the init command will result in an error. To ignore the error
+use the <code class="docutils literal notranslate"><span class="pre">--force</span></code> option. Force will create the above subdirectories and files, replacing anything that matches.</p>
+</section>
+<section id="container-enabled">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Container enabled</a><a class="headerlink" href="#container-enabled" title="Link to this heading"></a></h3>
+<p>If you are creating a Container Enabled role, pass <code class="docutils literal notranslate"><span class="pre">--type</span> <span class="pre">container</span></code> to <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">init</span></code>. This will create the same directory structure as above, but populate it
+with default files appropriate for a Container Enabled role. For example, the README.md has a slightly different structure, the <em>.travis.yml</em> file tests
+the role using <a class="reference external" href="https://github.com/ansible/ansible-container">Ansible Container</a>, and the meta directory includes a <em>container.yml</em> file.</p>
+</section>
+<section id="using-a-custom-role-skeleton">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Using a custom role skeleton</a><a class="headerlink" href="#using-a-custom-role-skeleton" title="Link to this heading"></a></h3>
+<p>A custom role skeleton directory can be supplied as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ansible-galaxy<span class="w"> </span>init<span class="w"> </span>--role-skeleton<span class="o">=</span>/path/to/skeleton<span class="w"> </span>role_name
+</pre></div>
+</div>
+<p>When a skeleton is provided, init will:</p>
+<ul class="simple">
+<li><p>copy all files and directories from the skeleton to the new role</p></li>
+<li><p>any .j2 files found outside of a templates folder will be rendered as templates. The only useful variable at the moment is role_name</p></li>
+<li><p>The .git folder and any .git_keep files will not be copied</p></li>
+</ul>
+<p>Alternatively, the role_skeleton and ignoring of files can be configured with ansible.cfg</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[galaxy]
+role_skeleton = /path/to/skeleton
+role_skeleton_ignore = ^.git$,^.*/.git_keep$
+</pre></div>
+</div>
+</section>
+<section id="authenticate-with-galaxy">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Authenticate with Galaxy</a><a class="headerlink" href="#authenticate-with-galaxy" title="Link to this heading"></a></h3>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">delete</span></code> and <code class="docutils literal notranslate"><span class="pre">setup</span></code> commands to manage your roles on the Galaxy website requires authentication in the form of an API key, you must create an account on the Galaxy website.</p>
+<p>To create an authentication token:</p>
+<ol class="arabic simple">
+<li><p>Click <span class="guilabel">Collections &gt; API Token</span>.</p></li>
+<li><p>Click <span class="guilabel">Load Token</span> and then copy it.</p></li>
+<li><p>Save your token in the path set in the <a class="reference internal" href="../reference_appendices/config.html#galaxy-token-path"><span class="std std-ref">GALAXY_TOKEN_PATH</span></a>.</p></li>
+</ol>
+</section>
+<section id="import-a-role">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Import a role</a><a class="headerlink" href="#import-a-role" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">import``command</span> <span class="pre">requires</span> <span class="pre">that</span> <span class="pre">you</span> <span class="pre">authenticate</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">API</span> <span class="pre">token.</span> <span class="pre">You</span> <span class="pre">can</span> <span class="pre">include</span> <span class="pre">it</span> <span class="pre">in</span> <span class="pre">your</span> <span class="pre">``ansible.cfg</span></code> file or use the <code class="docutils literal notranslate"><span class="pre">--token</span></code> command option. You are only allowed to remove roles where you have access to the repository in GitHub.</p>
+<p>To import a new role:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>import<span class="w"> </span>github_user<span class="w"> </span>github_repo
+</pre></div>
+</div>
+<p>By default, the command will wait for Galaxy to complete the import process, displaying the results as the import progresses:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Successfully submitted import request 41
+Starting import 41: role_name=myrole repo=githubuser/ansible-role-repo ref=
+Retrieving GitHub repo githubuser/ansible-role-repo
+Accessing branch: devel
+Parsing and validating meta/main.yml
+Parsing galaxy_tags
+Parsing platforms
+Adding dependencies
+Parsing and validating README.md
+Adding repo tags as role versions
+Import completed
+Status SUCCESS : warnings=0 errors=0
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../cli/ansible-galaxy.html#ansible-galaxy"><span class="std std-ref">ansible-galaxy</span></a> for other command options.</p>
+</section>
+<section id="delete-a-role">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Delete a role</a><a class="headerlink" href="#delete-a-role" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">delete</span></code> command requires that you authenticate with the API token. You can include it in your <code class="docutils literal notranslate"><span class="pre">ansible.cfg</span></code> file or use the <code class="docutils literal notranslate"><span class="pre">--token</span></code> command option. You are only allowed to remove roles where you have access to the repository in GitHub.</p>
+<p>Use the following to delete a role:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>delete<span class="w"> </span>github_user<span class="w"> </span>github_repo
+</pre></div>
+</div>
+<p>This only removes the role from Galaxy. It does not remove or alter the actual GitHub repository.</p>
+</section>
+<section id="travis-integrations">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Travis integrations</a><a class="headerlink" href="#travis-integrations" title="Link to this heading"></a></h3>
+<p>You can create an integration or connection between a role in Galaxy and <a class="reference external" href="https://travis-ci.org">Travis</a>. Once the connection is established, a build in Travis will
+automatically trigger an import in Galaxy, updating the search index with the latest information about the role.</p>
+<p>You create the integration using the <code class="docutils literal notranslate"><span class="pre">setup</span></code> command with your API token. You will
+also need an account in Travis, and your Travis token. Once you’re ready, use the following command to create the integration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>setup<span class="w"> </span>travis<span class="w"> </span>github_user<span class="w"> </span>github_repo<span class="w"> </span>xxx-travis-token-xxx
+</pre></div>
+</div>
+<p>The setup command requires your Travis token, however the token is not stored in Galaxy. It is used along with the GitHub username and repo to create a hash as described
+in <a class="reference external" href="https://docs.travis-ci.com/user/notifications/">the Travis documentation</a>. The hash is stored in Galaxy and used to verify notifications received from Travis.</p>
+<p>The setup command enables Galaxy to respond to notifications. To configure Travis to run a build on your repository and send a notification, follow the
+<a class="reference external" href="https://docs.travis-ci.com/user/getting-started/">Travis getting started guide</a>.</p>
+<p>To instruct Travis to notify Galaxy when a build completes, add the following to your .travis.yml file:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>notifications:
+    webhooks: https://galaxy.ansible.com/api/v1/notifications/
+</pre></div>
+</div>
+<section id="list-travis-integrations">
+<h4>List Travis integrations<a class="headerlink" href="#list-travis-integrations" title="Link to this heading"></a></h4>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--list</span></code> option to display your Travis integrations:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ansible-galaxy<span class="w"> </span>setup<span class="w"> </span>--list<span class="w"> </span>travis<span class="w"> </span>github_user<span class="w"> </span>github_repo<span class="w"> </span>xxx-travis-token-xxx
+
+
+ID<span class="w">         </span>Source<span class="w">     </span>Repo
+----------<span class="w"> </span>----------<span class="w"> </span>----------
+<span class="m">2</span><span class="w">          </span>travis<span class="w">     </span>github_user/github_repo
+<span class="m">1</span><span class="w">          </span>travis<span class="w">     </span>github_user/github_repo
+</pre></div>
+</div>
+</section>
+<section id="remove-travis-integrations">
+<h4>Remove Travis integrations<a class="headerlink" href="#remove-travis-integrations" title="Link to this heading"></a></h4>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--remove</span></code> option to disable and remove a Travis integration:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>setup<span class="w"> </span>--remove<span class="w"> </span>ID
+</pre></div>
+</div>
+</div></blockquote>
+<p>Provide the ID of the integration to be disabled. You can find the ID by using the <code class="docutils literal notranslate"><span class="pre">--list</span></code> option.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../collections_guide/index.html#collections"><span class="std std-ref">Using Ansible collections</span></a></dt><dd><p>Shareable collections of modules, playbooks and roles</p>
+</dd>
+<dt><a class="reference internal" href="../playbook_guide/playbooks_reuse_roles.html#playbooks-reuse-roles"><span class="std std-ref">Roles</span></a></dt><dd><p>All about ansible roles</p>
+</dd>
+<dt><a class="reference external" href="https://groups.google.com/group/ansible-project">Mailing List</a></dt><dd><p>Questions? Help? Ideas?  Stop by the list on Google Groups</p>
+</dd>
+<dt><a class="reference internal" href="../community/communication.html#communication-irc"><span class="std std-ref">Real-time chat</span></a></dt><dd><p>How to join Ansible chat channels</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_guide.html" class="btn btn-neutral float-left" title="Galaxy User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../collections/index.html" class="btn btn-neutral float-right" title="Collection Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

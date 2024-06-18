@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managing BSD hosts with Ansible &mdash; Ansible Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5707b69d" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/ansible.css?v=c5b67dd2" />
+      <link rel="stylesheet" type="text/css" href="../_static/antsibull-minimal.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/rtd-ethical-ads.css?v=289b023e" />
+
+  
+    <link rel="shortcut icon" href="../_static/images/Ansible-Mark-RGB_Black.png"/>
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c7b8e248"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ansible tips and tricks" href="../tips_tricks/index.html" />
+    <link rel="prev" title="Windows Frequently Asked Questions" href="windows_faq.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+<script src="https://www.redhat.com/dtm.js"></script>
+
+
+<!-- <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> -->
+<meta class="swiftype" name="version" data-type="string" content="devel">
+
+<!-- Google Tag Manager Data Layer -->
+<script>
+ dataLayer = [];
+</script>
+<!-- End Google Tag Manager Data Layer -->
+
+
+
+<script>
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','https://s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    <li><a href="https://forum.ansible.com/" target="_blank">Ansible community forum</a></li>
+    <li><a href="https://docs.ansible.com/" target="_blank">Documentation</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Community Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible
+          </a>
+              <div class="version">
+                devel
+              </div><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    <form class="version-dropdown" method="get">
+      <script>
+        function switchVersionTo(slug) {
+          var current_url_path = window.location.pathname;
+          var url_version = current_url_path.search("/devel/") > -1
+            ? "/devel/"
+            : "/latest/";
+          var new_version_url = current_url_path.replace(url_version, "/" + slug + "/");
+          window.location.replace(new_version_url);
+        }
+      </script>
+      <label class="sr-only" for="version-list">Select version:</label>
+      <select
+          class="version-list"
+          id="version-list"
+          onchange="switchVersionTo(this.value);"
+      >
+        
+        <option
+            value="latest"
+            
+        >
+            latest
+        </option>
+        
+        <option
+            value="9"
+            
+        >
+            9
+        </option>
+        
+        <option
+            value="2.9"
+            
+        >
+            2.9
+        </option>
+        
+        <option
+            value="devel"
+            selected="selected"
+        >
+            devel
+        </option>
+        
+      </select>
+    </form>
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Ansible getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started with Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_ee/index.html">Getting started with Execution Environments</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Ansible</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inventory_guide/index.html">Building Ansible inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command_guide/index.html">Using Ansible command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playbook_guide/index.html">Using Ansible playbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vault_guide/index.html">Protecting sensitive data with Ansible vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_plugin_guide/index.html">Using Ansible modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections_guide/index.html">Using Ansible collections</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using Ansible on Windows and BSD</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="windows_setup.html">Setting up a Windows Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_usage.html">Using Ansible and Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_winrm.html">Windows Remote Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_dsc.html">Desired State Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_performance.html">Windows performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_faq.html">Windows Frequently Asked Questions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Managing BSD hosts with Ansible</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-to-bsd-nodes">Connecting to BSD nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bootstrapping-bsd">Bootstrapping BSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-the-python-interpreter">Setting the Python interpreter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freebsd-packages-and-ports">FreeBSD packages and ports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpreter-python-fallback">INTERPRETER_PYTHON_FALLBACK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debug-the-discovery-of-python">Debug the discovery of Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-variables">Additional variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#which-modules-are-available">Which modules are available?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-bsd-as-the-control-node">Using BSD as the control node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bsd-facts">BSD facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bsd-efforts-and-contributions">BSD efforts and contributions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tips_tricks/index.html">Ansible tips and tricks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Ansible Community Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions_collections.html">Ansible Collections Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/contributions.html">ansible-core Contributors Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/advanced_index.html">Advanced Contributor Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/style_guide/index.html">Ansible documentation style guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scenario_guides/cloud_guides.html">Legacy Public Cloud Guides</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/getting_started/index.html">Network Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/user_guide/index.html">Network Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/dev_guide/index.html">Network Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ansible Galaxy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/user_guide.html">Galaxy User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../galaxy/dev_guide.html">Galaxy Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collections/index.html">Collection Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collections/all_plugins.html">Indexes of all modules and plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/general_precedence.html">Controlling how Ansible behaves: precedence rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/release_and_maintenance.html">Releases and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/tower.html">Red Hat Ansible Automation Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/automationhub.html">Ansible Automation Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_appendices/logging.html">Logging Ansible output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_roadmap_index.html">Ansible Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/ansible_core_roadmap_index.html">ansible-core Roadmaps</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+<!-- changeable widget links to tower - do not change as image controlled by Ansible-->
+<div id="sideBanner">
+  <br/>
+  <a href="https://www.ansible.com/docs-left?utm_source=docs">
+    <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+  </a>
+  <br/><br/><br/>
+</div>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Using Ansible on Windows and BSD</a></li>
+      <li class="breadcrumb-item active">Managing BSD hosts with Ansible</li>
+  <li class="wy-breadcrumbs-aside">
+            <!-- Remove main index page as it is no longer editable -->
+            
+              <a href="https://github.com/ansible/ansible-documentation/edit/devel/docs/docsite/rst/os_guide/intro_bsd.rst?description=%23%23%23%23%23%20SUMMARY%0A%3C!---%20Your%20description%20here%20--%3E%0A%0A%0A%23%23%23%23%23%20ISSUE%20TYPE%0A-%20Docs%20Pull%20Request%0A%0A%2Blabel:%20docsite_pr" class="fa fa-github"> Edit on GitHub</a>
+            
+  </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+  <script>
+    function startsWith(str, needle) {
+      return str.slice(0, needle.length) == needle
+    }
+    function startsWithOneOf(str, needles) {
+      return needles.some(function (needle) {
+        return startsWith(str, needle);
+      });
+    }
+    var banner = '';
+      var extra_banner = '';
+    /*use extra_banner for when we want something extra, like a survey or Community Day notice */
+   /*  var extra_banner =
+      '<div id="latest_extra_banner_id" class="admonition important">' +
+        '<p style="padding-bottom: 1.2rem;">' +
+        'Discuss Ansible in the new <a href="https://forum.ansible.com/t/welcome-to-the-ansible-community/5">Ansible Forum!</a>' +
+        '</p>' +
+      '</div>';
+      */
+    // Create a banner if we're not on the official docs site
+    if (location.host == "docs.testing.ansible.com") {
+      document.write('<div id="testing_banner_id" class="admonition important">' +
+                     '<p>This is the testing site for Ansible Documentation. Unless you are reviewing pre-production changes, please visit the <a href="https://docs.ansible.com/ansible/latest/">official documentation website</a>.</p> <p></p>' +
+                     '</div>');
+    }
+    
+      // Create a banner
+      current_url_path = window.location.pathname;
+
+      var important = false;
+      var msg = '<p>';
+      if (startsWith(current_url_path, "/ansible-core/")) {
+        msg += 'You are reading documentation for Ansible Core, which contains no plugins except for those in ansible.builtin. For documentation of the Ansible package, go to <a href="/ansible/latest">the latest documentation</a>.';
+      } else if (startsWithOneOf(current_url_path, ["/ansible/latest/", "/ansible/10/"])) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'This is the <b>latest</b> (stable) Ansible community documentation. For Red Hat Ansible Automation Platform subscriptions, see <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Life Cycle</a> for version details.';
+      } else if (startsWith(current_url_path, "/ansible/2.9/")) {
+        msg += 'You are reading the latest Red Hat released version of the Ansible documentation. Community users can use this version, or select <b>latest</b> from the version selector to the left for the most recent community version.';
+      } else if (startsWith(current_url_path, "/ansible/devel/")) {
+        /* temp extra banner to advertise something */
+        banner += extra_banner;
+
+        msg += 'You are reading the <b>devel</b> version of the Ansible documentation - this version is not guaranteed stable. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+      } else {
+        msg += 'You are reading an older version of the Ansible documentation. Use the version selection to the left if you want the <b>latest</b> (stable) released version.';
+        /* temp extra banner to advertise something - this is for testing*/
+        banner += extra_banner;
+
+      }
+      msg += '</p>';
+
+      banner += '<div id="banner_id" class="admonition ';
+      banner += important ? 'important' : 'caution';
+      banner += '">';
+      banner += important ? '<br>' : '';
+      banner += msg;
+      banner += important ? '<br>' : '';
+      banner += '</div>';
+      document.write(banner);
+    
+  </script>
+
+
+  
+           <div itemprop="articleBody">
+             
+  <section id="managing-bsd-hosts-with-ansible">
+<span id="working-with-bsd"></span><h1>Managing BSD hosts with Ansible<a class="headerlink" href="#managing-bsd-hosts-with-ansible" title="Link to this heading"></a></h1>
+<p>Managing BSD machines is different from managing other Unix-like machines. If you have managed nodes running BSD, review these topics.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#connecting-to-bsd-nodes" id="id2">Connecting to BSD nodes</a></p></li>
+<li><p><a class="reference internal" href="#bootstrapping-bsd" id="id3">Bootstrapping BSD</a></p></li>
+<li><p><a class="reference internal" href="#setting-the-python-interpreter" id="id4">Setting the Python interpreter</a></p>
+<ul>
+<li><p><a class="reference internal" href="#freebsd-packages-and-ports" id="id5">FreeBSD packages and ports</a></p></li>
+<li><p><a class="reference internal" href="#interpreter-python-fallback" id="id6">INTERPRETER_PYTHON_FALLBACK</a></p></li>
+<li><p><a class="reference internal" href="#debug-the-discovery-of-python" id="id7">Debug the discovery of Python</a></p></li>
+<li><p><a class="reference internal" href="#additional-variables" id="id8">Additional variables</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#which-modules-are-available" id="id9">Which modules are available?</a></p></li>
+<li><p><a class="reference internal" href="#using-bsd-as-the-control-node" id="id10">Using BSD as the control node</a></p></li>
+<li><p><a class="reference internal" href="#bsd-facts" id="id11">BSD facts</a></p></li>
+<li><p><a class="reference internal" href="#bsd-efforts-and-contributions" id="id12">BSD efforts and contributions</a></p></li>
+</ul>
+</nav>
+<section id="connecting-to-bsd-nodes">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Connecting to BSD nodes</a><a class="headerlink" href="#connecting-to-bsd-nodes" title="Link to this heading"></a></h2>
+<p>Ansible connects to managed nodes using OpenSSH by default. This works on BSD if you use SSH keys for authentication. However, if you use SSH passwords for authentication, Ansible relies on <code class="docutils literal notranslate"><span class="pre">sshpass</span></code>. Most
+versions of <code class="docutils literal notranslate"><span class="pre">sshpass</span></code> do not deal well with BSD login prompts, so when using SSH passwords against BSD machines, use <code class="docutils literal notranslate"><span class="pre">paramiko</span></code> to connect instead of OpenSSH. You can do this in <code class="docutils literal notranslate"><span class="pre">ansible.cfg</span></code> globally or you can set it as an inventory/group/host variable. For example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[freebsd]
+mybsdhost1 ansible_connection=paramiko
+</pre></div>
+</div>
+</section>
+<section id="bootstrapping-bsd">
+<span id="bootstrap-bsd"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Bootstrapping BSD</a><a class="headerlink" href="#bootstrapping-bsd" title="Link to this heading"></a></h2>
+<p>Ansible is agentless by default, however, it requires Python on managed nodes. Only the <a class="reference internal" href="../collections/ansible/builtin/raw_module.html#raw-module"><span class="std std-ref">raw</span></a> module will operate without Python. Although this module can be used to bootstrap Ansible and install Python on BSD variants (see below), it is very limited and the use of Python is required to make full use of Ansible’s features.</p>
+<p>The following example installs Python which includes the json library required for the full functionality of Ansible.
+On your control machine, you can execute the following for most versions of FreeBSD:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible<span class="w"> </span>-m<span class="w"> </span>raw<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;pkg install -y python&quot;</span><span class="w"> </span>mybsdhost1
+</pre></div>
+</div>
+<p>Or for OpenBSD:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible<span class="w"> </span>-m<span class="w"> </span>raw<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;pkg_add python%3.8&quot;</span>
+</pre></div>
+</div>
+<p>Once this is done you can now use other Ansible modules apart from the <code class="docutils literal notranslate"><span class="pre">raw</span></code> module.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example demonstrated using pkg on FreeBSD and pkg_add on OpenBSD, however, you should be able to substitute the appropriate package tool for your BSD; the package name may also differ. Refer to the package list or documentation of the BSD variant you are using for the exact Python package name you intend to install.</p>
+</div>
+</section>
+<section id="setting-the-python-interpreter">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Setting the Python interpreter</a><a class="headerlink" href="#setting-the-python-interpreter" title="Link to this heading"></a></h2>
+<p>To support a variety of Unix-like operating systems and distributions, Ansible cannot always rely on the existing environment or <code class="docutils literal notranslate"><span class="pre">env</span></code> variables to locate the correct Python binary. By default, modules point at <code class="docutils literal notranslate"><span class="pre">/usr/bin/python</span></code> as this is the most common location. On BSD variants, this path may differ, so it is advised to inform Ansible of the binary’s location. See <a class="reference internal" href="../reference_appendices/config.html#interpreter-python"><span class="std std-ref">INTERPRETER_PYTHON</span></a>. For example, set <code class="docutils literal notranslate"><span class="pre">ansible_python_interpreter</span></code> inventory variable:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[freebsd:vars]</span>
+<span class="na">ansible_python_interpreter</span><span class="o">=</span><span class="s">/usr/local/bin/python</span>
+<span class="k">[openbsd:vars]</span>
+<span class="na">ansible_python_interpreter</span><span class="o">=</span><span class="s">/usr/local/bin/python3.8</span>
+</pre></div>
+</div>
+<section id="freebsd-packages-and-ports">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">FreeBSD packages and ports</a><a class="headerlink" href="#freebsd-packages-and-ports" title="Link to this heading"></a></h3>
+<p>In FreeBSD, there is no guarantee that either <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/python</span></code> executable file or a link to an executable file is installed by default. The best practice for a remote host, with respect to Ansible, is to install at least the Python version supported by Ansible, for example, <code class="docutils literal notranslate"><span class="pre">lang/python38</span></code>, and both meta ports <code class="docutils literal notranslate"><span class="pre">lang/python3</span></code> and <code class="docutils literal notranslate"><span class="pre">lang/python</span></code>. Quoting from <em>/usr/ports/lang/python3/pkg-descr</em>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>This is a meta port to the Python 3.x interpreter and provides symbolic links
+to bin/python3, bin/pydoc3, bin/idle3 and so on to allow compatibility with
+minor version agnostic Python scripts.
+</pre></div>
+</div>
+<p>Quoting from <em>/usr/ports/lang/python/pkg-descr</em>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>This is a meta port to the Python interpreter and provides symbolic links
+to bin/python, bin/pydoc, bin/idle and so on to allow compatibility with
+version agnostic python scripts.
+</pre></div>
+</div>
+<p>As a result, the following packages are installed:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>shell&gt; pkg info | grep python
+python-3.8_3,2                 &quot;meta-port&quot; for the default version of Python interpreter
+python3-3_3                    Meta-port for the Python interpreter 3.x
+python38-3.8.12_1              Interpreted object-oriented programming language
+</pre></div>
+</div>
+<p>and the following executables and links</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>shell&gt; ll /usr/local/bin/ | grep python
+lrwxr-xr-x  1 root  wheel       7 Jan 24 08:30 python@ -&gt; python3
+lrwxr-xr-x  1 root  wheel      14 Jan 24 08:30 python-config@ -&gt; python3-config
+lrwxr-xr-x  1 root  wheel       9 Jan 24 08:29 python3@ -&gt; python3.8
+lrwxr-xr-x  1 root  wheel      16 Jan 24 08:29 python3-config@ -&gt; python3.8-config
+-r-xr-xr-x  1 root  wheel    5248 Jan 13 01:12 python3.8*
+-r-xr-xr-x  1 root  wheel    3153 Jan 13 01:12 python3.8-config*
+</pre></div>
+</div>
+</section>
+<section id="interpreter-python-fallback">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">INTERPRETER_PYTHON_FALLBACK</a><a class="headerlink" href="#interpreter-python-fallback" title="Link to this heading"></a></h3>
+<p>Since version 2.8 Ansible provides a useful variable <code class="docutils literal notranslate"><span class="pre">ansible_interpreter_python_fallback</span></code> to specify a list of paths to search for Python. See <a class="reference internal" href="../reference_appendices/config.html#interpreter-python-fallback"><span class="std std-ref">INTERPRETER_PYTHON_FALLBACK</span></a>. This list will be searched and the first item found will be used. For example, the configuration below would make the installation of the meta-ports in the previous section redundant, that is, if you don’t install the Python meta ports the first two items in the list will be skipped and <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/python3.8</span></code> will be discovered.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">ansible_interpreter_python_fallback</span><span class="o">=</span><span class="s">[&#39;/usr/local/bin/python&#39;, &#39;/usr/local/bin/python3&#39;, &#39;/usr/local/bin/python3.8&#39;]</span>
+</pre></div>
+</div>
+<p>You can use this variable, prolonged by the lower versions of Python, and put it, for example, into the <code class="docutils literal notranslate"><span class="pre">group_vars/all</span></code>. Then, override it for specific groups in <code class="docutils literal notranslate"><span class="pre">group_vars/{group1,</span> <span class="pre">group2,</span> <span class="pre">...}</span></code> and for specific hosts in <code class="docutils literal notranslate"><span class="pre">host_vars/{host1,</span> <span class="pre">host2,</span> <span class="pre">...}</span></code> if needed. See <a class="reference internal" href="../playbook_guide/playbooks_variables.html#ansible-variable-precedence"><span class="std std-ref">Variable precedence: Where should I put a variable?</span></a>.</p>
+</section>
+<section id="debug-the-discovery-of-python">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Debug the discovery of Python</a><a class="headerlink" href="#debug-the-discovery-of-python" title="Link to this heading"></a></h3>
+<p>For example, given the inventory</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">shell&gt; cat hosts</span>
+<span class="k">[test]</span>
+<span class="na">test_11</span>
+<span class="na">test_12</span>
+<span class="na">test_13</span>
+
+<span class="k">[test:vars]</span>
+<span class="na">ansible_connection</span><span class="o">=</span><span class="s">ssh</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">admin</span>
+<span class="na">ansible_become</span><span class="o">=</span><span class="s">true</span>
+<span class="na">ansible_become_user</span><span class="o">=</span><span class="s">root</span>
+<span class="na">ansible_become_method</span><span class="o">=</span><span class="s">sudo</span>
+<span class="na">ansible_interpreter_python_fallback</span><span class="o">=</span><span class="s">[&#39;/usr/local/bin/python&#39;, &#39;/usr/local/bin/python3&#39;, &#39;/usr/local/bin/python3.8&#39;]</span>
+<span class="na">ansible_perl_interpreter</span><span class="o">=</span><span class="s">/usr/local/bin/perl</span>
+</pre></div>
+</div>
+<p>The playbook below</p>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">shell&gt; cat playbook.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">- hosts</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test_11</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">which python</span>
+<span class="w">      </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">result</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">debug</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">result.stdout</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">debug</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<span class="w">          </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">i</span> <span class="k">in</span> <span class="nv">_vars</span> <span class="cp">%}</span>
+<span class="w">          </span><span class="cp">{{</span> <span class="nv">i</span> <span class="cp">}}</span><span class="no">:</span>
+<span class="w">          </span><span class="no">  </span><span class="cp">{{</span> <span class="nv">lookup</span><span class="o">(</span><span class="s1">&#39;vars&#39;</span><span class="o">,</span> <span class="nv">i</span><span class="o">)|</span><span class="nf">to_nice_yaml</span><span class="o">|</span><span class="nf">indent</span><span class="o">(</span><span class="m">2</span><span class="o">)</span> <span class="cp">}}</span>
+<span class="w">          </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="w">      </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">_vars</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">query</span><span class="o">(</span><span class="s1">&#39;varnames&#39;</span><span class="o">,</span> <span class="s1">&#39;.*python.*&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<p>displays the details</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">shell&gt; ansible-playbook -i hosts playbook.yml</span>
+
+<span class="l l-Scalar l-Scalar-Plain">PLAY [test_11] *******************************************************************************</span>
+
+<span class="l l-Scalar l-Scalar-Plain">TASK [command] *******************************************************************************</span>
+<span class="l l-Scalar l-Scalar-Plain">[WARNING]</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Platform freebsd on host test_11 is using the discovered Python interpreter at</span>
+<span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/python, but future installation of another Python interpreter could change the</span>
+<span class="l l-Scalar l-Scalar-Plain">meaning of that path. See https://docs.ansible.com/ansible-</span>
+<span class="l l-Scalar l-Scalar-Plain">core/2.12/reference_appendices/interpreter_discovery.html for more information.</span>
+<span class="nt">changed</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">test_11</span><span class="p p-Indicator">]</span>
+
+<span class="l l-Scalar l-Scalar-Plain">TASK [debug] *********************************************************************************</span>
+<span class="nt">ok</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">test_11</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">=&gt;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">result.stdout</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/python</span>
+
+<span class="l l-Scalar l-Scalar-Plain">TASK [debug] *********************************************************************************</span>
+<span class="nt">ok</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">test_11</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">=&gt;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">msg</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<span class="w">    </span><span class="no">ansible_interpreter_python_fallback:</span>
+<span class="w">      </span><span class="no">- /usr/local/bin/python</span>
+<span class="w">      </span><span class="no">- /usr/local/bin/python3</span>
+<span class="w">      </span><span class="no">- /usr/local/bin/python3.8</span>
+
+<span class="w">    </span><span class="no">discovered_interpreter_python:</span>
+<span class="w">      </span><span class="no">/usr/local/bin/python</span>
+
+<span class="w">    </span><span class="no">ansible_playbook_python:</span>
+<span class="w">      </span><span class="no">/usr/bin/python3</span>
+</pre></div>
+</div>
+<p>You can see that the first item from the list <code class="docutils literal notranslate"><span class="pre">ansible_interpreter_python_fallback</span></code> was discovered at the FreeBSD remote host. The variable <code class="docutils literal notranslate"><span class="pre">ansible_playbook_python</span></code> keeps the path to Python at the Linux control node that ran the playbook.</p>
+<p>Regarding the warning, quoting from <a class="reference internal" href="../reference_appendices/config.html#interpreter-python"><span class="std std-ref">INTERPRETER_PYTHON</span></a></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>The fallback behavior will issue a warning that the interpreter
+should be set explicitly (since interpreters installed later may
+change which one is used). This warning behavior can be disabled by
+setting auto_silent or auto_legacy_silent. ...
+</pre></div>
+</div>
+<p>You can either ignore it or get rid of it by setting the variable <code class="docutils literal notranslate"><span class="pre">ansible_python_interpreter=auto_silent</span></code> because this is, actually, what you want by using <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/python</span></code> (<em>“interpreters installed later may change which one is used”</em>). For example</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">shell&gt; cat hosts</span>
+<span class="k">[test]</span>
+<span class="na">test_11</span>
+<span class="na">test_12</span>
+<span class="na">test_13</span>
+
+<span class="k">[test:vars]</span>
+<span class="na">ansible_connection</span><span class="o">=</span><span class="s">ssh</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">admin</span>
+<span class="na">ansible_become</span><span class="o">=</span><span class="s">true</span>
+<span class="na">ansible_become_user</span><span class="o">=</span><span class="s">root</span>
+<span class="na">ansible_become_method</span><span class="o">=</span><span class="s">sudo</span>
+<span class="na">ansible_interpreter_python_fallback</span><span class="o">=</span><span class="s">[&#39;/usr/local/bin/python&#39;, &#39;/usr/local/bin/python3&#39;, &#39;/usr/local/bin/python3.8&#39;]</span>
+<span class="na">ansible_python_interpreter</span><span class="o">=</span><span class="s">auto_silent</span>
+<span class="na">ansible_perl_interpreter</span><span class="o">=</span><span class="s">/usr/local/bin/perl</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../reference_appendices/interpreter_discovery.html#interpreter-discovery"><span class="std std-ref">Interpreter Discovery</span></a></p></li>
+<li><p><a class="reference external" href="https://wiki.freebsd.org/Ports/DEFAULT_VERSIONS">FreeBSD Wiki: Ports/DEFAULT_VERSIONS</a></p></li>
+</ul>
+</div>
+</section>
+<section id="additional-variables">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Additional variables</a><a class="headerlink" href="#additional-variables" title="Link to this heading"></a></h3>
+<p>If you use additional plugins beyond those bundled with Ansible, you can set similar variables for <code class="docutils literal notranslate"><span class="pre">bash</span></code>, <code class="docutils literal notranslate"><span class="pre">perl</span></code> or <code class="docutils literal notranslate"><span class="pre">ruby</span></code>, depending on how the plugin is written. For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[freebsd:vars]</span>
+<span class="na">ansible_python_interpreter</span><span class="o">=</span><span class="s">/usr/local/bin/python</span>
+<span class="na">ansible_perl_interpreter</span><span class="o">=</span><span class="s">/usr/local/bin/perl</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="which-modules-are-available">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Which modules are available?</a><a class="headerlink" href="#which-modules-are-available" title="Link to this heading"></a></h2>
+<p>The majority of the core Ansible modules are written for a combination of Unix-like machines and other generic services, so most should function well on the BSDs with the obvious exception of those that are aimed at Linux-only technologies (such as LVG).</p>
+</section>
+<section id="using-bsd-as-the-control-node">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Using BSD as the control node</a><a class="headerlink" href="#using-bsd-as-the-control-node" title="Link to this heading"></a></h2>
+<p>Using BSD as the control machine is as simple as installing the Ansible package for your BSD variant or by following the <code class="docutils literal notranslate"><span class="pre">pip</span></code> or ‘from source’ instructions.</p>
+</section>
+<section id="bsd-facts">
+<span id="id1"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">BSD facts</a><a class="headerlink" href="#bsd-facts" title="Link to this heading"></a></h2>
+<p>Ansible gathers facts from the BSDs in a similar manner to Linux machines, but since the data, names and structures can vary for network, disks and other devices, one should expect the output to be slightly different yet still familiar to a BSD administrator.</p>
+</section>
+<section id="bsd-efforts-and-contributions">
+<span id="bsd-contributions"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink">BSD efforts and contributions</a><a class="headerlink" href="#bsd-efforts-and-contributions" title="Link to this heading"></a></h2>
+<p>BSD support is important to us at Ansible. Even though the majority of our contributors use and target Linux we have an active BSD community and strive to be as BSD-friendly as possible.
+Please feel free to report any issues or incompatibilities you discover with BSD; pull requests with an included fix are also welcome!</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../command_guide/intro_adhoc.html#intro-adhoc"><span class="std std-ref">Introduction to ad hoc commands</span></a></dt><dd><p>Examples of basic commands</p>
+</dd>
+<dt><a class="reference internal" href="../playbook_guide/playbooks.html#working-with-playbooks"><span class="std std-ref">Working with playbooks</span></a></dt><dd><p>Learning Ansible’s configuration management language</p>
+</dd>
+<dt><a class="reference internal" href="../dev_guide/developing_modules.html#developing-modules"><span class="std std-ref">Should you develop a module?</span></a></dt><dd><p>How to write modules</p>
+</dd>
+<dt><a class="reference external" href="https://groups.google.com/group/ansible-project">Mailing List</a></dt><dd><p>Questions? Help? Ideas?  Stop by the list on Google Groups</p>
+</dd>
+<dt><a class="reference internal" href="../community/communication.html#communication-irc"><span class="std std-ref">Real-time chat</span></a></dt><dd><p>How to join Ansible chat channels</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="windows_faq.html" class="btn btn-neutral float-left" title="Windows Frequently Asked Questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tips_tricks/index.html" class="btn btn-neutral float-right" title="Ansible tips and tricks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible project contributors.
+      <span class="lastupdated">Last updated on Jun 18, 2024.
+      </span></p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+<!-- begin analytics -->
+<script>
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+      (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+      n.id=i;n.src = 'https://js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+      e.parentNode.insertBefore(n, e);
+      })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script>
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+  _satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>
